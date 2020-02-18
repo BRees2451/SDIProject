@@ -14,7 +14,7 @@ int Image::convertToAscii(string name){
     	}
 }
 
-string Image::convertToString(string str, int len){
+str Image::convertToString(string str, int len){
 	int num = 0;
 	for (int i = 0; i < len;i++){
 		//Append current digit
