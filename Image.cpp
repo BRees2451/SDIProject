@@ -14,6 +14,25 @@ int Image::convertToAscii(string name){
     	}
 }
 
+string Image::convertToString(string str, int len){
+	int num = 0;
+	for (int i = 0; i < len;i++){
+		//Append current digit
+		num = num * 10 + (str[i] - '0');
+		
+		//If num is within required range
+		if (num >= 32 && num <= 122){
+			
+			//convert num to char
+			char ch = (char)num;
+			
+			//Reset
+			num = 0;
+		}
+	}
+	return ch;
+}
+
 void Image::SortAscendingName() {
 	
 	//Convert string to ascii
@@ -42,6 +61,9 @@ void Image::SortAscendingName() {
 	}
 	
 	//Array is sorted so convert back to string
+	for(int i=0;i<numArray.lenght();i++){
+		numArray[i] = convertToString(numArray[i], numArray[i].length())
+	}
 	
 	// TODO - implement Image::SortAscendingName
 	throw "Not yet implemented";
