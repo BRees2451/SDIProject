@@ -8,7 +8,7 @@ private:
 	String Name;
 	int Size;
 	int Colour;
-	int ButtonCoOrdinates;
+	int ButtonCoOrdinates[];
 
 public:
 	void ButtonPressed();
