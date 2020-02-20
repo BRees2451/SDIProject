@@ -4,7 +4,7 @@
 class Button {
 
 private:
-	int Name;
+	String Name;
 	int Size;
 	int Colour;
 	int ButtonCoOrdinates;
