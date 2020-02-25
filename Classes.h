@@ -5,6 +5,7 @@ class Classes {
 
 private:
 	int FIleLineNo;
+	String CLassname;
 
 public:
 	void SortAscending();
