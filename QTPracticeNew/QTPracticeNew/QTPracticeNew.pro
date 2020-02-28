@@ -16,12 +16,31 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
+    Annotations.cpp \
+    Button.cpp \
+    Classes.cpp \
+    Gui.cpp \
+    Image.cpp \
+    Polygon.cpp \
+    SidePane.cpp \
+    UserShapeOperations.cpp \
     customview.cpp \
     main.cpp \
     mainwindow.cpp \
     mytimer.cpp
 
 HEADERS += \
+    Annotations.h \
+    Button.h \
+    Classes.h \
+    Gui.h \
+    Image.h \
+    Polygon.h \
+    SidePane.h \
+    Trapezium.h \
+    Triangle.h \
+    User.h \
+    UserShapeOperations.h \
     customview.h \
     mainwindow.h \
     mytimer.h
