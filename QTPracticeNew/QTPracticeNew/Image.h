@@ -18,6 +18,10 @@ public:
 	void SortAscendingDate();
 
 	void SortDescendingDate();
+
+    int convertToAscii(string);
+
+    string convertToString(string, int);
 };
 
 #endif

@@ -6,15 +6,15 @@ void Image::CheckCompatible() {
 }
 
 int Image::convertToAscii(string name){
-	
-	for (int i = 0; i < name.length(); i++){
+
+    for (int i = 0; i < name.size(); i++){
         	cout << (int)name[i]<< endl;
 		int nameNum = nameNum.append((int)name[i]);
-	return nameNum	
+    return nameNum;
     	}
 }
 
-str Image::convertToString(string str, int len){
+string Image::convertToString(string str, int len){
 	int num = 0;
 	for (int i = 0; i < len;i++){
 		//Append current digit

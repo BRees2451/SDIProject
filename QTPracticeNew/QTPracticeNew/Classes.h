@@ -1,13 +1,15 @@
 #ifndef CLASSES_H
 #define CLASSES_H
 #include <iostream>
+#include <vector>
 using namespace std;
+
 
 class Classes {
 
 private:
-	int FIleLineNo;
-    string Classname;
+    int FileLineNo;
+    string selectedClassName;
 
 public:
 	void SortAscending();

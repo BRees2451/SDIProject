@@ -1,21 +1,21 @@
 #include "UserShapeOperations.h"
 
-void UserShapeOpperation::Size() {
+void UserShapeOperation::Size() {
 	// TODO - implement UerShapeOpperations::Size
 	throw "Not yet implemented";
 }
 
-void UserShapeOpperation::Move() {
+void UserShapeOperation::Move() {
 	// TODO - implement UerShapeOpperations::Move
 	throw "Not yet implemented";
 }
 
-void UserShapeOpperation::Delete() {
+void UserShapeOperation::Delete() {
 	// TODO - implement UerShapeOpperations::Delete
 	throw "Not yet implemented";
 }
 
-void UserShapeOpperation::DisplayName() {
+void UserShapeOperation::DisplayName() {
 	// TODO - implement UerShapeOpperations::DisplayName
 	throw "Not yet implemented";
 }
