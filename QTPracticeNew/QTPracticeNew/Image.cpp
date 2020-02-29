@@ -5,6 +5,11 @@ void Image::CheckCompatible() {
 	throw "Not yet implemented";
 }
 
+/**
+ * @brief A function used to get an integer number for the vector
+ * @param[in] name
+ * @return
+ */
 int Image::convertToAscii(char name){
     cout << (int)name<< endl;
     return (int)name;
@@ -42,33 +47,37 @@ void Image::SortAscendingName() {
     vector<int> numVector;
     for (int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
     {
-        for(int i = 0; i < nameVector.size(); i++){
+        for(unsigned int i = 0; i < nameVector.size(); i++){
             try {
                 numVector.push_back(convertToAscii(nameVector[i].at(letterNo)));
             } catch (nullptr_t e) {
+                //If there is nothing left of the word then 0 will be returned
                 numVector.push_back(0);
             }
-        //Will produce a vector with ascii converted first letters to sort
+        //Will produce a vector with ascii converted xth letters to sort through
 
 	
 	//When numArray finished
-	//Sort the array into ascedning order
+    //Sort the array into ascedning order (Bubble Sort)
         int temp;
-        for(int i=0;i<nameVector.size();i++){
-            for(int j=i+1;j<nameVector.size()-1;j++){
+        string tempName;
+        for(unsigned int i=0;i<nameVector.size();i++){
+            for(unsigned int j=i+1;j<nameVector.size()-1;j++){
                 if(numVector[i]>numVector[j])
                 {
                     temp = numVector[i];
                     numVector[i] = numVector[j];
                     numVector[j] = temp;
+                    //Mimic this for the nameArray such that the numArray corresponds to the nameArray
+                    tempName = nameVector[i];
+                    nameVector[i] = nameVector[j];
+                    nameVector[j] = tempName;
                 }
             }
         }
+        }
+
     }
-	//Array is sorted so convert back to string
-	for(int i=0;i<numArray.lenght();i++){
-		numArray[i] = convertToString(numArray[i], numArray[i].length())
-	}
 	
 	// TODO - implement Image::SortAscendingName
 	throw "Not yet implemented";
