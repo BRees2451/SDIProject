@@ -5,35 +5,11 @@ void Image::CheckCompatible() {
 	throw "Not yet implemented";
 }
 
+
 /**
- * @brief A function used to get an integer number for the vector
- * @param[in] name
- * @return
+ * @brief A function that will look at the first letters of the names of the Images that have been edited.
+ * It will sort this list, using the bubble sort at this stage, and then move onto the next letter and repeat the process.
  */
-int Image::convertToAscii(char name){
-    cout << (int)name<< endl;
-    return (int)name;
-}
-
-string Image::convertToString(string str, int len){
-	int num = 0;
-	for (int i = 0; i < len;i++){
-		//Append current digit
-		num = num * 10 + (str[i] - '0');
-		
-		//If num is within required range
-		if (num >= 32 && num <= 122){
-			
-			//convert num to char
-			char ch = (char)num;
-			
-			//Reset
-			num = 0;
-		}
-	}
-	return ch;
-}
-
 void Image::SortAscendingName() {
 	
     //Convert string to ASCII
@@ -45,16 +21,17 @@ void Image::SortAscendingName() {
 	//Array of Names to sort
     vector<string> nameVector;
     vector<int> numVector;
-    for (int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
+
+    for (unsigned int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
     {
         for(unsigned int i = 0; i < nameVector.size(); i++){
             try {
-                numVector.push_back(convertToAscii(nameVector[i].at(letterNo)));
+                numVector.push_back((int)nameVector[i].at(letterNo));
             } catch (nullptr_t e) {
                 //If there is nothing left of the word then 0 will be returned
                 numVector.push_back(0);
             }
-        //Will produce a vector with ascii converted xth letters to sort through
+            //Will produce a vector with ascii converted xth letters to sort through
 
 	
 	//When numArray finished
@@ -96,4 +73,15 @@ void Image::SortAscendingDate() {
 void Image::SortDescendingDate() {
 	// TODO - implement Image::SortDescendingDate
 	throw "Not yet implemented";
+}
+
+
+/**
+ * @brief This will check any new images to potentially overwrite the longestImageNameLength.
+ * @param[in] imageName
+ */
+void Image:: checkImageNameLength(string imageName)
+{
+    unsigned int nameLength = imageName.length();
+    if (nameLength > longestImageNameLength) longestImageNameLength = nameLength;
 }
