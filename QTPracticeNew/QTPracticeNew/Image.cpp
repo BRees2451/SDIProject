@@ -5,13 +5,9 @@ void Image::CheckCompatible() {
 	throw "Not yet implemented";
 }
 
-int Image::convertToAscii(string name){
-
-    for (int i = 0; i < name.size(); i++){
-        	cout << (int)name[i]<< endl;
-		int nameNum = nameNum.append((int)name[i]);
-    return nameNum;
-    	}
+int Image::convertToAscii(char name){
+    cout << (int)name<< endl;
+    return (int)name;
 }
 
 string Image::convertToString(string str, int len){
@@ -35,31 +31,40 @@ string Image::convertToString(string str, int len){
 
 void Image::SortAscendingName() {
 	
-	//Convert string to ascii
+    //Convert string to ASCII
 	//Sort data
 	//Convert back to string
+
+    //Define some vectors
 	
 	//Array of Names to sort
-	nameArray =[];
-	numArray = [];
-	for(int i = 0; i < names.length(); i++){
-		numArray[i] = convertToAscii(nameArray[i]);
-	}
+    vector<string> nameVector;
+    vector<int> numVector;
+    for (int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
+    {
+        for(int i = 0; i < nameVector.size(); i++){
+            try {
+                numVector.push_back(convertToAscii(nameVector[i].at(letterNo)));
+            } catch (nullptr_t e) {
+                numVector.push_back(0);
+            }
+        //Will produce a vector with ascii converted first letters to sort
+
 	
 	//When numArray finished
 	//Sort the array into ascedning order
-	int temp;
-	for(i=0;i<names.length();i++){
-		for(j=i+1;j<nameArray.length();j++){
-			if(numArray[i]>numArray[j])
-			{
-				temp = numArray[i];
-				numArray[i] = numArray[j];
-				numArray[j] = temp;
-			}
-		}
-	}
-	
+        int temp;
+        for(int i=0;i<nameVector.size();i++){
+            for(int j=i+1;j<nameVector.size()-1;j++){
+                if(numVector[i]>numVector[j])
+                {
+                    temp = numVector[i];
+                    numVector[i] = numVector[j];
+                    numVector[j] = temp;
+                }
+            }
+        }
+    }
 	//Array is sorted so convert back to string
 	for(int i=0;i<numArray.lenght();i++){
 		numArray[i] = convertToString(numArray[i], numArray[i].length())

@@ -8,6 +8,7 @@ class Image {
 private:
 	int Image;
     std::vector<Annotations> annotationsVector;
+    int longestImageNameLength;
 public:
 	void CheckCompatible();
 
@@ -19,7 +20,7 @@ public:
 
 	void SortDescendingDate();
 
-    int convertToAscii(string);
+    int convertToAscii(char);
 
     string convertToString(string, int);
 };
