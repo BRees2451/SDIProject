@@ -13,7 +13,7 @@ public:
     QTimer *timer;
 
 public slots:
-    void MySlot();
+    bool MySlot();
 };
 
 #endif // MYTIMER_H

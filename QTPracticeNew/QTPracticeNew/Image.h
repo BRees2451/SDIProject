@@ -4,12 +4,15 @@
 #include <vector>
 //For the date sorting
 #include <ctime>
+#include "mainwindow.h"
 
 class Image {
 
     string imageName;
+
+    friend class MainWindow;
 private:
-    //int image;  <-- what is this for (Michael)
+    //int image;  <-- what is this for
     std::vector<Annotations> annotationsVector;
     unsigned int longestImageNameLength;
 

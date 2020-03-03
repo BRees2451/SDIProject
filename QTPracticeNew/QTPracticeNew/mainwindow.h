@@ -24,6 +24,8 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    void Save();
+
 private slots:
     void on_pushButton_clicked();
 
@@ -44,6 +46,8 @@ private slots:
     void on_pushButton_9_clicked();
 
 private:
+    QString fileName = "";
+
     Ui::MainWindow *ui;
 
     QGraphicsItem *item;

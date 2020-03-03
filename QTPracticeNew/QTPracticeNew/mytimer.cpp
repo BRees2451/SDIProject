@@ -16,18 +16,19 @@ MyTimer::MyTimer()
     timer->start(1000);
 }
 
-void MyTimer::MySlot(){
+bool MyTimer::MySlot(){
     int counter = 0;
     //Use function to save
     qDebug()<<"Timer executed";
     counter ++;
     if(counter == 60){
-        //Save Program using threads
+        return true;
 
 
         counter = 0;//Restart Timer
     }
+    else return false;
 
 }
 
-//USE THREADS AND HDF5 FILE FORMAT
+
