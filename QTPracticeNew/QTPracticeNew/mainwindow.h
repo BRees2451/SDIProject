@@ -18,6 +18,9 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
+    //List of images
+
+
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 

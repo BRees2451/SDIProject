@@ -16,6 +16,10 @@ public:
 
     void DisplayImages();
 
+    void getClasses();
+
+    void diaplayClasses();
+
 };
 
 #endif

@@ -8,7 +8,17 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
+    /**
+      * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
+      * This will fetch the jpg files in the directory and add them to a vector.
+      */
+    //assume the directory exists and contains some files and you want all jpg and JPG files
+    QDir directory("Pictures/MyPictures");
+    QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG",QDir::Files);
+    foreach(QString filename, images) {
+    //do whatever you need to do
 
+    }
 
 }
 

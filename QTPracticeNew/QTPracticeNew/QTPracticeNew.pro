@@ -19,9 +19,8 @@ SOURCES += \
     Annotations.cpp \
     Button.cpp \
     Classes.cpp \
-    Gui.cpp \
     Image.cpp \
-    Polygon.cpp \
+    Shape.cpp \
     SidePane.cpp \
     UserShapeOperations.cpp \
     customview.cpp \
@@ -33,12 +32,9 @@ HEADERS += \
     Annotations.h \
     Button.h \
     Classes.h \
-    Gui.h \
     Image.h \
-    Polygon.h \
+    Shape.h \
     SidePane.h \
-    Trapezium.h \
-    Triangle.h \
     User.h \
     UserShapeOperations.h \
     customview.h \

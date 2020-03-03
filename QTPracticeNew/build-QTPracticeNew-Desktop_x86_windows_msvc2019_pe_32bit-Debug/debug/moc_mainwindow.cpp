@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[11];
-    char stringdata0[228];
+    char stringdata0[234];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -39,17 +39,17 @@ QT_MOC_LITERAL(4, 58, 23), // "on_actionOpen_triggered"
 QT_MOC_LITERAL(5, 82, 23), // "on_actionQuit_triggered"
 QT_MOC_LITERAL(6, 106, 23), // "on_actionSave_triggered"
 QT_MOC_LITERAL(7, 130, 25), // "on_DrawRectButton_clicked"
-QT_MOC_LITERAL(8, 156, 23), // "on_pushButton_3_clicked"
-QT_MOC_LITERAL(9, 180, 23), // "on_pushButton_8_clicked"
-QT_MOC_LITERAL(10, 204, 23) // "on_pushButton_9_clicked"
+QT_MOC_LITERAL(8, 156, 29), // "on_DrawTriangleButton_clicked"
+QT_MOC_LITERAL(9, 186, 23), // "on_pushButton_8_clicked"
+QT_MOC_LITERAL(10, 210, 23) // "on_pushButton_9_clicked"
 
     },
     "MainWindow\0on_pushButton_clicked\0\0"
     "on_pushButton_2_clicked\0on_actionOpen_triggered\0"
     "on_actionQuit_triggered\0on_actionSave_triggered\0"
     "on_DrawRectButton_clicked\0"
-    "on_pushButton_3_clicked\0on_pushButton_8_clicked\0"
-    "on_pushButton_9_clicked"
+    "on_DrawTriangleButton_clicked\0"
+    "on_pushButton_8_clicked\0on_pushButton_9_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -103,7 +103,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 3: _t->on_actionQuit_triggered(); break;
         case 4: _t->on_actionSave_triggered(); break;
         case 5: _t->on_DrawRectButton_clicked(); break;
-        case 6: _t->on_pushButton_3_clicked(); break;
+        case 6: _t->on_DrawTriangleButton_clicked(); break;
         case 7: _t->on_pushButton_8_clicked(); break;
         case 8: _t->on_pushButton_9_clicked(); break;
         default: ;

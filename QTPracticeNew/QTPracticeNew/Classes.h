@@ -7,7 +7,10 @@ using namespace std;
 
 class Classes {
 
+    //Set selected class
+
 private:
+
     int FileLineNo;
     string selectedClassName;
 
@@ -21,8 +24,6 @@ public:
 	void AddClass();
 
 	void RemoveClass();
-
-	void DisplayClass();
 
     //void createAnnotationsFile();
 };

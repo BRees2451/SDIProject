@@ -5,6 +5,8 @@ using namespace std;
 
 class Annotations {
 
+    //Annotations contain classes and shapes (as well as shape properties)
+
 private:
     string ShapeType;
 	int NoOfShapes;

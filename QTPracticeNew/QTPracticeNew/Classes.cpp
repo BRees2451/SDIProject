@@ -40,7 +40,3 @@ void Classes::RemoveClass() {
 	throw "Not yet implemented";
 }
 
-void Classes::DisplayClass() {
-	// TODO - implement Classes::DisplayClass
-	throw "Not yet implemented";
-}
