@@ -18,7 +18,7 @@ public:
 
     void getClasses();
 
-    void diaplayClasses();
+    void displayClasses();
 
 };
 

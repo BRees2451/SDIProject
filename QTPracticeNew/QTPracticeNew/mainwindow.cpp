@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "image.h"
+#include "Image.h"
 #include <vector>
 #include <QPixmap>
 
@@ -19,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     QDir directory("Pictures/MyPictures");
     QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG",QDir::Files);
     foreach(QString filename, images) {
-    //do whatever you need to do
+    //Add each image to a vector
 
     }
 
@@ -41,6 +41,14 @@ void MainWindow::on_pushButton_2_clicked()
     ui->graphicsView->scale(0.8,0.8);
 }
 
+
+/**
+ * @brief MainWindow::on_actionOpen_triggered
+ * When a file is opened, if the file is a jpg or png then it will
+ * make a new directory and copy the image into there, while creating
+ * an empty classes file. When the directory is saved it will compile
+ * the directory into a hdf5 file.
+ */
 void MainWindow::on_actionOpen_triggered()
 {
     fileName = QFileDialog::getOpenFileName(this, "Open A File","C://");
@@ -57,6 +65,7 @@ void MainWindow::on_actionOpen_triggered()
              * @brief fileName
              * Needs Work
              */
+            std::cout<< "Hello" << std::endl;
             QString fileName("./Classes.txt");
             QFile file(fileName);
             if(QFileInfo::exists(fileName))
@@ -143,5 +152,6 @@ void MainWindow::Save()
     //We need to pull the relevant data: fileName, Annotations, and Classes File
     //fileName;
     //&Image::annotationsVector;
+    //Need to retrieve the classes file
 
 }

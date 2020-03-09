@@ -25,3 +25,7 @@ void SidePane::getClasses() {
 void SidePane::displayClasses() {
 
 }
+
+void SidePane::addToVector(){
+
+}

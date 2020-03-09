@@ -57,7 +57,7 @@ static const uint qt_meta_data_MyTimer[] = {
        1,    0,   19,    2, 0x0a /* Public */,
 
  // slots: parameters
-    QMetaType::Void,
+    QMetaType::Bool,
 
        0        // eod
 };
@@ -68,11 +68,11 @@ void MyTimer::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, voi
         MyTimer *_t = static_cast<MyTimer *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
-        case 0: _t->MySlot(); break;
+        case 0: { bool _r = _t->MySlot();
+            if (_a[0]) *reinterpret_cast< bool*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
     }
-    Q_UNUSED(_a);
 }
 
 const QMetaObject MyTimer::staticMetaObject = {

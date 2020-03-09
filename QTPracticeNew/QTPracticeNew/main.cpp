@@ -16,10 +16,10 @@ int main(int argc, char *argv[])
     MainWindow w;
 
     //Calls the save function if return is true using a separate thread such that the program can continue.
-    if (mTimer.MySlot() == true) thread saveThread(&MainWindow::Save);
+    //if (mTimer.MySlot() == true) thread saveThread(&MainWindow::Save);
 
     w.show();
 
-    saveThread.join();
+    //saveThread.join();
     return a.exec();
 }
