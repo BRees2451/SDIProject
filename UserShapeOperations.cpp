@@ -2,7 +2,13 @@
 
 void UserShapeOperation::Size() {
 	// TODO - implement UerShapeOpperations::Size
-    /*
+    /* list shapes
+     * select shape with mouse
+     * return selected shape index
+     * enter shape index
+     * enter shapesize
+     * edit shapesize
+     * exit shape
      *
      *
      * */
@@ -17,7 +23,8 @@ void UserShapeOperation::Move() {
      * track mouse movements while mousepressed == true
      * when mouse pressed == false retrieve coordiantes
      * place shape at new coordiantes
-     * edit shap coordinates in list
+     * edit shape coordinates in list
+     * exit shape
      *
      *
      * //////// mouse posistion on shape stays the same or ato implements to centre of shape ??????????????
