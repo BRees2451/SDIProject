@@ -58,6 +58,13 @@ void MainWindow::on_actionOpen_triggered()
         ui->graphicsView->setScene(scene);
         scene->addItem(item);
 
+        cout << fileName.toUtf8().constData() << endl;
+
+        if (fileName.contains("QTPracticeNew/Projects"))
+        {
+            cout << "File is in directory" << endl;
+        }
+        else cout<< "File isn't in directory" << endl;
 
         if (fileName != NULL)
         {

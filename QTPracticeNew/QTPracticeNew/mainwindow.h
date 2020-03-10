@@ -7,7 +7,8 @@
 #include<QtGui>
 #include<QFileDialog>
 #include <QtCore>
-
+#include <iostream>
+using namespace std;
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
