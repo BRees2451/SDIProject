@@ -140,6 +140,7 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
     Triangle.append(QPointF(-10.,0));
 
     //QGraphicsPolygonItem* pTriangleItem = ui->(Triangle);
+   /* //////////////////////// ////////////////////////////////////////////shapelist add triangle1 */
 }
 
 void MainWindow::on_pushButton_8_clicked()

@@ -53,7 +53,7 @@ void UserShapeOperation::DisplayName() {
      * return shape index
      * enter list at shape index
      * return name of shape
-     * display name of shape on gui
+     * display name of shape on gui ///////// cout<< shape[i].name
      *
      *
      * */
