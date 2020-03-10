@@ -51,28 +51,48 @@ void MainWindow::on_pushButton_2_clicked()
  */
 void MainWindow::on_actionOpen_triggered()
 {
-    fileName = QFileDialog::getOpenFileName(this, "Open A File","C://");
-    if (QString::compare(fileName,QString())!= 0){
-        QImage image(fileName);
+    QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
+    QFileInfo info(filePath);
+    fileName = info.fileName();
+    if (QString::compare(filePath,QString())!= 0){
+        QImage image(filePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
         scene->addItem(item);
 
-        cout << fileName.toUtf8().constData() << endl;
+        cout << filePath.toUtf8().constData() << endl;
 
-        if (fileName.contains("QTPracticeNew/Projects"))
+        QString containString = "QTPracticeNew/Projects/"+fileName;
+        QString current = QDir::currentPath();
+        current += QDir(current).filePath("/Projects");
+
+        //Gives correct path
+        qDebug(current.toLatin1());
+
+        if (filePath.contains(containString))
         {
             cout << "File is in directory" << endl;
         }
-        else cout<< "File isn't in directory" << endl;
+        else
+        {
 
-        if (fileName != NULL)
+            cout<< "File isn't in directory" << endl;
+
+            //DOESN'T WORK
+            //////////////////////////////////////////////
+            bool a = QFile::copy(filePath, current);    //
+            //////////////////////////////////////////////
+            if (a) cout << "File copied" << endl;
+            else cout << "Error in copy" << endl;
+        }
+
+        if (filePath != NULL)
         {
             /**
              * @brief fileName
              * Needs Work
              */
-            std::cout<< "Hello" << std::endl;
+            cout<< "Hello" << endl;
             QString fileName("./Classes.txt");
             QFile file(fileName);
             if(QFileInfo::exists(fileName))
