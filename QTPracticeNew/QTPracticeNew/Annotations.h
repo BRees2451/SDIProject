@@ -13,7 +13,7 @@ private:
 	string ImageName;
 	int BorderColour;
 	int NoOfImages;
-    float[] ShapeSize;
+    float ShapeSize;
 
 public:
 	void Load();

@@ -26,12 +26,6 @@ void SidePane::DisplayImages() {
 	throw "Not yet implemented";
 }
 
-void SidePane::getClasses() {
-    /*/////////////////////////////////////////Difference between getting and displaying ??
-     * retrieve list from mainwindow*/
-
-}
-
 void SidePane::addToVector(){
     /*
      *

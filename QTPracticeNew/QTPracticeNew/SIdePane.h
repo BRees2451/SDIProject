@@ -18,7 +18,7 @@ public:
 
     void getClasses();
 
-    void displayClasses();
+    void addToVector();
 
 };
 
