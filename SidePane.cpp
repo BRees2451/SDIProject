@@ -4,6 +4,15 @@ void SidePane::DisplayClasses() {
 	// TODO - implement SIdePane::DisplayClasses
 
     //Will trigger if new image is clicked
+    /* if image == empty{ }
+     *while image = true
+     *  get list
+     *  run through list
+     *  for(int i = 0; i<list.length();i++){
+     *      cout<< list[i]///////info
+     *}
+     *
+     **/
 
 	throw "Not yet implemented";
 }
@@ -23,14 +32,10 @@ void SidePane::getClasses() {
 
 }
 
-void SidePane::displayClasses() {
-    /* get list
-     * run through list
-     * display list to classes pannel on gui
-     * */
-
-}
-
 void SidePane::addToVector(){
+    /*
+     *
+     *
+     **/
 
 }
