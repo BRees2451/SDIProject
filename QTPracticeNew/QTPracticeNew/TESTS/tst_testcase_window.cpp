@@ -1,4 +1,4 @@
-/*
+
 #include <QtTest/QtTest>
 #include <QtWidgets/QMainWindow>
 #include<QtWidgets/QGraphicsItem>
@@ -41,7 +41,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-
     QGraphicsItem *item;
     QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
@@ -62,6 +61,6 @@ QTEST_APPLESS_MAIN(MainWindow)
 
 #include "tst_testcase_window.moc"
 
-*/
+
 //#endif // MAINWINDOW_H
 
