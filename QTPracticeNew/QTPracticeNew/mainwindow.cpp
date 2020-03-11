@@ -53,7 +53,7 @@ void MainWindow::on_actionOpen_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
     QFileInfo info(filePath);
-    fileName = info.fileName();
+    this->fileName = info.fileName();
     if (QString::compare(filePath,QString())!= 0){
         QImage image(filePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
@@ -61,10 +61,12 @@ void MainWindow::on_actionOpen_triggered()
         scene->addItem(item);
 
         cout << filePath.toUtf8().constData() << endl;
+        cout << fileName.toUtf8().constData() << endl;
 
-        QString containString = "QTPracticeNew/Projects/"+fileName;
+        QString containString = "QTPracticeNew/Projects/"+this->fileName;
         QString current = QDir::currentPath();
-        current += QDir(current).filePath("/Projects");
+        QString b = "/Projects/"+this->fileName;
+        current += QDir(current).filePath(b);
 
         //Gives correct path
         qDebug(current.toLatin1());
@@ -78,9 +80,9 @@ void MainWindow::on_actionOpen_triggered()
 
             cout<< "File isn't in directory" << endl;
 
-            //DOESN'T WORK
+            ///DOESN'T WORK
             //////////////////////////////////////////////
-            bool a = QFile::copy(filePath, current);    //
+            bool a = QFile::copy(filePath, current);   ///
             //////////////////////////////////////////////
             if (a) cout << "File copied" << endl;
             else cout << "Error in copy" << endl;
