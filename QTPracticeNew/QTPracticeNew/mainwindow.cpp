@@ -35,6 +35,7 @@ void MainWindow::on_actionOpen_triggered()
         QImage image(fileName);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
+        ui->ImagesWindow->setText(fileName);
         scene->addItem(item);
     }
     else{
