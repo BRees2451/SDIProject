@@ -1,4 +1,4 @@
-/*
+
 //#include <QtWidgets>
 #include <QtTest/QtTest>
 #include <QtCore>
@@ -48,4 +48,3 @@ QTEST_APPLESS_MAIN(MyTimer)
 
 #include "tst_testcase_MyTimer.moc"
 
-*/

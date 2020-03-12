@@ -58,7 +58,6 @@ void MainWindow::on_actionOpen_triggered()
         QImage image(filePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
-        ui->ImagesWindow->setText(fileName);
         scene->addItem(item);
 
         cout << filePath.toUtf8().constData() << endl;
