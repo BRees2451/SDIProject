@@ -70,9 +70,15 @@ void MainWindow::on_actionOpen_triggered()
         }
         else
         {
-
+            //QString c = QFileInfo(QDir::currentPath()).path();
+            //cout << c.toUtf8().constData() << endl;
+            QDir source = QDir(source.currentPath()).path();
+            QString b = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
             cout<< "File isn't in directory" << endl;
-            QFile::copy(filePath, QDir::currentPath());
+
+            bool a = QFile(filePath).copy(b);
+            if (a) cout << "This works" << endl;
+            else cout << "This doesnt work" << endl;
         }
 
         if (filePath != NULL)
