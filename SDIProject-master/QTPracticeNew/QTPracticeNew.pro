@@ -25,6 +25,7 @@ SOURCES += \
     customview.cpp \
     main.cpp \
     mainwindow.cpp \
+    matdisplay.cpp \
     mytimer.cpp
 
 HEADERS += \
@@ -37,6 +38,7 @@ HEADERS += \
     UserShapeOperations.h \
     customview.h \
     mainwindow.h \
+    matdisplay.h \
     mytimer.h
 
 FORMS += \
