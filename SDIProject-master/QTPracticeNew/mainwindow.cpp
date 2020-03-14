@@ -10,9 +10,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
-    ui->graphicsView->setScene(scene);
-
-    connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -34,12 +31,12 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_clicked()
+void MainWindow::on_ZoomInButton_clicked()
 {
     ui->graphicsView->scale(1.2,1.2);
 }
 
-void MainWindow::on_pushButton_2_clicked()
+void MainWindow::on_ZoomOutButton_clicked()
 {
     ui->graphicsView->scale(0.8,0.8);
 }
@@ -73,13 +70,12 @@ void MainWindow::on_actionOpen_triggered()
         }
         else
         {
-            //QString c = QFileInfo(QDir::currentPath()).path();
-            //cout << c.toUtf8().constData() << endl;
-            QDir source = QDir(source.currentPath()).path();
-            QString b = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
+            
+            
+            QString Destination = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
             cout<< "File isn't in directory" << endl;
 
-            bool a = QFile(filePath).copy(b);
+            bool a = QFile(filePath).copy(Destination);
             if (a) cout << "This works" << endl;
             else cout << "This doesnt work" << endl;
         }
@@ -140,11 +136,9 @@ void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
     //scene = new QGraphicsScene(this);
     //ui->graphicsView->setScene(scene);
 
-    QBrush redBrush(Qt::red);
-    QBrush blueBrush(Qt::blue);
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    rectangle = scene->addRect(300,300,500,500,blackPen,redBrush);
+    rectangle = scene->addRect(300,300,500,500,blackPen);
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 }
 
@@ -161,12 +155,12 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
    /* //////////////////////// ////////////////////////////////////////////shapelist add triangle1 */
 }
 
-void MainWindow::on_pushButton_8_clicked()
+void MainWindow::on_RotateLButton_clicked()
 {
     ui-> graphicsView ->rotate(-1);
 }
 
-void MainWindow::on_pushButton_9_clicked()
+void MainWindow::on_RotateRButton_clicked()
 {
     ui-> graphicsView ->rotate(1);
 }
@@ -180,18 +174,4 @@ void MainWindow::Save()
     //&Image::annotationsVector;
     //Need to retrieve the classes file
 
-}
-
-void MainWindow::showMousePosition(QPoint &pos)
-{
-    ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
-    //double rad = 1;
-    //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
-
-}
-
-void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
-    QPoint mouse_pos = mouse_event->pos();
-    //double rad = 1;
-    //circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
 }

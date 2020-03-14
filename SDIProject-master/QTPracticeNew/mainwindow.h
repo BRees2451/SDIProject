@@ -29,9 +29,9 @@ public:
     void Save();
 
 private slots:
-    void on_pushButton_clicked();
+    void on_ZoomInButton_clicked();
 
-    void on_pushButton_2_clicked();
+    void on_ZoomOutButton_clicked();
 
     void on_actionOpen_triggered();
 
@@ -43,9 +43,9 @@ private slots:
 
     void on_DrawTriangleButton_clicked();
 
-    void on_pushButton_8_clicked();
+    void on_RotateLButton_clicked();
 
-    void on_pushButton_9_clicked();
+    void on_RotateRButton_clicked();
 
 private:
     QString fileName = "";
@@ -56,11 +56,7 @@ private:
     QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
     QGraphicsPolygonItem *shape;
-    QGraphicsEllipseItem *circle;
-
-public slots:
-    void showMousePosition(QPoint& pos);
-    void mousePressEvent(QMouseEvent *mouse_event);
-
+    
+    //QListWidget *ImageList;
 };
 #endif // MAINWINDOW_H
