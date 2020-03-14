@@ -152,7 +152,7 @@
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="ImagesLabel">
        <property name="text">
         <string>Images</string>
        </property>
@@ -169,7 +169,7 @@
       </widget>
      </item>
      <item>
-      <widget class="QLabel" name="label_2">
+      <widget class="QLabel" name="ClassLabel">
        <property name="text">
         <string>Classifier Path</string>
        </property>
@@ -179,7 +179,7 @@
       <widget class="QListWidget" name="ClassWindow"/>
      </item>
      <item>
-      <widget class="QPushButton" name="pushButton_2">
+      <widget class="QPushButton" name="AddClassButton">
        <property name="text">
         <string>Add Class</string>
        </property>

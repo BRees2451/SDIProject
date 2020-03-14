@@ -46,10 +46,12 @@ public:
     QPushButton *RotateRButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
-    QLabel *label;
+    QLabel *ImagesLabel;
     QListWidget *ImagesWindow;
-    QLabel *label_2;
+    QPushButton *AddImageButton;
+    QLabel *ClassLabel;
     QListWidget *ClassWindow;
+    QPushButton *AddClassButton;
     QLabel *mouse_position_label;
     QMenuBar *menubar;
     QMenu *menuFile;
@@ -84,16 +86,16 @@ public:
         ZoomOutButton->setGeometry(QRect(670, 420, 101, 31));
         DrawTriangleButton = new QPushButton(centralwidget);
         DrawTriangleButton->setObjectName(QString::fromUtf8("DrawTriangleButton"));
-        DrawTriangleButton->setGeometry(QRect(20, 270, 101, 31));
+        DrawTriangleButton->setGeometry(QRect(20, 340, 101, 31));
         DrawRectButton = new QPushButton(centralwidget);
         DrawRectButton->setObjectName(QString::fromUtf8("DrawRectButton"));
-        DrawRectButton->setGeometry(QRect(130, 270, 101, 31));
+        DrawRectButton->setGeometry(QRect(130, 340, 101, 31));
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
-        DrawTrapButton->setGeometry(QRect(20, 310, 101, 31));
+        DrawTrapButton->setGeometry(QRect(20, 380, 101, 31));
         DrawHexButton = new QPushButton(centralwidget);
         DrawHexButton->setObjectName(QString::fromUtf8("DrawHexButton"));
-        DrawHexButton->setGeometry(QRect(130, 310, 101, 31));
+        DrawHexButton->setGeometry(QRect(130, 380, 101, 31));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(260, 10, 111, 16));
@@ -105,29 +107,39 @@ public:
         RotateRButton->setGeometry(QRect(380, 420, 101, 31));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 231, 250));
+        verticalLayoutWidget->setGeometry(QRect(10, 10, 231, 321));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
-        label = new QLabel(verticalLayoutWidget);
-        label->setObjectName(QString::fromUtf8("label"));
+        ImagesLabel = new QLabel(verticalLayoutWidget);
+        ImagesLabel->setObjectName(QString::fromUtf8("ImagesLabel"));
 
-        verticalLayout->addWidget(label);
+        verticalLayout->addWidget(ImagesLabel);
 
         ImagesWindow = new QListWidget(verticalLayoutWidget);
         ImagesWindow->setObjectName(QString::fromUtf8("ImagesWindow"));
 
         verticalLayout->addWidget(ImagesWindow);
 
-        label_2 = new QLabel(verticalLayoutWidget);
-        label_2->setObjectName(QString::fromUtf8("label_2"));
+        AddImageButton = new QPushButton(verticalLayoutWidget);
+        AddImageButton->setObjectName(QString::fromUtf8("AddImageButton"));
 
-        verticalLayout->addWidget(label_2);
+        verticalLayout->addWidget(AddImageButton);
+
+        ClassLabel = new QLabel(verticalLayoutWidget);
+        ClassLabel->setObjectName(QString::fromUtf8("ClassLabel"));
+
+        verticalLayout->addWidget(ClassLabel);
 
         ClassWindow = new QListWidget(verticalLayoutWidget);
         ClassWindow->setObjectName(QString::fromUtf8("ClassWindow"));
 
         verticalLayout->addWidget(ClassWindow);
+
+        AddClassButton = new QPushButton(verticalLayoutWidget);
+        AddClassButton->setObjectName(QString::fromUtf8("AddClassButton"));
+
+        verticalLayout->addWidget(AddClassButton);
 
         mouse_position_label = new QLabel(centralwidget);
         mouse_position_label->setObjectName(QString::fromUtf8("mouse_position_label"));
@@ -176,8 +188,10 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "Image Pane", nullptr));
         RotateLButton->setText(QCoreApplication::translate("MainWindow", "Rotate Left", nullptr));
         RotateRButton->setText(QCoreApplication::translate("MainWindow", "Rotate Right", nullptr));
-        label->setText(QCoreApplication::translate("MainWindow", "Images", nullptr));
-        label_2->setText(QCoreApplication::translate("MainWindow", "Classifier Path", nullptr));
+        ImagesLabel->setText(QCoreApplication::translate("MainWindow", "Images", nullptr));
+        AddImageButton->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
+        ClassLabel->setText(QCoreApplication::translate("MainWindow", "Classifier Path", nullptr));
+        AddClassButton->setText(QCoreApplication::translate("MainWindow", "Add Class", nullptr));
         mouse_position_label->setText(QString());
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
