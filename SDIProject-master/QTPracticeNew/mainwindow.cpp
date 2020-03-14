@@ -116,6 +116,19 @@ void MainWindow::on_actionOpen_triggered()
     }
 }
 
+void MainWindow::on_AddImageButton_clicked()
+{
+    QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
+    QFileInfo info(filePath);
+    fileName = info.fileName();
+    if (QString::compare(filePath,QString())!= 0){
+        QImage image(filePath);
+        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+        ui->graphicsView->setScene(scene);
+        scene->addItem(item);
+    }
+}
+
 void MainWindow::on_actionQuit_triggered()
 {
     QApplication::quit();

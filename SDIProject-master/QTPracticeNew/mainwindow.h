@@ -47,6 +47,8 @@ private slots:
 
     void on_RotateRButton_clicked();
 
+    void on_AddImageButton_clicked();
+
 private:
     QString fileName = "";
 
