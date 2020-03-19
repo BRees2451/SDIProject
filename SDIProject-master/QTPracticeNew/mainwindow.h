@@ -58,7 +58,14 @@ private:
     QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
     QGraphicsPolygonItem *shape;
+    QGraphicsEllipseItem *circle;
+
     
     //QListWidget *ImageList;
+
+public slots:
+    void showMousePosition(QPoint& pos);
+    void mousePressEvent(QMouseEvent *mouse_event);
+
 };
 #endif // MAINWINDOW_H

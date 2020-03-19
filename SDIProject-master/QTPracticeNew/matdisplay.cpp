@@ -26,7 +26,6 @@ void matDisplay::mouseMoveEvent(QMouseEvent *mouse_event)
     }
 }
 
-/*
 void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
 {
     QMessageBox msg;
@@ -42,4 +41,3 @@ void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
         msg.exec();
     }
 }
-*/

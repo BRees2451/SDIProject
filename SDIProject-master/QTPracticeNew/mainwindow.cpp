@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
 
+    connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
+
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
       * This will fetch the jpg files in the directory and add them to a vector.
@@ -188,3 +190,18 @@ void MainWindow::Save()
     //Need to retrieve the classes file
 
 }
+
+void MainWindow::showMousePosition(QPoint &pos)
+{
+    ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
+    double rad = 1;
+    circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+
+}
+
+void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
+    QPoint mouse_pos = mouse_event->pos();
+    double rad = 1;
+    circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+}
+
