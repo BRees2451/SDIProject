@@ -5,6 +5,7 @@
 //For the date sorting
 #include <ctime>
 #include "mainwindow.h"
+#include "string.h"
 
 class Image {
 

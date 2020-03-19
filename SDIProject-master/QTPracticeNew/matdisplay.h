@@ -14,8 +14,8 @@ class matDisplay : public QGraphicsView
     Q_OBJECT;
 public:
 
-    matDisplay(QWidget *parent = 0);
-    ~matDisplay();
+    //matDisplay(QWidget *parent = 0);
+    //~matDisplay();
 
 protected:
     void mouseMoveEvent(QMouseEvent *mouse_event);

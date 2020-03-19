@@ -19,7 +19,7 @@ void Image::SortAscendingName() {
     //Define some vectors
 	
 	//Array of Names to sort
-    vector<string> nameVector;
+    vector<string> nameVector = new vector<string>;
     vector<int> numVector;
 
     for (unsigned int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
