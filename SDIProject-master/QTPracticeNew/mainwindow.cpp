@@ -18,12 +18,11 @@ MainWindow::MainWindow(QWidget *parent)
       * This will fetch the jpg files in the directory and add them to a vector.
       */
     //assume the directory exists and contains some files and you want all jpg and JPG files
-    QDir directory(defaultPath);
+    QDir directory("Pictures/MyPictures");
     QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG",QDir::Files);
     foreach(QString filename, images) {
     //Add each image to a vector
-        cout << images[0].toUtf8().constData() << endl;
-        cout << images[1].toUtf8().constData() << endl;
+
     }
 
 }
@@ -54,7 +53,7 @@ void MainWindow::on_ZoomOutButton_clicked()
  */
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
+    QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
     QFileInfo info(filePath);
     fileName = info.fileName();
     if (QString::compare(filePath,QString())!= 0){

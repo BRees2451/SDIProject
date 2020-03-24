@@ -60,8 +60,8 @@ private:
     QGraphicsPolygonItem *shape;
     QGraphicsEllipseItem *circle;
 
-    QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
-
+    
+    //QListWidget *ImageList;
 
 public slots:
     void showMousePosition(QPoint& pos);
