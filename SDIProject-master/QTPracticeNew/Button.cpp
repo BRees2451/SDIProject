@@ -2,7 +2,7 @@
 #include <QGraphicsTextItem>
 
 void Button::ButtonPressed() {
-    emit Clicked();
+    //emit Clicked();
 	throw "Not yet implemented";
 }
 

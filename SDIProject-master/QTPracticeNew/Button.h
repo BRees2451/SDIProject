@@ -14,7 +14,7 @@ private:
     string Name;
 
 signals:
-    void Clicked();
+    //void Clicked();
 
 public:
     //constructor
