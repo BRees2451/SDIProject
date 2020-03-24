@@ -1,22 +1,30 @@
 #ifndef BUTTON_H
 #define BUTTON_H
+#include<QGraphicsRectItem>
+#include<QGraphicsScene>
+#include<QtGui>
+#include <QMainWindow>
+#include <QtCore>
 #include <iostream>
 using namespace std;
 
-class Button {
+class Button: public QGraphicsRectItem {
 
 private:
     string Name;
-	int Size;
-	int Colour;
-    int ButtonCoOrdinates;
+
+signals:
+    void Clicked();
 
 public:
-	void ButtonPressed();
+    //constructor
+    Button(QString name, QGraphicsItem* parent = NULL);
 
-    void AddButton(int, int, string);
+    void ButtonPressed();
 
-	void RemoveButton();
+    void AddButton(QMouseEvent *mouse_event, string, QGraphicsRectItem);
+
+    void RemoveButton(QMouseEvent *mouse_event);
 };
 
 #endif
