@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>800</width>
-    <height>600</height>
+    <width>1012</width>
+    <height>719</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -17,8 +17,8 @@
    <widget class="matDisplay" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>30</y>
+      <x>480</x>
+      <y>40</y>
       <width>521</width>
       <height>381</height>
      </rect>
@@ -27,8 +27,8 @@
    <widget class="QPushButton" name="ZoomInButton">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>420</y>
+      <x>780</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -40,8 +40,8 @@
    <widget class="QPushButton" name="ZoomOutButton">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>420</y>
+      <x>890</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -105,7 +105,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>260</x>
+      <x>480</x>
       <y>10</y>
       <width>111</width>
       <height>16</height>
@@ -118,8 +118,8 @@
    <widget class="QPushButton" name="RotateLButton">
     <property name="geometry">
      <rect>
-      <x>270</x>
-      <y>420</y>
+      <x>490</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -131,8 +131,8 @@
    <widget class="QPushButton" name="RotateRButton">
     <property name="geometry">
      <rect>
-      <x>380</x>
-      <y>420</y>
+      <x>600</x>
+      <y>430</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -190,8 +190,8 @@
    <widget class="QLabel" name="mouse_position_label">
     <property name="geometry">
      <rect>
-      <x>590</x>
-      <y>470</y>
+      <x>810</x>
+      <y>480</y>
       <width>181</width>
       <height>61</height>
      </rect>
@@ -203,13 +203,99 @@
      <string/>
     </property>
    </widget>
+   <widget class="QComboBox" name="sortImageBy">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>10</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Name (Asc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Name (Desc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Date (Asc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Date( Desc)</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="sortImage">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>10</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sort</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="sortClassBy">
+    <property name="geometry">
+     <rect>
+      <x>250</x>
+      <y>170</y>
+      <width>81</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Name (Asc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Name (Desc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Date (Asc)</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Date( Desc)</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QPushButton" name="sortClass">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>170</y>
+      <width>75</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Sort</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>800</width>
+     <width>1012</width>
      <height>21</height>
     </rect>
    </property>
