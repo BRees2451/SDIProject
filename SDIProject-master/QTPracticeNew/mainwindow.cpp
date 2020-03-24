@@ -66,15 +66,17 @@ void MainWindow::on_actionOpen_triggered()
 
         QString containString = "QTPracticeNew/Projects/"+fileName;
 
+        QString Destination;
         if (filePath.contains(containString))
         {
             cout << "File is in directory" << endl;
+            Destination = QFileInfo(QDir::currentPath()).path();
         }
         else
         {
             
             
-            QString Destination = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
+            Destination = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
             cout<< "File isn't in directory" << endl;
 
             bool a = QFile(filePath).copy(Destination);
@@ -82,22 +84,31 @@ void MainWindow::on_actionOpen_triggered()
             else cout << "This doesnt work" << endl;
         }
 
-        if (filePath != NULL)
+        QStringList absoluteFileName = fileName.split(".");
+        absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
+        absoluteFileName[1] = "txt";
+        QString classFileName = absoluteFileName.join(".");
+
+        QStringList classTextFilePath = Destination.split("/");
+        classTextFilePath[classTextFilePath.length()-1] = classFileName;
+        QString classFilePath = classTextFilePath.join("/");
+
+        cout << classFilePath.toUtf8().constData() << endl;
+
+        if (classFilePath != NULL)
         {
             /**
              * @brief fileName
              * Needs Work
              */
-            cout<< "Hello" << endl;
-            QString fileName("./Classes.txt");
-            QFile file(fileName);
-            if(QFileInfo::exists(fileName))
+            QFile file(classFilePath);
+            if(QFileInfo::exists(classFileName))
             {
-                qDebug () << "file exists" << endl;
+                cout << "file exists" << endl;
                 file.open(QIODevice::ReadWrite | QIODevice::Text);
                 QString data =  file.readAll();
-                qDebug () << "data in file:" << data << endl;
-                qDebug()<<"file already created"<<endl;
+                cout << "data in file:" << data.toUtf8().constData() << endl;
+                cout<<"file already created"<<endl;
                 file.close();
             }
             else
@@ -105,9 +116,9 @@ void MainWindow::on_actionOpen_triggered()
                 /**
                   * Needs Work
                   */
-                qDebug () << "file does not exists" << endl;
+                cout << "file does not exists" << endl;
                 file.open(QIODevice::ReadWrite | QIODevice::Text);
-                file.write("Classes.txt");
+                file.write("Classes");
                 qDebug()<<"file created"<<endl;
                 file.close();
             }
