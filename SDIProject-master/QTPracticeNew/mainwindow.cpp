@@ -59,11 +59,16 @@ void MainWindow::on_actionOpen_triggered()
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
     fileName = info.fileName();
-    if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
+    qDebug()<<fileName <<endl;
+
+    //ERROR CAUSED HERE
+    /*if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
     {
         qDebug() << "Not a compatible image format" << endl;
         return;
-    }
+    }*/
+
+
     open(filePath);
 
         cout << filePath.toUtf8().constData() << endl;
