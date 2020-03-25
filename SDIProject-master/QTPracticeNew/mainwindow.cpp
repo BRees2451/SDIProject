@@ -18,11 +18,13 @@ MainWindow::MainWindow(QWidget *parent)
       * This will fetch the jpg files in the directory and add them to a vector.
       */
     //assume the directory exists and contains some files and you want all jpg and JPG files
-    QDir directory("Pictures/MyPictures");
-    QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG",QDir::Files);
-    foreach(QString filename, images) {
-    //Add each image to a vector
-
+    QDir directory(defaultPath);
+    QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
+    for(int i = 0; i < images.length(); i++) {
+        //Add each image to a vector
+        cout<<images[i].toUtf8().constData()<<endl;
+        QStringList Name = images[i].split(".");
+        filesInDirectory.push_back(Name[0]);
     }
 
 }
@@ -53,9 +55,14 @@ void MainWindow::on_ZoomOutButton_clicked()
  */
 void MainWindow::on_actionOpen_triggered()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
+    QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
     fileName = info.fileName();
+    if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
+    {
+        qDebug() << "Not a compatible image format" << endl;
+        return;
+    }
     if (QString::compare(filePath,QString())!= 0){
         QImage image(filePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
@@ -80,8 +87,13 @@ void MainWindow::on_actionOpen_triggered()
             cout<< "File isn't in directory" << endl;
 
             bool a = QFile(filePath).copy(Destination);
-            if (a) cout << "This works" << endl;
+            if (a){
+                cout << "This works" << endl;
+                QStringList absoluteFileName = fileName.split(".");
+                filesInDirectory.push_back(absoluteFileName[0]);
+            }
             else cout << "This doesnt work" << endl;
+
         }
 
         QStringList absoluteFileName = fileName.split(".");
@@ -113,9 +125,6 @@ void MainWindow::on_actionOpen_triggered()
             }
             else
             {
-                /**
-                  * Needs Work
-                  */
                 cout << "file does not exists" << endl;
                 file.open(QIODevice::ReadWrite | QIODevice::Text);
                 file.write("Classes");

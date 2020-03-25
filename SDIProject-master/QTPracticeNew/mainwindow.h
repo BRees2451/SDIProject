@@ -62,6 +62,9 @@ private:
 
     
     //QListWidget *ImageList;
+    QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
+
+    std::vector<QString> filesInDirectory;
 
 public slots:
     void showMousePosition(QPoint& pos);
