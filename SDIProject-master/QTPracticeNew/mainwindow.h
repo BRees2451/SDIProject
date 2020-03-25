@@ -52,7 +52,7 @@ private slots:
     void on_selectImage_clicked();
 
 private:
-    void open(QString);
+    void open(QString, QString);
 
     QString fileName = "";
 

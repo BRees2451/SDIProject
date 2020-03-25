@@ -69,70 +69,9 @@ void MainWindow::on_actionOpen_triggered()
     }*/
 
 
-    open(filePath);
+    open(filePath, fileName);
 
-        cout << filePath.toUtf8().constData() << endl;
 
-        QString containString = "QTPracticeNew/Projects/"+fileName;
-
-        QString Destination;
-        if (filePath.contains(containString))
-        {
-            cout << "File is in directory" << endl;
-            Destination = QFileInfo(QDir::currentPath()).path();
-        }
-        else
-        {
-
-            Destination = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
-            cout<< "File isn't in directory" << endl;
-
-            bool a = QFile(filePath).copy(Destination);
-            if (a){
-                cout << "This works" << endl;
-                filesInDirectory.push_back(fileName);
-                ui->ImagesWindow->addItem(fileName);
-            }
-            else cout << "This doesnt work" << endl;
-
-        }
-
-        QStringList absoluteFileName = fileName.split(".");
-        absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
-        absoluteFileName[1] = "txt";
-        QString classFileName = absoluteFileName.join(".");
-
-        QStringList classTextFilePath = Destination.split("/");
-        classTextFilePath[classTextFilePath.length()-1] = classFileName;
-        QString classFilePath = classTextFilePath.join("/");
-
-        cout << classFilePath.toUtf8().constData() << endl;
-
-        if (classFilePath != NULL)
-        {
-            /**
-             * @brief fileName
-             * Needs Work
-             */
-            QFile file(classFilePath);
-            if(QFileInfo::exists(classFileName))
-            {
-                cout << "file exists" << endl;
-                file.open(QIODevice::ReadWrite | QIODevice::Text);
-                QString data =  file.readAll();
-                cout << "data in file:" << data.toUtf8().constData() << endl;
-                cout<<"file already created"<<endl;
-                file.close();
-            }
-            else
-            {
-                cout << "file does not exists" << endl;
-                file.open(QIODevice::ReadWrite | QIODevice::Text);
-                file.write("Classes");
-                qDebug()<<"file created"<<endl;
-                file.close();
-            }
-        }
     //}
     /*
     else{
@@ -239,10 +178,10 @@ void MainWindow::on_selectImage_clicked()
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
     //selected->setTextColor(Qt::red);
     QString currentImage = defaultPath + "/" + selected->text();
-    open(currentImage);
+    open(currentImage, selected->text());
 }
 
-void MainWindow::open(QString filePath)
+void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
     if (QString::compare(filePath,QString())!= 0){
@@ -251,7 +190,78 @@ void MainWindow::open(QString filePath)
         ui->graphicsView->setScene(scene);
         scene->addItem(item);
     }
-    else {//error handle
+    cout << filePath.toUtf8().constData() << endl;
+
+    QString containString = "QTPracticeNew/Projects/"+fileName;
+
+    QString Destination;
+    if (filePath.contains(containString))
+    {
+        cout << "File is in directory" << endl;
+        Destination = QFileInfo(QDir::currentPath()).path();
+    }
+    else
+    {
+
+        Destination = defaultPath + "/" + fileName;
+        cout<< "File isn't in directory" << endl;
+
+        bool a = QFile(filePath).copy(Destination);
+        if (a){
+            cout << "This works" << endl;
+            filesInDirectory.push_back(fileName);
+            ui->ImagesWindow->addItem(fileName);
+        }
+        else cout << "This doesnt work" << endl;
+
+    }
+
+    QStringList absoluteFileName = fileName.split(".");
+    absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
+    absoluteFileName[1] = "txt";
+    QString classFileName = absoluteFileName.join(".");
+
+    QStringList classTextFilePath = Destination.split("/");
+    classTextFilePath[classTextFilePath.length()-1] = classFileName;
+    QString classFilePath = classTextFilePath.join("/");
+
+    cout << classFilePath.toUtf8().constData() << endl;
+
+    if (classFilePath != NULL)
+    {
+        QFile file(classFileName);
+        if(QFileInfo::exists(classFileName))
+        {
+            cout << "file exists" << endl;
+            file.open(QIODevice::ReadOnly | QIODevice::Text);
+            QStringList dataFromFile;
+            QTextStream in(&file);
+            while(!in.atEnd()) {
+                QString line = in.readLine();
+                dataFromFile.append(line);
+            }
+
+            for(int i = 1; i < dataFromFile.length();i++)
+            {
+                ui->ClassWindow->addItem(dataFromFile[i]);
+            }
+
+            cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
+            cout<<"file already created"<<endl;
+            file.close();
+        }
+        else
+        {
+            cout << "file does not exists" << endl;
+            file.open(QIODevice::WriteOnly | QIODevice::Text);
+            file.write("Classes");
+            qDebug()<<"file created"<<endl;
+            file.close();
+        }
+    }
+
+    else {
+        //error handle
     }
 
 }
