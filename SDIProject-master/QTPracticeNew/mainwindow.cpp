@@ -237,7 +237,7 @@ void MainWindow::on_selectImage_clicked()
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
-    selected->setTextColor(Qt::red);
+    //selected->setTextColor(Qt::red);
     QString currentImage = defaultPath + "/" + selected->text();
     open(currentImage);
 }
