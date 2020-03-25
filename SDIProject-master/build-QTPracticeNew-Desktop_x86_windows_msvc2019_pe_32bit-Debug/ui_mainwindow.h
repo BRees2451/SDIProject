@@ -14,6 +14,7 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
+#include <QtWidgets/QHBoxLayout>
 #include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QListWidget>
@@ -52,10 +53,14 @@ public:
     QVBoxLayout *verticalLayout;
     QLabel *ImagesLabel;
     QListWidget *ImagesWindow;
+    QHBoxLayout *horizontalLayout;
     QPushButton *AddImageButton;
+    QPushButton *selectImage;
     QLabel *ClassLabel;
     QListWidget *ClassWindow;
-    QPushButton *AddClassButton;
+    QHBoxLayout *horizontalLayout_2;
+    QPushButton *addClassButton;
+    QPushButton *selectClassButton;
     QLabel *mouse_position_label;
     QComboBox *sortImageBy;
     QPushButton *sortImage;
@@ -134,10 +139,22 @@ public:
 
         verticalLayout->addWidget(ImagesWindow);
 
+        horizontalLayout = new QHBoxLayout();
+        horizontalLayout->setSpacing(5);
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
+        horizontalLayout->setContentsMargins(-1, -1, -1, 5);
         AddImageButton = new QPushButton(verticalLayoutWidget);
         AddImageButton->setObjectName(QStringLiteral("AddImageButton"));
 
-        verticalLayout->addWidget(AddImageButton);
+        horizontalLayout->addWidget(AddImageButton);
+
+        selectImage = new QPushButton(verticalLayoutWidget);
+        selectImage->setObjectName(QStringLiteral("selectImage"));
+
+        horizontalLayout->addWidget(selectImage);
+
+
+        verticalLayout->addLayout(horizontalLayout);
 
         ClassLabel = new QLabel(verticalLayoutWidget);
         ClassLabel->setObjectName(QStringLiteral("ClassLabel"));
@@ -149,10 +166,20 @@ public:
 
         verticalLayout->addWidget(ClassWindow);
 
-        AddClassButton = new QPushButton(verticalLayoutWidget);
-        AddClassButton->setObjectName(QStringLiteral("AddClassButton"));
+        horizontalLayout_2 = new QHBoxLayout();
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
+        addClassButton = new QPushButton(verticalLayoutWidget);
+        addClassButton->setObjectName(QStringLiteral("addClassButton"));
 
-        verticalLayout->addWidget(AddClassButton);
+        horizontalLayout_2->addWidget(addClassButton);
+
+        selectClassButton = new QPushButton(verticalLayoutWidget);
+        selectClassButton->setObjectName(QStringLiteral("selectClassButton"));
+
+        horizontalLayout_2->addWidget(selectClassButton);
+
+
+        verticalLayout->addLayout(horizontalLayout_2);
 
         mouse_position_label = new QLabel(centralwidget);
         mouse_position_label->setObjectName(QStringLiteral("mouse_position_label"));
@@ -230,8 +257,10 @@ public:
         RotateRButton->setText(QApplication::translate("MainWindow", "Rotate Right", Q_NULLPTR));
         ImagesLabel->setText(QApplication::translate("MainWindow", "Images", Q_NULLPTR));
         AddImageButton->setText(QApplication::translate("MainWindow", "Add Image", Q_NULLPTR));
+        selectImage->setText(QApplication::translate("MainWindow", "Select Image", Q_NULLPTR));
         ClassLabel->setText(QApplication::translate("MainWindow", "Classifier Path", Q_NULLPTR));
-        AddClassButton->setText(QApplication::translate("MainWindow", "Add Class", Q_NULLPTR));
+        addClassButton->setText(QApplication::translate("MainWindow", "Add Class", Q_NULLPTR));
+        selectClassButton->setText(QApplication::translate("MainWindow", "Select Class", Q_NULLPTR));
         mouse_position_label->setText(QString());
         sortImageBy->clear();
         sortImageBy->insertItems(0, QStringList()

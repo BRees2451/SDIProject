@@ -23,8 +23,9 @@ MainWindow::MainWindow(QWidget *parent)
     for(int i = 0; i < images.length(); i++) {
         //Add each image to a vector
         cout<<images[i].toUtf8().constData()<<endl;
-        QStringList Name = images[i].split(".");
-        filesInDirectory.push_back(Name[0]);
+
+        filesInDirectory.push_back(images[i]);
+        ui->ImagesWindow->addItem(images[i]);
     }
 
 }
@@ -63,11 +64,7 @@ void MainWindow::on_actionOpen_triggered()
         qDebug() << "Not a compatible image format" << endl;
         return;
     }
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
-        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
+    open(filePath);
 
         cout << filePath.toUtf8().constData() << endl;
 
@@ -81,16 +78,15 @@ void MainWindow::on_actionOpen_triggered()
         }
         else
         {
-            
-            
+
             Destination = QFileInfo(QDir::currentPath()).path() + "/Projects/" + fileName;
             cout<< "File isn't in directory" << endl;
 
             bool a = QFile(filePath).copy(Destination);
             if (a){
                 cout << "This works" << endl;
-                QStringList absoluteFileName = fileName.split(".");
-                filesInDirectory.push_back(absoluteFileName[0]);
+                filesInDirectory.push_back(fileName);
+                ui->ImagesWindow->addItem(fileName);
             }
             else cout << "This doesnt work" << endl;
 
@@ -132,15 +128,18 @@ void MainWindow::on_actionOpen_triggered()
                 file.close();
             }
         }
-    }
+    //}
+    /*
     else{
         //Error Handling
-    }
+    }*/
 }
 
 void MainWindow::on_AddImageButton_clicked()
 {
-    QString filePath = QFileDialog::getOpenFileName(this, "Open A File","C://");
+    on_actionOpen_triggered();
+    /*
+    QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
     fileName = info.fileName();
     if (QString::compare(filePath,QString())!= 0){
@@ -148,7 +147,7 @@ void MainWindow::on_AddImageButton_clicked()
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
         scene->addItem(item);
-    }
+    }*/
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -225,3 +224,29 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
     circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
 }
 
+
+void MainWindow::on_selectImage_clicked()
+{
+    for (unsigned int i = 0; i < filesInDirectory.size()-1; i++)
+    {
+        ui->ImagesWindow->item(i)->setTextColor(Qt::black);
+    }
+    QListWidgetItem *selected = ui->ImagesWindow->currentItem();
+    selected->setTextColor(Qt::red);
+    QString currentImage = defaultPath + "/" + selected->text();
+    open(currentImage);
+}
+
+void MainWindow::open(QString filePath)
+{
+    scene->clear();
+    if (QString::compare(filePath,QString())!= 0){
+        QImage image(filePath);
+        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+        ui->graphicsView->setScene(scene);
+        scene->addItem(item);
+    }
+    else {//error handle
+    }
+
+}

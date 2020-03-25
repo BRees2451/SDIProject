@@ -49,7 +49,11 @@ private slots:
 
     void on_AddImageButton_clicked();
 
+    void on_selectImage_clicked();
+
 private:
+    void open(QString);
+
     QString fileName = "";
 
     Ui::MainWindow *ui;
