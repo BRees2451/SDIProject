@@ -49,7 +49,11 @@ private slots:
 
     void on_AddImageButton_clicked();
 
+    void on_selectImage_clicked();
+
 private:
+    void open(QString);
+
     QString fileName = "";
 
     Ui::MainWindow *ui;
@@ -62,6 +66,9 @@ private:
 
     
     //QListWidget *ImageList;
+    QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
+
+    std::vector<QString> filesInDirectory;
 
 public slots:
     void showMousePosition(QPoint& pos);
