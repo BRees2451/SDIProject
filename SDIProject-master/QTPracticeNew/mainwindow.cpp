@@ -185,6 +185,7 @@ void MainWindow::on_selectImage_clicked()
 void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
+    ui->ClassWindow->clear();
     if (QString::compare(filePath,QString())!= 0){
         QImage image(filePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
@@ -224,13 +225,13 @@ void MainWindow::open(QString filePath, QString fileName)
 
     QStringList classTextFilePath = Destination.split("/");
     classTextFilePath[classTextFilePath.length()-1] = classFileName;
-    QString classFilePath = classTextFilePath.join("/");
+    classFilePath = classTextFilePath.join("/");
 
     cout << classFilePath.toUtf8().constData() << endl;
 
     if (classFilePath != NULL)
     {
-        QFile file(classFileName);
+        QFile file(classFilePath);
         if(QFileInfo::exists(classFileName))
         {
             cout << "file exists" << endl;
@@ -241,14 +242,16 @@ void MainWindow::open(QString filePath, QString fileName)
                 QString line = in.readLine();
                 dataFromFile.append(line);
             }
-
-            for(int i = 1; i < dataFromFile.length();i++)
-            {
-                classesInFile.push_back(dataFromFile[i]);
-                ui->ClassWindow->addItem(dataFromFile[i]);
+            if (dataFromFile.length() > 2){
+                for(int i = 1; i < dataFromFile.length();i++)
+                {
+                    classesInFile.push_back(dataFromFile[i]);
+                    ui->ClassWindow->addItem(dataFromFile[i]);
+                }
+                cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
             }
+            else qDebug() << "No classes in file" << endl;
 
-            cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
             cout<<"file already created"<<endl;
             file.close();
         }
@@ -284,12 +287,17 @@ void MainWindow::on_newClassLineEdit_returnPressed()
     classesInFile.push_back(text);
     ui->ClassWindow->addItem(text);
 
-    QFile file(classFileName);
+    QFile file(classFilePath);
     if(QFileInfo::exists(classFileName))
     {
         cout << "file exists" << endl;
         file.open(QIODevice::WriteOnly | QIODevice::Text);
-        file.write(("\n"+text).toUtf8().constData());
+        file.write("Classes\n");
+        for (unsigned int i = 0; i < classesInFile.size(); i++)
+        {
+          file.write((classesInFile[i]+"\n").toUtf8().constData());
+        }
+
         file.close();
     }
     qDebug() << text << endl;

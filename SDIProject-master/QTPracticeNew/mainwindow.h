@@ -75,7 +75,9 @@ private:
     std::vector<QString> filesInDirectory;
     std::vector<QString> classesInFile;
     QString classFileName;
+    QString classFilePath;
     bool imageActive = false;
+
 
 public slots:
     void showMousePosition(QPoint& pos);
