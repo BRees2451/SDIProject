@@ -51,6 +51,10 @@ private slots:
 
     void on_selectImage_clicked();
 
+    void on_addClassButton_clicked();
+
+    void on_newClassLineEdit_returnPressed();
+
 private:
     void open(QString, QString);
 
@@ -69,6 +73,9 @@ private:
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
     std::vector<QString> filesInDirectory;
+    std::vector<QString> classesInFile;
+    QString classFileName;
+    bool imageActive = false;
 
 public slots:
     void showMousePosition(QPoint& pos);

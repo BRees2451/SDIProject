@@ -116,7 +116,8 @@ void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
 
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    rectangle = scene->addRect(300,300,height,width,blackPen);
+    //Commented below line because it was causing error - Michael
+    //rectangle = scene->addRect(300,300,height,width,blackPen);
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 }
 
@@ -219,7 +220,7 @@ void MainWindow::open(QString filePath, QString fileName)
     QStringList absoluteFileName = fileName.split(".");
     absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
     absoluteFileName[1] = "txt";
-    QString classFileName = absoluteFileName.join(".");
+    classFileName = absoluteFileName.join(".");
 
     QStringList classTextFilePath = Destination.split("/");
     classTextFilePath[classTextFilePath.length()-1] = classFileName;
@@ -243,6 +244,7 @@ void MainWindow::open(QString filePath, QString fileName)
 
             for(int i = 1; i < dataFromFile.length();i++)
             {
+                classesInFile.push_back(dataFromFile[i]);
                 ui->ClassWindow->addItem(dataFromFile[i]);
             }
 
@@ -258,10 +260,37 @@ void MainWindow::open(QString filePath, QString fileName)
             qDebug()<<"file created"<<endl;
             file.close();
         }
+        imageActive = true;
     }
 
     else {
+        imageActive = false;
         //error handle
     }
 
+}
+
+void MainWindow::on_addClassButton_clicked()
+{
+    if (imageActive) ui->newClassLineEdit->setEnabled(1);
+}
+
+void MainWindow::on_newClassLineEdit_returnPressed()
+{
+    QString text = ui->newClassLineEdit->text();
+    ui->newClassLineEdit->setText("");
+    ui->newClassLineEdit->setEnabled(0);
+
+    classesInFile.push_back(text);
+    ui->ClassWindow->addItem(text);
+
+    QFile file(classFileName);
+    if(QFileInfo::exists(classFileName))
+    {
+        cout << "file exists" << endl;
+        file.open(QIODevice::WriteOnly | QIODevice::Text);
+        file.write(("\n"+text).toUtf8().constData());
+        file.close();
+    }
+    qDebug() << text << endl;
 }
