@@ -314,16 +314,6 @@
       <string>Name (Desc)</string>
      </property>
     </item>
-    <item>
-     <property name="text">
-      <string>Date (Asc)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Date( Desc)</string>
-     </property>
-    </item>
    </widget>
    <widget class="QPushButton" name="sortClass">
     <property name="geometry">
