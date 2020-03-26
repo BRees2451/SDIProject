@@ -116,7 +116,7 @@ void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
 
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    rectangle = scene->addRect(300,300,500,500,blackPen);
+    rectangle = scene->addRect(300,300,height,width,blackPen);
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 }
 

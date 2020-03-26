@@ -14,10 +14,6 @@ private:
 public:
 	void DisplayClasses();
 
-    void DisplayImages();
-
-    void getClasses();
-
     void addToVector();
 
 };

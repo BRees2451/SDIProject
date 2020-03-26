@@ -17,7 +17,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Annotations.cpp \
-    Button.cpp \
     Image.cpp \
     Objects.cpp \
     SidePane.cpp \
@@ -30,7 +29,6 @@ SOURCES += \
 
 HEADERS += \
     Annotations.h \
-    Button.h \
     Image.h \
     Objects.h \
     SidePane.h \

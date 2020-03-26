@@ -1,7 +1,19 @@
 #include "UserShapeOperations.h"
 
 void UserShapeOperation::Size() {
-	// TODO - implement UerShapeOpperations::Size
+    /* set width
+     * set height
+     *
+     * if user input recieved{
+     * change weidth
+     * change height }
+     * else {width = 500;
+     *  height = 500;}
+     *
+     * to be called when drawshape is clicekd
+     * */
+
+    //option 1
     /* list shapes
      * select shape with mouse
      * return selected shape index

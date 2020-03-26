@@ -17,14 +17,6 @@ void SidePane::DisplayClasses() {
 	throw "Not yet implemented";
 }
 
-void SidePane::DisplayImages() {
-    //Image image = new Image();
-
-    //Get that list from mainwindow.h
-
-
-	throw "Not yet implemented";
-}
 
 void SidePane::addToVector(){
     /*
