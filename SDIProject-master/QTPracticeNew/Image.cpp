@@ -58,9 +58,65 @@ void Image::SortAscendingName() {
 	
 	// TODO - implement Image::SortAscendingName
 	throw "Not yet implemented";
+
+
+    // /////////////NEW SORT ALGORITHM ////////////
+    bool swapped = false;
+
+
+        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
+            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
+
+                if (nameVector[j] > nameVector[j + 1]) {
+                    std::string temp = nameVector[j];
+                    nameVector[j] = nameVector[j + 1];
+                    nameVector[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+        }
+        QStringList sortedList;
+            for(unsigned i=0; i < nameVector.size(); i++) {
+                QString item = QString::fromStdString(nameVector[i]);
+                sortedList.append(item);
+            }
+
+           // sorted list needs to be displayed to the gui
 }
 
+
 void Image::SortDescendingName() {
+    // /////////////NEW SORT ALGORITHM ////////////
+    bool swapped = false;
+    vector<string> nameVector;
+
+        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
+            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
+
+                if (nameVector[j] < nameVector[j + 1]) {
+                    std::string temp = nameVector[j];
+                    nameVector[j] = nameVector[j + 1];
+                    nameVector[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+        }
+        QStringList sortedList;
+            for(unsigned i=0; i < nameVector.size(); i++) {
+                QString item = QString::fromStdString(nameVector[i]);
+                sortedList.append(item);
+            }
+
+           // sorted list needs to be displayed to the gui
+
 	// TODO - implement Image::SortDescendingName
 	throw "Not yet implemented";
 }
