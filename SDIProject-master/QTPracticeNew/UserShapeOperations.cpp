@@ -1,10 +1,10 @@
 #include "UserShapeOperations.h"
 
-void UserShapeOperation::Size() {
-    /* set width
-     * set height
-     *
-     * if user input recieved{
+void UserShapeOperation::USize() {
+    width = 500;
+    height = 500;
+
+     /* if user input recieved{
      * change weidth
      * change height }
      * else {width = 500;
@@ -21,7 +21,6 @@ void UserShapeOperation::Size() {
      * enter shapesize
      * edit shapesize
      * exit shape
-     *
      *
      * */
 	throw "Not yet implemented";

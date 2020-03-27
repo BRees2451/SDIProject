@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "Image.h"
+#include "UserShapeOperations.h"
 #include <vector>
 #include <QPixmap>
 
@@ -10,6 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     scene = new QGraphicsScene(this);
+    UserShapeOperation User = *new UserShapeOperation;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
 
@@ -116,8 +118,7 @@ void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
 
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    //Commented below line because it was causing error - Michael
-    //rectangle = scene->addRect(300,300,height,width,blackPen);
+    rectangle = scene->addRect(300,300,500,500,blackPen);
     rectangle->setFlag(QGraphicsItem::ItemIsMovable);
 }
 

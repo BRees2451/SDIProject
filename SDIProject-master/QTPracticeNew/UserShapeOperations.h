@@ -2,25 +2,29 @@
 #define UERSHAPEOPPERATIONS_H
 
 class UserShapeOperation {
-
-    UserShapeOperation()
-    {
-
-    }
-
-    ~UserShapeOperation()
-    {
-        //For Deleting?
-    }
+private:
+    int height;
+    int width;
 
 public:
-	void Size();
+    void USize();
 
 	void Move();
 
 	void Delete();
 
 	void DisplayName();
+
+    UserShapeOperation()
+    {
+        this->height= 500;
+        this->width= 500;
+    }
+
+    ~UserShapeOperation()
+    {
+        //For Deleting?
+    }
 };
 
 #endif
