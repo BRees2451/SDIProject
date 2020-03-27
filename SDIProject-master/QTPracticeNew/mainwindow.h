@@ -8,7 +8,8 @@
 #include<QFileDialog>
 #include <QtCore>
 #include <iostream>
-#include <string>
+#include "Image.h"
+
 using namespace std;
 
 QT_BEGIN_NAMESPACE
@@ -27,6 +28,8 @@ public:
     ~MainWindow();
 
     void Save();
+
+
 
 private slots:
     void on_ZoomInButton_clicked();
@@ -55,6 +58,10 @@ private slots:
 
     void on_newClassLineEdit_returnPressed();
 
+    void on_sortClassBy_currentIndexChanged(const QString &arg1);
+
+    void on_sortImageBy_currentIndexChanged(const QString &arg1);
+
 private:
     void open(QString, QString);
 
@@ -68,7 +75,11 @@ private:
     QGraphicsPolygonItem *shape;
     QGraphicsEllipseItem *circle;
 
-    
+
+    ///////////////////////////////////////////////
+    Image* currentImage;
+    ///////////////////////////////////////////////
+
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
@@ -76,6 +87,7 @@ private:
     std::vector<QString> classesInFile;
     QString classFileName;
     bool imageActive = false;
+
 
 public slots:
     void showMousePosition(QPoint& pos);

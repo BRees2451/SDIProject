@@ -296,8 +296,6 @@ public:
         sortClassBy->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Name (Asc)", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Name (Desc)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Date (Asc)", Q_NULLPTR)
-         << QApplication::translate("MainWindow", "Date( Desc)", Q_NULLPTR)
         );
         sortClass->setText(QApplication::translate("MainWindow", "Sort", Q_NULLPTR));
         radioButton->setText(QApplication::translate("MainWindow", "Select Shape", Q_NULLPTR));

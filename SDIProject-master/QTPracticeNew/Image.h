@@ -5,11 +5,11 @@
 //For the date sorting
 #include <ctime>
 #include "mainwindow.h"
-#include "string.h"
+
 
 class Image {
 
-    string imageName;
+    QString imageName;
 
     friend class MainWindow;
 private:
@@ -17,11 +17,8 @@ private:
     std::vector<Annotations> annotationsVector;
     unsigned int longestImageNameLength;
 
+
 public:
-    Image(string name)
-    {
-        this->imageName = name;
-    }
 
 	void CheckCompatible();
 

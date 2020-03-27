@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Image.h"
 #include "UserShapeOperations.h"
 #include <vector>
 #include <QPixmap>
@@ -262,6 +261,8 @@ void MainWindow::open(QString filePath, QString fileName)
             file.close();
         }
         imageActive = true;
+        //Image currentImage;
+        currentImage.imageName = absoluteFileName[0];
     }
 
     else {
@@ -294,4 +295,14 @@ void MainWindow::on_newClassLineEdit_returnPressed()
         file.close();
     }
     qDebug() << text << endl;
+}
+
+void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
+{
+
+}
+
+void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
+{
+
 }

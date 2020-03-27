@@ -92,13 +92,13 @@ void Image::SortAscendingName() {
 void Image::SortDescendingName() {
     // /////////////NEW SORT ALGORITHM ////////////
     bool swapped = false;
-    vector<string> nameVector;
+    vector<QString> nameVector;
 
         for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
             for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j] < nameVector[j + 1]) {
-                    std::string temp = nameVector[j];
+                    QString temp = nameVector[j];
                     nameVector[j] = nameVector[j + 1];
                     nameVector[j + 1] = temp;
                     swapped = true;
@@ -109,16 +109,14 @@ void Image::SortDescendingName() {
             }
             swapped = false;
         }
-        QStringList sortedList;
-            for(unsigned i=0; i < nameVector.size(); i++) {
-                QString item = QString::fromStdString(nameVector[i]);
-                sortedList.append(item);
-            }
+        vector<QString> sortedList;
+        for(unsigned i=0; i < nameVector.size(); i++) {
+            QString item = nameVector[i];
+            sortedList.push_back(item);
+        }
+
 
            // sorted list needs to be displayed to the gui
-
-	// TODO - implement Image::SortDescendingName
-	throw "Not yet implemented";
 }
 
 void Image::SortAscendingDate() {
