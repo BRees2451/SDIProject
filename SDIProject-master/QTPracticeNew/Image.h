@@ -13,13 +13,12 @@ class Image {
 
     //friend class MainWindow;
 private:
-
+    //int image;  <-- what is this for
     std::vector<Annotations> annotationsVector;
     unsigned int longestImageNameLength;
 
 
 public:
-    Image();
 
 	void CheckCompatible();
 

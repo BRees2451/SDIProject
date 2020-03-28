@@ -22,7 +22,7 @@ class MainWindow : public QMainWindow
 
 public:
     //List of images
-    //Image currentImage = new Image;
+
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -77,7 +77,7 @@ private:
 
 
     ///////////////////////////////////////////////
-    Image *ptrImage;
+    Image* currentImage;
     ///////////////////////////////////////////////
 
     //QListWidget *ImageList;
