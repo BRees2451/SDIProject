@@ -19,6 +19,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
     //Define some vectors
 	
 	//Array of Names to sort
+    /*
     vector<int> numVector;
 
     for (unsigned int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
@@ -33,7 +34,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
             }
             //Will produce a vector with ascii converted xth letters to sort through
 
-	
+
 	//When numArray finished
     //Sort the array into ascedning order (Bubble Sort)
         int temp;
@@ -58,7 +59,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
 	
 	// TODO - implement Image::SortAscendingName
 	throw "Not yet implemented";
-
+    */
 
     ///////////////NEW SORT ALGORITHM ////////////
     bool swapped = false;
@@ -67,7 +68,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
         for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
             for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
-                if (nameVector[j] > nameVector[j + 1]) {
+                if (nameVector[j] > nameVector[j + 1].toLower()) {
                     QString temp = nameVector[j];
                     nameVector[j] = nameVector[j + 1];
                     nameVector[j + 1] = temp;

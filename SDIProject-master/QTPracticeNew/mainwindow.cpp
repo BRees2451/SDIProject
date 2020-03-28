@@ -301,7 +301,15 @@ void MainWindow::on_newClassLineEdit_returnPressed()
 
 void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
 {
-
+    Image image;
+    if (arg1 == "Name (Asc)") filesInDirectory = image.SortAscendingName(classesInFile);
+    else if (arg1 == "Name (Desc)") filesInDirectory = image.SortDescendingName(classesInFile);
+    ui->ClassWindow->clear();
+    for (unsigned int i = 0; i < filesInDirectory.size(); i++)
+    {
+        ui->ClassWindow->addItem(filesInDirectory[i]);
+        ui->ClassWindow->item(i)->setTextColor(Qt::black);
+    }
 }
 
 void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
