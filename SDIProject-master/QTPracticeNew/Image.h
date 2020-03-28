@@ -11,7 +11,7 @@ class Image {
 
     QString imageName;
 
-    friend class MainWindow;
+    //friend class MainWindow;
 private:
     //int image;  <-- what is this for
     std::vector<Annotations> annotationsVector;
@@ -22,9 +22,9 @@ public:
 
 	void CheckCompatible();
 
-	void SortAscendingName();
+    vector<QString> SortAscendingName(vector<QString>);
 
-	void SortDescendingName();
+    vector<QString> SortDescendingName(vector<QString>);
 
 	void SortAscendingDate();
 

@@ -10,7 +10,7 @@ void Image::CheckCompatible() {
  * @brief A function that will look at the first letters of the names of the Images that have been edited.
  * It will sort this list, using the bubble sort at this stage, and then move onto the next letter and repeat the process.
  */
-void Image::SortAscendingName() {
+vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
 	
     //Convert string to ASCII
 	//Sort data
@@ -19,14 +19,14 @@ void Image::SortAscendingName() {
     //Define some vectors
 	
 	//Array of Names to sort
-    vector<string> nameVector;
     vector<int> numVector;
 
     for (unsigned int letterNo = 1; letterNo < longestImageNameLength; letterNo++)
     {
         for(unsigned int i = 0; i < nameVector.size(); i++){
             try {
-                numVector.push_back((int)nameVector[i].at(letterNo));
+                int a = nameVector[i].at(letterNo).toLower().toLatin1();
+                numVector.push_back(a);
             } catch (nullptr_t e) {
                 //If there is nothing left of the word then 0 will be returned
                 numVector.push_back(0);
@@ -37,7 +37,7 @@ void Image::SortAscendingName() {
 	//When numArray finished
     //Sort the array into ascedning order (Bubble Sort)
         int temp;
-        string tempName;
+        QString tempName;
         for(unsigned int i=0;i<nameVector.size();i++){
             for(unsigned int j=i+1;j<nameVector.size()-1;j++){
                 if(numVector[i]>numVector[j])
@@ -60,7 +60,7 @@ void Image::SortAscendingName() {
 	throw "Not yet implemented";
 
 
-    // /////////////NEW SORT ALGORITHM ////////////
+    ///////////////NEW SORT ALGORITHM ////////////
     bool swapped = false;
 
 
@@ -68,36 +68,6 @@ void Image::SortAscendingName() {
             for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j] > nameVector[j + 1]) {
-                    std::string temp = nameVector[j];
-                    nameVector[j] = nameVector[j + 1];
-                    nameVector[j + 1] = temp;
-                    swapped = true;
-                }
-            }
-            if (!swapped) {
-                break;
-            }
-            swapped = false;
-        }
-        QStringList sortedList;
-            for(unsigned i=0; i < nameVector.size(); i++) {
-                QString item = QString::fromStdString(nameVector[i]);
-                sortedList.append(item);
-            }
-
-           // sorted list needs to be displayed to the gui
-}
-
-
-void Image::SortDescendingName() {
-    // /////////////NEW SORT ALGORITHM ////////////
-    bool swapped = false;
-    vector<QString> nameVector;
-
-        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
-            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
-
-                if (nameVector[j] < nameVector[j + 1]) {
                     QString temp = nameVector[j];
                     nameVector[j] = nameVector[j + 1];
                     nameVector[j + 1] = temp;
@@ -114,7 +84,37 @@ void Image::SortDescendingName() {
             QString item = nameVector[i];
             sortedList.push_back(item);
         }
+        return sortedList;
+           // sorted list needs to be displayed to the gui
+}
 
+
+vector<QString> Image::SortDescendingName(vector<QString> nameVector) {
+    ///////////////NEW SORT ALGORITHM ////////////
+    bool swapped = false;
+
+
+        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
+            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
+
+                if (nameVector[j].toLower() < nameVector[j + 1].toLower()) {
+                    QString temp = nameVector[j];
+                    nameVector[j] = nameVector[j + 1];
+                    nameVector[j + 1] = temp;
+                    swapped = true;
+                }
+            }
+            if (!swapped) {
+                break;
+            }
+            swapped = false;
+        }
+        vector<QString> sortedList;
+        for(unsigned i=0; i < nameVector.size(); i++) {
+            QString item = nameVector[i];
+            sortedList.push_back(item);
+        }
+        return sortedList;
 
            // sorted list needs to be displayed to the gui
 }

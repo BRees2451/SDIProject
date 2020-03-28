@@ -264,7 +264,7 @@ void MainWindow::open(QString filePath, QString fileName)
         }
         imageActive = true;
         //Image currentImage;
-        currentImage->imageName = absoluteFileName[0];
+        //currentImage->imageName = absoluteFileName[0];
     }
 
     else {
@@ -306,5 +306,13 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
 
 void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 {
-
+    Image image;
+    if (arg1 == "Name (Asc)") filesInDirectory = image.SortAscendingName(filesInDirectory);
+    else if (arg1 == "Name (Desc)") filesInDirectory = image.SortDescendingName(filesInDirectory);
+    ui->ImagesWindow->clear();
+    for (unsigned int i = 0; i < filesInDirectory.size(); i++)
+    {
+        ui->ImagesWindow->addItem(filesInDirectory[i]);
+        ui->ImagesWindow->item(i)->setTextColor(Qt::black);
+    }
 }
