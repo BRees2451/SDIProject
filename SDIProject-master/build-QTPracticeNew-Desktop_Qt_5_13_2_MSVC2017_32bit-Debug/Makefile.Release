@@ -2880,54 +2880,6 @@ release\mainwindow.obj: ..\QTPracticeNew\mainwindow.cpp ..\QTPracticeNew\mainwin
 		..\QTPracticeNew\Image.h \
 		..\QTPracticeNew\Annotations.h \
 		ui_mainwindow.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtCore\QVariant \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QAction \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qaction.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qactiongroup.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QApplication \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qapplication.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qdesktopwidget.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QComboBox \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qcombobox.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qstyleoption.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractspinbox.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qslider.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractslider.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qstyle.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qtabbar.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qrubberband.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qframe.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QHBoxLayout \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qboxlayout.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlayout.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlayoutitem.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qgridlayout.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QLabel \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlabel.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QListWidget \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlistwidget.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlistview.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QMenu \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qmenu.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QMenuBar \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qmenubar.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QPushButton \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qpushbutton.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractbutton.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QRadioButton \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qradiobutton.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QStatusBar \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qstatusbar.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QVBoxLayout \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QWidget \
-		..\QTPracticeNew\matdisplay.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QGraphicsView \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qgraphicsview.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qscrollarea.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtGui\QMouseEvent \
 		..\QTPracticeNew\UserShapeOperations.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtGui\QPixmap
 

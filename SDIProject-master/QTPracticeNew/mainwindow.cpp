@@ -12,8 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     scene = new QGraphicsScene(this);
     UserShapeOperation User = *new UserShapeOperation;
 
-    Image currentImage;
-
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
 
     /**
@@ -263,8 +261,8 @@ void MainWindow::open(QString filePath, QString fileName)
             file.close();
         }
         imageActive = true;
-        //Image currentImage;
-        currentImage->imageName = absoluteFileName[0];
+        Image currentImage;
+        currentImage.imageName = absoluteFileName[0];
     }
 
     else {
