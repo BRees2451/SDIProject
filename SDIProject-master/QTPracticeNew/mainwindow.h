@@ -16,13 +16,19 @@ QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
 QT_END_NAMESPACE
 
+
+
+
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
 public:
-    //List of images
 
+    struct fileData{
+        QString name;
+        QDateTime dateModified;
+    };
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -83,10 +89,16 @@ private:
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
-    std::vector<QString> filesInDirectory;
-    std::vector<QString> classesInFile;
+
+
+    std::vector<fileData> filesInDirectory;
+    std::vector<fileData> classesInFile;
+
+    QDate currentDate = QDate::currentDate();
+    QString classFilePath;
     QString classFileName;
     bool imageActive = false;
+
 
 
 public slots:

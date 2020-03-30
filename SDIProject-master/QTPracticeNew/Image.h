@@ -1,15 +1,13 @@
 #ifndef IMAGE_H
 #define IMAGE_H
+#include "mainwindow.h"
 #include "Annotations.h"
 #include <vector>
 //For the date sorting
 #include <ctime>
-#include "mainwindow.h"
 
 
-class Image {
-
-    QString imageName;
+class Image{
 
     //friend class MainWindow;
 private:
@@ -22,9 +20,9 @@ public:
 
 	void CheckCompatible();
 
-    vector<QString> SortAscendingName(vector<QString>);
+    vector<QString> SortAscendingName(vector<MainWindow::fileData> nameVector);
 
-    vector<QString> SortDescendingName(vector<QString>);
+    vector<QString> SortDescendingName(vector<MainWindow::fileData> nameVector);
 
 	void SortAscendingDate();
 

@@ -10,7 +10,7 @@ void Image::CheckCompatible() {
  * @brief A function that will look at the first letters of the names of the Images that have been edited.
  * It will sort this list, using the bubble sort at this stage, and then move onto the next letter and repeat the process.
  */
-vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
+vector<QString> Image::SortAscendingName(vector<MainWindow::fileData> nameVector) {
 	
     //Convert string to ASCII
 	//Sort data
@@ -68,10 +68,10 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
         for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
             for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
-                if (nameVector[j] > nameVector[j + 1].toLower()) {
-                    QString temp = nameVector[j];
+                if (nameVector[j].name.toLower() > nameVector[j + 1].name.toLower()) {
+                    QString temp = nameVector[j].name;
                     nameVector[j] = nameVector[j + 1];
-                    nameVector[j + 1] = temp;
+                    nameVector[j + 1].name = temp;
                     swapped = true;
                 }
             }
@@ -82,7 +82,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
         }
         vector<QString> sortedList;
         for(unsigned i=0; i < nameVector.size(); i++) {
-            QString item = nameVector[i];
+            QString item = nameVector[i].name;
             sortedList.push_back(item);
         }
         return sortedList;
@@ -90,7 +90,7 @@ vector<QString> Image::SortAscendingName(vector<QString> nameVector) {
 }
 
 
-vector<QString> Image::SortDescendingName(vector<QString> nameVector) {
+vector<QString> Image::SortDescendingName(vector<MainWindow::fileData> nameVector) {
     ///////////////NEW SORT ALGORITHM ////////////
     bool swapped = false;
 
@@ -98,10 +98,10 @@ vector<QString> Image::SortDescendingName(vector<QString> nameVector) {
         for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
             for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
-                if (nameVector[j].toLower() < nameVector[j + 1].toLower()) {
-                    QString temp = nameVector[j];
+                if (nameVector[j].name.toLower() < nameVector[j + 1].name.toLower()) {
+                    QString temp = nameVector[j].name;
                     nameVector[j] = nameVector[j + 1];
-                    nameVector[j + 1] = temp;
+                    nameVector[j + 1].name = temp;
                     swapped = true;
                 }
             }
@@ -112,7 +112,7 @@ vector<QString> Image::SortDescendingName(vector<QString> nameVector) {
         }
         vector<QString> sortedList;
         for(unsigned i=0; i < nameVector.size(); i++) {
-            QString item = nameVector[i];
+            QString item = nameVector[i].name;
             sortedList.push_back(item);
         }
         return sortedList;
