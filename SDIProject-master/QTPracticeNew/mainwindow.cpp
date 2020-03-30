@@ -28,12 +28,13 @@ MainWindow::MainWindow(QWidget *parent)
         shareClass::fileData fData;
         fData.name = images[i];
         fData.dateModified = modified.lastModified();
+        qDebug() << fData.dateModified.toString() << "Hello" << endl;
 
         //Add each image to a vector
         cout<<images[i].toUtf8().constData()<<endl;
 
         filesInDirectory.push_back(fData);
-        ui->ImagesWindow->addItem(images[i]);
+        ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("dd/MM"));
     }
 
 }
@@ -218,69 +219,69 @@ void MainWindow::open(QString filePath, QString fileName)
         if (a){
             cout << "This works" << endl;
 
-            QStringList absoluteFileName = fileName.split(".");
-            absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
-            absoluteFileName[1] = "txt";
-            classFileName = absoluteFileName.join(".");
 
-            QStringList classTextFilePath = Destination.split("/");
-            classTextFilePath[classTextFilePath.length()-1] = classFileName;
-            classFilePath = classTextFilePath.join("/");
-
-            cout << classFilePath.toUtf8().constData() << endl;
-
-            if (classFilePath != NULL)
-            {
-                QFile file(classFilePath);
-                if(QFileInfo::exists(classFilePath))
-                {
-                    cout << "file exists" << endl;
-                    file.open(QIODevice::ReadOnly | QIODevice::Text);
-                    QStringList dataFromFile;
-                    QTextStream in(&file);
-                    while(!in.atEnd()) {
-                        QString line = in.readLine();
-                        dataFromFile.append(line);
-                    }
-                    ui->ClassWindow->clear();
-                    for(int i = 1; i < dataFromFile.length()-1;i++)
-                    {
-                        classesInFile.push_back({dataFromFile[i], QDateTime::currentDateTime()});
-                        ui->ClassWindow->addItem(dataFromFile[i]);
-                    }
-
-                    cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
-                    cout<<"file already created"<<endl;
-                    file.close();
-                    QDateTime modified = QFileInfo(classFilePath).lastModified();
-                    if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
-                    else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-                    ui->ImagesWindow->addItem(fileName);
-                }
-                else
-                {
-                    cout << "file does not exists" << endl;
-                    file.open(QIODevice::WriteOnly | QIODevice::Text);
-
-                    QString dateString = currentDate.toString("dd/MM/yy");
-                    file.write("Classes\n");
-                    file.write(dateString.toUtf8().constData());
-                    qDebug()<<"file created"<<endl;
-                    file.close();
-                    filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-                    ui->ImagesWindow->addItem(fileName);
-                }
-                imageActive = true;
-            }
-            else {
-                imageActive = false;
-                //error handle
-            }
         }
         else cout << "This doesnt work" << endl;
+    }
 
+    QStringList absoluteFileName = fileName.split(".");
+    absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
+    absoluteFileName[1] = "txt";
+    classFileName = absoluteFileName.join(".");
+
+    QStringList classTextFilePath = Destination.split("/");
+    classTextFilePath[classTextFilePath.length()-1] = classFileName;
+    classFilePath = classTextFilePath.join("/");
+    cout << classFilePath.toUtf8().constData() << endl;
+
+    if (classFilePath != NULL)
+    {
+        QFile file(classFilePath);
+        if(QFileInfo::exists(classFilePath))
+        {
+            cout << "file exists" << endl;
+            file.open(QIODevice::ReadOnly | QIODevice::Text);
+            QStringList dataFromFile;
+            QTextStream in(&file);
+            while(!in.atEnd()) {
+                QString line = in.readLine();
+                dataFromFile.append(line);
+            }
+            ui->ClassWindow->clear();
+            for(int i = 1; i < dataFromFile.length()-1;i++)
+            {
+                classesInFile.push_back({dataFromFile[i], QDateTime::currentDateTime()});
+                ui->ClassWindow->addItem(dataFromFile[i]);
+            }
+
+            cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
+            cout<<"file already created"<<endl;
+            file.close();
+            QDateTime modified = QFileInfo(classFilePath).lastModified();
+            if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
+            else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
+            ui->ImagesWindow->addItem(fileName);
+        }
+        else
+        {
+            cout << "file does not exists" << endl;
+            file.open(QIODevice::WriteOnly | QIODevice::Text);
+            QString dateString = currentDate.toString("dd/MM/yy");
+            file.write("Classes\n");
+            file.write(dateString.toUtf8().constData());
+            qDebug()<<"file created"<<endl;
+            file.close();
+            filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
+            ui->ImagesWindow->addItem(fileName);
+        }
+        imageActive = true;
+    }
+     else {
+        imageActive = false;
+        //error handle
     }
 }
+
 
 void MainWindow::on_addClassButton_clicked()
 {
@@ -331,10 +332,13 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 
     if (arg1 == "Name (Asc)") filesInDirectory = image.SortAscendingName(filesInDirectory);
     else if (arg1 == "Name (Desc)") filesInDirectory = image.SortDescendingName(filesInDirectory);
+    else if (arg1 == "Date (Asc)") filesInDirectory = image.SortAscendingDate(filesInDirectory);
+    else if (arg1 == "Date (Desc)") filesInDirectory = image.SortDescendingDate(filesInDirectory);
     ui->ImagesWindow->clear();
     for (int i = 0; i < filesInDirectory.size(); i++)
     {
-        ui->ImagesWindow->addItem(filesInDirectory[i].name);
+        QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("dd/MM");
+        ui->ImagesWindow->addItem(concatenatedItem);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
 }

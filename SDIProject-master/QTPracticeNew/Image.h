@@ -21,13 +21,13 @@ public:
 
 	void CheckCompatible();
 
-    QVector<shareClass::fileData> SortAscendingName(QVector<shareClass::fileData> nameVector);
+    QVector<shareClass::fileData> SortAscendingName(QVector<shareClass::fileData>);
 
-    QVector<shareClass::fileData> SortDescendingName(QVector<shareClass::fileData> nameVector);
+    QVector<shareClass::fileData> SortDescendingName(QVector<shareClass::fileData>);
 
-	void SortAscendingDate();
+    QVector<shareClass::fileData> SortAscendingDate(QVector<shareClass::fileData>);
 
-	void SortDescendingDate();
+    QVector<shareClass::fileData> SortDescendingDate(QVector<shareClass::fileData>);
 
     void checkImageNameLength(string);
 };
