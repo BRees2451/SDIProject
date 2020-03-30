@@ -8,6 +8,7 @@
 #include<QFileDialog>
 #include <QtCore>
 #include <iostream>
+#include "shareclass.h"
 #include "Image.h"
 
 using namespace std;
@@ -25,16 +26,11 @@ class MainWindow : public QMainWindow
 
 public:
 
-    struct fileData{
-        QString name;
-        QDateTime dateModified;
-    };
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
     void Save();
-
 
 
 private slots:
@@ -91,8 +87,8 @@ private:
 
 
 
-    std::vector<fileData> filesInDirectory;
-    std::vector<fileData> classesInFile;
+    QVector<shareClass::fileData> filesInDirectory;
+    QVector<shareClass::fileData> classesInFile;
 
     QDate currentDate = QDate::currentDate();
     QString classFilePath;

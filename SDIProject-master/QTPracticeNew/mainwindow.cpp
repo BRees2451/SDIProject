@@ -25,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent)
     QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
     for(int i = 0; i < images.length(); i++) {
         QFileInfo modified = QFileInfo(directory, images[i]);
-        fileData fData;
+        shareClass::fileData fData;
         fData.name = images[i];
         fData.dateModified = modified.lastModified();
 
@@ -179,7 +179,7 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
 
 void MainWindow::on_selectImage_clicked()
 {
-    for (unsigned int i = 0; i < filesInDirectory.size()-1; i++)
+    for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
@@ -302,7 +302,7 @@ void MainWindow::on_newClassLineEdit_returnPressed()
         cout << "file exists" << endl;
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         file.write("Classes");
-        for (unsigned int i = 0; i < classesInFile.size(); i++)
+        for (int i = 0; i < classesInFile.size(); i++)
         {
             file.write(("\n"+classesInFile[i].name).toUtf8().constData());
         }
@@ -318,7 +318,7 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
     if (arg1 == "Name (Asc)") classesInFile = image.SortAscendingName(classesInFile);
     else if (arg1 == "Name (Desc)") classesInFile = image.SortDescendingName(classesInFile);
     ui->ClassWindow->clear();
-    for (unsigned int i = 0; i < classesInFile.size(); i++)
+    for (int i = 0; i < classesInFile.size(); i++)
     {
         ui->ClassWindow->addItem(classesInFile[i].name);
         ui->ClassWindow->item(i)->setTextColor(Qt::black);
@@ -332,7 +332,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
     if (arg1 == "Name (Asc)") filesInDirectory = image.SortAscendingName(filesInDirectory);
     else if (arg1 == "Name (Desc)") filesInDirectory = image.SortDescendingName(filesInDirectory);
     ui->ImagesWindow->clear();
-    for (unsigned int i = 0; i < filesInDirectory.size(); i++)
+    for (int i = 0; i < filesInDirectory.size(); i++)
     {
         ui->ImagesWindow->addItem(filesInDirectory[i].name);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);

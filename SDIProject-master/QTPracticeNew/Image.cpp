@@ -10,7 +10,7 @@ void Image::CheckCompatible() {
  * @brief A function that will look at the first letters of the names of the Images that have been edited.
  * It will sort this list, using the bubble sort at this stage, and then move onto the next letter and repeat the process.
  */
-vector<QString> Image::SortAscendingName(vector<MainWindow::fileData> nameVector) {
+QVector<shareClass::fileData> Image::SortAscendingName(QVector<shareClass::fileData> nameVector) {
 	
     //Convert string to ASCII
 	//Sort data
@@ -65,8 +65,8 @@ vector<QString> Image::SortAscendingName(vector<MainWindow::fileData> nameVector
     bool swapped = false;
 
 
-        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
-            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
+        for (int i = 0; i < nameVector.size() - 1; ++i) {
+            for (int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j].name.toLower() > nameVector[j + 1].name.toLower()) {
                     QString temp = nameVector[j].name;
@@ -80,23 +80,23 @@ vector<QString> Image::SortAscendingName(vector<MainWindow::fileData> nameVector
             }
             swapped = false;
         }
-        vector<QString> sortedList;
-        for(unsigned i=0; i < nameVector.size(); i++) {
+        QVector<shareClass::fileData> sortedList;
+        for(int i=0; i < nameVector.size(); i++) {
             QString item = nameVector[i].name;
-            sortedList.push_back(item);
+            sortedList.push_back({item, nameVector[i].dateModified});
         }
         return sortedList;
            // sorted list needs to be displayed to the gui
 }
 
 
-vector<QString> Image::SortDescendingName(vector<MainWindow::fileData> nameVector) {
+QVector<shareClass::fileData> Image::SortDescendingName(QVector<shareClass::fileData> nameVector) {
     ///////////////NEW SORT ALGORITHM ////////////
     bool swapped = false;
 
 
-        for (unsigned int i = 0; i < nameVector.size() - 1; ++i) {
-            for (unsigned int j = 0; j < nameVector.size() - 1 - i; ++j) {
+        for (int i = 0; i < nameVector.size() - 1; ++i) {
+            for (int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j].name.toLower() < nameVector[j + 1].name.toLower()) {
                     QString temp = nameVector[j].name;
@@ -110,10 +110,10 @@ vector<QString> Image::SortDescendingName(vector<MainWindow::fileData> nameVecto
             }
             swapped = false;
         }
-        vector<QString> sortedList;
-        for(unsigned i=0; i < nameVector.size(); i++) {
+        QVector<shareClass::fileData> sortedList;
+        for(int i=0; i < nameVector.size(); i++) {
             QString item = nameVector[i].name;
-            sortedList.push_back(item);
+            sortedList.push_back({item, nameVector[i].dateModified});
         }
         return sortedList;
 

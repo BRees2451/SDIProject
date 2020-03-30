@@ -25,7 +25,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     matdisplay.cpp \
-    mytimer.cpp
+    mytimer.cpp \
+    shareclass.cpp
 
 HEADERS += \
     Annotations.h \
@@ -37,7 +38,8 @@ HEADERS += \
     customview.h \
     mainwindow.h \
     matdisplay.h \
-    mytimer.h
+    mytimer.h \
+    shareclass.h
 
 FORMS += \
     mainwindow.ui
