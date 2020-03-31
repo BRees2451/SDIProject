@@ -186,10 +186,19 @@ void MainWindow::on_selectImage_clicked()
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
     //selected->setTextColor(Qt::red);
-    QString currentImage = defaultPath + "/" + selected->text();
+    QStringList a = selected->text().split("\t");
+    QString currentImage = defaultPath + "/" + a[0];
     open(currentImage, selected->text());
 }
 
+
+/**
+ * @brief MainWindow::open uses will pull the selected image to the scene if the image exists as well as check
+ * for whether it is a jpg or png. This method will also validate whether there's a txt file to match the image.
+ * If not one will be created.
+ * @param filePath
+ * @param fileName
+ */
 void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
@@ -218,8 +227,6 @@ void MainWindow::open(QString filePath, QString fileName)
         bool a = QFile(filePath).copy(Destination);
         if (a){
             cout << "This works" << endl;
-
-
         }
         else cout << "This doesnt work" << endl;
     }
@@ -232,7 +239,6 @@ void MainWindow::open(QString filePath, QString fileName)
     QStringList classTextFilePath = Destination.split("/");
     classTextFilePath[classTextFilePath.length()-1] = classFileName;
     classFilePath = classTextFilePath.join("/");
-    cout << classFilePath.toUtf8().constData() << endl;
 
     if (classFilePath != NULL)
     {
@@ -254,7 +260,6 @@ void MainWindow::open(QString filePath, QString fileName)
                 ui->ClassWindow->addItem(dataFromFile[i]);
             }
 
-            cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
             cout<<"file already created"<<endl;
             file.close();
             QDateTime modified = QFileInfo(classFilePath).lastModified();
@@ -282,12 +287,18 @@ void MainWindow::open(QString filePath, QString fileName)
     }
 }
 
-
+/**
+ * @brief MainWindow::on_addClassButton_clicked This will enable the textbox.
+ */
 void MainWindow::on_addClassButton_clicked()
 {
     if (imageActive) ui->newClassLineEdit->setEnabled(1);
 }
 
+/**
+ * @brief MainWindow::on_newClassLineEdit_returnPressed This will disable and clear the textbox as well as increment
+ * the class vectors and file as well as push this new information to the GUI.
+ */
 void MainWindow::on_newClassLineEdit_returnPressed()
 {
     QString text = ui->newClassLineEdit->text();
@@ -313,6 +324,11 @@ void MainWindow::on_newClassLineEdit_returnPressed()
     qDebug() << text << endl;
 }
 
+/**
+ * @brief MainWindow::on_sortClassBy_currentIndexChanged This will react to when the index is changed by directing
+ * the information to the correct methods as well as push the sorted list to the GUI.
+ * @param arg1
+ */
 void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
 {
     Image image;
@@ -326,6 +342,11 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
     }
 }
 
+/**
+ * @brief MainWindow::on_sortImageBy_currentIndexChanged This also will react to when the index is changed by
+ * directing the information to the correct methods as well as push the sorted list to the GUI.
+ * @param arg1
+ */
 void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 {
     Image image;

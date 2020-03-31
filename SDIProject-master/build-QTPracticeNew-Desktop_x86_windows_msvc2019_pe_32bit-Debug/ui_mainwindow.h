@@ -280,9 +280,9 @@ public:
         AddImageButton->setText(QApplication::translate("MainWindow", "Add Image", Q_NULLPTR));
         selectImage->setText(QApplication::translate("MainWindow", "Select Image", Q_NULLPTR));
         ClassLabel->setText(QApplication::translate("MainWindow", "Classifier Path", Q_NULLPTR));
-        newClass->setText(QApplication::translate("MainWindow", "New Class:", Q_NULLPTR));
-        addClassButton->setText(QApplication::translate("MainWindow", "Add Class", Q_NULLPTR));
-        selectClassButton->setText(QApplication::translate("MainWindow", "Select Class", Q_NULLPTR));
+        newClass->setText(QApplication::translate("MainWindow", "New Object:", Q_NULLPTR));
+        addClassButton->setText(QApplication::translate("MainWindow", "Add Object", Q_NULLPTR));
+        selectClassButton->setText(QApplication::translate("MainWindow", "Select Object", Q_NULLPTR));
         mouse_position_label->setText(QString());
         sortImageBy->clear();
         sortImageBy->insertItems(0, QStringList()
