@@ -203,7 +203,7 @@
           <bool>true</bool>
          </property>
          <property name="text">
-          <string>New Class:</string>
+          <string>New Object:</string>
          </property>
         </widget>
        </item>
@@ -221,14 +221,14 @@
        <item>
         <widget class="QPushButton" name="addClassButton">
          <property name="text">
-          <string>Add Class</string>
+          <string>Add Object</string>
          </property>
         </widget>
        </item>
        <item>
         <widget class="QPushButton" name="selectClassButton">
          <property name="text">
-          <string>Select Class</string>
+          <string>Select Object</string>
          </property>
         </widget>
        </item>
