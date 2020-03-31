@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
         cout<<images[i].toUtf8().constData()<<endl;
 
         filesInDirectory.push_back(fData);
-        ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("dd/MM"));
+        ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
 
 }
@@ -186,9 +186,9 @@ void MainWindow::on_selectImage_clicked()
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
     //selected->setTextColor(Qt::red);
-    QStringList a = selected->text().split("\t");
-    QString currentImage = defaultPath + "/" + a[0];
-    open(currentImage, selected->text());
+    QStringList fName = selected->text().split("\t");
+    QString currentImage = defaultPath + "/" + fName[0];
+    open(currentImage, fName[0]);
 }
 
 
@@ -265,13 +265,12 @@ void MainWindow::open(QString filePath, QString fileName)
             QDateTime modified = QFileInfo(classFilePath).lastModified();
             if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
             else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-            ui->ImagesWindow->addItem(fileName);
         }
         else
         {
             cout << "file does not exists" << endl;
             file.open(QIODevice::WriteOnly | QIODevice::Text);
-            QString dateString = currentDate.toString("dd/MM/yy");
+            QString dateString = currentDate.toString("hh:mm\tdd/MM/yy");
             file.write("Classes\n");
             file.write(dateString.toUtf8().constData());
             qDebug()<<"file created"<<endl;
@@ -358,7 +357,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
     ui->ImagesWindow->clear();
     for (int i = 0; i < filesInDirectory.size(); i++)
     {
-        QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("dd/MM");
+        QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("hh:mm\tdd/MM/yy");
         ui->ImagesWindow->addItem(concatenatedItem);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }

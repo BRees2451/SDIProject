@@ -69,9 +69,9 @@ QVector<shareClass::fileData> Image::SortAscendingName(QVector<shareClass::fileD
             for (int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j].name.toLower() > nameVector[j + 1].name.toLower()) {
-                    QString temp = nameVector[j].name;
+                    shareClass::fileData temp = nameVector[j];
                     nameVector[j] = nameVector[j + 1];
-                    nameVector[j + 1].name = temp;
+                    nameVector[j + 1] = temp;
                     swapped = true;
                 }
             }
@@ -80,13 +80,8 @@ QVector<shareClass::fileData> Image::SortAscendingName(QVector<shareClass::fileD
             }
             swapped = false;
         }
-        QVector<shareClass::fileData> sortedList;
-        for(int i=0; i < nameVector.size(); i++) {
-            QString item = nameVector[i].name;
-            sortedList.push_back({item, nameVector[i].dateModified});
-        }
-        return sortedList;
-           // sorted list needs to be displayed to the gui
+        return nameVector;
+
 }
 
 
@@ -99,9 +94,9 @@ QVector<shareClass::fileData> Image::SortDescendingName(QVector<shareClass::file
             for (int j = 0; j < nameVector.size() - 1 - i; ++j) {
 
                 if (nameVector[j].name.toLower() < nameVector[j + 1].name.toLower()) {
-                    QString temp = nameVector[j].name;
+                    shareClass::fileData temp = nameVector[j];
                     nameVector[j] = nameVector[j + 1];
-                    nameVector[j + 1].name = temp;
+                    nameVector[j + 1] = temp;
                     swapped = true;
                 }
             }
@@ -110,13 +105,7 @@ QVector<shareClass::fileData> Image::SortDescendingName(QVector<shareClass::file
             }
             swapped = false;
         }
-        QVector<shareClass::fileData> sortedList;
-        for(int i=0; i < nameVector.size(); i++) {
-            QString item = nameVector[i].name;
-            sortedList.push_back({item, nameVector[i].dateModified});
-        }
-        return sortedList;
-
+        return nameVector;
            // sorted list needs to be displayed to the gui
 }
 
@@ -129,9 +118,9 @@ QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileD
             for (int j = 0; j < dateVector.size() - 1 - i; ++j) {
 
                 if (dateVector[j].dateModified > dateVector[j + 1].dateModified) {
-                    QDateTime temp = dateVector[j].dateModified;
+                    shareClass::fileData temp = dateVector[j];
                     dateVector[j] = dateVector[j + 1];
-                    dateVector[j + 1].dateModified = temp;
+                    dateVector[j + 1] = temp;
                     swapped = true;
                 }
             }
@@ -140,12 +129,7 @@ QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileD
             }
             swapped = false;
         }
-        QVector<shareClass::fileData> sortedList;
-        for(int i=0; i < dateVector.size(); i++) {
-            QString item = dateVector[i].name;
-            sortedList.push_back({item, dateVector[i].dateModified});
-        }
-        return sortedList;
+        return dateVector;
 	// TODO - implement Image::SortAscendingDate
 	throw "Not yet implemented";
 }
@@ -159,9 +143,9 @@ QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::file
             for (int j = 0; j < dateVector.size() - 1 - i; ++j) {
 
                 if (dateVector[j].dateModified < dateVector[j + 1].dateModified) {
-                    QDateTime temp = dateVector[j].dateModified;
+                    shareClass::fileData temp = dateVector[j];
                     dateVector[j] = dateVector[j + 1];
-                    dateVector[j + 1].dateModified = temp;
+                    dateVector[j + 1] = temp;
                     swapped = true;
                 }
             }
@@ -170,12 +154,7 @@ QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::file
             }
             swapped = false;
         }
-        QVector<shareClass::fileData> sortedList;
-        for(int i=0; i < dateVector.size(); i++) {
-            QString item = dateVector[i].name;
-            sortedList.push_back({item, dateVector[i].dateModified});
-        }
-        return sortedList;
+        return dateVector;
 
 	// TODO - implement Image::SortDescendingDate
 	throw "Not yet implemented";
