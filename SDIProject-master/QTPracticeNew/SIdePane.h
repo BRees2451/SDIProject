@@ -12,7 +12,7 @@ private:
     std::vector<Image> imageList;
 
 public:
-	void DisplayClasses();
+    void DisplayObjects();
 
     void addToVector();
 

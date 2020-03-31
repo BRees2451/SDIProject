@@ -1,6 +1,6 @@
 #include "SidePane.h"
 
-void SidePane::DisplayClasses() {
+void SidePane::DisplayObjects() {
 	// TODO - implement SIdePane::DisplayClasses
 
     //Will trigger if new image is clicked
