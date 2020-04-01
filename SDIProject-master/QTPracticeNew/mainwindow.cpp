@@ -186,11 +186,22 @@ void MainWindow::on_selectImage_clicked()
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
     //selected->setTextColor(Qt::red);
-    QStringList fName = selected->text().split("\t");
-    QString currentImage = defaultPath + "/" + fName[0];
-    open(currentImage, fName[0]);
+    QStringList a = selected->text().split("\t");
+    QString currentImage = defaultPath + "/" + a[0];
+    //open(currentImage, selected->text());
+    openImage(currentImage);
 }
 
+void MainWindow::openImage(QString imagePath)
+{
+    scene->clear();
+    if (QString::compare(imagePath,QString())!= 0){
+        QImage image(imagePath);
+        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+        ui->graphicsView->setScene(scene);
+        scene->addItem(item);
+    }
+}
 
 /**
  * @brief MainWindow::open uses will pull the selected image to the scene if the image exists as well as check
