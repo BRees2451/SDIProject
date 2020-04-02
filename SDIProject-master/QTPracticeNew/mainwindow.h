@@ -64,6 +64,8 @@ private slots:
 
     void on_sortImageBy_currentIndexChanged(const QString &arg1);
 
+    void openImage(QString imagePath);
+
 private:
     void open(QString, QString);
 

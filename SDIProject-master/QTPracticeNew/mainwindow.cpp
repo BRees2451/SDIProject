@@ -34,7 +34,7 @@ MainWindow::MainWindow(QWidget *parent)
         cout<<images[i].toUtf8().constData()<<endl;
 
         filesInDirectory.push_back(fData);
-        ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("dd/MM"));
+        ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
 
 }
@@ -178,27 +178,41 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
 }
 
 
-void MainWindow::on_selectImage_clicked()
+void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
-    for (int i = 0; i < filesInDirectory.size()-1; i++)
+    for (int i = 0; i < filesInDirectory.size(); i++)
     {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
+
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
-    //selected->setTextColor(Qt::red);
-    QString currentImage = defaultPath + "/" + selected->text();
-    open(currentImage, selected->text());
+    selected->setTextColor(Qt::red);
+    QStringList a = selected->text().split("\t");
+    QString currentImage = defaultPath + "/" + a[0];
+    openImage(currentImage);
 }
 
-void MainWindow::open(QString filePath, QString fileName)
+void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
     scene->clear();
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
+    if (QString::compare(imagePath,QString())!= 0){
+        QImage image(imagePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
         scene->addItem(item);
     }
+}
+
+/**
+ * @brief MainWindow::open uses will pull the selected image to the scene if the image exists as well as check
+ * for whether it is a jpg or png. This method will also validate whether there's a txt file to match the image.
+ * If not one will be created.
+ * @param filePath
+ * @param fileName
+ */
+void MainWindow::open(QString filePath, QString fileName)
+{
+    scene->clear();
     cout << filePath.toUtf8().constData() << endl;
 
     QString containString = "QTPracticeNew/Projects/"+fileName;
@@ -218,8 +232,6 @@ void MainWindow::open(QString filePath, QString fileName)
         bool a = QFile(filePath).copy(Destination);
         if (a){
             cout << "This works" << endl;
-
-
         }
         else cout << "This doesnt work" << endl;
     }
@@ -232,7 +244,6 @@ void MainWindow::open(QString filePath, QString fileName)
     QStringList classTextFilePath = Destination.split("/");
     classTextFilePath[classTextFilePath.length()-1] = classFileName;
     classFilePath = classTextFilePath.join("/");
-    cout << classFilePath.toUtf8().constData() << endl;
 
     if (classFilePath != NULL)
     {
@@ -254,19 +265,17 @@ void MainWindow::open(QString filePath, QString fileName)
                 ui->ClassWindow->addItem(dataFromFile[i]);
             }
 
-            cout << "data in file:" << dataFromFile[0].toUtf8().constData() << endl;
             cout<<"file already created"<<endl;
             file.close();
             QDateTime modified = QFileInfo(classFilePath).lastModified();
             if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
             else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-            ui->ImagesWindow->addItem(fileName);
         }
         else
         {
             cout << "file does not exists" << endl;
             file.open(QIODevice::WriteOnly | QIODevice::Text);
-            QString dateString = currentDate.toString("dd/MM/yy");
+            QString dateString = currentDate.toString("hh:mm\tdd/MM/yy");
             file.write("Classes\n");
             file.write(dateString.toUtf8().constData());
             qDebug()<<"file created"<<endl;
@@ -282,12 +291,18 @@ void MainWindow::open(QString filePath, QString fileName)
     }
 }
 
-
+/**
+ * @brief MainWindow::on_addClassButton_clicked This will enable the textbox.
+ */
 void MainWindow::on_addClassButton_clicked()
 {
     if (imageActive) ui->newClassLineEdit->setEnabled(1);
 }
 
+/**
+ * @brief MainWindow::on_newClassLineEdit_returnPressed This will disable and clear the textbox as well as increment
+ * the class vectors and file as well as push this new information to the GUI.
+ */
 void MainWindow::on_newClassLineEdit_returnPressed()
 {
     QString text = ui->newClassLineEdit->text();
@@ -313,6 +328,11 @@ void MainWindow::on_newClassLineEdit_returnPressed()
     qDebug() << text << endl;
 }
 
+/**
+ * @brief MainWindow::on_sortClassBy_currentIndexChanged This will react to when the index is changed by directing
+ * the information to the correct methods as well as push the sorted list to the GUI.
+ * @param arg1
+ */
 void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
 {
     Image image;
@@ -326,6 +346,11 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
     }
 }
 
+/**
+ * @brief MainWindow::on_sortImageBy_currentIndexChanged This also will react to when the index is changed by
+ * directing the information to the correct methods as well as push the sorted list to the GUI.
+ * @param arg1
+ */
 void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 {
     Image image;
@@ -337,7 +362,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
     ui->ImagesWindow->clear();
     for (int i = 0; i < filesInDirectory.size(); i++)
     {
-        QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("dd/MM");
+        QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("hh:mm\tdd/MM/yy");
         ui->ImagesWindow->addItem(concatenatedItem);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
