@@ -83,5 +83,27 @@ public:
             cout << "Either a or b is NULL\n";
         }
     }
+
+
+    /**
+     * @brief search
+     * @param head
+     * @param data
+     * @return
+     * https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/
+     */
+    bool search(node* head, int data)
+    {
+        node* current = head;
+        while (current != NULL)
+        {
+            if(current->data == data)
+            {
+                return true;
+            }
+            current = current->next;
+        }
+        return false;
+    }
 };
 #endif // SHARECLASS_H
