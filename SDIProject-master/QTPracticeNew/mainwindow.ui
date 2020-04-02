@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1012</width>
+    <width>865</width>
     <height>719</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <widget class="matDisplay" name="graphicsView">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>330</x>
       <y>40</y>
       <width>521</width>
       <height>381</height>
@@ -27,7 +27,7 @@
    <widget class="QPushButton" name="ZoomInButton">
     <property name="geometry">
      <rect>
-      <x>780</x>
+      <x>630</x>
       <y>430</y>
       <width>101</width>
       <height>31</height>
@@ -40,7 +40,7 @@
    <widget class="QPushButton" name="ZoomOutButton">
     <property name="geometry">
      <rect>
-      <x>890</x>
+      <x>740</x>
       <y>430</y>
       <width>101</width>
       <height>31</height>
@@ -105,7 +105,7 @@
    <widget class="QLabel" name="label_3">
     <property name="geometry">
      <rect>
-      <x>480</x>
+      <x>330</x>
       <y>10</y>
       <width>111</width>
       <height>16</height>
@@ -118,7 +118,7 @@
    <widget class="QPushButton" name="RotateLButton">
     <property name="geometry">
      <rect>
-      <x>490</x>
+      <x>340</x>
       <y>430</y>
       <width>101</width>
       <height>31</height>
@@ -131,7 +131,7 @@
    <widget class="QPushButton" name="RotateRButton">
     <property name="geometry">
      <rect>
-      <x>600</x>
+      <x>450</x>
       <y>430</y>
       <width>101</width>
       <height>31</height>
@@ -160,6 +160,30 @@
      </item>
      <item>
       <widget class="QListWidget" name="ImagesWindow"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortImageBy">
+       <item>
+        <property name="text">
+         <string>Name (Asc)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Name (Desc)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Date (Asc)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Date (Desc)</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout">
@@ -194,6 +218,20 @@
      </item>
      <item>
       <widget class="QListWidget" name="ClassWindow"/>
+     </item>
+     <item>
+      <widget class="QComboBox" name="sortClassBy">
+       <item>
+        <property name="text">
+         <string>Name (Asc)</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Name (Desc)</string>
+        </property>
+       </item>
+      </widget>
      </item>
      <item>
       <layout class="QHBoxLayout" name="newClassLayout">
@@ -239,7 +277,7 @@
    <widget class="QLabel" name="mouse_position_label">
     <property name="geometry">
      <rect>
-      <x>810</x>
+      <x>660</x>
       <y>480</y>
       <width>181</width>
       <height>61</height>
@@ -251,56 +289,6 @@
     <property name="text">
      <string/>
     </property>
-   </widget>
-   <widget class="QComboBox" name="sortImageBy">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>10</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Name (Asc)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Name (Desc)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Date (Asc)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Date (Desc)</string>
-     </property>
-    </item>
-   </widget>
-   <widget class="QComboBox" name="sortClassBy">
-    <property name="geometry">
-     <rect>
-      <x>330</x>
-      <y>170</y>
-      <width>81</width>
-      <height>22</height>
-     </rect>
-    </property>
-    <item>
-     <property name="text">
-      <string>Name (Asc)</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>Name (Desc)</string>
-     </property>
-    </item>
    </widget>
    <widget class="QRadioButton" name="radioButton">
     <property name="geometry">
@@ -373,7 +361,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1012</width>
+     <width>865</width>
      <height>21</height>
     </rect>
    </property>

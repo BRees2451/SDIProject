@@ -178,21 +178,21 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
 }
 
 
-void MainWindow::on_selectImage_clicked()
+void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
-    for (int i = 0; i < filesInDirectory.size()-1; i++)
+    for (int i = 0; i < filesInDirectory.size(); i++)
     {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
+
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
-    //selected->setTextColor(Qt::red);
+    selected->setTextColor(Qt::red);
     QStringList a = selected->text().split("\t");
     QString currentImage = defaultPath + "/" + a[0];
-    //open(currentImage, selected->text());
     openImage(currentImage);
 }
 
-void MainWindow::openImage(QString imagePath)
+void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
     scene->clear();
     if (QString::compare(imagePath,QString())!= 0){
@@ -213,12 +213,6 @@ void MainWindow::openImage(QString imagePath)
 void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
-        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
-    }
     cout << filePath.toUtf8().constData() << endl;
 
     QString containString = "QTPracticeNew/Projects/"+fileName;

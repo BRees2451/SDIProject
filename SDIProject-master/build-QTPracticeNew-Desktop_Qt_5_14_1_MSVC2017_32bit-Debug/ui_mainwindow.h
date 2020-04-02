@@ -14,7 +14,6 @@
 #include <QtWidgets/QApplication>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
-#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
@@ -24,7 +23,6 @@
 #include <QtWidgets/QPushButton>
 #include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
-#include <QtWidgets/QTableView>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
 #include <matdisplay.h>
@@ -73,7 +71,6 @@ public:
     QPushButton *copyShape;
     QPushButton *deleteShape;
     QPushButton *resizeShape;
-    QTableView *imagePaneTable;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -83,7 +80,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
-        MainWindow->resize(814, 648);
+        MainWindow->resize(865, 719);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
         actionSave = new QAction(MainWindow);
@@ -98,37 +95,37 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         graphicsView = new matDisplay(centralwidget);
         graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
-        graphicsView->setGeometry(QRect(260, 40, 521, 381));
+        graphicsView->setGeometry(QRect(330, 40, 521, 381));
         ZoomInButton = new QPushButton(centralwidget);
         ZoomInButton->setObjectName(QString::fromUtf8("ZoomInButton"));
-        ZoomInButton->setGeometry(QRect(560, 430, 101, 31));
+        ZoomInButton->setGeometry(QRect(630, 430, 101, 31));
         ZoomOutButton = new QPushButton(centralwidget);
         ZoomOutButton->setObjectName(QString::fromUtf8("ZoomOutButton"));
-        ZoomOutButton->setGeometry(QRect(670, 430, 101, 31));
+        ZoomOutButton->setGeometry(QRect(740, 430, 101, 31));
         DrawTriangleButton = new QPushButton(centralwidget);
         DrawTriangleButton->setObjectName(QString::fromUtf8("DrawTriangleButton"));
-        DrawTriangleButton->setGeometry(QRect(20, 400, 101, 31));
+        DrawTriangleButton->setGeometry(QRect(20, 460, 101, 31));
         DrawRectButton = new QPushButton(centralwidget);
         DrawRectButton->setObjectName(QString::fromUtf8("DrawRectButton"));
-        DrawRectButton->setGeometry(QRect(130, 400, 101, 31));
+        DrawRectButton->setGeometry(QRect(130, 460, 101, 31));
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
-        DrawTrapButton->setGeometry(QRect(20, 440, 101, 31));
+        DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
         DrawHexButton = new QPushButton(centralwidget);
         DrawHexButton->setObjectName(QString::fromUtf8("DrawHexButton"));
-        DrawHexButton->setGeometry(QRect(130, 440, 101, 31));
+        DrawHexButton->setGeometry(QRect(130, 500, 101, 31));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
-        label_3->setGeometry(QRect(260, 10, 111, 16));
+        label_3->setGeometry(QRect(330, 10, 111, 16));
         RotateLButton = new QPushButton(centralwidget);
         RotateLButton->setObjectName(QString::fromUtf8("RotateLButton"));
-        RotateLButton->setGeometry(QRect(270, 430, 101, 31));
+        RotateLButton->setGeometry(QRect(340, 430, 101, 31));
         RotateRButton = new QPushButton(centralwidget);
         RotateRButton->setObjectName(QString::fromUtf8("RotateRButton"));
-        RotateRButton->setGeometry(QRect(380, 430, 101, 31));
+        RotateRButton->setGeometry(QRect(450, 430, 101, 31));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
-        verticalLayoutWidget->setGeometry(QRect(10, 10, 231, 381));
+        verticalLayoutWidget->setGeometry(QRect(10, 10, 311, 431));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
@@ -219,30 +216,27 @@ public:
 
         mouse_position_label = new QLabel(centralwidget);
         mouse_position_label->setObjectName(QString::fromUtf8("mouse_position_label"));
-        mouse_position_label->setGeometry(QRect(590, 480, 181, 61));
+        mouse_position_label->setGeometry(QRect(660, 480, 181, 61));
         mouse_position_label->setStyleSheet(QString::fromUtf8("background-color: rgb(216, 216, 216);"));
         radioButton = new QRadioButton(centralwidget);
         radioButton->setObjectName(QString::fromUtf8("radioButton"));
-        radioButton->setGeometry(QRect(40, 520, 82, 17));
+        radioButton->setGeometry(QRect(30, 580, 82, 17));
         pasteShape = new QPushButton(centralwidget);
         pasteShape->setObjectName(QString::fromUtf8("pasteShape"));
-        pasteShape->setGeometry(QRect(140, 510, 75, 23));
+        pasteShape->setGeometry(QRect(130, 570, 75, 23));
         copyShape = new QPushButton(centralwidget);
         copyShape->setObjectName(QString::fromUtf8("copyShape"));
-        copyShape->setGeometry(QRect(140, 480, 75, 23));
+        copyShape->setGeometry(QRect(130, 540, 75, 23));
         deleteShape = new QPushButton(centralwidget);
         deleteShape->setObjectName(QString::fromUtf8("deleteShape"));
-        deleteShape->setGeometry(QRect(140, 540, 75, 23));
+        deleteShape->setGeometry(QRect(130, 600, 75, 23));
         resizeShape = new QPushButton(centralwidget);
         resizeShape->setObjectName(QString::fromUtf8("resizeShape"));
-        resizeShape->setGeometry(QRect(140, 570, 75, 23));
-        imagePaneTable = new QTableView(centralwidget);
-        imagePaneTable->setObjectName(QString::fromUtf8("imagePaneTable"));
-        imagePaneTable->setGeometry(QRect(280, 480, 231, 121));
+        resizeShape->setGeometry(QRect(130, 630, 75, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
-        menubar->setGeometry(QRect(0, 0, 814, 21));
+        menubar->setGeometry(QRect(0, 0, 865, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QString::fromUtf8("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -286,7 +280,7 @@ public:
         sortImageBy->setItemText(0, QCoreApplication::translate("MainWindow", "Name (Asc)", nullptr));
         sortImageBy->setItemText(1, QCoreApplication::translate("MainWindow", "Name (Desc)", nullptr));
         sortImageBy->setItemText(2, QCoreApplication::translate("MainWindow", "Date (Asc)", nullptr));
-        sortImageBy->setItemText(3, QCoreApplication::translate("MainWindow", "Date( Desc)", nullptr));
+        sortImageBy->setItemText(3, QCoreApplication::translate("MainWindow", "Date (Desc)", nullptr));
 
         AddImageButton->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
         selectImage->setText(QCoreApplication::translate("MainWindow", "Select Image", nullptr));
