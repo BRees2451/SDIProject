@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../../../SDIProjecttoEdit/SDIProject-master/QTPracticeNew/mainwindow.h"
+#include "../../QTPracticeNew/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
@@ -45,13 +45,13 @@ QT_MOC_LITERAL(9, 189, 24), // "on_RotateLButton_clicked"
 QT_MOC_LITERAL(10, 214, 24), // "on_RotateRButton_clicked"
 QT_MOC_LITERAL(11, 239, 25), // "on_AddImageButton_clicked"
 QT_MOC_LITERAL(12, 265, 22), // "on_selectImage_clicked"
-QT_MOC_LITERAL(13, 288, 9), // "openImage"
-QT_MOC_LITERAL(14, 298, 9), // "imagePath"
-QT_MOC_LITERAL(15, 308, 25), // "on_addClassButton_clicked"
-QT_MOC_LITERAL(16, 334, 33), // "on_newClassLineEdit_returnPre..."
-QT_MOC_LITERAL(17, 368, 34), // "on_sortClassBy_currentIndexCh..."
-QT_MOC_LITERAL(18, 403, 4), // "arg1"
-QT_MOC_LITERAL(19, 408, 34), // "on_sortImageBy_currentIndexCh..."
+QT_MOC_LITERAL(13, 288, 25), // "on_addClassButton_clicked"
+QT_MOC_LITERAL(14, 314, 33), // "on_newClassLineEdit_returnPre..."
+QT_MOC_LITERAL(15, 348, 34), // "on_sortClassBy_currentIndexCh..."
+QT_MOC_LITERAL(16, 383, 4), // "arg1"
+QT_MOC_LITERAL(17, 388, 34), // "on_sortImageBy_currentIndexCh..."
+QT_MOC_LITERAL(18, 423, 9), // "openImage"
+QT_MOC_LITERAL(19, 433, 9), // "imagePath"
 QT_MOC_LITERAL(20, 443, 17), // "showMousePosition"
 QT_MOC_LITERAL(21, 461, 7), // "QPoint&"
 QT_MOC_LITERAL(22, 469, 3), // "pos"
@@ -69,13 +69,13 @@ QT_MOC_LITERAL(25, 502, 11) // "mouse_event"
     "on_RotateLButton_clicked\0"
     "on_RotateRButton_clicked\0"
     "on_AddImageButton_clicked\0"
-    "on_selectImage_clicked\0openImage\0"
-    "imagePath\0on_addClassButton_clicked\0"
+    "on_selectImage_clicked\0on_addClassButton_clicked\0"
     "on_newClassLineEdit_returnPressed\0"
     "on_sortClassBy_currentIndexChanged\0"
     "arg1\0on_sortImageBy_currentIndexChanged\0"
-    "showMousePosition\0QPoint&\0pos\0"
-    "mousePressEvent\0QMouseEvent*\0mouse_event"
+    "openImage\0imagePath\0showMousePosition\0"
+    "QPoint&\0pos\0mousePressEvent\0QMouseEvent*\0"
+    "mouse_event"
 };
 #undef QT_MOC_LITERAL
 
@@ -104,11 +104,11 @@ static const uint qt_meta_data_MainWindow[] = {
       10,    0,  112,    2, 0x08 /* Private */,
       11,    0,  113,    2, 0x08 /* Private */,
       12,    0,  114,    2, 0x08 /* Private */,
-      13,    1,  115,    2, 0x08 /* Private */,
-      15,    0,  118,    2, 0x08 /* Private */,
-      16,    0,  119,    2, 0x08 /* Private */,
+      13,    0,  115,    2, 0x08 /* Private */,
+      14,    0,  116,    2, 0x08 /* Private */,
+      15,    1,  117,    2, 0x08 /* Private */,
       17,    1,  120,    2, 0x08 /* Private */,
-      19,    1,  123,    2, 0x08 /* Private */,
+      18,    1,  123,    2, 0x08 /* Private */,
       20,    1,  126,    2, 0x0a /* Public */,
       23,    1,  129,    2, 0x0a /* Public */,
 
@@ -124,11 +124,11 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   14,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   18,
-    QMetaType::Void, QMetaType::QString,   18,
+    QMetaType::Void, QMetaType::QString,   16,
+    QMetaType::Void, QMetaType::QString,   16,
+    QMetaType::Void, QMetaType::QString,   19,
     QMetaType::Void, 0x80000000 | 21,   22,
     QMetaType::Void, 0x80000000 | 24,   25,
 
@@ -152,11 +152,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 8: _t->on_RotateRButton_clicked(); break;
         case 9: _t->on_AddImageButton_clicked(); break;
         case 10: _t->on_selectImage_clicked(); break;
-        case 11: _t->openImage((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 12: _t->on_addClassButton_clicked(); break;
-        case 13: _t->on_newClassLineEdit_returnPressed(); break;
-        case 14: _t->on_sortClassBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 15: _t->on_sortImageBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 11: _t->on_addClassButton_clicked(); break;
+        case 12: _t->on_newClassLineEdit_returnPressed(); break;
+        case 13: _t->on_sortClassBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 14: _t->on_sortImageBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 15: _t->openImage((*reinterpret_cast< QString(*)>(_a[1]))); break;
         case 16: _t->showMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         case 17: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;

@@ -213,12 +213,6 @@ void MainWindow::openImage(QString imagePath)
 void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
-        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
-    }
     cout << filePath.toUtf8().constData() << endl;
 
     QString containString = "QTPracticeNew/Projects/"+fileName;
