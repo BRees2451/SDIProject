@@ -52,13 +52,18 @@ public:
     QPushButton *RotateRButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *newClassLayout_3;
+    QLabel *newClass_3;
+    QLineEdit *newClassLineEdit_3;
     QLabel *ImagesLabel;
     QListWidget *ImagesWindow;
+    QComboBox *sortImageBy;
     QHBoxLayout *horizontalLayout;
     QPushButton *AddImageButton;
     QPushButton *selectImage;
     QLabel *ClassLabel;
     QListWidget *ClassWindow;
+    QComboBox *sortClassBy;
     QHBoxLayout *newClassLayout;
     QLabel *newClass;
     QLineEdit *newClassLineEdit;
@@ -66,8 +71,6 @@ public:
     QPushButton *addClassButton;
     QPushButton *selectClassButton;
     QLabel *mouse_position_label;
-    QComboBox *sortImageBy;
-    QComboBox *sortClassBy;
     QRadioButton *radioButton;
     QPushButton *pasteShape;
     QPushButton *copyShape;
@@ -82,7 +85,7 @@ public:
     {
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QStringLiteral("MainWindow"));
-        MainWindow->resize(1012, 719);
+        MainWindow->resize(865, 719);
         actionOpen = new QAction(MainWindow);
         actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionSave = new QAction(MainWindow);
@@ -97,13 +100,13 @@ public:
         centralwidget->setObjectName(QStringLiteral("centralwidget"));
         graphicsView = new matDisplay(centralwidget);
         graphicsView->setObjectName(QStringLiteral("graphicsView"));
-        graphicsView->setGeometry(QRect(480, 40, 521, 381));
+        graphicsView->setGeometry(QRect(330, 40, 521, 381));
         ZoomInButton = new QPushButton(centralwidget);
         ZoomInButton->setObjectName(QStringLiteral("ZoomInButton"));
-        ZoomInButton->setGeometry(QRect(780, 430, 101, 31));
+        ZoomInButton->setGeometry(QRect(630, 430, 101, 31));
         ZoomOutButton = new QPushButton(centralwidget);
         ZoomOutButton->setObjectName(QStringLiteral("ZoomOutButton"));
-        ZoomOutButton->setGeometry(QRect(890, 430, 101, 31));
+        ZoomOutButton->setGeometry(QRect(740, 430, 101, 31));
         DrawTriangleButton = new QPushButton(centralwidget);
         DrawTriangleButton->setObjectName(QStringLiteral("DrawTriangleButton"));
         DrawTriangleButton->setGeometry(QRect(20, 460, 101, 31));
@@ -118,19 +121,36 @@ public:
         DrawHexButton->setGeometry(QRect(130, 500, 101, 31));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QStringLiteral("label_3"));
-        label_3->setGeometry(QRect(480, 10, 111, 16));
+        label_3->setGeometry(QRect(330, 10, 111, 16));
         RotateLButton = new QPushButton(centralwidget);
         RotateLButton->setObjectName(QStringLiteral("RotateLButton"));
-        RotateLButton->setGeometry(QRect(490, 430, 101, 31));
+        RotateLButton->setGeometry(QRect(340, 430, 101, 31));
         RotateRButton = new QPushButton(centralwidget);
         RotateRButton->setObjectName(QStringLiteral("RotateRButton"));
-        RotateRButton->setGeometry(QRect(600, 430, 101, 31));
+        RotateRButton->setGeometry(QRect(450, 430, 101, 31));
         verticalLayoutWidget = new QWidget(centralwidget);
         verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 10, 311, 431));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        newClassLayout_3 = new QHBoxLayout();
+        newClassLayout_3->setObjectName(QStringLiteral("newClassLayout_3"));
+        newClass_3 = new QLabel(verticalLayoutWidget);
+        newClass_3->setObjectName(QStringLiteral("newClass_3"));
+        newClass_3->setEnabled(true);
+
+        newClassLayout_3->addWidget(newClass_3);
+
+        newClassLineEdit_3 = new QLineEdit(verticalLayoutWidget);
+        newClassLineEdit_3->setObjectName(QStringLiteral("newClassLineEdit_3"));
+        newClassLineEdit_3->setEnabled(false);
+
+        newClassLayout_3->addWidget(newClassLineEdit_3);
+
+
+        verticalLayout->addLayout(newClassLayout_3);
+
         ImagesLabel = new QLabel(verticalLayoutWidget);
         ImagesLabel->setObjectName(QStringLiteral("ImagesLabel"));
 
@@ -140,6 +160,11 @@ public:
         ImagesWindow->setObjectName(QStringLiteral("ImagesWindow"));
 
         verticalLayout->addWidget(ImagesWindow);
+
+        sortImageBy = new QComboBox(verticalLayoutWidget);
+        sortImageBy->setObjectName(QStringLiteral("sortImageBy"));
+
+        verticalLayout->addWidget(sortImageBy);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(5);
@@ -167,6 +192,11 @@ public:
         ClassWindow->setObjectName(QStringLiteral("ClassWindow"));
 
         verticalLayout->addWidget(ClassWindow);
+
+        sortClassBy = new QComboBox(verticalLayoutWidget);
+        sortClassBy->setObjectName(QStringLiteral("sortClassBy"));
+
+        verticalLayout->addWidget(sortClassBy);
 
         newClassLayout = new QHBoxLayout();
         newClassLayout->setObjectName(QStringLiteral("newClassLayout"));
@@ -202,14 +232,8 @@ public:
 
         mouse_position_label = new QLabel(centralwidget);
         mouse_position_label->setObjectName(QStringLiteral("mouse_position_label"));
-        mouse_position_label->setGeometry(QRect(810, 480, 181, 61));
+        mouse_position_label->setGeometry(QRect(660, 480, 181, 61));
         mouse_position_label->setStyleSheet(QStringLiteral("background-color: rgb(216, 216, 216);"));
-        sortImageBy = new QComboBox(centralwidget);
-        sortImageBy->setObjectName(QStringLiteral("sortImageBy"));
-        sortImageBy->setGeometry(QRect(330, 10, 81, 22));
-        sortClassBy = new QComboBox(centralwidget);
-        sortClassBy->setObjectName(QStringLiteral("sortClassBy"));
-        sortClassBy->setGeometry(QRect(330, 170, 81, 22));
         radioButton = new QRadioButton(centralwidget);
         radioButton->setObjectName(QStringLiteral("radioButton"));
         radioButton->setGeometry(QRect(30, 580, 82, 17));
@@ -228,7 +252,7 @@ public:
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
-        menubar->setGeometry(QRect(0, 0, 1012, 21));
+        menubar->setGeometry(QRect(0, 0, 865, 21));
         menuFile = new QMenu(menubar);
         menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menubar);
@@ -268,14 +292,8 @@ public:
         label_3->setText(QApplication::translate("MainWindow", "Image Pane", Q_NULLPTR));
         RotateLButton->setText(QApplication::translate("MainWindow", "Rotate Left", Q_NULLPTR));
         RotateRButton->setText(QApplication::translate("MainWindow", "Rotate Right", Q_NULLPTR));
+        newClass_3->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
         ImagesLabel->setText(QApplication::translate("MainWindow", "Images", Q_NULLPTR));
-        AddImageButton->setText(QApplication::translate("MainWindow", "Add Image", Q_NULLPTR));
-        selectImage->setText(QApplication::translate("MainWindow", "Select Image", Q_NULLPTR));
-        ClassLabel->setText(QApplication::translate("MainWindow", "Classifier Path", Q_NULLPTR));
-        newClass->setText(QApplication::translate("MainWindow", "New Object:", Q_NULLPTR));
-        addClassButton->setText(QApplication::translate("MainWindow", "Add Object", Q_NULLPTR));
-        selectClassButton->setText(QApplication::translate("MainWindow", "Select Object", Q_NULLPTR));
-        mouse_position_label->setText(QString());
         sortImageBy->clear();
         sortImageBy->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Name (Asc)", Q_NULLPTR)
@@ -283,11 +301,18 @@ public:
          << QApplication::translate("MainWindow", "Date (Asc)", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Date (Desc)", Q_NULLPTR)
         );
+        AddImageButton->setText(QApplication::translate("MainWindow", "Add Image", Q_NULLPTR));
+        selectImage->setText(QApplication::translate("MainWindow", "Select Image", Q_NULLPTR));
+        ClassLabel->setText(QApplication::translate("MainWindow", "Classifier Path", Q_NULLPTR));
         sortClassBy->clear();
         sortClassBy->insertItems(0, QStringList()
          << QApplication::translate("MainWindow", "Name (Asc)", Q_NULLPTR)
          << QApplication::translate("MainWindow", "Name (Desc)", Q_NULLPTR)
         );
+        newClass->setText(QApplication::translate("MainWindow", "New Object:", Q_NULLPTR));
+        addClassButton->setText(QApplication::translate("MainWindow", "Add Object", Q_NULLPTR));
+        selectClassButton->setText(QApplication::translate("MainWindow", "Select Object", Q_NULLPTR));
+        mouse_position_label->setText(QString());
         radioButton->setText(QApplication::translate("MainWindow", "Select Shape", Q_NULLPTR));
         pasteShape->setText(QApplication::translate("MainWindow", "Paste", Q_NULLPTR));
         copyShape->setText(QApplication::translate("MainWindow", "Copy", Q_NULLPTR));
