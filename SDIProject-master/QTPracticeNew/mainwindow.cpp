@@ -178,9 +178,9 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
 }
 
 
-void MainWindow::on_selectImage_clicked()
+void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
-    for (int i = 0; i < filesInDirectory.size()-1; i++)
+    for (int i = 0; i < filesInDirectory.size(); i++)
     {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
 
@@ -192,7 +192,7 @@ void MainWindow::on_selectImage_clicked()
     openImage(currentImage);
 }
 
-void MainWindow::openImage(QString imagePath)
+void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
     scene->clear();
     if (QString::compare(imagePath,QString())!= 0){
