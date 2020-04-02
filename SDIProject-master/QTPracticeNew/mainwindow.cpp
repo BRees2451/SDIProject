@@ -183,12 +183,12 @@ void MainWindow::on_selectImage_clicked()
     for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
+
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
-    //selected->setTextColor(Qt::red);
+    selected->setTextColor(Qt::red);
     QStringList a = selected->text().split("\t");
     QString currentImage = defaultPath + "/" + a[0];
-    //open(currentImage, selected->text());
     openImage(currentImage);
 }
 
