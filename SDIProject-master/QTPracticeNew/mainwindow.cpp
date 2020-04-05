@@ -91,16 +91,6 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::on_AddImageButton_clicked()
 {
     on_actionOpen_triggered();
-    /*
-    QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
-    QFileInfo info(filePath);
-    fileName = info.fileName();
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
-        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
-    }*/
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -250,7 +240,7 @@ void MainWindow::open(QString filePath, QString fileName)
 
     //Will minipulate the string to give a .txt file path
     QStringList absoluteFileName = fileName.split(".");
-    absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
+    absoluteFileName[0] = absoluteFileName[0] + ".names";
     absoluteFileName[1] = "txt";
     classFileName = absoluteFileName.join(".");
 
@@ -272,7 +262,8 @@ void MainWindow::open(QString filePath, QString fileName)
             }
             //Add the classes to the classWindow
             ui->ClassWindow->clear();
-            for(int i = 1; i < dataFromFile.length()-1;i++)
+            classesInFile.clear();
+            for(int i = 1; i < dataFromFile.length();i++)
             {
                 classesInFile.push_back({dataFromFile[i], QDateTime::currentDateTime()});
                 ui->ClassWindow->addItem(dataFromFile[i]);
@@ -286,9 +277,7 @@ void MainWindow::open(QString filePath, QString fileName)
             //Will create a file at the given path as well as make the new file conform to the display we are using
             cout << "file does not exist" << endl;
             file.open(QIODevice::WriteOnly | QIODevice::Text);
-            QString dateString = currentDate.toString("hh:mm\tdd/MM/yy");
             file.write("Classes\n");
-            file.write(dateString.toUtf8().constData());
             qDebug()<<"file created"<<endl;
             file.close();
             filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
