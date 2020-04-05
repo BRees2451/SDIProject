@@ -180,8 +180,9 @@ void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
 
 void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
-    for (int i = 0; i < filesInDirectory.size(); i++)
+    for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
+        qDebug() << ui->ImagesWindow->item(i)->text() << endl;
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
 
     }
@@ -189,7 +190,7 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
     selected->setTextColor(Qt::red);
     QStringList a = selected->text().split("\t");
     QString currentImage = defaultPath + "/" + a[0];
-    openImage(currentImage);
+    open(currentImage, a[0]);
 }
 
 void MainWindow::openImage(QString imagePath) //Opens image onto pane
@@ -213,11 +214,21 @@ void MainWindow::openImage(QString imagePath) //Opens image onto pane
 void MainWindow::open(QString filePath, QString fileName)
 {
     scene->clear();
+    //Put this back because if someone is looking to open an image then they are planning on editting it
+    //We can discuss about this later.
+    if (QString::compare(filePath,QString())!= 0){
+           QImage image(filePath);
+           item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+           ui->graphicsView->setScene(scene);
+           scene->addItem(item);
+       }
     cout << filePath.toUtf8().constData() << endl;
 
-    QString containString = "QTPracticeNew/Projects/"+fileName;
+    QString containString = "/Projects/"+fileName;
 
     QString Destination;
+
+    //Will check whether file is in 'Projects' folder
     if (filePath.contains(containString))
     {
         cout << "File is in directory" << endl;
@@ -225,10 +236,11 @@ void MainWindow::open(QString filePath, QString fileName)
     }
     else
     {
-
+        //Will construct a destination
         Destination = defaultPath + "/" + fileName;
         cout<< "File isn't in directory" << endl;
 
+        //Copy the file to the destination and check
         bool a = QFile(filePath).copy(Destination);
         if (a){
             cout << "This works" << endl;
@@ -236,18 +248,18 @@ void MainWindow::open(QString filePath, QString fileName)
         else cout << "This doesnt work" << endl;
     }
 
+    //Will minipulate the string to give a .txt file path
     QStringList absoluteFileName = fileName.split(".");
     absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
     absoluteFileName[1] = "txt";
     classFileName = absoluteFileName.join(".");
 
-    QStringList classTextFilePath = Destination.split("/");
-    classTextFilePath[classTextFilePath.length()-1] = classFileName;
-    classFilePath = classTextFilePath.join("/");
+    classFilePath = Destination + "/Projects/" + classFileName;
 
     if (classFilePath != NULL)
     {
         QFile file(classFilePath);
+        //If file exists it will read the data into a list
         if(QFileInfo::exists(classFilePath))
         {
             cout << "file exists" << endl;
@@ -258,6 +270,7 @@ void MainWindow::open(QString filePath, QString fileName)
                 QString line = in.readLine();
                 dataFromFile.append(line);
             }
+            //Add the classes to the classWindow
             ui->ClassWindow->clear();
             for(int i = 1; i < dataFromFile.length()-1;i++)
             {
@@ -267,13 +280,11 @@ void MainWindow::open(QString filePath, QString fileName)
 
             cout<<"file already created"<<endl;
             file.close();
-            QDateTime modified = QFileInfo(classFilePath).lastModified();
-            if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
-            else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
         }
         else
         {
-            cout << "file does not exists" << endl;
+            //Will create a file at the given path as well as make the new file conform to the display we are using
+            cout << "file does not exist" << endl;
             file.open(QIODevice::WriteOnly | QIODevice::Text);
             QString dateString = currentDate.toString("hh:mm\tdd/MM/yy");
             file.write("Classes\n");
@@ -281,7 +292,8 @@ void MainWindow::open(QString filePath, QString fileName)
             qDebug()<<"file created"<<endl;
             file.close();
             filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-            ui->ImagesWindow->addItem(fileName);
+            QString itemString = fileName+"\t\t" + QDateTime::currentDateTime().toString("hh:mm\tdd/MM/yy");
+            ui->ImagesWindow->addItem(itemString);
         }
         imageActive = true;
     }
