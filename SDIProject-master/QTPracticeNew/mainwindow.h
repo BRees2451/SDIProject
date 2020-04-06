@@ -7,6 +7,7 @@
 #include<QtGui>
 #include<QFileDialog>
 #include <QtCore>
+#include <vector>
 #include <iostream>
 #include "shareclass.h"
 #include "Image.h"
@@ -66,6 +67,8 @@ private slots:
 
     void openImage(QString imagePath);
 
+    void on_resizeShape_clicked();
+
 private:
     void open(QString, QString);
 
@@ -87,6 +90,8 @@ private:
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
+    //A vector to contain the shapes
+    QVector<QPolygonF> ShapeList;
 
 
     QVector<shareClass::fileData> filesInDirectory;

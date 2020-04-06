@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.14.1)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.2)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
@@ -13,7 +13,7 @@
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.14.1. It"
+#error "This file was generated using the moc from 5.13.2. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -22,8 +22,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[26];
-    char stringdata0[514];
+    QByteArrayData data[27];
+    char stringdata0[537];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -52,12 +52,13 @@ QT_MOC_LITERAL(16, 383, 4), // "arg1"
 QT_MOC_LITERAL(17, 388, 34), // "on_sortImageBy_currentIndexCh..."
 QT_MOC_LITERAL(18, 423, 9), // "openImage"
 QT_MOC_LITERAL(19, 433, 9), // "imagePath"
-QT_MOC_LITERAL(20, 443, 17), // "showMousePosition"
-QT_MOC_LITERAL(21, 461, 7), // "QPoint&"
-QT_MOC_LITERAL(22, 469, 3), // "pos"
-QT_MOC_LITERAL(23, 473, 15), // "mousePressEvent"
-QT_MOC_LITERAL(24, 489, 12), // "QMouseEvent*"
-QT_MOC_LITERAL(25, 502, 11) // "mouse_event"
+QT_MOC_LITERAL(20, 443, 22), // "on_resizeShape_clicked"
+QT_MOC_LITERAL(21, 466, 17), // "showMousePosition"
+QT_MOC_LITERAL(22, 484, 7), // "QPoint&"
+QT_MOC_LITERAL(23, 492, 3), // "pos"
+QT_MOC_LITERAL(24, 496, 15), // "mousePressEvent"
+QT_MOC_LITERAL(25, 512, 12), // "QMouseEvent*"
+QT_MOC_LITERAL(26, 525, 11) // "mouse_event"
 
     },
     "MainWindow\0on_ZoomInButton_clicked\0\0"
@@ -73,9 +74,9 @@ QT_MOC_LITERAL(25, 502, 11) // "mouse_event"
     "on_newClassLineEdit_returnPressed\0"
     "on_sortClassBy_currentIndexChanged\0"
     "arg1\0on_sortImageBy_currentIndexChanged\0"
-    "openImage\0imagePath\0showMousePosition\0"
-    "QPoint&\0pos\0mousePressEvent\0QMouseEvent*\0"
-    "mouse_event"
+    "openImage\0imagePath\0on_resizeShape_clicked\0"
+    "showMousePosition\0QPoint&\0pos\0"
+    "mousePressEvent\0QMouseEvent*\0mouse_event"
 };
 #undef QT_MOC_LITERAL
 
@@ -85,7 +86,7 @@ static const uint qt_meta_data_MainWindow[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      18,   14, // methods
+      19,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -93,24 +94,25 @@ static const uint qt_meta_data_MainWindow[] = {
        0,       // signalCount
 
  // slots: name, argc, parameters, tag, flags
-       1,    0,  104,    2, 0x08 /* Private */,
-       3,    0,  105,    2, 0x08 /* Private */,
-       4,    0,  106,    2, 0x08 /* Private */,
-       5,    0,  107,    2, 0x08 /* Private */,
-       6,    0,  108,    2, 0x08 /* Private */,
-       7,    0,  109,    2, 0x08 /* Private */,
-       8,    0,  110,    2, 0x08 /* Private */,
-       9,    0,  111,    2, 0x08 /* Private */,
-      10,    0,  112,    2, 0x08 /* Private */,
-      11,    0,  113,    2, 0x08 /* Private */,
-      12,    0,  114,    2, 0x08 /* Private */,
-      13,    0,  115,    2, 0x08 /* Private */,
-      14,    0,  116,    2, 0x08 /* Private */,
-      15,    1,  117,    2, 0x08 /* Private */,
-      17,    1,  120,    2, 0x08 /* Private */,
-      18,    1,  123,    2, 0x08 /* Private */,
-      20,    1,  126,    2, 0x0a /* Public */,
-      23,    1,  129,    2, 0x0a /* Public */,
+       1,    0,  109,    2, 0x08 /* Private */,
+       3,    0,  110,    2, 0x08 /* Private */,
+       4,    0,  111,    2, 0x08 /* Private */,
+       5,    0,  112,    2, 0x08 /* Private */,
+       6,    0,  113,    2, 0x08 /* Private */,
+       7,    0,  114,    2, 0x08 /* Private */,
+       8,    0,  115,    2, 0x08 /* Private */,
+       9,    0,  116,    2, 0x08 /* Private */,
+      10,    0,  117,    2, 0x08 /* Private */,
+      11,    0,  118,    2, 0x08 /* Private */,
+      12,    0,  119,    2, 0x08 /* Private */,
+      13,    0,  120,    2, 0x08 /* Private */,
+      14,    0,  121,    2, 0x08 /* Private */,
+      15,    1,  122,    2, 0x08 /* Private */,
+      17,    1,  125,    2, 0x08 /* Private */,
+      18,    1,  128,    2, 0x08 /* Private */,
+      20,    0,  131,    2, 0x08 /* Private */,
+      21,    1,  132,    2, 0x0a /* Public */,
+      24,    1,  135,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -129,8 +131,9 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void, QMetaType::QString,   16,
     QMetaType::Void, QMetaType::QString,   16,
     QMetaType::Void, QMetaType::QString,   19,
-    QMetaType::Void, 0x80000000 | 21,   22,
-    QMetaType::Void, 0x80000000 | 24,   25,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 22,   23,
+    QMetaType::Void, 0x80000000 | 25,   26,
 
        0        // eod
 };
@@ -157,15 +160,16 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 13: _t->on_sortClassBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 14: _t->on_sortImageBy_currentIndexChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
         case 15: _t->openImage((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 16: _t->showMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
-        case 17: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 16: _t->on_resizeShape_clicked(); break;
+        case 17: _t->showMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
+        case 18: _t->mousePressEvent((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
         default: ;
         }
     }
 }
 
 QT_INIT_METAOBJECT const QMetaObject MainWindow::staticMetaObject = { {
-    QMetaObject::SuperData::link<QMainWindow::staticMetaObject>(),
+    &QMainWindow::staticMetaObject,
     qt_meta_stringdata_MainWindow.data,
     qt_meta_data_MainWindow,
     qt_static_metacall,
@@ -193,13 +197,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 18)
+        if (_id < 19)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 18;
+        _id -= 19;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 18)
+        if (_id < 19)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 18;
+        _id -= 19;
     }
     return _id;
 }

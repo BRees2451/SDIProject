@@ -113,10 +113,23 @@ void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
     //scene = new QGraphicsScene(this);
     //ui->graphicsView->setScene(scene);
 
+    int width = 500;
+    int height = 500;
+    QPolygonF Rectangle;
+
+    Rectangle.append(QPointF(300,300));
+    Rectangle.append(QPointF(300+width,300));
+    Rectangle.append(QPointF(300+width,300+height));
+    Rectangle.append(QPointF(300,300+height));
+
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    rectangle = scene->addRect(300,300,500,500,blackPen);
-    rectangle->setFlag(QGraphicsItem::ItemIsMovable);
+
+    /*rectangle = scene->addRect(300,300,500,500,blackPen);
+    rectangle->setFlag(QGraphicsItem::ItemIsMovable);*/
+
+    scene->addPolygon(Rectangle,blackPen);
+    ShapeList.append(Rectangle);
 }
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
@@ -129,7 +142,9 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
     Triangle.append(QPointF(-10.,0));
 
     //QGraphicsPolygonItem* pTriangleItem = ui->(Triangle);
-   /* //////////////////////// ////////////////////////////////////////////shapelist add triangle1 */
+    scene->addPolygon(Triangle);
+    //adding triangle to shapelist to be stored for further manipluation
+    ShapeList.append(Triangle);
 }
 
 void MainWindow::on_RotateLButton_clicked()
@@ -367,4 +382,11 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
         ui->ImagesWindow->addItem(concatenatedItem);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
+}
+
+void MainWindow:: on_resizeShape_clicked()
+{
+    UserShapeOperation user;
+    user.USize();
+
 }
