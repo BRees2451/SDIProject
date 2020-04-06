@@ -143,17 +143,114 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
-    //Draw Triangle9*
-    QPolygonF Triangle;
-    Triangle.append(QPointF(-10.,0));
-    Triangle.append(QPointF(0.,-10));
-    Triangle.append(QPointF(10.,0));
-    Triangle.append(QPointF(-10.,0));
+    int xstart = 0;
+    int ystart = 0;
+    int xend = 0;
+    int yend = 0;
 
-    //QGraphicsPolygonItem* pTriangleItem = ui->(Triangle);
-    scene->addPolygon(Triangle);
-    //adding triangle to shapelist to be stored for further manipluation
+    //if (mouse_event == mousePressEvent())
+    //{
+    //    xstart = mouse_event->x();
+    //    ystart = mouse_event->y();
+    //}
+    //if (mouse_event==mouseReleaseEvent())
+    //{
+    //    xend = mouse_event->x();
+    //    yend = mouse_event->y();
+    //}
+
+    int halfway = xstart + ((xend-xstart)/2);
+
+    QPolygonF Triangle;
+    Triangle.append(QPointF(xstart,yend));
+    Triangle.append(QPointF(xend,yend));
+    Triangle.append(QPointF(halfway,ystart));
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    scene->addPolygon(Triangle,blackPen);
     ShapeList.append(Triangle);
+}
+
+void MainWindow::on_DrawTrapButton_clicked()
+{
+    int xstart = 0;
+    int ystart = 0;
+    int xend = 0;
+    int yend = 0;
+
+    //if (mouse_event == mousePressEvent())
+    //{
+    //    xstart = mouse_event->x();
+    //    ystart = mouse_event->y();
+    //}
+    //if (mouse_event==mouseReleaseEvent())
+    //{
+    //    xend = mouse_event->x();
+    //    yend = mouse_event->y();
+    //}
+
+    int trapindent = (xend-xstart)/4;
+
+    QPolygonF Trapezium;
+    Trapezium.append(QPointF(xstart + trapindent, ystart));
+    Trapezium.append(QPointF(xend - trapindent, ystart));
+    Trapezium.append(QPointF(xend,yend));
+    Trapezium.append(QPointF(xstart,yend));
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    scene->addPolygon(Trapezium,blackPen);
+    ShapeList.append(Trapezium);
+}
+
+void MainWindow::on_DrawPolyButton_clicked()
+
+{
+    int x[7];
+    int y[7];
+    int finalpoint = 0;
+
+    QMessageBox msg;
+    msg.setText("Please click up to 8 points.");
+    msg.exec();
+
+    for (int i = 0; i < 7;)
+    {
+
+       // if(mouse_event->button() == Qt::LeftButton)
+        //{
+          //  QPoint mouse_pos = mouse_event->pos();
+            //x[i] = mouse_pos.x();
+            //y[i] = mouse_pos.y();
+            //i++;
+        //}
+
+        if (i==6)
+        {
+        msg.setText("You have picked the maximum of points, the last one will join back to the first one.");
+        msg.exec();
+        }
+
+        // will add function to identify final point when it is clicked on/near to the original
+    }
+
+    QPolygonF Polygon;
+
+    for(int i = 0; i < finalpoint; i++)
+    {
+        Polygon.append(QPointF(x[i],y[i]));
+    }
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    scene->addPolygon(Polygon,blackPen);
+    ShapeList.append(Polygon);
+
+
 }
 
 void MainWindow::on_RotateLButton_clicked()

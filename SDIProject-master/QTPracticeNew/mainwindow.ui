@@ -89,7 +89,7 @@
      <string>Draw Trapezium</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="DrawHexButton">
+   <widget class="QPushButton" name="DrawPolyButton">
     <property name="geometry">
      <rect>
       <x>130</x>

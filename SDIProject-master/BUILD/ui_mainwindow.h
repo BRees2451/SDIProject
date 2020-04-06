@@ -44,7 +44,7 @@ public:
     QPushButton *DrawTriangleButton;
     QPushButton *DrawRectButton;
     QPushButton *DrawTrapButton;
-    QPushButton *DrawHexButton;
+    QPushButton *DrawPolyButton;
     QLabel *label_3;
     QPushButton *RotateLButton;
     QPushButton *RotateRButton;
@@ -114,9 +114,9 @@ public:
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
-        DrawHexButton = new QPushButton(centralwidget);
-        DrawHexButton->setObjectName(QString::fromUtf8("DrawHexButton"));
-        DrawHexButton->setGeometry(QRect(130, 500, 101, 31));
+        DrawPolyButton = new QPushButton(centralwidget);
+        DrawPolyButton->setObjectName(QString::fromUtf8("DrawPolyButton"));
+        DrawPolyButton->setGeometry(QRect(130, 500, 101, 31));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(330, 10, 111, 16));
@@ -292,7 +292,7 @@ public:
         DrawTriangleButton->setText(QCoreApplication::translate("MainWindow", "Draw Triangle", nullptr));
         DrawRectButton->setText(QCoreApplication::translate("MainWindow", "Draw Rectangle", nullptr));
         DrawTrapButton->setText(QCoreApplication::translate("MainWindow", "Draw Trapezium", nullptr));
-        DrawHexButton->setText(QCoreApplication::translate("MainWindow", "Draw Polygon", nullptr));
+        DrawPolyButton->setText(QCoreApplication::translate("MainWindow", "Draw Polygon", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Image Pane", nullptr));
         RotateLButton->setText(QCoreApplication::translate("MainWindow", "Rotate Left", nullptr));
         RotateRButton->setText(QCoreApplication::translate("MainWindow", "Rotate Right", nullptr));

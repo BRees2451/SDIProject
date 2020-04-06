@@ -7,6 +7,7 @@
 #include<QtGui>
 #include<QFileDialog>
 #include <QMouseEvent>
+#include <QMessageBox>
 #include <QtCore>
 #include <vector>
 #include <iostream>
@@ -49,6 +50,10 @@ private slots:
     void on_DrawRectButton_clicked(QMouseEvent *mouse_event);
 
     void on_DrawTriangleButton_clicked();
+
+    void on_DrawTrapButton_clicked();
+
+    void on_DrawPolyButton_clicked();
 
     void on_RotateLButton_clicked();
 
