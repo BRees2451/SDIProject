@@ -107,26 +107,35 @@ void MainWindow::on_actionSave_triggered()
     }
 }
 
-void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
+void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Rectangle
 {
 
-    //scene = new QGraphicsScene(this);
-    //ui->graphicsView->setScene(scene);
+    int xstart = 0;
+    int ystart = 0;
+    int xend = 0;
+    int yend = 0;
 
-    int width = 500;
-    int height = 500;
+    //if (mouse_event == mousePressEvent())
+    //{
+    //    xstart = mouse_event->x();
+    //    ystart = mouse_event->y();
+    //}
+    //if (mouse_event==mouseReleaseEvent())
+    //{
+    //    xend = mouse_event->x();
+    //    yend = mouse_event->y();
+    //}
+
+
     QPolygonF Rectangle;
 
-    Rectangle.append(QPointF(300,300));
-    Rectangle.append(QPointF(300+width,300));
-    Rectangle.append(QPointF(300+width,300+height));
-    Rectangle.append(QPointF(300,300+height));
+    Rectangle.append(QPointF(xstart, ystart));
+    Rectangle.append(QPointF(xend, ystart));
+    Rectangle.append(QPointF(xend, yend));
+    Rectangle.append(QPointF(xstart, yend));
 
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-
-    /*rectangle = scene->addRect(300,300,500,500,blackPen);
-    rectangle->setFlag(QGraphicsItem::ItemIsMovable);*/
 
     scene->addPolygon(Rectangle,blackPen);
     ShapeList.append(Rectangle);

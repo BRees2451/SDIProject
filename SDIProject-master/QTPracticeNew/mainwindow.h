@@ -6,6 +6,7 @@
 #include<QGraphicsScene>
 #include<QtGui>
 #include<QFileDialog>
+#include <QMouseEvent>
 #include <QtCore>
 #include <vector>
 #include <iostream>
@@ -45,7 +46,7 @@ private slots:
 
     void on_actionSave_triggered();
 
-    void on_DrawRectButton_clicked();
+    void on_DrawRectButton_clicked(QMouseEvent *mouse_event);
 
     void on_DrawTriangleButton_clicked();
 

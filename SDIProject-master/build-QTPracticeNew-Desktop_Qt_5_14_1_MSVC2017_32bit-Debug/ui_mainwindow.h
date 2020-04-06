@@ -50,6 +50,9 @@ public:
     QPushButton *RotateRButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *newClassLayout_3;
+    QLabel *newClass_3;
+    QLineEdit *newClassLineEdit_3;
     QLabel *ImagesLabel;
     QListWidget *ImagesWindow;
     QComboBox *sortImageBy;
@@ -129,6 +132,23 @@ public:
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        newClassLayout_3 = new QHBoxLayout();
+        newClassLayout_3->setObjectName(QString::fromUtf8("newClassLayout_3"));
+        newClass_3 = new QLabel(verticalLayoutWidget);
+        newClass_3->setObjectName(QString::fromUtf8("newClass_3"));
+        newClass_3->setEnabled(true);
+
+        newClassLayout_3->addWidget(newClass_3);
+
+        newClassLineEdit_3 = new QLineEdit(verticalLayoutWidget);
+        newClassLineEdit_3->setObjectName(QString::fromUtf8("newClassLineEdit_3"));
+        newClassLineEdit_3->setEnabled(false);
+
+        newClassLayout_3->addWidget(newClassLineEdit_3);
+
+
+        verticalLayout->addLayout(newClassLayout_3);
+
         ImagesLabel = new QLabel(verticalLayoutWidget);
         ImagesLabel->setObjectName(QString::fromUtf8("ImagesLabel"));
 
@@ -276,6 +296,7 @@ public:
         label_3->setText(QCoreApplication::translate("MainWindow", "Image Pane", nullptr));
         RotateLButton->setText(QCoreApplication::translate("MainWindow", "Rotate Left", nullptr));
         RotateRButton->setText(QCoreApplication::translate("MainWindow", "Rotate Right", nullptr));
+        newClass_3->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
         ImagesLabel->setText(QCoreApplication::translate("MainWindow", "Images", nullptr));
         sortImageBy->setItemText(0, QCoreApplication::translate("MainWindow", "Name (Asc)", nullptr));
         sortImageBy->setItemText(1, QCoreApplication::translate("MainWindow", "Name (Desc)", nullptr));
