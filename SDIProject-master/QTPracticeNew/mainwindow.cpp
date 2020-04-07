@@ -9,7 +9,9 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene(this);
+
+    canvas = new Canvas();
+    //scene = new QGraphicsScene(this);
     UserShapeOperation User = *new UserShapeOperation;
 
     Image currentImage;
@@ -17,7 +19,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(mousePressEvent(QMouseEvent *event)), SLOT(clickPoint(QMouseEvent *event)));
     //connect(ui->graphicsView, SIGNAL(mousePressEvent(QMo)))
-
+    //connect(ui->graphicsView, SIGNAL(&Canvas::mousePressed), this, SLOT(&MainWindow::TesterFunction));
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
       * This will fetch the jpg files in the directory and add them to a vector.
@@ -151,7 +153,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    scene->addPolygon(Rectangle,blackPen);
+    canvas->scene->addPolygon(Rectangle,blackPen);
     ShapeList.append(Rectangle);
 }
 
@@ -192,7 +194,7 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    scene->addPolygon(Triangle,blackPen);
+    canvas->scene->addPolygon(Triangle,blackPen);
     ShapeList.append(Triangle);
 }
 
@@ -228,7 +230,7 @@ void MainWindow::on_DrawTrapButton_clicked()
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    scene->addPolygon(Trapezium,blackPen);
+    canvas->scene->addPolygon(Trapezium,blackPen);
     ShapeList.append(Trapezium);
 }
 
@@ -276,7 +278,7 @@ void MainWindow::on_DrawPolyButton_clicked()
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    scene->addPolygon(Polygon,blackPen);
+    canvas->scene->addPolygon(Polygon,blackPen);
     ShapeList.append(Polygon);
 
 
@@ -317,7 +319,12 @@ void MainWindow::clickPoint(QMouseEvent *mouse_event){
     QPoint mouse_pos = mouse_event->pos();
     qDebug() << mouse_pos <<endl;
     double rad = 1;
-    circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+    circle = canvas->scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+}
+
+void MainWindow::TesterFunction()
+{
+    qDebug() << "THIS WORKS";
 }
 
 
@@ -338,12 +345,12 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
 
 void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
-    scene->clear();
+    canvas->scene->clear();
     if (QString::compare(imagePath,QString())!= 0){
         QImage image(imagePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
+        ui->graphicsView->setScene(canvas->scene);
+        canvas->scene->addItem(item);
     }
 }
 
@@ -356,14 +363,14 @@ void MainWindow::openImage(QString imagePath) //Opens image onto pane
  */
 void MainWindow::open(QString filePath, QString fileName)
 {
-    scene->clear();
+    canvas->scene->clear();
     //Put this back because if someone is looking to open an image then they are planning on editting it
     //We can discuss about this later.
     if (QString::compare(filePath,QString())!= 0){
            QImage image(filePath);
            item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-           ui->graphicsView->setScene(scene);
-           scene->addItem(item);
+           ui->graphicsView->setScene(canvas->scene);
+           canvas->scene->addItem(item);
        }
     cout << filePath.toUtf8().constData() << endl;
 

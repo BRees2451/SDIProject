@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'matdisplay.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.9)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../QTPracticeNew/matdisplay.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'matdisplay.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.2. It"
+#error "This file was generated using the moc from 5.9.9. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -45,7 +44,7 @@ QT_MOC_LITERAL(3, 30, 7) // "QPoint&"
 static const uint qt_meta_data_matDisplay[] = {
 
  // content:
-       8,       // revision
+       7,       // revision
        0,       // classname
        0,    0, // classinfo
        1,   14, // methods
@@ -67,7 +66,7 @@ static const uint qt_meta_data_matDisplay[] = {
 void matDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<matDisplay *>(_o);
+        matDisplay *_t = static_cast<matDisplay *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->sendMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
@@ -76,7 +75,7 @@ void matDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     } else if (_c == QMetaObject::IndexOfMethod) {
         int *result = reinterpret_cast<int *>(_a[0]);
         {
-            using _t = void (matDisplay::*)(QPoint & );
+            typedef void (matDisplay::*_t)(QPoint & );
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&matDisplay::sendMousePosition)) {
                 *result = 0;
                 return;
@@ -85,14 +84,10 @@ void matDisplay::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject matDisplay::staticMetaObject = { {
-    &QGraphicsView::staticMetaObject,
-    qt_meta_stringdata_matDisplay.data,
-    qt_meta_data_matDisplay,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
+const QMetaObject matDisplay::staticMetaObject = {
+    { &QGraphicsView::staticMetaObject, qt_meta_stringdata_matDisplay.data,
+      qt_meta_data_matDisplay,  qt_static_metacall, nullptr, nullptr}
+};
 
 
 const QMetaObject *matDisplay::metaObject() const
@@ -128,7 +123,7 @@ int matDisplay::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 // SIGNAL 0
 void matDisplay::sendMousePosition(QPoint & _t1)
 {
-    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(std::addressof(_t1))) };
+    void *_a[] = { nullptr, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
     QMetaObject::activate(this, &staticMetaObject, 0, _a);
 }
 QT_WARNING_POP

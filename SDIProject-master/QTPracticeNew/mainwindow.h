@@ -3,16 +3,15 @@
 
 #include <QMainWindow>
 #include<QGraphicsItem>
-#include<QGraphicsScene>
 #include<QtGui>
 #include<QFileDialog>
-#include <QMouseEvent>
 #include <QMessageBox>
-#include <QtCore>
+//#include <QtCore>
 #include <vector>
 #include <iostream>
 #include "shareclass.h"
 #include "Image.h"
+#include "canvas.h"
 
 using namespace std;
 
@@ -79,6 +78,8 @@ private slots:
 
     void clickPoint(QMouseEvent *mouse_event);
 
+    void TesterFunction();
+
 private:
     void open(QString, QString);
 
@@ -86,8 +87,10 @@ private:
 
     Ui::MainWindow *ui;
 
+    Canvas *canvas;
+
     QGraphicsItem *item;
-    QGraphicsScene *scene;
+    //QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
     QGraphicsPolygonItem *shape;
     QGraphicsEllipseItem *circle;
