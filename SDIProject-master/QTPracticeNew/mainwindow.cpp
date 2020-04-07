@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     Image currentImage;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
+    connect(ui->graphicsView,SIGNAL(mousePressEvent(QMouseEvent *event)), SLOT(clickPoint(QMouseEvent *event)));
+    //connect(ui->graphicsView, SIGNAL(mousePressEvent(QMo)))
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -106,9 +108,21 @@ void MainWindow::on_actionSave_triggered()
         pixMap.save(fileName);
     }
 }
+/*
+void matDisplay::mousePressEvent(QMouseEvent *mouse_event){
+    //if (MainWindow::shapeType != NULL)
+    {
+
+
+    }
+
+}*/
+
 
 void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Rectangle
 {
+    this->shapeType = "Rectangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
     int xstart = 0;
     int ystart = 0;
@@ -141,8 +155,17 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     ShapeList.append(Rectangle);
 }
 
+void MainWindow::on_DrawRectButton_clicked()
+{
+    this->shapeType = "Rectangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
+}
+
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
+    this->shapeType = "Triangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
+
     int xstart = 0;
     int ystart = 0;
     int xend = 0;
@@ -175,6 +198,9 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 
 void MainWindow::on_DrawTrapButton_clicked()
 {
+    this->shapeType = "Trapezium";
+    this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
+
     int xstart = 0;
     int ystart = 0;
     int xend = 0;
@@ -209,6 +235,9 @@ void MainWindow::on_DrawTrapButton_clicked()
 void MainWindow::on_DrawPolyButton_clicked()
 
 {
+    this->shapeType = "Polygon";
+    this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
+
     int x[7];
     int y[7];
     int finalpoint = 0;
@@ -217,7 +246,7 @@ void MainWindow::on_DrawPolyButton_clicked()
     msg.setText("Please click up to 8 points.");
     msg.exec();
 
-    for (int i = 0; i < 7;)
+    for (int i = 0; i < 7; i++)
     {
 
        // if(mouse_event->button() == Qt::LeftButton)
@@ -276,14 +305,17 @@ void MainWindow::Save()
 
 void MainWindow::showMousePosition(QPoint &pos)
 {
+    bool a = QApplication::mouseButtons();
+    //if (a) qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
     double rad = 1;
     //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
 
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
+void MainWindow::clickPoint(QMouseEvent *mouse_event){
     QPoint mouse_pos = mouse_event->pos();
+    qDebug() << mouse_pos <<endl;
     double rad = 1;
     circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
 }
@@ -496,3 +528,5 @@ void MainWindow:: on_resizeShape_clicked()
     user.USize();
 
 }
+
+

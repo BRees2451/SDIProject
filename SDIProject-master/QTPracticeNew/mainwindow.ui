@@ -376,6 +376,19 @@
      <string>Resize</string>
     </property>
    </widget>
+   <widget class="QLabel" name="shapeTypeLabel">
+    <property name="geometry">
+     <rect>
+      <x>706</x>
+      <y>10</y>
+      <width>141</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Shape Type: None</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

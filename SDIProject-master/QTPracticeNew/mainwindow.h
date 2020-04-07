@@ -28,7 +28,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
+    QString shapeType;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -75,6 +75,10 @@ private slots:
 
     void on_resizeShape_clicked();
 
+    void on_DrawRectButton_clicked();
+
+    void clickPoint(QMouseEvent *mouse_event);
+
 private:
     void open(QString, QString);
 
@@ -112,7 +116,7 @@ private:
 
 public slots:
     void showMousePosition(QPoint& pos);
-    void mousePressEvent(QMouseEvent *mouse_event);
+    //void mousePressEvent(QMouseEvent *mouse_event);
 
 };
 #endif // MAINWINDOW_H
