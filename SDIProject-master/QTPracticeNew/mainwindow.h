@@ -6,7 +6,6 @@
 #include<QtGui>
 #include<QFileDialog>
 #include <QMessageBox>
-//#include <QtCore>
 #include <vector>
 #include <iostream>
 #include "shareclass.h"
