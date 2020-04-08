@@ -12,7 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     canvas = new Canvas();
     //scene = new QGraphicsScene(this);
-    UserShapeOperation User = *new UserShapeOperation;
+    //UserShapeOperation User = *new UserShapeOperation;
 
     Image currentImage;
 
@@ -126,21 +126,21 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
-    int xstart = 0;
-    int ystart = 0;
-    int xend = 0;
-    int yend = 0;
+    int xstart;
+    int ystart;
+    int xend;
+    int yend;
 
-    //if (mouse_event == mousePressEvent())
-    //{
-    //    xstart = mouse_event->x();
-    //    ystart = mouse_event->y();
-    //}
-    //if (mouse_event==mouseReleaseEvent())
-    //{
-    //    xend = mouse_event->x();
-    //    yend = mouse_event->y();
-    //}
+    if (QEvent::MouseButtonPress)
+    {
+        xstart = mouse_event->x();
+        ystart = mouse_event->y();
+    }
+    if (QEvent::MouseButtonRelease)
+    {
+        xend = mouse_event->x();
+        yend = mouse_event->y();
+    }
 
 
     QPolygonF Rectangle;
@@ -531,8 +531,8 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 
 void MainWindow:: on_resizeShape_clicked()
 {
-    UserShapeOperation user;
-    user.USize();
+    //UserShapeOperation user;
+   // user.USize();
 
 }
 
