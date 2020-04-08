@@ -21,6 +21,7 @@ SOURCES += \
     Objects.cpp \
     SidePane.cpp \
     UserShapeOperations.cpp \
+    canvas.cpp \
     customview.cpp \
     main.cpp \
     mainwindow.cpp \
@@ -35,6 +36,7 @@ HEADERS += \
     SidePane.h \
     User.h \
     UserShapeOperations.h \
+    canvas.h \
     customview.h \
     mainwindow.h \
     matdisplay.h \

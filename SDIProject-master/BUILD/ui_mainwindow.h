@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.1
+** Created by: Qt User Interface Compiler version 5.13.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -44,12 +44,15 @@ public:
     QPushButton *DrawTriangleButton;
     QPushButton *DrawRectButton;
     QPushButton *DrawTrapButton;
-    QPushButton *DrawHexButton;
+    QPushButton *DrawPolyButton;
     QLabel *label_3;
     QPushButton *RotateLButton;
     QPushButton *RotateRButton;
     QWidget *verticalLayoutWidget;
     QVBoxLayout *verticalLayout;
+    QHBoxLayout *newClassLayout_3;
+    QLabel *newClass_3;
+    QLineEdit *newClassLineEdit_3;
     QLabel *ImagesLabel;
     QListWidget *ImagesWindow;
     QComboBox *sortImageBy;
@@ -71,6 +74,7 @@ public:
     QPushButton *copyShape;
     QPushButton *deleteShape;
     QPushButton *resizeShape;
+    QLabel *shapeTypeLabel;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -111,9 +115,9 @@ public:
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
-        DrawHexButton = new QPushButton(centralwidget);
-        DrawHexButton->setObjectName(QString::fromUtf8("DrawHexButton"));
-        DrawHexButton->setGeometry(QRect(130, 500, 101, 31));
+        DrawPolyButton = new QPushButton(centralwidget);
+        DrawPolyButton->setObjectName(QString::fromUtf8("DrawPolyButton"));
+        DrawPolyButton->setGeometry(QRect(130, 500, 101, 31));
         label_3 = new QLabel(centralwidget);
         label_3->setObjectName(QString::fromUtf8("label_3"));
         label_3->setGeometry(QRect(330, 10, 111, 16));
@@ -129,6 +133,23 @@ public:
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
         verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
+        newClassLayout_3 = new QHBoxLayout();
+        newClassLayout_3->setObjectName(QString::fromUtf8("newClassLayout_3"));
+        newClass_3 = new QLabel(verticalLayoutWidget);
+        newClass_3->setObjectName(QString::fromUtf8("newClass_3"));
+        newClass_3->setEnabled(true);
+
+        newClassLayout_3->addWidget(newClass_3);
+
+        newClassLineEdit_3 = new QLineEdit(verticalLayoutWidget);
+        newClassLineEdit_3->setObjectName(QString::fromUtf8("newClassLineEdit_3"));
+        newClassLineEdit_3->setEnabled(false);
+
+        newClassLayout_3->addWidget(newClassLineEdit_3);
+
+
+        verticalLayout->addLayout(newClassLayout_3);
+
         ImagesLabel = new QLabel(verticalLayoutWidget);
         ImagesLabel->setObjectName(QString::fromUtf8("ImagesLabel"));
 
@@ -233,6 +254,9 @@ public:
         resizeShape = new QPushButton(centralwidget);
         resizeShape->setObjectName(QString::fromUtf8("resizeShape"));
         resizeShape->setGeometry(QRect(130, 630, 75, 23));
+        shapeTypeLabel = new QLabel(centralwidget);
+        shapeTypeLabel->setObjectName(QString::fromUtf8("shapeTypeLabel"));
+        shapeTypeLabel->setGeometry(QRect(706, 10, 141, 20));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -272,10 +296,11 @@ public:
         DrawTriangleButton->setText(QCoreApplication::translate("MainWindow", "Draw Triangle", nullptr));
         DrawRectButton->setText(QCoreApplication::translate("MainWindow", "Draw Rectangle", nullptr));
         DrawTrapButton->setText(QCoreApplication::translate("MainWindow", "Draw Trapezium", nullptr));
-        DrawHexButton->setText(QCoreApplication::translate("MainWindow", "Draw Polygon", nullptr));
+        DrawPolyButton->setText(QCoreApplication::translate("MainWindow", "Draw Polygon", nullptr));
         label_3->setText(QCoreApplication::translate("MainWindow", "Image Pane", nullptr));
         RotateLButton->setText(QCoreApplication::translate("MainWindow", "Rotate Left", nullptr));
         RotateRButton->setText(QCoreApplication::translate("MainWindow", "Rotate Right", nullptr));
+        newClass_3->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
         ImagesLabel->setText(QCoreApplication::translate("MainWindow", "Images", nullptr));
         sortImageBy->setItemText(0, QCoreApplication::translate("MainWindow", "Name (Asc)", nullptr));
         sortImageBy->setItemText(1, QCoreApplication::translate("MainWindow", "Name (Desc)", nullptr));
@@ -297,6 +322,7 @@ public:
         copyShape->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
         deleteShape->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         resizeShape->setText(QCoreApplication::translate("MainWindow", "Resize", nullptr));
+        shapeTypeLabel->setText(QCoreApplication::translate("MainWindow", "Shape Type: None", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
     } // retranslateUi

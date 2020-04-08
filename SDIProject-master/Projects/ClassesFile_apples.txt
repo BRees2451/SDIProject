@@ -1,5 +1,0 @@
-Classes
-Leaf
-Stem
-Pip
-Body

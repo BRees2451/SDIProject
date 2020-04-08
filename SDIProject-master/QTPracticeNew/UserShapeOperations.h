@@ -1,10 +1,12 @@
 #ifndef UERSHAPEOPPERATIONS_H
 #define UERSHAPEOPPERATIONS_H
+#include <QtCore>
 
 class UserShapeOperation {
 private:
     int height;
     int width;
+    QString shapeType;
 
 public:
     void USize();
@@ -15,8 +17,9 @@ public:
 
 	void DisplayName();
 
-    UserShapeOperation()
+    UserShapeOperation(QString sType)
     {
+        this->shapeType = sType;
         this->height= 500;
         this->width= 500;
     }

@@ -9,13 +9,17 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    scene = new QGraphicsScene(this);
-    UserShapeOperation User = *new UserShapeOperation;
+
+    canvas = new Canvas();
+    //scene = new QGraphicsScene(this);
+    //UserShapeOperation User = *new UserShapeOperation;
 
     Image currentImage;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
-
+    connect(ui->graphicsView,SIGNAL(mousePressEvent(QMouseEvent *event)), SLOT(clickPoint(QMouseEvent *event)));
+    //connect(ui->graphicsView, SIGNAL(mousePressEvent(QMo)))
+    //connect(ui->graphicsView, SIGNAL(&Canvas::mousePressed), this, SLOT(&MainWindow::TesterFunction));
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
       * This will fetch the jpg files in the directory and add them to a vector.
@@ -91,16 +95,6 @@ void MainWindow::on_actionOpen_triggered()
 void MainWindow::on_AddImageButton_clicked()
 {
     on_actionOpen_triggered();
-    /*
-    QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
-    QFileInfo info(filePath);
-    fileName = info.fileName();
-    if (QString::compare(filePath,QString())!= 0){
-        QImage image(filePath);
-        item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
-    }*/
 }
 
 void MainWindow::on_actionQuit_triggered()
@@ -116,30 +110,178 @@ void MainWindow::on_actionSave_triggered()
         pixMap.save(fileName);
     }
 }
+/*
+void matDisplay::mousePressEvent(QMouseEvent *mouse_event){
+    //if (MainWindow::shapeType != NULL)
+    {
 
-void MainWindow::on_DrawRectButton_clicked()//Draw Rectangle
+
+    }
+
+}*/
+
+
+void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Rectangle
 {
+    this->shapeType = "Rectangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
-    //scene = new QGraphicsScene(this);
-    //ui->graphicsView->setScene(scene);
+    int xstart;
+    int ystart;
+    int xend;
+    int yend;
+
+    if (QEvent::MouseButtonPress)
+    {
+        xstart = mouse_event->x();
+        ystart = mouse_event->y();
+    }
+    if (QEvent::MouseButtonRelease)
+    {
+        xend = mouse_event->x();
+        yend = mouse_event->y();
+    }
+
+
+    QPolygonF Rectangle;
+
+    Rectangle.append(QPointF(xstart, ystart));
+    Rectangle.append(QPointF(xend, ystart));
+    Rectangle.append(QPointF(xend, yend));
+    Rectangle.append(QPointF(xstart, yend));
 
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
-    rectangle = scene->addRect(300,300,500,500,blackPen);
-    rectangle->setFlag(QGraphicsItem::ItemIsMovable);
+
+    canvas->scene->addPolygon(Rectangle,blackPen);
+    ShapeList.append(Rectangle);
+}
+
+void MainWindow::on_DrawRectButton_clicked()
+{
+    this->shapeType = "Rectangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 }
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
-    //Draw Triangle9*
-    QPolygonF Triangle;
-    Triangle.append(QPointF(-10.,0));
-    Triangle.append(QPointF(0.,-10));
-    Triangle.append(QPointF(10.,0));
-    Triangle.append(QPointF(-10.,0));
+    this->shapeType = "Triangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
 
-    //QGraphicsPolygonItem* pTriangleItem = ui->(Triangle);
-   /* //////////////////////// ////////////////////////////////////////////shapelist add triangle1 */
+    int xstart = 0;
+    int ystart = 0;
+    int xend = 0;
+    int yend = 0;
+
+    //if (mouse_event == mousePressEvent())
+    //{
+    //    xstart = mouse_event->x();
+    //    ystart = mouse_event->y();
+    //}
+    //if (mouse_event==mouseReleaseEvent())
+    //{
+    //    xend = mouse_event->x();
+    //    yend = mouse_event->y();
+    //}
+
+    int halfway = xstart + ((xend-xstart)/2);
+
+    QPolygonF Triangle;
+    Triangle.append(QPointF(xstart,yend));
+    Triangle.append(QPointF(xend,yend));
+    Triangle.append(QPointF(halfway,ystart));
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    canvas->scene->addPolygon(Triangle,blackPen);
+    ShapeList.append(Triangle);
+}
+
+void MainWindow::on_DrawTrapButton_clicked()
+{
+    this->shapeType = "Trapezium";
+    this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
+
+    int xstart = 0;
+    int ystart = 0;
+    int xend = 0;
+    int yend = 0;
+
+    //if (mouse_event == mousePressEvent())
+    //{
+    //    xstart = mouse_event->x();
+    //    ystart = mouse_event->y();
+    //}
+    //if (mouse_event==mouseReleaseEvent())
+    //{
+    //    xend = mouse_event->x();
+    //    yend = mouse_event->y();
+    //}
+
+    int trapindent = (xend-xstart)/4;
+
+    QPolygonF Trapezium;
+    Trapezium.append(QPointF(xstart + trapindent, ystart));
+    Trapezium.append(QPointF(xend - trapindent, ystart));
+    Trapezium.append(QPointF(xend,yend));
+    Trapezium.append(QPointF(xstart,yend));
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    canvas->scene->addPolygon(Trapezium,blackPen);
+    ShapeList.append(Trapezium);
+}
+
+void MainWindow::on_DrawPolyButton_clicked()
+
+{
+    this->shapeType = "Polygon";
+    this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
+
+    int x[7];
+    int y[7];
+    int finalpoint = 0;
+
+    QMessageBox msg;
+    msg.setText("Please click up to 8 points.");
+    msg.exec();
+
+    for (int i = 0; i < 7; i++)
+    {
+
+       // if(mouse_event->button() == Qt::LeftButton)
+        //{
+          //  QPoint mouse_pos = mouse_event->pos();
+            //x[i] = mouse_pos.x();
+            //y[i] = mouse_pos.y();
+            //i++;
+        //}
+
+        if (i==6)
+        {
+        msg.setText("You have picked the maximum of points, the last one will join back to the first one.");
+        msg.exec();
+        }
+
+        // will add function to identify final point when it is clicked on/near to the original
+    }
+
+    QPolygonF Polygon;
+
+    for(int i = 0; i < finalpoint; i++)
+    {
+        Polygon.append(QPointF(x[i],y[i]));
+    }
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    canvas->scene->addPolygon(Polygon,blackPen);
+    ShapeList.append(Polygon);
+
+
 }
 
 void MainWindow::on_RotateLButton_clicked()
@@ -165,23 +307,32 @@ void MainWindow::Save()
 
 void MainWindow::showMousePosition(QPoint &pos)
 {
+    bool a = QApplication::mouseButtons();
+    //if (a) qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
     double rad = 1;
     //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
 
 }
 
-void MainWindow::mousePressEvent(QMouseEvent *mouse_event){
+void MainWindow::clickPoint(QMouseEvent *mouse_event){
     QPoint mouse_pos = mouse_event->pos();
+    qDebug() << mouse_pos <<endl;
     double rad = 1;
-    circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+    circle = canvas->scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+}
+
+void MainWindow::TesterFunction()
+{
+    qDebug() << "THIS WORKS";
 }
 
 
 void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
-    for (int i = 0; i < filesInDirectory.size(); i++)
+    for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
+        qDebug() << ui->ImagesWindow->item(i)->text() << endl;
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
 
     }
@@ -189,17 +340,17 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
     selected->setTextColor(Qt::red);
     QStringList a = selected->text().split("\t");
     QString currentImage = defaultPath + "/" + a[0];
-    openImage(currentImage);
+    open(currentImage, a[0]);
 }
 
 void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
-    scene->clear();
+    canvas->scene->clear();
     if (QString::compare(imagePath,QString())!= 0){
         QImage image(imagePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(scene);
-        scene->addItem(item);
+        ui->graphicsView->setScene(canvas->scene);
+        canvas->scene->addItem(item);
     }
 }
 
@@ -212,12 +363,22 @@ void MainWindow::openImage(QString imagePath) //Opens image onto pane
  */
 void MainWindow::open(QString filePath, QString fileName)
 {
-    scene->clear();
+    canvas->scene->clear();
+    //Put this back because if someone is looking to open an image then they are planning on editting it
+    //We can discuss about this later.
+    if (QString::compare(filePath,QString())!= 0){
+           QImage image(filePath);
+           item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
+           ui->graphicsView->setScene(canvas->scene);
+           canvas->scene->addItem(item);
+       }
     cout << filePath.toUtf8().constData() << endl;
 
-    QString containString = "QTPracticeNew/Projects/"+fileName;
+    QString containString = "/Projects/"+fileName;
 
     QString Destination;
+
+    //Will check whether file is in 'Projects' folder
     if (filePath.contains(containString))
     {
         cout << "File is in directory" << endl;
@@ -225,10 +386,11 @@ void MainWindow::open(QString filePath, QString fileName)
     }
     else
     {
-
+        //Will construct a destination
         Destination = defaultPath + "/" + fileName;
         cout<< "File isn't in directory" << endl;
 
+        //Copy the file to the destination and check
         bool a = QFile(filePath).copy(Destination);
         if (a){
             cout << "This works" << endl;
@@ -236,18 +398,18 @@ void MainWindow::open(QString filePath, QString fileName)
         else cout << "This doesnt work" << endl;
     }
 
+    //Will minipulate the string to give a .txt file path
     QStringList absoluteFileName = fileName.split(".");
-    absoluteFileName[0] = "ClassesFile_" + absoluteFileName[0];
+    absoluteFileName[0] = absoluteFileName[0] + ".names";
     absoluteFileName[1] = "txt";
     classFileName = absoluteFileName.join(".");
 
-    QStringList classTextFilePath = Destination.split("/");
-    classTextFilePath[classTextFilePath.length()-1] = classFileName;
-    classFilePath = classTextFilePath.join("/");
+    classFilePath = Destination + "/Projects/" + classFileName;
 
     if (classFilePath != NULL)
     {
         QFile file(classFilePath);
+        //If file exists it will read the data into a list
         if(QFileInfo::exists(classFilePath))
         {
             cout << "file exists" << endl;
@@ -258,8 +420,10 @@ void MainWindow::open(QString filePath, QString fileName)
                 QString line = in.readLine();
                 dataFromFile.append(line);
             }
+            //Add the classes to the classWindow
             ui->ClassWindow->clear();
-            for(int i = 1; i < dataFromFile.length()-1;i++)
+            classesInFile.clear();
+            for(int i = 1; i < dataFromFile.length();i++)
             {
                 classesInFile.push_back({dataFromFile[i], QDateTime::currentDateTime()});
                 ui->ClassWindow->addItem(dataFromFile[i]);
@@ -267,21 +431,18 @@ void MainWindow::open(QString filePath, QString fileName)
 
             cout<<"file already created"<<endl;
             file.close();
-            QDateTime modified = QFileInfo(classFilePath).lastModified();
-            if (!modified.isNull()) filesInDirectory.push_back({fileName, QFileInfo(classFilePath).lastModified()});
-            else filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
         }
         else
         {
-            cout << "file does not exists" << endl;
+            //Will create a file at the given path as well as make the new file conform to the display we are using
+            cout << "file does not exist" << endl;
             file.open(QIODevice::WriteOnly | QIODevice::Text);
-            QString dateString = currentDate.toString("hh:mm\tdd/MM/yy");
             file.write("Classes\n");
-            file.write(dateString.toUtf8().constData());
             qDebug()<<"file created"<<endl;
             file.close();
             filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
-            ui->ImagesWindow->addItem(fileName);
+            QString itemString = fileName+"\t\t" + QDateTime::currentDateTime().toString("hh:mm\tdd/MM/yy");
+            ui->ImagesWindow->addItem(itemString);
         }
         imageActive = true;
     }
@@ -367,3 +528,12 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
     }
 }
+
+void MainWindow:: on_resizeShape_clicked()
+{
+    //UserShapeOperation user;
+   // user.USize();
+
+}
+
+

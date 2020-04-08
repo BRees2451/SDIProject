@@ -3,13 +3,14 @@
 
 #include <QMainWindow>
 #include<QGraphicsItem>
-#include<QGraphicsScene>
 #include<QtGui>
 #include<QFileDialog>
-#include <QtCore>
+#include <QMessageBox>
+#include <vector>
 #include <iostream>
 #include "shareclass.h"
 #include "Image.h"
+#include "canvas.h"
 
 using namespace std;
 
@@ -25,7 +26,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-
+    QString shapeType;
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -44,9 +45,13 @@ private slots:
 
     void on_actionSave_triggered();
 
-    void on_DrawRectButton_clicked();
+    void on_DrawRectButton_clicked(QMouseEvent *mouse_event);
 
     void on_DrawTriangleButton_clicked();
+
+    void on_DrawTrapButton_clicked();
+
+    void on_DrawPolyButton_clicked();
 
     void on_RotateLButton_clicked();
 
@@ -66,6 +71,14 @@ private slots:
 
     void openImage(QString imagePath);
 
+    void on_resizeShape_clicked();
+
+    void on_DrawRectButton_clicked();
+
+    void clickPoint(QMouseEvent *mouse_event);
+
+    void TesterFunction();
+
 private:
     void open(QString, QString);
 
@@ -73,8 +86,10 @@ private:
 
     Ui::MainWindow *ui;
 
+    Canvas *canvas;
+
     QGraphicsItem *item;
-    QGraphicsScene *scene;
+    //QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
     QGraphicsPolygonItem *shape;
     QGraphicsEllipseItem *circle;
@@ -87,6 +102,8 @@ private:
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
+    //A vector to contain the shapes
+    QVector<QPolygonF> ShapeList;
 
 
     QVector<shareClass::fileData> filesInDirectory;
@@ -101,7 +118,7 @@ private:
 
 public slots:
     void showMousePosition(QPoint& pos);
-    void mousePressEvent(QMouseEvent *mouse_event);
+    //void mousePressEvent(QMouseEvent *mouse_event);
 
 };
 #endif // MAINWINDOW_H
