@@ -29,6 +29,8 @@ public:
 
     QVector<shareClass::fileData> SortDescendingDate(QVector<shareClass::fileData>);
 
+    int searchImageName(QVector<shareClass::fileData>,QString);
+
     void checkImageNameLength(string);
 };
 

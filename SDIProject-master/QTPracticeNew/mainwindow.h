@@ -79,6 +79,8 @@ private slots:
 
     void TesterFunction();
 
+    void on_ImageSearchButton_clicked();
+
 private:
     void open(QString, QString);
 

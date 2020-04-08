@@ -157,7 +157,35 @@ QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::file
         return dateVector;
 
 	// TODO - implement Image::SortDescendingDate
-	throw "Not yet implemented";
+        throw "Not yet implemented";
+}
+
+int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString searchName)
+{
+    nameVector = SortAscendingName(nameVector);
+    //QStringList name = searchName;
+    int len = nameVector.size();
+    int l = 0; // left
+    int r = len - 1; // right
+    while (l <= r)
+    {
+        int m = l + (r - l) / 2; // middle
+
+        if (searchName == (nameVector[m])) {
+            return m;
+        }
+
+        // If x greater, ignore left half
+        if (searchName > (nameVector[m]))
+            l = m + 1;
+
+        // If x is smaller, ignore right half
+        else
+            r = m - 1;
+    }
+
+    return -1;
+
 }
 
 

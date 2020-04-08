@@ -537,3 +537,24 @@ void MainWindow:: on_resizeShape_clicked()
 }
 
 
+
+void MainWindow::on_ImageSearchButton_clicked()
+{
+    Image image;
+
+    //get the contents of line edit
+    QString searchName = ui->ImageSearchLine->text();
+
+    // Call search algorithm inside image class
+    int searchIndex = image.searchImageName(filesInDirectory,searchName);
+    // returns the index of the location in the image vector
+
+    if(searchIndex == -1){
+        ui->ImageSearchLine->setText("Image not found");
+    }
+    else{
+        ui->ImageSearchLine->setText("Image found");
+        // set the colour of the image searched to green ???
+        // using searchIndex
+    }
+}
