@@ -75,6 +75,9 @@
     <property name="text">
      <string>Draw Rectangle</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="DrawTrapButton">
     <property name="geometry">

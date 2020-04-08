@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "UserShapeOperations.h"
+#include "matdisplay.h"
 #include <vector>
 #include <QPixmap>
 
@@ -13,6 +14,7 @@ MainWindow::MainWindow(QWidget *parent)
     canvas = new Canvas();
     //scene = new QGraphicsScene(this);
     //UserShapeOperation User = *new UserShapeOperation;
+   // matDisplay ImagePane = *new matDisplay;
 
     Image currentImage;
 
@@ -131,34 +133,40 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     int xend;
     int yend;
 
-    if (QEvent::MouseButtonPress)
-    {
-        xstart = mouse_event->x();
-        ystart = mouse_event->y();
-        xend = mouse_event->x();
-        yend = mouse_event->y();
-        cout<<mouse_event->x()<<mouse_event->y();
+    if(ui->DrawRectButton->isChecked()){
+        /*
+         * i want to use the mouse events from mat display so that it gets it for image pane
+         * */
 
+        if (QEvent::MouseButtonPress)
+        {
+            xstart = mouse_event->x();
+            ystart = mouse_event->y();
+            xend = mouse_event->x();
+            yend = mouse_event->y();
+            cout<<mouse_event->x()<<mouse_event->y(); //--------------> doesnt print this
+
+        }
+        if (QEvent::MouseMove)
+        {
+            xend = mouse_event->x();
+            yend = mouse_event->y();
+        }
+
+
+        QPolygonF Rectangle;
+
+        Rectangle.append(QPointF(xstart, ystart));
+        Rectangle.append(QPointF(xend, ystart));
+        Rectangle.append(QPointF(xend, yend));
+        Rectangle.append(QPointF(xstart, yend));
+
+        QPen blackPen(Qt::black);
+        blackPen.setWidth(6);
+
+        canvas->scene->addPolygon(Rectangle,blackPen);
+        ShapeList.append(Rectangle);
     }
-    if (QEvent::MouseMove)
-    {
-        xend = mouse_event->x();
-        yend = mouse_event->y();
-    }
-
-
-    QPolygonF Rectangle;
-
-    Rectangle.append(QPointF(xstart, ystart));
-    Rectangle.append(QPointF(xend, ystart));
-    Rectangle.append(QPointF(xend, yend));
-    Rectangle.append(QPointF(xstart, yend));
-
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
-
-    canvas->scene->addPolygon(Rectangle,blackPen);
-    ShapeList.append(Rectangle);
 }
 
 void MainWindow::on_DrawRectButton_clicked()
