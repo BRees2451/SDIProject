@@ -75,6 +75,9 @@ public:
     QPushButton *deleteShape;
     QPushButton *resizeShape;
     QLabel *shapeTypeLabel;
+    QLineEdit *ImageSearchLine;
+    QLabel *ImageSearchLabel;
+    QPushButton *ImageSearchButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -257,6 +260,15 @@ public:
         shapeTypeLabel = new QLabel(centralwidget);
         shapeTypeLabel->setObjectName(QString::fromUtf8("shapeTypeLabel"));
         shapeTypeLabel->setGeometry(QRect(706, 10, 141, 20));
+        ImageSearchLine = new QLineEdit(centralwidget);
+        ImageSearchLine->setObjectName(QString::fromUtf8("ImageSearchLine"));
+        ImageSearchLine->setGeometry(QRect(420, 570, 113, 20));
+        ImageSearchLabel = new QLabel(centralwidget);
+        ImageSearchLabel->setObjectName(QString::fromUtf8("ImageSearchLabel"));
+        ImageSearchLabel->setGeometry(QRect(340, 570, 71, 20));
+        ImageSearchButton = new QPushButton(centralwidget);
+        ImageSearchButton->setObjectName(QString::fromUtf8("ImageSearchButton"));
+        ImageSearchButton->setGeometry(QRect(540, 570, 75, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -323,6 +335,8 @@ public:
         deleteShape->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
         resizeShape->setText(QCoreApplication::translate("MainWindow", "Resize", nullptr));
         shapeTypeLabel->setText(QCoreApplication::translate("MainWindow", "Shape Type: None", nullptr));
+        ImageSearchLabel->setText(QCoreApplication::translate("MainWindow", "Image Search:", nullptr));
+        ImageSearchButton->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
     } // retranslateUi

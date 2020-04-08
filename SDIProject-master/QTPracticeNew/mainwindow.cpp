@@ -135,8 +135,12 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     {
         xstart = mouse_event->x();
         ystart = mouse_event->y();
+        xend = mouse_event->x();
+        yend = mouse_event->y();
+        cout<<mouse_event->x()<<mouse_event->y();
+
     }
-    if (QEvent::MouseButtonRelease)
+    if (QEvent::MouseMove)
     {
         xend = mouse_event->x();
         yend = mouse_event->y();

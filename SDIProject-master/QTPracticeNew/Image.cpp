@@ -169,7 +169,7 @@ int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString sea
     int r = len - 1; // right
     while (l <= r)
     {
-        int m = l + (r - l) / 2; // middle
+        /*int m = l + (r - l) / 2; // middle
 
         if (searchName == (nameVector[m])) {
             return m;
@@ -181,7 +181,7 @@ int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString sea
 
         // If x is smaller, ignore right half
         else
-            r = m - 1;
+            r = m - 1;*/
     }
 
     return -1;
