@@ -323,7 +323,7 @@ void MainWindow::showMousePosition(QPoint &pos)
     //if (a) qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
     double rad = 1;
-    //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+    circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
 
 }
 
