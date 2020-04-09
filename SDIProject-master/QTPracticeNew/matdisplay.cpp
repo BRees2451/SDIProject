@@ -4,6 +4,7 @@
 
 matDisplay::matDisplay(QWidget* parent) : QGraphicsView(parent)
 {
+    scene = new QGraphicsScene(this);
     this->setMouseTracking(true);
 }
 

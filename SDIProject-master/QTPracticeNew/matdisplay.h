@@ -13,7 +13,7 @@ class matDisplay : public QGraphicsView
 {
     Q_OBJECT;
 public:
-
+    QGraphicsScene *scene;
     matDisplay(QWidget *parent = 0);
     ~matDisplay();
 

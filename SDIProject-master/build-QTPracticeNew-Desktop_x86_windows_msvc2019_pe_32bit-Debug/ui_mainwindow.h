@@ -77,6 +77,9 @@ public:
     QPushButton *deleteShape;
     QPushButton *resizeShape;
     QLabel *shapeTypeLabel;
+    QLineEdit *ImageSearchLine;
+    QLabel *ImageSearchLabel;
+    QPushButton *ImageSearchButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -114,6 +117,7 @@ public:
         DrawRectButton = new QPushButton(centralwidget);
         DrawRectButton->setObjectName(QStringLiteral("DrawRectButton"));
         DrawRectButton->setGeometry(QRect(130, 460, 101, 31));
+        DrawRectButton->setCheckable(true);
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QStringLiteral("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
@@ -253,6 +257,15 @@ public:
         shapeTypeLabel = new QLabel(centralwidget);
         shapeTypeLabel->setObjectName(QStringLiteral("shapeTypeLabel"));
         shapeTypeLabel->setGeometry(QRect(706, 10, 141, 20));
+        ImageSearchLine = new QLineEdit(centralwidget);
+        ImageSearchLine->setObjectName(QStringLiteral("ImageSearchLine"));
+        ImageSearchLine->setGeometry(QRect(420, 570, 113, 20));
+        ImageSearchLabel = new QLabel(centralwidget);
+        ImageSearchLabel->setObjectName(QStringLiteral("ImageSearchLabel"));
+        ImageSearchLabel->setGeometry(QRect(340, 570, 71, 20));
+        ImageSearchButton = new QPushButton(centralwidget);
+        ImageSearchButton->setObjectName(QStringLiteral("ImageSearchButton"));
+        ImageSearchButton->setGeometry(QRect(540, 570, 75, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -323,6 +336,8 @@ public:
         deleteShape->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
         resizeShape->setText(QApplication::translate("MainWindow", "Resize", Q_NULLPTR));
         shapeTypeLabel->setText(QApplication::translate("MainWindow", "Shape Type: None", Q_NULLPTR));
+        ImageSearchLabel->setText(QApplication::translate("MainWindow", "Image Search:", Q_NULLPTR));
+        ImageSearchButton->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

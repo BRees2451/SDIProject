@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    canvas = new Canvas();
+    scene = new QGraphicsScene(this);
     //scene = new QGraphicsScene(this);
     //UserShapeOperation User = *new UserShapeOperation;
    // matDisplay ImagePane = *new matDisplay;
@@ -164,7 +164,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
         QPen blackPen(Qt::black);
         blackPen.setWidth(6);
 
-        canvas->scene->addPolygon(Rectangle,blackPen);
+        scene->addPolygon(Rectangle,blackPen);
         ShapeList.append(Rectangle);
     }
 }
@@ -206,7 +206,7 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    canvas->scene->addPolygon(Triangle,blackPen);
+    scene->addPolygon(Triangle,blackPen);
     ShapeList.append(Triangle);
 }
 
@@ -242,7 +242,7 @@ void MainWindow::on_DrawTrapButton_clicked()
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    canvas->scene->addPolygon(Trapezium,blackPen);
+    scene->addPolygon(Trapezium,blackPen);
     ShapeList.append(Trapezium);
 }
 
@@ -290,7 +290,7 @@ void MainWindow::on_DrawPolyButton_clicked()
     QPen blackPen(Qt::black);
     blackPen.setWidth(6);
 
-    canvas->scene->addPolygon(Polygon,blackPen);
+    scene->addPolygon(Polygon,blackPen);
     ShapeList.append(Polygon);
 
 
@@ -331,7 +331,7 @@ void MainWindow::clickPoint(QMouseEvent *mouse_event){
     QPoint mouse_pos = mouse_event->pos();
     qDebug() << mouse_pos <<endl;
     double rad = 1;
-    circle = canvas->scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+    circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
 }
 
 void MainWindow::TesterFunction()
@@ -357,12 +357,12 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
 
 void MainWindow::openImage(QString imagePath) //Opens image onto pane
 {
-    canvas->scene->clear();
+    scene->clear();
     if (QString::compare(imagePath,QString())!= 0){
         QImage image(imagePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-        ui->graphicsView->setScene(canvas->scene);
-        canvas->scene->addItem(item);
+        ui->graphicsView->setScene(scene);
+        scene->addItem(item);
     }
 }
 
@@ -375,14 +375,14 @@ void MainWindow::openImage(QString imagePath) //Opens image onto pane
  */
 void MainWindow::open(QString filePath, QString fileName)
 {
-    canvas->scene->clear();
+    scene->clear();
     //Put this back because if someone is looking to open an image then they are planning on editting it
     //We can discuss about this later.
     if (QString::compare(filePath,QString())!= 0){
            QImage image(filePath);
            item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
-           ui->graphicsView->setScene(canvas->scene);
-           canvas->scene->addItem(item);
+           ui->graphicsView->setScene(scene);
+           scene->addItem(item);
        }
     cout << filePath.toUtf8().constData() << endl;
 

@@ -10,7 +10,6 @@
 #include <iostream>
 #include "shareclass.h"
 #include "Image.h"
-#include "canvas.h"
 
 using namespace std;
 
@@ -88,7 +87,7 @@ private:
 
     Ui::MainWindow *ui;
 
-    Canvas *canvas;
+    QGraphicsScene *scene;
 
     QGraphicsItem *item;
     //QGraphicsScene *scene;
