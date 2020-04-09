@@ -320,10 +320,17 @@ void MainWindow::Save()
 void MainWindow::showMousePosition(QPoint &pos)
 {
     bool a = QApplication::mouseButtons();
-    //if (a) qDebug() << "Mouse Pressed" <<endl;
+    if (a) {
+        double rad = 1;
+        circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+        //We get the shapeType and make a new user shape operation
+        //Then keep updating the drawing.
+    }
+
+    qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
-    double rad = 1;
-    //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+
+
 
 }
 
