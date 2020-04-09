@@ -1,6 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "UserShapeOperations.h"
+
 #include "matdisplay.h"
 #include <vector>
 #include <QPixmap>
@@ -321,21 +321,18 @@ void MainWindow::showMousePosition(QPoint &pos)
 {
     bool a = QApplication::mouseButtons();
     if (a) {
-        double rad = 1;
-        circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
-        //We get the shapeType and make a new user shape operation
-        //Then keep updating the drawing.
+        if(shapeType != NULL){
+            QPoint *position = new QPoint(pos.x(), pos.y());
+            shape->handleMouseEvent(shapeType, "", position);
+            double rad = 1;
+            circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+            //We get the shapeType and make a new user shape operation
+            //Then keep updating the drawing.
+        }
     }
 
-    qDebug() << "Mouse Pressed" <<endl;
+    //qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
-<<<<<<< HEAD
-
-
-=======
-    double rad = 1;
-    circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
->>>>>>> 4f2e580b52a4e7d9fe8d9b12104c2e19e885817f
 
 }
 
@@ -361,10 +358,16 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
 
     }
     QListWidgetItem *selected = ui->ImagesWindow->currentItem();
-    selected->setTextColor(Qt::red);
-    QStringList a = selected->text().split("\t");
-    QString currentImage = defaultPath + "/" + a[0];
-    open(currentImage, a[0]);
+    if (selected != NULL){
+        selected->setTextColor(Qt::red);
+        QStringList a = selected->text().split("\t");
+        QString currentImage = defaultPath + "/" + a[0];
+        open(currentImage, a[0]);
+    }
+    else {
+        qDebug() << "Click on an image before pressing 'Select Image'" << endl;
+    }
+
 }
 
 void MainWindow::openImage(QString imagePath) //Opens image onto pane
