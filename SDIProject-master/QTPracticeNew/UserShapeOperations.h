@@ -1,33 +1,50 @@
-#ifndef UERSHAPEOPPERATIONS_H
-#define UERSHAPEOPPERATIONS_H
-#include <QtCore>
+#ifndef UserShapeOPPERATIONS_H
+#define UserShapeOPPERATIONS_H
+#include "drawnshape.h"
+
+
+using namespace std;
 
 class UserShapeOperation {
 private:
-    int height;
-    int width;
-    QString shapeType;
+    //Type shape definition
+    struct Shape{
+        QString ShapeType;
+        QPoint startPoint;
+        QPoint endPoint;
+        QString Class;
+    };
+
+
+
+    //Initial conditions
+    Shape a;
 
 public:
     void USize();
 
-	void Move();
+    void Move();
 
-	void Delete();
+    void Delete();
 
-	void DisplayName();
+    void DisplayName();
 
-    UserShapeOperation(QString sType)
-    {
-        this->shapeType = sType;
-        this->height= 500;
-        this->width= 500;
-    }
+
+    //Need a list of shapes
+    vector<drawnShape*> shapeList;
+
+    UserShapeOperation();
+
+
 
     ~UserShapeOperation()
     {
         //For Deleting?
     }
+
+    void drawShape();
+
+    void handleMouseEvent(QString, QString, QPoint*);
 };
 
 #endif

@@ -22,6 +22,7 @@ SOURCES += \
     SidePane.cpp \
     UserShapeOperations.cpp \
     customview.cpp \
+    drawnshape.cpp \
     main.cpp \
     mainwindow.cpp \
     matdisplay.cpp \
@@ -36,6 +37,7 @@ HEADERS += \
     User.h \
     UserShapeOperations.h \
     customview.h \
+    drawnshape.h \
     mainwindow.h \
     matdisplay.h \
     mytimer.h \

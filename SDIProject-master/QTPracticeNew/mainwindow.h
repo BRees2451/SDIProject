@@ -10,6 +10,7 @@
 #include <iostream>
 #include "shareclass.h"
 #include "Image.h"
+#include "UserShapeOperations.h"
 
 using namespace std;
 
@@ -92,8 +93,10 @@ private:
     QGraphicsItem *item;
     //QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
-    QGraphicsPolygonItem *shape;
+    QGraphicsPolygonItem *polygon;
     QGraphicsEllipseItem *circle;
+
+    UserShapeOperation *shape;
 
 
     ///////////////////////////////////////////////
