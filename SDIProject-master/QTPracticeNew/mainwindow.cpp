@@ -12,7 +12,6 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     scene = new QGraphicsScene(this);
-    //scene = new QGraphicsScene(this);
     //UserShapeOperation User = *new UserShapeOperation;
    // matDisplay ImagePane = *new matDisplay;
 
@@ -169,11 +168,11 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     }
 }
 
-void MainWindow::on_DrawRectButton_clicked()
+/*void MainWindow::on_DrawRectButton_clicked()
 {
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
-}
+}*/
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
@@ -185,16 +184,7 @@ void MainWindow::on_DrawTriangleButton_clicked()//Triangle
     int xend = 0;
     int yend = 0;
 
-    //if (mouse_event == mousePressEvent())
-    //{
-    //    xstart = mouse_event->x();
-    //    ystart = mouse_event->y();
-    //}
-    //if (mouse_event==mouseReleaseEvent())
-    //{
-    //    xend = mouse_event->x();
-    //    yend = mouse_event->y();
-    //}
+    //Get mouse posisiton on matdisplay window
 
     int halfway = xstart + ((xend-xstart)/2);
 
@@ -220,16 +210,7 @@ void MainWindow::on_DrawTrapButton_clicked()
     int xend = 0;
     int yend = 0;
 
-    //if (mouse_event == mousePressEvent())
-    //{
-    //    xstart = mouse_event->x();
-    //    ystart = mouse_event->y();
-    //}
-    //if (mouse_event==mouseReleaseEvent())
-    //{
-    //    xend = mouse_event->x();
-    //    yend = mouse_event->y();
-    //}
+    //Get mouse posisiton on matdisplay window
 
     int trapindent = (xend-xstart)/4;
 
