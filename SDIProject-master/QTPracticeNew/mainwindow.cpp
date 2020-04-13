@@ -135,7 +135,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     if(ui->DrawRectButton->isChecked()){
         /*
          * i want to use the mouse events from mat display so that it gets it for image pane
-         * */
+         **/
 
         if (QEvent::MouseButtonPress)
         {
@@ -168,11 +168,25 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     }
 }
 
-/*void MainWindow::on_DrawRectButton_clicked()
+void MainWindow::on_DrawRectButton_clicked()
 {
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
-}*/
+
+    QPolygonF Rectangle;
+
+    Rectangle.append(QPointF(50, 50));
+    Rectangle.append(QPointF(150, 50));
+    Rectangle.append(QPointF(150, 150));
+    Rectangle.append(QPointF(50, 150));
+
+    QPen blackPen(Qt::black);
+    blackPen.setWidth(6);
+
+    scene->addPolygon(Rectangle,blackPen);
+    ShapeList.append(Rectangle);
+
+}
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
@@ -304,7 +318,7 @@ void MainWindow::showMousePosition(QPoint &pos)
     if (a) {
         if(shapeType != NULL){
             QPoint *position = new QPoint(pos.x(), pos.y());
-            shape->handleMouseEvent(shapeType, "", position);
+            shape->handleMouseEvent(shapeType, " ", position);
             double rad = 1;
             circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
             //We get the shapeType and make a new user shape operation
