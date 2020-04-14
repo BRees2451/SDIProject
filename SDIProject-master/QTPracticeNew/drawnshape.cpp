@@ -14,13 +14,15 @@ void drawnShape::drawMe()
         QPolygonF Rectangle;
 
         Rectangle.append(*shapeStartPoint);
-        Rectangle.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
         Rectangle.append(QPointF(shapeEndPoint->x(), shapeStartPoint->y()));
         Rectangle.append(*shapeEndPoint);
+        Rectangle.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
         QPen blackPen(Qt::black);
         blackPen.setWidth(6);
 
+
+        //Exception caused here
         scene->addPolygon(Rectangle,blackPen);
 
     }
