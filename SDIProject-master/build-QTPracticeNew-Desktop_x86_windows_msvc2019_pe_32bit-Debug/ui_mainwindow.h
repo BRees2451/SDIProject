@@ -117,7 +117,7 @@ public:
         DrawRectButton = new QPushButton(centralwidget);
         DrawRectButton->setObjectName(QStringLiteral("DrawRectButton"));
         DrawRectButton->setGeometry(QRect(130, 460, 101, 31));
-        DrawRectButton->setCheckable(true);
+        DrawRectButton->setCheckable(false);
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QStringLiteral("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));

@@ -33,7 +33,10 @@ public:
     //Need a list of shapes
     vector<drawnShape*> shapeList;
 
-    UserShapeOperation();
+    UserShapeOperation(){
+       // drawnShape *header;
+       // shapeList.push_back(header);
+    };
 
 
 

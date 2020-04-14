@@ -96,7 +96,7 @@ private:
     QGraphicsPolygonItem *polygon;
     QGraphicsEllipseItem *circle;
 
-    UserShapeOperation *shape;
+    UserShapeOperation *shape = new UserShapeOperation();
 
 
     ///////////////////////////////////////////////

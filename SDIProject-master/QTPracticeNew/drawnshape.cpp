@@ -1,13 +1,27 @@
-#include <QPainterPath>
+#include <QPen>
 #include "drawnshape.h"
+
 
 void drawnShape::drawMe()
 {
-    QPainterPath rectPath;
+    //scene = new QGraphicsScene;
+    //QPainterPath rectPath;
     if (this->shapeType == "Rectangle"){
-        float width = this->shapeEndPoint->x() - this->shapeStartPoint->x();
-        float Height = this->shapeEndPoint->y() - this->shapeStartPoint->y();
-        rectPath.addRect(this->shapeStartPoint->x(), this->shapeStartPoint->y(), width, Height);
+        //float width = this->shapeEndPoint->x() - this->shapeStartPoint->x();
+        //float Height = this->shapeEndPoint->y() - this->shapeStartPoint->y();
+        //rectPath.addRect(this->shapeStartPoint->x(), this->shapeStartPoint->y(), width, Height);
+
+        QPolygonF Rectangle;
+
+        Rectangle.append(*shapeStartPoint);
+        Rectangle.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+        Rectangle.append(QPointF(shapeEndPoint->x(), shapeStartPoint->y()));
+        Rectangle.append(*shapeEndPoint);
+
+        QPen blackPen(Qt::black);
+        blackPen.setWidth(6);
+
+        scene->addPolygon(Rectangle,blackPen);
 
     }
     if (this->shapeType == "Triangle"){
