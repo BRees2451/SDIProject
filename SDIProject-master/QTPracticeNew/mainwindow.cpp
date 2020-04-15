@@ -321,8 +321,8 @@ void MainWindow::showMousePosition(QPoint &pos)
         if(shapeType != NULL){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, " ", position);
-            double rad = 1;
-            circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
+            //double rad = 1;
+            //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
             //We get the shapeType and make a new user shape operation
             //Then keep updating the drawing.
         }

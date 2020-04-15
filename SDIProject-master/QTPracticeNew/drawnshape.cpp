@@ -27,12 +27,15 @@ void drawnShape::drawMe()
         shape.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
         //QPointF topPoint = new
         //topPoint->x() = (shapeStartPoint->y() - shapeStartPoint->x());
-        shape.append(QPointF((shapeStartPoint->x() + (shapeStartPoint->y() - shapeStartPoint->x())/2), shapeStartPoint->y()));
+        shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2), shapeStartPoint->y()));
 
 
     }
     if (this->shapeType == "Trapezium"){
-
+        shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
+        shape.append(QPointF((shapeEndPoint->x() - (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
+        shape.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
+        shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
     }
 }
