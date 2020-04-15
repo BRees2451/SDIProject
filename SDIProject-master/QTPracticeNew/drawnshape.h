@@ -1,6 +1,7 @@
 #ifndef DRAWNSHAPE_H
 #define DRAWNSHAPE_H
 #include <QtCore>
+#include <QGraphicsScene>
 
 class drawnShape
 {
@@ -9,7 +10,7 @@ public:
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
 
-
+    QGraphicsScene *scene;
 
     drawnShape(QString sType, QString cType){
         this->shapeType = sType;

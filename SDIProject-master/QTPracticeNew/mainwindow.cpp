@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     scene = new QGraphicsScene(this);
     //UserShapeOperation User = *new UserShapeOperation;
-   // matDisplay ImagePane = *new matDisplay;
+    //matDisplay ImagePane = *new matDisplay;
 
     Image currentImage;
 
@@ -127,7 +127,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
-    int xstart;
+   /* int xstart;
     int ystart;
     int xend;
     int yend;
@@ -135,7 +135,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
     if(ui->DrawRectButton->isChecked()){
         /*
          * i want to use the mouse events from mat display so that it gets it for image pane
-         **/
+         *
 
         if (QEvent::MouseButtonPress)
         {
@@ -165,7 +165,7 @@ void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Recta
 
         scene->addPolygon(Rectangle,blackPen);
         ShapeList.append(Rectangle);
-    }
+    }*/
 }
 
 void MainWindow::on_DrawRectButton_clicked()
@@ -315,7 +315,9 @@ void MainWindow::Save()
 void MainWindow::showMousePosition(QPoint &pos)
 {
     bool a = QApplication::mouseButtons();
+    bool pressed;
     if (a) {
+        pressed = true;
         if(shapeType != NULL){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, " ", position);
@@ -323,6 +325,12 @@ void MainWindow::showMousePosition(QPoint &pos)
             circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
             //We get the shapeType and make a new user shape operation
             //Then keep updating the drawing.
+        }
+    }
+    if (a == false){
+        for (drawnShape *s : shape->shapeList){
+            s->isBeingDrawn = false;
+            shape->drawShape();
         }
     }
 
