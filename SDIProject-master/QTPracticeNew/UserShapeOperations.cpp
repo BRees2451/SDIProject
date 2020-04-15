@@ -78,6 +78,7 @@ void UserShapeOperation::drawShape()
 void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *thisPos)
 {
     //EXCEPTION GETS THROWN HERE
+    // shapelist is empty == error
     qDebug() << shapeList.size() <<endl;
     if (shapeList.size() > 0) {
         for (drawnShape *s : shapeList){

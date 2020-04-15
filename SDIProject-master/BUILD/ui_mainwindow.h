@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.1
+** Created by: Qt User Interface Compiler version 5.13.2
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -115,7 +115,7 @@ public:
         DrawRectButton = new QPushButton(centralwidget);
         DrawRectButton->setObjectName(QString::fromUtf8("DrawRectButton"));
         DrawRectButton->setGeometry(QRect(130, 460, 101, 31));
-        DrawRectButton->setCheckable(true);
+        DrawRectButton->setCheckable(false);
         DrawTrapButton = new QPushButton(centralwidget);
         DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
