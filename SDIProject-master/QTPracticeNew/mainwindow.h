@@ -78,9 +78,9 @@ private slots:
 
     void clickPoint(QMouseEvent *mouse_event);
 
-    void TesterFunction();
-
     void on_ImageSearchButton_clicked();
+
+    void on_selectClassButton_clicked();
 
 private:
     void open(QString, QString);
@@ -89,7 +89,7 @@ private:
 
     Ui::MainWindow *ui;
 
-
+    QString selectedClass;
 
     QGraphicsItem *item;
     //QGraphicsScene *scene;
@@ -99,17 +99,11 @@ private:
 
     UserShapeOperation *shape = new UserShapeOperation();
 
-
-    ///////////////////////////////////////////////
-    //Image* currentImage;
-    ///////////////////////////////////////////////
-
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
 
     //A vector to contain the shapes
     QVector<QPolygonF> ShapeList;
-
 
     QVector<shareClass::fileData> filesInDirectory;
     QVector<shareClass::fileData> classesInFile;

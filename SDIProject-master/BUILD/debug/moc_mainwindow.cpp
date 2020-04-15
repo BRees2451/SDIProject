@@ -22,7 +22,7 @@ QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_MainWindow_t {
     QByteArrayData data[31];
-    char stringdata0[628];
+    char stringdata0[642];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -57,11 +57,11 @@ QT_MOC_LITERAL(22, 500, 9), // "openImage"
 QT_MOC_LITERAL(23, 510, 9), // "imagePath"
 QT_MOC_LITERAL(24, 520, 22), // "on_resizeShape_clicked"
 QT_MOC_LITERAL(25, 543, 10), // "clickPoint"
-QT_MOC_LITERAL(26, 554, 14), // "TesterFunction"
-QT_MOC_LITERAL(27, 569, 28), // "on_ImageSearchButton_clicked"
-QT_MOC_LITERAL(28, 598, 17), // "showMousePosition"
-QT_MOC_LITERAL(29, 616, 7), // "QPoint&"
-QT_MOC_LITERAL(30, 624, 3) // "pos"
+QT_MOC_LITERAL(26, 554, 28), // "on_ImageSearchButton_clicked"
+QT_MOC_LITERAL(27, 583, 28), // "on_selectClassButton_clicked"
+QT_MOC_LITERAL(28, 612, 17), // "showMousePosition"
+QT_MOC_LITERAL(29, 630, 7), // "QPoint&"
+QT_MOC_LITERAL(30, 638, 3) // "pos"
 
     },
     "MainWindow\0on_ZoomInButton_clicked\0\0"
@@ -80,8 +80,8 @@ QT_MOC_LITERAL(30, 624, 3) // "pos"
     "on_sortClassBy_currentIndexChanged\0"
     "arg1\0on_sortImageBy_currentIndexChanged\0"
     "openImage\0imagePath\0on_resizeShape_clicked\0"
-    "clickPoint\0TesterFunction\0"
-    "on_ImageSearchButton_clicked\0"
+    "clickPoint\0on_ImageSearchButton_clicked\0"
+    "on_selectClassButton_clicked\0"
     "showMousePosition\0QPoint&\0pos"
 };
 #undef QT_MOC_LITERAL
@@ -181,8 +181,8 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 18: _t->on_resizeShape_clicked(); break;
         case 19: _t->on_DrawRectButton_clicked(); break;
         case 20: _t->clickPoint((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
-        case 21: _t->TesterFunction(); break;
-        case 22: _t->on_ImageSearchButton_clicked(); break;
+        case 21: _t->on_ImageSearchButton_clicked(); break;
+        case 22: _t->on_selectClassButton_clicked(); break;
         case 23: _t->showMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         default: ;
         }

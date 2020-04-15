@@ -38,4 +38,5 @@ void drawnShape::drawMe()
         shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
     }
+    drawn = false;
 }

@@ -1,5 +1,6 @@
 #include "matdisplay.h"
 #include <QMessageBox>
+#include <QDebug>
 
 
 matDisplay::matDisplay(QWidget* parent) : QGraphicsView(parent)
@@ -20,7 +21,6 @@ void matDisplay::mouseMoveEvent(QMouseEvent *mouse_event)
 
     if(mouse_pos.x() <= this->size().width() && mouse_pos.y() <= this->size().height()){
         if(mouse_pos.x() >= 0 && mouse_pos.y() >= 0){
-
 
             emit sendMousePosition(mouse_pos);
         }

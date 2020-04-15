@@ -7,6 +7,7 @@ class drawnShape
 {
 public:
     bool isBeingDrawn;
+    bool drawn;
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
 

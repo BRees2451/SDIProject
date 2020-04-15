@@ -173,72 +173,18 @@ void MainWindow::on_DrawRectButton_clicked()
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
-    QPolygonF Rectangle;
-
-    Rectangle.append(QPointF(50, 50));
-    Rectangle.append(QPointF(150, 50));
-    Rectangle.append(QPointF(150, 150));
-    Rectangle.append(QPointF(50, 150));
-
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
-
-    scene->addPolygon(Rectangle,blackPen);
-    ShapeList.append(Rectangle);
-
 }
 
 void MainWindow::on_DrawTriangleButton_clicked()//Triangle
 {
     this->shapeType = "Triangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
-
-    int xstart = 0;
-    int ystart = 0;
-    int xend = 0;
-    int yend = 0;
-
-    //Get mouse posisiton on matdisplay window
-
-    int halfway = xstart + ((xend-xstart)/2);
-
-    QPolygonF Triangle;
-    Triangle.append(QPointF(xstart,yend));
-    Triangle.append(QPointF(xend,yend));
-    Triangle.append(QPointF(halfway,ystart));
-
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
-
-    scene->addPolygon(Triangle,blackPen);
-    ShapeList.append(Triangle);
 }
 
 void MainWindow::on_DrawTrapButton_clicked()
 {
     this->shapeType = "Trapezium";
     this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
-
-    int xstart = 0;
-    int ystart = 0;
-    int xend = 0;
-    int yend = 0;
-
-    //Get mouse posisiton on matdisplay window
-
-    int trapindent = (xend-xstart)/4;
-
-    QPolygonF Trapezium;
-    Trapezium.append(QPointF(xstart + trapindent, ystart));
-    Trapezium.append(QPointF(xend - trapindent, ystart));
-    Trapezium.append(QPointF(xend,yend));
-    Trapezium.append(QPointF(xstart,yend));
-
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
-
-    scene->addPolygon(Trapezium,blackPen);
-    ShapeList.append(Trapezium);
 }
 
 void MainWindow::on_DrawPolyButton_clicked()
@@ -318,9 +264,9 @@ void MainWindow::showMousePosition(QPoint &pos)
     bool pressed;
     if (a) {
         pressed = true;
-        if(shapeType != NULL){
+        if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
-            shape->handleMouseEvent(shapeType, " ", position);
+            shape->handleMouseEvent(shapeType, selectedClass, position);
             //double rad = 1;
             //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
             //We get the shapeType and make a new user shape operation
@@ -331,13 +277,14 @@ void MainWindow::showMousePosition(QPoint &pos)
         for (drawnShape *s : shape->shapeList){
             s->isBeingDrawn = false;
             shape->drawShape();
-        }
-    }
-    for (drawnShape *s : shape->shapeList){
-        QPen blackPen(Qt::black);
-        blackPen.setWidth(6);
-        scene->addPolygon(s->shape,blackPen);
+            if (s->drawn == false) {
+                QPen blackPen(Qt::black);
+                blackPen.setWidth(6);
+                scene->addPolygon(s->shape,blackPen);
+                s->drawn = true;
+            }
 
+        }
     }
     //qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
@@ -349,11 +296,6 @@ void MainWindow::clickPoint(QMouseEvent *mouse_event){
     qDebug() << mouse_pos <<endl;
     double rad = 1;
     circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
-}
-
-void MainWindow::TesterFunction()
-{
-    qDebug() << "THIS WORKS";
 }
 
 
@@ -456,6 +398,7 @@ void MainWindow::open(QString filePath, QString fileName)
                 dataFromFile.append(line);
             }
             //Add the classes to the classWindow
+            selectedClass = "";
             ui->ClassWindow->clear();
             classesInFile.clear();
             for(int i = 1; i < dataFromFile.length();i++)
@@ -592,4 +535,13 @@ void MainWindow::on_ImageSearchButton_clicked()
         // set the colour of the image searched to green ???
         // using searchIndex
     }
+}
+
+void MainWindow::on_selectClassButton_clicked()
+{
+    QListWidgetItem *selected = ui->ClassWindow->currentItem();
+    if (selected != NULL){
+        selected->setTextColor(Qt::red);
+    }
+    selectedClass = selected->text();
 }

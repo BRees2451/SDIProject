@@ -70,9 +70,9 @@ void UserShapeOperation::DisplayName() {
 
 void UserShapeOperation::drawShape()
 {
-   for (drawnShape *s : shapeList){
-       s->drawMe();
-   }
+
+       shapeList[shapeList.size()-1]->drawMe();
+
 }
 
 void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *thisPos)
