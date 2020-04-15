@@ -27,6 +27,7 @@ class MainWindow : public QMainWindow
 
 public:
     QString shapeType;
+    QGraphicsScene *scene = new QGraphicsScene(this);
 
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -88,7 +89,7 @@ private:
 
     Ui::MainWindow *ui;
 
-    QGraphicsScene *scene;
+
 
     QGraphicsItem *item;
     //QGraphicsScene *scene;

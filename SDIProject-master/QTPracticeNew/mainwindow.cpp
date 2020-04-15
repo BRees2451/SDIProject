@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    scene = new QGraphicsScene(this);
+    //scene = new QGraphicsScene(this);
     //UserShapeOperation User = *new UserShapeOperation;
     //matDisplay ImagePane = *new matDisplay;
 
@@ -333,7 +333,13 @@ void MainWindow::showMousePosition(QPoint &pos)
             shape->drawShape();
         }
     }
+    for (drawnShape *s : shape->shapeList){
+        QPen blackPen(Qt::black);
+        blackPen.setWidth(6);
+        scene->addPolygon(s->shape,blackPen);
 
+
+    }
     //qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
 

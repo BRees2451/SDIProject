@@ -10,7 +10,7 @@ public:
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
 
-    QGraphicsScene *scene;
+    //QGraphicsScene *scene;
 
     drawnShape(QString sType, QString cType){
         this->shapeType = sType;
@@ -18,6 +18,7 @@ public:
 
     };
 
+    QPolygonF shape;
     //drawnShape();
 
     void drawMe();
