@@ -1,8 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-
 #include "matdisplay.h"
-#include <vector>
+//#include <vector>
 #include <QPixmap>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -11,16 +10,11 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    //scene = new QGraphicsScene(this);
-    //UserShapeOperation User = *new UserShapeOperation;
-    //matDisplay ImagePane = *new matDisplay;
-
     Image currentImage;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(mousePressEvent(QMouseEvent *event)), SLOT(clickPoint(QMouseEvent *event)));
-    //connect(ui->graphicsView, SIGNAL(mousePressEvent(QMo)))
-    //connect(ui->graphicsView, SIGNAL(&Canvas::mousePressed), this, SLOT(&MainWindow::TesterFunction));
+
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
       * This will fetch the jpg files in the directory and add them to a vector.
@@ -110,62 +104,6 @@ void MainWindow::on_actionSave_triggered()
         QPixmap pixMap = this->ui->graphicsView->grab();
         pixMap.save(fileName);
     }
-}
-/*
-void matDisplay::mousePressEvent(QMouseEvent *mouse_event){
-    //if (MainWindow::shapeType != NULL)
-    {
-
-
-    }
-
-}*/
-
-
-void MainWindow::on_DrawRectButton_clicked(QMouseEvent *mouse_event)//Draw Rectangle
-{
-    this->shapeType = "Rectangle";
-    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
-
-   /* int xstart;
-    int ystart;
-    int xend;
-    int yend;
-
-    if(ui->DrawRectButton->isChecked()){
-        /*
-         * i want to use the mouse events from mat display so that it gets it for image pane
-         *
-
-        if (QEvent::MouseButtonPress)
-        {
-            xstart = mouse_event->x();
-            ystart = mouse_event->y();
-            xend = mouse_event->x();
-            yend = mouse_event->y();
-            cout<<mouse_event->x()<<mouse_event->y(); //--------------> doesnt print this
-
-        }
-        if (QEvent::MouseMove)
-        {
-            xend = mouse_event->x();
-            yend = mouse_event->y();
-        }
-
-
-        QPolygonF Rectangle;
-
-        Rectangle.append(QPointF(xstart, ystart));
-        Rectangle.append(QPointF(xend, ystart));
-        Rectangle.append(QPointF(xend, yend));
-        Rectangle.append(QPointF(xstart, yend));
-
-        QPen blackPen(Qt::black);
-        blackPen.setWidth(6);
-
-        scene->addPolygon(Rectangle,blackPen);
-        ShapeList.append(Rectangle);
-    }*/
 }
 
 void MainWindow::on_DrawRectButton_clicked()
@@ -267,10 +205,6 @@ void MainWindow::showMousePosition(QPoint &pos)
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
-            //double rad = 1;
-            //circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
-            //We get the shapeType and make a new user shape operation
-            //Then keep updating the drawing.
         }
     }
     if (a == false){
@@ -286,7 +220,6 @@ void MainWindow::showMousePosition(QPoint &pos)
 
         }
     }
-    //qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
 
 }

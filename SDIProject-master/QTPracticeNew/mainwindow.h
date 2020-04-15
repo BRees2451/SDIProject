@@ -46,8 +46,6 @@ private slots:
 
     void on_actionSave_triggered();
 
-    void on_DrawRectButton_clicked(QMouseEvent *mouse_event);
-
     void on_DrawTriangleButton_clicked();
 
     void on_DrawTrapButton_clicked();
