@@ -19,7 +19,6 @@ public:
     };
 
     QPolygonF shape;
-    //drawnShape();
 
     void drawMe();
 private:

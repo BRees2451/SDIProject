@@ -338,7 +338,6 @@ void MainWindow::showMousePosition(QPoint &pos)
         blackPen.setWidth(6);
         scene->addPolygon(s->shape,blackPen);
 
-
     }
     //qDebug() << "Mouse Pressed" <<endl;
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));

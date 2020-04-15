@@ -23,6 +23,11 @@ void drawnShape::drawMe()
 
     }
     if (this->shapeType == "Triangle"){
+        shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+        shape.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
+        //QPointF topPoint = new
+        //topPoint->x() = (shapeStartPoint->y() - shapeStartPoint->x());
+        shape.append(QPointF((shapeStartPoint->x() + (shapeStartPoint->y() - shapeStartPoint->x())/2), shapeStartPoint->y()));
 
 
     }
