@@ -170,7 +170,7 @@ void MainWindow::on_DrawPolyButton_clicked()
     blackPen.setWidth(6);
 
     scene->addPolygon(Polygon,blackPen);
-    ShapeList.append(Polygon);
+    //ShapeList.append(Polygon);
 
 
 }
@@ -475,23 +475,27 @@ void MainWindow::on_selectClassButton_clicked()
         selected->setTextColor(Qt::red);
     }
     selectedClass = selected->text();
+    //EXCEPTION if you dont select a class
 }
 
 void MainWindow::on_deleteShape_clicked()
 {
-
-    shape->Delete(shapeType," ");
+   /* if (on_Selected_clicked(true,){
+        shape->Delete(shapeType," ");
+    }*/
 }
 
 void MainWindow::on_Selected_clicked(bool checked, QMouseEvent *mouse_event){
 
     QPoint mouse_pos = mouse_event->pos();
-    QRectF boundingRect();
+    QPoint Boundrect;
 
-    if(boundingRect().contains(mouse_pos)){
-        this->isSelected = !isSelected;
-        checked = true;
-    }
-    checked = false;
+    /*for (drawnShape *s : shape->shapeList)
+       // Boundrect  = s->shapeEndPoint - s->shapeStartPoint;
+        if(((s->shapeStartPoint)> mouse_pos)&&((s->shapeEndPoint<mouse_pos))){
+            s->isSelected = true;
+        }*/
+
+    checked = true;
 }
 

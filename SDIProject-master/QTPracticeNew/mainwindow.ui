@@ -62,6 +62,9 @@
     <property name="text">
      <string>Draw Triangle</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="DrawRectButton">
     <property name="geometry">
@@ -76,7 +79,7 @@
      <string>Draw Rectangle</string>
     </property>
     <property name="checkable">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="DrawTrapButton">
@@ -91,6 +94,9 @@
     <property name="text">
      <string>Draw Trapezium</string>
     </property>
+    <property name="checkable">
+     <bool>true</bool>
+    </property>
    </widget>
    <widget class="QPushButton" name="DrawPolyButton">
     <property name="geometry">
@@ -103,6 +109,9 @@
     </property>
     <property name="text">
      <string>Draw Polygon</string>
+    </property>
+    <property name="checkable">
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QLabel" name="label_3">

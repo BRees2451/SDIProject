@@ -8,6 +8,7 @@ class drawnShape
 public:
     bool isBeingDrawn;
     bool drawn;
+    bool isSelected;
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
 

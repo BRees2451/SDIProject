@@ -82,7 +82,7 @@ private slots:
 
     void on_deleteShape_clicked();
 
-    void on_Selected_clicked(bool checked, QMouseEvent *mouse_event);
+    void on_Selected_clicked(bool, QMouseEvent *mouse_event);
 
 private:
     void open(QString, QString);
@@ -104,9 +104,6 @@ private:
 
     //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
-
-    //A vector to contain the shapes
-    QVector<QPolygonF> ShapeList;
 
     QVector<shareClass::fileData> filesInDirectory;
     QVector<shareClass::fileData> classesInFile;
