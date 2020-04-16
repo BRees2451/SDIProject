@@ -111,6 +111,9 @@ private:
     QDate currentDate = QDate::currentDate();
     QString classFilePath;
     QString classFileName;
+
+    QString annoFileName;
+    QString annoFilePath;
     bool imageActive = false;
 
 

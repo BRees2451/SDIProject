@@ -313,19 +313,34 @@ void MainWindow::open(QString filePath, QString fileName)
     absoluteFileName[0] = absoluteFileName[0] + ".names";
     absoluteFileName[1] = "txt";
     classFileName = absoluteFileName.join(".");
+    absoluteFileName = classFileName.split(".");
+    absoluteFileName[0] = absoluteFileName[0] + ".annotations";
+    absoluteFileName[1] = "";
+    annoFileName = absoluteFileName.join(".");
 
     classFilePath = Destination + "/Projects/" + classFileName;
-
-    if (classFilePath != NULL)
+    annoFilePath = Destination + "/Projects/" + annoFileName;
+    if (Destination != NULL && classFileName != NULL && annoFileName != NULL)
     {
-        QFile file(classFilePath);
+        QFile classFile(classFilePath);
+        QFile annoFile(annoFilePath);
+
+        if (QFileInfo::exists(annoFilePath)){
+            //READ HDF5
+        }
+        else{
+            annoFile.open(QIODevice::WriteOnly | QIODevice::Text);
+            annoFile.write("Annotations\n");
+            annoFile.close();
+        }
+
         //If file exists it will read the data into a list
         if(QFileInfo::exists(classFilePath))
         {
             cout << "file exists" << endl;
-            file.open(QIODevice::ReadOnly | QIODevice::Text);
+            classFile.open(QIODevice::ReadOnly | QIODevice::Text);
             QStringList dataFromFile;
-            QTextStream in(&file);
+            QTextStream in(&classFile);
             while(!in.atEnd()) {
                 QString line = in.readLine();
                 dataFromFile.append(line);
@@ -341,16 +356,16 @@ void MainWindow::open(QString filePath, QString fileName)
             }
 
             cout<<"file already created"<<endl;
-            file.close();
+            classFile.close();
         }
         else
         {
             //Will create a file at the given path as well as make the new file conform to the display we are using
             cout << "file does not exist" << endl;
-            file.open(QIODevice::WriteOnly | QIODevice::Text);
-            file.write("Classes\n");
+            classFile.open(QIODevice::WriteOnly | QIODevice::Text);
+            classFile.write("Classes\n");
             qDebug()<<"file created"<<endl;
-            file.close();
+            classFile.close();
             filesInDirectory.push_back({fileName, QDateTime::currentDateTime()});
             QString itemString = fileName+"\t\t" + QDateTime::currentDateTime().toString("hh:mm\tdd/MM/yy");
             ui->ImagesWindow->addItem(itemString);

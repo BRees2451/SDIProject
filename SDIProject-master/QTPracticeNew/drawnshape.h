@@ -11,21 +11,20 @@ public:
     bool isSelected;
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
+    QString classType;
 
-    //QGraphicsScene *scene;
+    QPolygonF shape;
 
     drawnShape(QString sType, QString cType){
         this->shapeType = sType;
         this->classType = cType;
-
     };
 
-    QPolygonF shape;
-
     void drawMe();
+
 private:
     QString shapeType;
-    QString classType;
+
 };
 
 #endif // DRAWNSHAPE_H
