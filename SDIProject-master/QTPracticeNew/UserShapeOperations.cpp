@@ -50,6 +50,13 @@ void UserShapeOperation::Delete() {
      *
      *
      * //////////////////ask for confirmation????
+     *
+     * for(drawnShape *s : shapeList){
+        isSelected = s->
+        if(s->isSelected){
+            shapeList.pop_back();
+        }
+    }
      * */
     throw "Not yet implemented";
 }

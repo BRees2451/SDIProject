@@ -442,9 +442,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 
 void MainWindow:: on_resizeShape_clicked()
 {
-    //UserShapeOperation user;
-   // user.USize();
-
+    //shape->usize;
 }
 
 
@@ -478,3 +476,22 @@ void MainWindow::on_selectClassButton_clicked()
     }
     selectedClass = selected->text();
 }
+
+void MainWindow::on_deleteShape_clicked()
+{
+
+    shape->Delete(shapeType," ");
+}
+
+void MainWindow::on_Selected_clicked(bool checked, QMouseEvent *mouse_event){
+
+    QPoint mouse_pos = mouse_event->pos();
+    QRectF boundingRect();
+
+    if(boundingRect().contains(mouse_pos)){
+        this->isSelected = !isSelected;
+        checked = true;
+    }
+    checked = false;
+}
+

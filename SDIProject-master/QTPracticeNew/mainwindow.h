@@ -80,6 +80,10 @@ private slots:
 
     void on_selectClassButton_clicked();
 
+    void on_deleteShape_clicked();
+
+    void on_Selected_clicked(bool checked, QMouseEvent *mouse_event);
+
 private:
     void open(QString, QString);
 
@@ -89,8 +93,9 @@ private:
 
     QString selectedClass;
 
+    drawnShape *isSelected;
+
     QGraphicsItem *item;
-    //QGraphicsScene *scene;
     QGraphicsRectItem *rectangle;
     QGraphicsPolygonItem *polygon;
     QGraphicsEllipseItem *circle;
