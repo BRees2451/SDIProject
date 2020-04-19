@@ -5,7 +5,7 @@
 class polygonShape : public drawnShape
 {
 public:
-    polygonShape(QString, QString);
+    //polygonShape(QString, QString);
 
     QVector<QPointF> *pointsVector = new QVector<QPointF>();
 };

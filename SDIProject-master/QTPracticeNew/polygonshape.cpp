@@ -1,6 +1,6 @@
 #include "polygonshape.h"
 
-polygonShape::polygonShape(QString sType, QString, cType)
+/*polygonShape::polygonShape(QString sType, QString cType)
 {
 
-}
+}*/

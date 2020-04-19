@@ -40,7 +40,7 @@ void UserShapeOperation::Move() {
     throw "Not yet implemented";
 }
 
-void UserShapeOperation::Delete() {
+void UserShapeOperation::Delete(QString sType, QString cType) {
     // TODO - implement UserShapeOpperations::Delete
     /* list shapes
      * select shape
@@ -97,7 +97,7 @@ void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *
     }
     drawnShape *currentlyDrawnShape;
     if (sType != "Polygon") currentlyDrawnShape = new drawnShape(sType, cType);
-    else currentlyDrawnShape = new polygonShape(sType, cType);
+    //else currentlyDrawnShape = new polygonShape(sType, cType);
     currentlyDrawnShape->isBeingDrawn = true;
     shapeList.push_back(currentlyDrawnShape);
     currentlyDrawnShape->shapeStartPoint = thisPos;

@@ -25,7 +25,7 @@ public:
 
     void Move();
 
-    void Delete();
+    void Delete(QString, QString);
 
     void DisplayName();
 

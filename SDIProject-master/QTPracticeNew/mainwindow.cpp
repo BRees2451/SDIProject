@@ -504,17 +504,20 @@ void MainWindow::on_deleteShape_clicked()
     }*/
 }
 
-void MainWindow::on_Selected_clicked(bool checked, QMouseEvent *mouse_event){
+void MainWindow::on_Selected_clicked( QMouseEvent *mouse_event){
 
-    QPoint mouse_pos = mouse_event->pos();
-    QPoint Boundrect;
+    QPoint mpos = mouse_event->pos();
+    QPoint *x;
+    QPoint *y;
 
-    /*for (drawnShape *s : shape->shapeList)
-       // Boundrect  = s->shapeEndPoint - s->shapeStartPoint;
-        if(((s->shapeStartPoint)> mouse_pos)&&((s->shapeEndPoint<mouse_pos))){
-            s->isSelected = true;
-        }*/
-
-    checked = true;
+    for (drawnShape *s : shape->shapeList){
+       x = s->shapeEndPoint;
+       y = s->shapeStartPoint;
+        if((x->x()> mpos.x())&&(x->y()>mpos.y())){
+            if((y->x()< mpos.x())&&(y->y()<mpos.y())){
+                s->isSelected = true;
+            }
+        }
+    }
 }
 
