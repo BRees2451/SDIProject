@@ -169,19 +169,22 @@ int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString sea
     int r = len - 1; // right
     while (l <= r)
     {
-        /*int m = l + (r - l) / 2; // middle
 
-        if (searchName == (nameVector[m])) {
+        int m = l + (r - l) / 2; // middle
+
+        QStringList split = nameVector[m].name.split("."); // strip extension
+
+        if (searchName == (split[0].toLower())) {
             return m;
         }
 
         // If x greater, ignore left half
-        if (searchName > (nameVector[m]))
+        if (searchName > (nameVector[m].name.toLower()))
             l = m + 1;
 
         // If x is smaller, ignore right half
         else
-            r = m - 1;*/
+            r = m - 1;
     }
 
     return -1;

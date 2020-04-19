@@ -1,19 +1,18 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'mainwindow.h'
 **
-** Created by: The Qt Meta Object Compiler version 67 (Qt 5.13.2)
+** Created by: The Qt Meta Object Compiler version 67 (Qt 5.9.9)
 **
 ** WARNING! All changes made in this file will be lost!
 *****************************************************************************/
 
-#include <memory>
 #include "../../QTPracticeNew/mainwindow.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
 #error "The header file 'mainwindow.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 67
-#error "This file was generated using the moc from 5.13.2. It"
+#error "This file was generated using the moc from 5.9.9. It"
 #error "cannot be used with the include files from this version of Qt."
 #error "(The moc has changed too much.)"
 #endif
@@ -94,7 +93,7 @@ QT_MOC_LITERAL(32, 681, 3) // "pos"
 static const uint qt_meta_data_MainWindow[] = {
 
  // content:
-       8,       // revision
+       7,       // revision
        0,       // classname
        0,    0, // classinfo
       25,   14, // methods
@@ -128,8 +127,8 @@ static const uint qt_meta_data_MainWindow[] = {
       26,    0,  167,    2, 0x08 /* Private */,
       27,    0,  168,    2, 0x08 /* Private */,
       28,    0,  169,    2, 0x08 /* Private */,
-      29,    1,  170,    2, 0x08 /* Private */,
-      30,    1,  173,    2, 0x0a /* Public */,
+      29,    2,  170,    2, 0x08 /* Private */,
+      30,    1,  175,    2, 0x0a /* Public */,
 
  // slots: parameters
     QMetaType::Void,
@@ -155,7 +154,7 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, 0x80000000 | 24,   25,
+    QMetaType::Void, QMetaType::Bool, 0x80000000 | 24,    2,   25,
     QMetaType::Void, 0x80000000 | 31,   32,
 
        0        // eod
@@ -164,7 +163,7 @@ static const uint qt_meta_data_MainWindow[] = {
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<MainWindow *>(_o);
+        MainWindow *_t = static_cast<MainWindow *>(_o);
         Q_UNUSED(_t)
         switch (_id) {
         case 0: _t->on_ZoomInButton_clicked(); break;
@@ -190,21 +189,17 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 20: _t->on_ImageSearchButton_clicked(); break;
         case 21: _t->on_selectClassButton_clicked(); break;
         case 22: _t->on_deleteShape_clicked(); break;
-        case 23: _t->on_Selected_clicked((*reinterpret_cast< QMouseEvent*(*)>(_a[1]))); break;
+        case 23: _t->on_Selected_clicked((*reinterpret_cast< bool(*)>(_a[1])),(*reinterpret_cast< QMouseEvent*(*)>(_a[2]))); break;
         case 24: _t->showMousePosition((*reinterpret_cast< QPoint(*)>(_a[1]))); break;
         default: ;
         }
     }
 }
 
-QT_INIT_METAOBJECT const QMetaObject MainWindow::staticMetaObject = { {
-    &QMainWindow::staticMetaObject,
-    qt_meta_stringdata_MainWindow.data,
-    qt_meta_data_MainWindow,
-    qt_static_metacall,
-    nullptr,
-    nullptr
-} };
+const QMetaObject MainWindow::staticMetaObject = {
+    { &QMainWindow::staticMetaObject, qt_meta_stringdata_MainWindow.data,
+      qt_meta_data_MainWindow,  qt_static_metacall, nullptr, nullptr}
+};
 
 
 const QMetaObject *MainWindow::metaObject() const
