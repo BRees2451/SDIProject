@@ -201,9 +201,7 @@ void MainWindow::Save()
 void MainWindow::showMousePosition(QPoint &pos)
 {
     bool a = QApplication::mouseButtons();
-    bool pressed;
     if (a) {
-        pressed = true;
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
@@ -219,9 +217,9 @@ void MainWindow::showMousePosition(QPoint &pos)
                 scene->addPolygon(s->shape,blackPen);
                 s->drawn = true;
             }
-
         }
     }
+
     ui->mouse_position_label->setText("x: "+ QString::number(pos.x()) + " y: "+ QString::number(pos.y()));
 
 }

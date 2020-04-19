@@ -6,19 +6,6 @@
 using namespace std;
 
 class UserShapeOperation {
-private:
-    //Type shape definition
-    struct Shape{
-        QString ShapeType;
-        QPoint startPoint;
-        QPoint endPoint;
-        QString Class;
-    };
-
-
-
-    //Initial conditions
-    Shape a;
 
 public:
     void USize();
@@ -33,12 +20,7 @@ public:
     //Need a list of shapes
     vector<drawnShape*> shapeList;
 
-    UserShapeOperation(){
-       // drawnShape *header;
-       // shapeList.push_back(header);
-    };
-
-
+    UserShapeOperation();
 
     ~UserShapeOperation()
     {

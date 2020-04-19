@@ -4,10 +4,16 @@
 
 class polygonShape : public drawnShape
 {
+    //Q_OBJECT;
 public:
-    //polygonShape(QString, QString);
+    using drawnShape::drawnShape;
 
     QVector<QPointF> *pointsVector = new QVector<QPointF>();
+
+    void addPoint(QPointF);
+
+    void drawMe();
+
 };
 
 #endif // POLYGONSHAPE_H

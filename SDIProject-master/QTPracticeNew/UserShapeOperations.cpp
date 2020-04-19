@@ -97,7 +97,7 @@ void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *
     }
     drawnShape *currentlyDrawnShape;
     if (sType != "Polygon") currentlyDrawnShape = new drawnShape(sType, cType);
-    //else currentlyDrawnShape = new polygonShape(sType, cType);
+    else currentlyDrawnShape = new polygonShape(sType, cType);
     currentlyDrawnShape->isBeingDrawn = true;
     shapeList.push_back(currentlyDrawnShape);
     currentlyDrawnShape->shapeStartPoint = thisPos;

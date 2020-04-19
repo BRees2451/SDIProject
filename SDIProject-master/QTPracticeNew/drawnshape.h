@@ -15,7 +15,7 @@ public:
 
     QPolygonF shape;
 
-    drawnShape(QString sType, QString cType){
+    explicit drawnShape(QString sType, QString cType){
         this->shapeType = sType;
         this->classType = cType;
     };

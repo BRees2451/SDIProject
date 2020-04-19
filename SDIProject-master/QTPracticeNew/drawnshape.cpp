@@ -1,6 +1,5 @@
 #include <QPen>
 #include "drawnshape.h"
-#include "mainwindow.h"
 
 
 void drawnShape::drawMe()
@@ -39,9 +38,5 @@ void drawnShape::drawMe()
 
     }
 
-    if (this->shapeType == "Polygon")
-    {
-
-    }
     drawn = false;
 }
