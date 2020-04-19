@@ -40,7 +40,7 @@ void UserShapeOperation::Move() {
     throw "Not yet implemented";
 }
 
-void UserShapeOperation::Delete(QString sType, QString cType) {
+void UserShapeOperation::Delete() {
     // TODO - implement UserShapeOpperations::Delete
     /* list shapes
      * select shape
@@ -51,13 +51,12 @@ void UserShapeOperation::Delete(QString sType, QString cType) {
      *
      * //////////////////ask for confirmation????
      *
-     *  for(drawnShape *s : shapeList){
-            isSelected = s->
-            if(s->isSelected){
-                shapeList.pop_back();
-            }
+     * for(drawnShape *s : shapeList){
+        isSelected = s->
+        if(s->isSelected){
+            shapeList.pop_back();
         }
-        shapeList[shapeList.size()-1]->drawMe();
+    }
      * */
     throw "Not yet implemented";
 }
@@ -85,6 +84,8 @@ void UserShapeOperation::drawShape()
 
 void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *thisPos)
 {
+    //EXCEPTION GETS THROWN HERE
+    // shapelist is empty == error
     qDebug() << shapeList.size() <<endl;
     if (shapeList.size() > 0) {
         for (drawnShape *s : shapeList){

@@ -1,7 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "matdisplay.h"
-//#include "H5Cpp.h"
 //#include <vector>
 #include <QPixmap>
 
@@ -496,28 +495,22 @@ void MainWindow::on_selectClassButton_clicked()
 
 void MainWindow::on_deleteShape_clicked()
 {
-    /*if (/*selected *){
+   /* if (on_Selected_clicked(true,){
         shape->Delete(shapeType," ");
     }*/
 }
 
-void MainWindow::on_Selected_clicked(QMouseEvent *mouse_event){
+void MainWindow::on_Selected_clicked(bool checked, QMouseEvent *mouse_event){
 
-    this->shapeType = "NULL";
+    QPoint mouse_pos = mouse_event->pos();
+    QPoint Boundrect;
 
-    QPoint pos = mouse_event->pos();
-    QPoint *x;
-    QPoint *y;
+    /*for (drawnShape *s : shape->shapeList)
+       // Boundrect  = s->shapeEndPoint - s->shapeStartPoint;
+        if(((s->shapeStartPoint)> mouse_pos)&&((s->shapeEndPoint<mouse_pos))){
+            s->isSelected = true;
+        }*/
 
-    for (drawnShape *s : shape->shapeList){
-        x = s->shapeStartPoint;
-        y = s->shapeEndPoint;
-        if((x->x()>pos.x()) &&(x->y()>pos.y())){
-            if(y->x()<pos.x() && (y->y()<pos.y())){
-                s->isSelected = true;
-                qDebug()<<"selected"<<endl;
-            }
-        }
-    }
+    checked = true;
 }
 
