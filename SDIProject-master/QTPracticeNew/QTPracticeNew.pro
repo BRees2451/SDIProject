@@ -27,6 +27,7 @@ SOURCES += \
     mainwindow.cpp \
     matdisplay.cpp \
     mytimer.cpp \
+    polygonshape.cpp \
     shareclass.cpp
 
 HEADERS += \
@@ -41,6 +42,7 @@ HEADERS += \
     mainwindow.h \
     matdisplay.h \
     mytimer.h \
+    polygonshape.h \
     shareclass.h
 
 FORMS += \
