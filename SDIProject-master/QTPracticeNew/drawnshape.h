@@ -12,6 +12,7 @@ public:
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
     QString classType;
+    QString shapeType;
 
     QPolygonF shape;
 
@@ -21,9 +22,6 @@ public:
     };
 
     void drawMe();
-
-private:
-    QString shapeType;
 
 };
 

@@ -200,16 +200,25 @@ void MainWindow::Save()
 
 void MainWindow::showMousePosition(QPoint &pos)
 {
+    QPointF latest;
     bool a = QApplication::mouseButtons();
     if (a) {
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
         }
+        latest = pos;
     }
     if (a == false){
         for (drawnShape *s : shape->shapeList){
-            s->isBeingDrawn = false;
+            if (s->shapeType == "Polygon"){
+                if (s->shape.size() != 8){
+                    //((polygonShape)s)->addPoint(latest);
+                }
+                else s->isBeingDrawn = false;
+                shape->drawShape();
+            }
+            else s->isBeingDrawn = false;
             shape->drawShape();
             if (s->drawn == false) {
                 QPen blackPen(Qt::black);
@@ -217,6 +226,8 @@ void MainWindow::showMousePosition(QPoint &pos)
                 scene->addPolygon(s->shape,blackPen);
                 s->drawn = true;
             }
+
+
         }
     }
 
