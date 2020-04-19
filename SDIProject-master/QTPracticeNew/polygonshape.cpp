@@ -8,6 +8,7 @@ void polygonShape::addPoint(QPointF point)
     this->drawMe();
 }
 
+
 void polygonShape::drawMe(){
     for (QPointF a : *pointsVector){
         shape.append(a);

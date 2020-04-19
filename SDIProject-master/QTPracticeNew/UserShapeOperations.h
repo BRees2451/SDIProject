@@ -20,7 +20,7 @@ public:
     //Need a list of shapes
     vector<drawnShape*> shapeList;
 
-    UserShapeOperation();
+    UserShapeOperation(){};
 
     ~UserShapeOperation()
     {
