@@ -38,5 +38,10 @@ void drawnShape::drawMe()
         shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
     }
+
+    if (this->shapeType == "Polygon")
+    {
+
+    }
     drawn = false;
 }

@@ -3,6 +3,8 @@
 #include "matdisplay.h"
 //#include <vector>
 #include <QPixmap>
+//#include "h5cpp.h"
+//using namespace H5;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -327,6 +329,8 @@ void MainWindow::open(QString filePath, QString fileName)
 
         if (QFileInfo::exists(annoFilePath)){
             //READ HDF5
+            //H5File file( FILE_NAME, H5F_ACC_RDONLY );
+            //DataSet dataset = file.openDataSet( DATASET_NAME );
         }
         else{
             annoFile.open(QIODevice::WriteOnly | QIODevice::Text);

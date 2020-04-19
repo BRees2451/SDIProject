@@ -1,7 +1,7 @@
 #ifndef UserShapeOPPERATIONS_H
 #define UserShapeOPPERATIONS_H
 #include "drawnshape.h"
-
+#include "polygonshape.h"
 
 using namespace std;
 
