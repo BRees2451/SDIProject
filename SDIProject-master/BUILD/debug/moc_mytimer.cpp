@@ -7,7 +7,7 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../QTPracticeNew/mytimer.h"
+#include "../../../../SDIProject-97838af3611de83d8550ddece62fdfd330d08266/SDIProject-master/QTPracticeNew/mytimer.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)

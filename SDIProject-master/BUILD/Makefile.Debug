@@ -3491,8 +3491,6 @@ debug\mainwindow.obj: ..\QTPracticeNew\mainwindow.cpp ..\QTPracticeNew\mainwindo
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QApplication \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qapplication.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qdesktopwidget.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QButtonGroup \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qbuttongroup.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QComboBox \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qcombobox.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractitemdelegate.h \
@@ -3509,10 +3507,6 @@ debug\mainwindow.obj: ..\QTPracticeNew\mainwindow.cpp ..\QTPracticeNew\mainwindo
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlayout.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlayoutitem.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qgridlayout.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QHeaderView \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qheaderview.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
-		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QLabel \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlabel.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QLineEdit \
@@ -3520,6 +3514,8 @@ debug\mainwindow.obj: ..\QTPracticeNew\mainwindow.cpp ..\QTPracticeNew\mainwindo
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QListWidget \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlistwidget.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qlistview.h \
+		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractitemview.h \
+		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qabstractscrollarea.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QMenu \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\qmenu.h \
 		..\..\..\..\QT\5.13.2\msvc2017\include\QtWidgets\QMenuBar \
