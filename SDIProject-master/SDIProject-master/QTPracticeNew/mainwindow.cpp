@@ -483,10 +483,6 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
     }
 }
 
-void MainWindow:: on_resizeShape_clicked()
-{
-    //shape->usize;
-}
 
 
 
@@ -525,28 +521,33 @@ void MainWindow::on_selectClassButton_clicked()
 
 void MainWindow::on_deleteShape_clicked()
 {
-   /* if (on_Selected_clicked(true,){
+   /* if (shapeType == "Select"){
         shape->Delete(shapeType," ");
     }*/
 }
 
-void MainWindow::on_Selected_clicked( QMouseEvent *mouse_event){
+void MainWindow::on_selectButton_clicked( QMouseEvent *mouse_event){
+    if (shapeType == "Select"){
+        QPoint mpos = mouse_event->pos();
+        QPoint *x;
+        QPoint *y;
 
-    QPoint mpos = mouse_event->pos();
-    QPoint *x;
-    QPoint *y;
-
-    for (drawnShape *s : shape->shapeList){
-       x = s->shapeEndPoint;
-       y = s->shapeStartPoint;
-        if((x->x()> mpos.x())&&(x->y()>mpos.y())){
-            if((y->x()< mpos.x())&&(y->y()<mpos.y())){
-                s->isSelected = true;
+        for (drawnShape *s : shape->shapeList){
+           x = s->shapeEndPoint;
+           y = s->shapeStartPoint;
+            if((x->x()> mpos.x())&&(x->y()>mpos.y())){
+                if((y->x()< mpos.x())&&(y->y()<mpos.y())){
+                    s->isSelected = true;
+                }
             }
         }
     }
 }
 
+void MainWindow:: on_resizeShape_clicked()
+{
+    //shape->usize;
+}
 
 void MainWindow::on_selectButton_clicked()
 {
