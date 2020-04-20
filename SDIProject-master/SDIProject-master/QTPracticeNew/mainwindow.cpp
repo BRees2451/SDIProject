@@ -16,6 +16,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
+    connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -201,8 +202,10 @@ void MainWindow::Save()
 void MainWindow::showMousePosition(QPoint &pos)
 {
     QPointF latest;
+    if (shapeType == "Polygon") return;
     bool a = QApplication::mouseButtons();
     if (a) {
+
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
@@ -236,15 +239,31 @@ void MainWindow::showMousePosition(QPoint &pos)
 }
 
 void MainWindow::clickPoint(QPoint& pos){
-    if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
-        QPoint *position = new QPoint(pos.x(), pos.y());
-        shape->handleMouseEvent(shapeType, selectedClass, position);
+
+    drawnShape *currentShape = new drawnShape("","");
+    if (shapeType == "Polygon"){
+        for (drawnShape *s : shape->shapeList){
+            if (s->isBeingDrawn && s->shapeType == "Polygon") {
+                currentShape = s;
+                polygonShape *currentPoly = static_cast<polygonShape*>(currentShape);
+                if (currentPoly->pointsVector->size() == 7) currentPoly->isBeingDrawn = false;
+                currentPoly->addPoint(pos);
+                if (s->drawn == false) {
+                    QPen blackPen(Qt::black);
+                    blackPen.setWidth(6);
+                    scene->addPolygon(s->shape,blackPen);
+                    s->drawn = true;
+                }
+            }
+        }
+        polygonShape *newPolygon = new polygonShape(this->shapeType, this->selectedClass);
+        shape->shapeList.push_back(newPolygon);
     }
     //latest = pos;
     //QPoint mouse_pos = mouse_event->pos();
     //qDebug() << "mouse_pos" <<endl;
-    //double rad = 1;
-    //circle = scene->addEllipse(pos.x()-rad,pos.x()-rad,rad*2.0,rad*2.0);
+    double rad = 1;
+    circle = scene->addEllipse(pos.x()-rad,pos.y()-rad,rad*2.0,rad*2.0);
 }
 
 
@@ -552,4 +571,9 @@ void MainWindow::on_selectButton_clicked()
 {
     this->shapeType = "Select";
     this->ui->shapeTypeLabel->setText("Shape Type: Select");
+}
+
+void MainWindow::mouseReleased(QPoint &)
+{
+    qDebug() << "mouseReleased" << endl;
 }

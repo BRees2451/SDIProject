@@ -20,6 +20,7 @@ public:
         this->shapeType = sType;
         this->classType = cType;
     };
+    //virtual ~drawnShape();
 
     void drawMe();
 

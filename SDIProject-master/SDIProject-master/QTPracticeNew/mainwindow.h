@@ -74,7 +74,7 @@ private slots:
 
     void on_DrawRectButton_clicked();
 
-    void clickPoint(QPoint&);
+    //void clickPoint(QPoint&);
 
     void on_ImageSearchButton_clicked();
 
@@ -85,6 +85,8 @@ private slots:
     void on_Selected_clicked(QMouseEvent *mouse_event);
 
     void on_selectButton_clicked();
+
+    void mouseReleased(QPoint&);
 
 private:
     void open(QString, QString);
@@ -122,6 +124,7 @@ private:
 
 public slots:
     void showMousePosition(QPoint& pos);
+    void clickPoint(QPoint&);
     //void mousePressEvent(QMouseEvent *mouse_event);
 
 };

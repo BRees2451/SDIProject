@@ -28,6 +28,7 @@ protected:
 signals:
     void sendMousePosition(QPoint&);
     void sendMousePress(QPoint&);
+    void sendMouseRelease(QPoint&);
 };
 
 #endif // MATDISPLAY_H
