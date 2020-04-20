@@ -176,9 +176,12 @@
         </widget>
        </item>
        <item>
-        <widget class="QLineEdit" name="newClassLineEdit_3">
-         <property name="enabled">
-          <bool>false</bool>
+        <widget class="QLineEdit" name="ImageSearchLine"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="ImageSearchButton">
+         <property name="text">
+          <string>Search</string>
          </property>
         </widget>
        </item>
@@ -399,42 +402,6 @@
     </property>
     <property name="text">
      <string>Shape Type: None</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="ImageSearchLine">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>570</y>
-      <width>113</width>
-      <height>20</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLabel" name="ImageSearchLabel">
-    <property name="geometry">
-     <rect>
-      <x>340</x>
-      <y>570</y>
-      <width>71</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Image Search:</string>
-    </property>
-   </widget>
-   <widget class="QPushButton" name="ImageSearchButton">
-    <property name="geometry">
-     <rect>
-      <x>540</x>
-      <y>570</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Search</string>
     </property>
    </widget>
   </widget>

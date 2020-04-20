@@ -491,7 +491,9 @@ void MainWindow::on_ImageSearchButton_clicked()
     }
     else{
         ui->ImageSearchLine->setText("Image found");
+        
         // set the colour of the image searched to green ???
+        
         // using searchIndex
     }
 }
