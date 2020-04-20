@@ -397,7 +397,17 @@ void MainWindow::open(QString filePath, QString fileName)
  */
 void MainWindow::on_addClassButton_clicked()
 {
-    if (imageActive) ui->newClassLineEdit->setEnabled(1);
+    if (imageActive) {
+        if (ui->newClassLineEdit->isEnabled()){
+            ui->newClassLineEdit->setEnabled(0);
+            ui->selectClassButton->setEnabled(1);
+            return;
+        }
+        ui->newClassLineEdit->setEnabled(1);
+        ui->selectClassButton->setEnabled(0);
+
+    }
+
 }
 
 /**
@@ -408,6 +418,7 @@ void MainWindow::on_newClassLineEdit_returnPressed()
 {
     QString text = ui->newClassLineEdit->text();
     ui->newClassLineEdit->setText("");
+    ui->selectClassButton->setEnabled(0);
     ui->newClassLineEdit->setEnabled(0);
 
     classesInFile.push_back({text, QDateTime::currentDateTime()});
