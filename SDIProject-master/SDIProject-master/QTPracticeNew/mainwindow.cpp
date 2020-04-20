@@ -304,6 +304,7 @@ void MainWindow::open(QString filePath, QString fileName)
     {
         cout << "File is in directory" << endl;
         Destination = QFileInfo(QDir::currentPath()).path();
+        qDebug() << Destination << endl;
     }
     else
     {
