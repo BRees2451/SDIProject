@@ -23,7 +23,6 @@
 #include <QtWidgets/QMenu>
 #include <QtWidgets/QMenuBar>
 #include <QtWidgets/QPushButton>
-#include <QtWidgets/QRadioButton>
 #include <QtWidgets/QStatusBar>
 #include <QtWidgets/QVBoxLayout>
 #include <QtWidgets/QWidget>
@@ -72,12 +71,12 @@ public:
     QPushButton *addClassButton;
     QPushButton *selectClassButton;
     QLabel *mouse_position_label;
-    QRadioButton *radioButton;
     QPushButton *pasteShape;
     QPushButton *copyShape;
     QPushButton *deleteShape;
     QPushButton *resizeShape;
     QLabel *shapeTypeLabel;
+    QPushButton *selectButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -244,9 +243,6 @@ public:
         mouse_position_label->setObjectName(QStringLiteral("mouse_position_label"));
         mouse_position_label->setGeometry(QRect(660, 480, 181, 61));
         mouse_position_label->setStyleSheet(QStringLiteral("background-color: rgb(216, 216, 216);"));
-        radioButton = new QRadioButton(centralwidget);
-        radioButton->setObjectName(QStringLiteral("radioButton"));
-        radioButton->setGeometry(QRect(30, 580, 82, 17));
         pasteShape = new QPushButton(centralwidget);
         pasteShape->setObjectName(QStringLiteral("pasteShape"));
         pasteShape->setGeometry(QRect(130, 570, 75, 23));
@@ -262,6 +258,9 @@ public:
         shapeTypeLabel = new QLabel(centralwidget);
         shapeTypeLabel->setObjectName(QStringLiteral("shapeTypeLabel"));
         shapeTypeLabel->setGeometry(QRect(706, 10, 141, 20));
+        selectButton = new QPushButton(centralwidget);
+        selectButton->setObjectName(QStringLiteral("selectButton"));
+        selectButton->setGeometry(QRect(20, 540, 101, 111));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -327,12 +326,12 @@ public:
         addClassButton->setText(QApplication::translate("MainWindow", "Add Object", Q_NULLPTR));
         selectClassButton->setText(QApplication::translate("MainWindow", "Select Object", Q_NULLPTR));
         mouse_position_label->setText(QString());
-        radioButton->setText(QApplication::translate("MainWindow", "Select Shape", Q_NULLPTR));
         pasteShape->setText(QApplication::translate("MainWindow", "Paste", Q_NULLPTR));
         copyShape->setText(QApplication::translate("MainWindow", "Copy", Q_NULLPTR));
         deleteShape->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
         resizeShape->setText(QApplication::translate("MainWindow", "Resize", Q_NULLPTR));
         shapeTypeLabel->setText(QApplication::translate("MainWindow", "Shape Type: None", Q_NULLPTR));
+        selectButton->setText(QApplication::translate("MainWindow", "Select", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

@@ -15,7 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     Image currentImage;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
-    connect(ui->graphicsView,SIGNAL(mousePressEvent(QMouseEvent *event)), SLOT(clickPoint(QMouseEvent *event)));
+    connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -235,11 +235,16 @@ void MainWindow::showMousePosition(QPoint &pos)
 
 }
 
-void MainWindow::clickPoint(QMouseEvent *mouse_event){
-    QPoint mouse_pos = mouse_event->pos();
-    qDebug() << mouse_pos <<endl;
-    double rad = 1;
-    circle = scene->addEllipse(mouse_pos.x()-rad,mouse_pos.x()-rad,rad*2.0,rad*2.0);
+void MainWindow::clickPoint(QPoint& pos){
+    if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
+        QPoint *position = new QPoint(pos.x(), pos.y());
+        shape->handleMouseEvent(shapeType, selectedClass, position);
+    }
+    //latest = pos;
+    //QPoint mouse_pos = mouse_event->pos();
+    //qDebug() << "mouse_pos" <<endl;
+    //double rad = 1;
+    //circle = scene->addEllipse(pos.x()-rad,pos.x()-rad,rad*2.0,rad*2.0);
 }
 
 
@@ -405,9 +410,7 @@ void MainWindow::on_addClassButton_clicked()
         }
         ui->newClassLineEdit->setEnabled(1);
         ui->selectClassButton->setEnabled(0);
-
     }
-
 }
 
 /**
@@ -544,3 +547,9 @@ void MainWindow::on_Selected_clicked( QMouseEvent *mouse_event){
     }
 }
 
+
+void MainWindow::on_selectButton_clicked()
+{
+    this->shapeType = "Select";
+    this->ui->shapeTypeLabel->setText("Shape Type: Select");
+}

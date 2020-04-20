@@ -30,9 +30,15 @@ void matDisplay::mouseMoveEvent(QMouseEvent *mouse_event)
 void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
 {
     QMessageBox msg;
+    QPoint mouse_pos = mouse_event->pos();
     if(mouse_event->button() == Qt::LeftButton)
     {
+        if(mouse_pos.x() <= this->size().width() && mouse_pos.y() <= this->size().height()){
+            if(mouse_pos.x() >= 0 && mouse_pos.y() >= 0){
 
+                emit sendMousePress(mouse_pos);
+            }
+        }
        // msg.setText("Left mouse button pressed!");
       //  msg.exec();
     }
@@ -40,5 +46,8 @@ void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
     {
         //msg.setText("Right mouse button pressed!");
        // msg.exec();
+    }
+    else if(mouse_event->buttons() == NULL){
+        qDebug() << "mouseReleased" << endl;
     }
 }
