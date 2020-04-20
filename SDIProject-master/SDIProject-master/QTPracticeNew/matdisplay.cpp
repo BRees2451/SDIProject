@@ -47,7 +47,7 @@ void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
         //msg.setText("Right mouse button pressed!");
        // msg.exec();
     }
-    else if(mouse_event->buttons() == NULL){
+    else if(mouse_event->buttons() != Qt::LeftButton){
         qDebug() << "mouseReleased" << endl;
     }
 }
