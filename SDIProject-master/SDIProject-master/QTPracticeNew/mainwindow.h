@@ -82,7 +82,7 @@ private slots:
 
     void on_deleteShape_clicked();
 
-    void on_Selected_clicked(QMouseEvent *mouse_event);
+    void on_selectButton_clicked(QMouseEvent *mouse_event);
 
     void on_selectButton_clicked();
 

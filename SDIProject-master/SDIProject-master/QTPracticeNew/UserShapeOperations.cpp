@@ -1,23 +1,11 @@
 #include "UserShapeOperations.h"
 
 void UserShapeOperation::USize() {
-     /* if user input recieved{
-     * change weidth
-     * change height }
-     * else {width = 500;
-     *  height = 500;}
-     *
-     * to be called when drawshape is clicekd
-     * */
-
-    //option 1
-    /* list shapes
-     * select shape with mouse
-     * return selected shape index
-     * enter shape index
-     * enter shapesize
-     * edit shapesize
-     * exit shape
+     /*
+     *take current shape type and current shapeStartPoint
+     * move curser to current shapeStartPoint
+     * set clicked to true
+     * at release mousepos = shapeEndPoint
      *
      * */
     throw "Not yet implemented";
@@ -25,61 +13,41 @@ void UserShapeOperation::USize() {
 
 void UserShapeOperation::Move() {
     // TODO - implement UserShapeOpperations::Move
-    /* list shapes
-     * select shape with mouse
-     * return selected shape index
-     * track mouse movements while mousepressed == true
-     * when mouse pressed == false retrieve coordiantes
-     * place shape at new coordiantes
-     * edit shape coordinates in list
-     * exit shape
+    /*
+     * QPoint *dx;
+     * QPoint *dy;
      *
-     *
-     * //////// mouse posistion on shape stays the same or ato implements to centre of shape ??????????????
-     * */
+     * dx = mouseclick.x() - mouserelease.x();
+     * dy = mouseclick.y() - mouserelease.y();
+     * for (drawnShape *s : shapeList){
+     *      if (s->isSelected) {
+     *          shape.translate(dx,dy)
+     *      }
+     *  }
+        */
     throw "Not yet implemented";
 }
 
 void UserShapeOperation::Delete(QString sType, QString cType) {
-    // TODO - implement UserShapeOpperations::Delete
-    /* list shapes
-     * select shape
-     * return selected shape index
-     * enter shape list at index
-     * delete shape at index
-     *
-     *
-     * //////////////////ask for confirmation????
+    /*
+     * remove entire ui
+     * remove shape from list:
      *
      * for(drawnShape *s : shapeList){
         isSelected = s->
         if(s->isSelected){
             shapeList.pop_back();
         }
-    }
-     * */
-    throw "Not yet implemented";
-}
-
-void UserShapeOperation::DisplayName() {
-    // TODO - implement UserShapeOpperations::DisplayName
-    /* list shapes
-     * select shape
-     * return shape index
-     * enter list at shape index
-     * return name of shape
-     * display name of shape on gui ///////// cout<< shape[i].name
+     * }
      *
-     *
+     *redraw ui
      * */
     throw "Not yet implemented";
 }
 
 void UserShapeOperation::drawShape()
 {
-
        shapeList[shapeList.size()-1]->drawMe();
-
 }
 
 void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *thisPos)
