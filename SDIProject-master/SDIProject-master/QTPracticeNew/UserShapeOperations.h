@@ -8,7 +8,7 @@ using namespace std;
 class UserShapeOperation {
 
 public:
-    void USize();
+    void USize(QString, QString, QPoint*);
 
     void Move();
 

@@ -130,8 +130,7 @@ QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileD
             swapped = false;
         }
         return dateVector;
-	// TODO - implement Image::SortAscendingDate
-	throw "Not yet implemented";
+
 }
 
 QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::fileData> dateVector) {
@@ -156,8 +155,6 @@ QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::file
         }
         return dateVector;
 
-	// TODO - implement Image::SortDescendingDate
-        throw "Not yet implemented";
 }
 
 int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString searchName)

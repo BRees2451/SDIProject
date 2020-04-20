@@ -265,6 +265,7 @@ public:
         selectButton = new QPushButton(centralwidget);
         selectButton->setObjectName(QString::fromUtf8("selectButton"));
         selectButton->setGeometry(QRect(20, 540, 101, 111));
+        selectButton->setCheckable(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

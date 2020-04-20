@@ -545,17 +545,20 @@ void MainWindow::on_deleteShape_clicked()
     }*/
 }
 
-void MainWindow::on_selectButton_clicked( QMouseEvent *mouse_event){
-    if (shapeType == "Select"){
-        QPoint mpos = mouse_event->pos();
+
+//Function doesnt get called
+void MainWindow::on_selectButton_clicked(QPoint &pos){
+    while (shapeType == "Select"){
+
         QPoint *x;
         QPoint *y;
+        qDebug() <<"gets here"<<endl;
 
         for (drawnShape *s : shape->shapeList){
            x = s->shapeEndPoint;
            y = s->shapeStartPoint;
-            if((x->x()> mpos.x())&&(x->y()>mpos.y())){
-                if((y->x()< mpos.x())&&(y->y()<mpos.y())){
+            if((x->x()> pos.x())&&(x->y()>pos.y())){
+                if((y->x()< pos.x())&&(y->y()<pos.y())){
                     s->isSelected = true;
                 }
             }
