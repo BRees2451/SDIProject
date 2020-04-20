@@ -493,8 +493,8 @@ void MainWindow::on_ImageSearchButton_clicked()
 
         ui->ImageSearchLine->setText("Image found");
         ui->ImagesWindow->item(searchIndex)->setForeground(Qt::green);
-        // set the colour of the image searched to green ???
-        // using searchIndex
+
+
     }
 }
 
