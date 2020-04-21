@@ -30,6 +30,9 @@ public:
     void drawShape();
 
     void handleMouseEvent(QString, QString, QPoint*);
+
+
+
 };
 
 #endif

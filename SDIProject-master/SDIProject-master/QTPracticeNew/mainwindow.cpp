@@ -11,7 +11,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-
     Image currentImage;
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
@@ -173,7 +172,6 @@ void MainWindow::on_DrawPolyButton_clicked()
     blackPen.setWidth(6);
 
     scene->addPolygon(Polygon,blackPen);
-    //ShapeList.append(Polygon);
 
 
 }
@@ -548,7 +546,8 @@ void MainWindow::on_deleteShape_clicked()
 
 //Function doesnt get called
 void MainWindow::on_selectButton_clicked(QPoint &pos){
-    while (shapeType == "Select"){
+    bool a = QApplication::mouseButtons();
+    if (a) {
 
         QPoint *x;
         QPoint *y;

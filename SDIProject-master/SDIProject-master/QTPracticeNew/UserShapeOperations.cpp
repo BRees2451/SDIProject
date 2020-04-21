@@ -1,7 +1,9 @@
 #include "UserShapeOperations.h"
 
-void UserShapeOperation::USize(QString sType, QString cType, QPoint *thisPos) {
-     /*
+void UserShapeOperation::USize(QString sType, QString cType, QPoint *thisPos){
+   // QCursor::setPos(x,y);
+
+    /*
      *take current shape type and current shapeStartPoint
      * move curser to current shapeStartPoint
      * set clicked to true
@@ -12,7 +14,8 @@ void UserShapeOperation::USize(QString sType, QString cType, QPoint *thisPos) {
    /* for (drawnShape *s : shapeList){
         if (s->isSelected) {
             s->shapeStartPoint = s->shapeStartPoint;
-            //move cursor to shapestartpoint
+            c.setPos(shapeStartPoinf.x(), shapeStartPoint.y());
+            setCursor(c);
             s->shapeEndPoint = thisPos;
 
             if (sType != "Polygon" ) return;
