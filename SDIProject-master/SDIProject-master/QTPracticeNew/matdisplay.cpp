@@ -50,3 +50,10 @@ void matDisplay::mousePressEvent(QMouseEvent *mouse_event)
     }
 
 }
+
+void matDisplay::paintEvent(QPaintEvent *event){
+    QPainter painter(this);
+
+
+
+}

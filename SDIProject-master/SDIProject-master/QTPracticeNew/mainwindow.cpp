@@ -13,6 +13,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     Image currentImage;
 
+
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
     connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
@@ -240,6 +241,10 @@ void MainWindow::showMousePosition(QPoint &pos)
                 if (s->isSelected) blackPen.setWidth(8);
                 else blackPen.setWidth(6);
                 scene->addPolygon(s->shape,blackPen);
+                QPainter *painter = new QPainter(this);
+                painter->setPen(Qt::black);
+                painter->drawText(s->shapeStartPoint->x() + 20, s->shapeStartPoint->y() + 20, s->shapeType);
+
                 s->drawn = true;
             }
 
@@ -545,6 +550,7 @@ void MainWindow::on_ImageSearchButton_clicked()
         ui->ImageSearchLine->setText("Image not found");
     }
     else{
+        ui->ImagesWindow->item(searchIndex)->setForeground(Qt::green);
         ui->ImageSearchLine->setText("Image found");
         
         // set the colour of the image searched to green ???

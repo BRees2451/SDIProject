@@ -122,6 +122,7 @@ private:
 
     QPointF previousPos;
 
+
 public slots:
     void showMousePosition(QPoint& pos);
     void clickPoint(QPoint&);

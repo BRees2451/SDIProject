@@ -17,10 +17,12 @@ public:
     matDisplay(QWidget *parent = 0);
     ~matDisplay();
 
+    virtual void paintEvent(QPaintEvent *event);
 private:
     bool buttonDown;
 
 protected:
+
     void mouseMoveEvent(QMouseEvent *mouse_event);
     void mousePressEvent(QMouseEvent *mouse_event);
 
