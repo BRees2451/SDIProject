@@ -24,7 +24,6 @@ MainWindow::MainWindow(QWidget *parent)
       */
     //assume the directory exists and contains some files and you want all jpg and JPG files
     QDir directory(defaultPath);
-    qDebug() << defaultPath << endl;
     QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
     for(int i = 0; i < images.length(); i++) {
         QFileInfo modified = QFileInfo(directory, images[i]);
@@ -381,8 +380,7 @@ void MainWindow::open(QString filePath, QString fileName)
     absoluteFileName[1] = "txt";
     classFileName = absoluteFileName.join(".");
     absoluteFileName = classFileName.split(".");
-    absoluteFileName[0] = absoluteFileName[0] + ".annotations";
-    absoluteFileName[1] = "";
+    absoluteFileName[1] = "annotations";
     annoFileName = absoluteFileName.join(".");
 
     classFilePath = Destination + "/RESULTS/" + classFileName;
@@ -471,7 +469,7 @@ void MainWindow::on_newClassLineEdit_returnPressed()
 {
     QString text = ui->newClassLineEdit->text();
     ui->newClassLineEdit->setText("");
-    ui->selectClassButton->setEnabled(0);
+    ui->selectClassButton->setEnabled(1);
     ui->newClassLineEdit->setEnabled(0);
 
     classesInFile.push_back({text, QDateTime::currentDateTime()});
@@ -617,8 +615,27 @@ void MainWindow::mouseReleased(QPoint &)
 
 void MainWindow::on_RemoveClassButton_clicked()
 {
+    QString selectedName;
     QList<QListWidgetItem*> items = ui->ClassWindow->selectedItems();
     foreach(QListWidgetItem * item, items){
-        delete ui->ClassWindow->takeItem(ui->ClassWindow->row(item));
+        QListWidgetItem *selected = ui->ClassWindow->takeItem(ui->ClassWindow->row(item));
+        selectedName = selected->text();
+        delete selected;
+
     }
+    QFile classFile(classFilePath);
+    cout << "file does not exist" << endl;
+    classFile.open(QIODevice::WriteOnly | QIODevice::Text);
+    classFile.write("Classes\n");
+    int index;
+    for (int i = 0; i < classesInFile.size(); i++){
+        if (classesInFile[i].name == selectedName) index = i;
+        else {
+            classFile.write(classesInFile[i].name.toUtf8().constData());
+            classFile.write("\n");
+        }
+    }
+    classesInFile.remove(index);
+    classFile.close();
+
 }
