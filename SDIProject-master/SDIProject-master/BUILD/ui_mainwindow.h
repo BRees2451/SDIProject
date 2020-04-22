@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'mainwindow.ui'
 **
-** Created by: Qt User Interface Compiler version 5.14.1
+** Created by: Qt User Interface Compiler version 5.9.9
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -12,8 +12,10 @@
 #include <QtCore/QVariant>
 #include <QtWidgets/QAction>
 #include <QtWidgets/QApplication>
+#include <QtWidgets/QButtonGroup>
 #include <QtWidgets/QComboBox>
 #include <QtWidgets/QHBoxLayout>
+#include <QtWidgets/QHeaderView>
 #include <QtWidgets/QLabel>
 #include <QtWidgets/QLineEdit>
 #include <QtWidgets/QListWidget>
@@ -83,75 +85,75 @@ public:
     void setupUi(QMainWindow *MainWindow)
     {
         if (MainWindow->objectName().isEmpty())
-            MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
+            MainWindow->setObjectName(QStringLiteral("MainWindow"));
         MainWindow->resize(865, 719);
         actionOpen = new QAction(MainWindow);
-        actionOpen->setObjectName(QString::fromUtf8("actionOpen"));
+        actionOpen->setObjectName(QStringLiteral("actionOpen"));
         actionSave = new QAction(MainWindow);
-        actionSave->setObjectName(QString::fromUtf8("actionSave"));
+        actionSave->setObjectName(QStringLiteral("actionSave"));
         actionCopy = new QAction(MainWindow);
-        actionCopy->setObjectName(QString::fromUtf8("actionCopy"));
+        actionCopy->setObjectName(QStringLiteral("actionCopy"));
         actionQuit = new QAction(MainWindow);
-        actionQuit->setObjectName(QString::fromUtf8("actionQuit"));
+        actionQuit->setObjectName(QStringLiteral("actionQuit"));
         actionPaste = new QAction(MainWindow);
-        actionPaste->setObjectName(QString::fromUtf8("actionPaste"));
+        actionPaste->setObjectName(QStringLiteral("actionPaste"));
         centralwidget = new QWidget(MainWindow);
-        centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        centralwidget->setObjectName(QStringLiteral("centralwidget"));
         graphicsView = new matDisplay(centralwidget);
-        graphicsView->setObjectName(QString::fromUtf8("graphicsView"));
+        graphicsView->setObjectName(QStringLiteral("graphicsView"));
         graphicsView->setGeometry(QRect(330, 40, 521, 381));
         ZoomInButton = new QPushButton(centralwidget);
-        ZoomInButton->setObjectName(QString::fromUtf8("ZoomInButton"));
+        ZoomInButton->setObjectName(QStringLiteral("ZoomInButton"));
         ZoomInButton->setGeometry(QRect(630, 430, 101, 31));
         ZoomOutButton = new QPushButton(centralwidget);
-        ZoomOutButton->setObjectName(QString::fromUtf8("ZoomOutButton"));
+        ZoomOutButton->setObjectName(QStringLiteral("ZoomOutButton"));
         ZoomOutButton->setGeometry(QRect(740, 430, 101, 31));
         DrawTriangleButton = new QPushButton(centralwidget);
-        DrawTriangleButton->setObjectName(QString::fromUtf8("DrawTriangleButton"));
+        DrawTriangleButton->setObjectName(QStringLiteral("DrawTriangleButton"));
         DrawTriangleButton->setGeometry(QRect(20, 460, 101, 31));
         DrawTriangleButton->setCheckable(true);
         DrawRectButton = new QPushButton(centralwidget);
-        DrawRectButton->setObjectName(QString::fromUtf8("DrawRectButton"));
+        DrawRectButton->setObjectName(QStringLiteral("DrawRectButton"));
         DrawRectButton->setGeometry(QRect(130, 460, 101, 31));
         DrawRectButton->setCheckable(true);
         DrawTrapButton = new QPushButton(centralwidget);
-        DrawTrapButton->setObjectName(QString::fromUtf8("DrawTrapButton"));
+        DrawTrapButton->setObjectName(QStringLiteral("DrawTrapButton"));
         DrawTrapButton->setGeometry(QRect(20, 500, 101, 31));
         DrawTrapButton->setCheckable(true);
         DrawPolyButton = new QPushButton(centralwidget);
-        DrawPolyButton->setObjectName(QString::fromUtf8("DrawPolyButton"));
+        DrawPolyButton->setObjectName(QStringLiteral("DrawPolyButton"));
         DrawPolyButton->setGeometry(QRect(130, 500, 101, 31));
         DrawPolyButton->setCheckable(true);
         label_3 = new QLabel(centralwidget);
-        label_3->setObjectName(QString::fromUtf8("label_3"));
+        label_3->setObjectName(QStringLiteral("label_3"));
         label_3->setGeometry(QRect(330, 10, 111, 16));
         RotateLButton = new QPushButton(centralwidget);
-        RotateLButton->setObjectName(QString::fromUtf8("RotateLButton"));
+        RotateLButton->setObjectName(QStringLiteral("RotateLButton"));
         RotateLButton->setGeometry(QRect(340, 430, 101, 31));
         RotateRButton = new QPushButton(centralwidget);
-        RotateRButton->setObjectName(QString::fromUtf8("RotateRButton"));
+        RotateRButton->setObjectName(QStringLiteral("RotateRButton"));
         RotateRButton->setGeometry(QRect(450, 430, 101, 31));
         verticalLayoutWidget = new QWidget(centralwidget);
-        verticalLayoutWidget->setObjectName(QString::fromUtf8("verticalLayoutWidget"));
+        verticalLayoutWidget->setObjectName(QStringLiteral("verticalLayoutWidget"));
         verticalLayoutWidget->setGeometry(QRect(10, 10, 311, 431));
         verticalLayout = new QVBoxLayout(verticalLayoutWidget);
-        verticalLayout->setObjectName(QString::fromUtf8("verticalLayout"));
+        verticalLayout->setObjectName(QStringLiteral("verticalLayout"));
         verticalLayout->setContentsMargins(0, 0, 0, 0);
         newClassLayout_3 = new QHBoxLayout();
-        newClassLayout_3->setObjectName(QString::fromUtf8("newClassLayout_3"));
+        newClassLayout_3->setObjectName(QStringLiteral("newClassLayout_3"));
         newClass_3 = new QLabel(verticalLayoutWidget);
-        newClass_3->setObjectName(QString::fromUtf8("newClass_3"));
+        newClass_3->setObjectName(QStringLiteral("newClass_3"));
         newClass_3->setEnabled(true);
 
         newClassLayout_3->addWidget(newClass_3);
 
         ImageSearchLine = new QLineEdit(verticalLayoutWidget);
-        ImageSearchLine->setObjectName(QString::fromUtf8("ImageSearchLine"));
+        ImageSearchLine->setObjectName(QStringLiteral("ImageSearchLine"));
 
         newClassLayout_3->addWidget(ImageSearchLine);
 
         ImageSearchButton = new QPushButton(verticalLayoutWidget);
-        ImageSearchButton->setObjectName(QString::fromUtf8("ImageSearchButton"));
+        ImageSearchButton->setObjectName(QStringLiteral("ImageSearchButton"));
 
         newClassLayout_3->addWidget(ImageSearchButton);
 
@@ -159,35 +161,31 @@ public:
         verticalLayout->addLayout(newClassLayout_3);
 
         ImagesLabel = new QLabel(verticalLayoutWidget);
-        ImagesLabel->setObjectName(QString::fromUtf8("ImagesLabel"));
+        ImagesLabel->setObjectName(QStringLiteral("ImagesLabel"));
 
         verticalLayout->addWidget(ImagesLabel);
 
         ImagesWindow = new QListWidget(verticalLayoutWidget);
-        ImagesWindow->setObjectName(QString::fromUtf8("ImagesWindow"));
+        ImagesWindow->setObjectName(QStringLiteral("ImagesWindow"));
 
         verticalLayout->addWidget(ImagesWindow);
 
         sortImageBy = new QComboBox(verticalLayoutWidget);
-        sortImageBy->addItem(QString());
-        sortImageBy->addItem(QString());
-        sortImageBy->addItem(QString());
-        sortImageBy->addItem(QString());
-        sortImageBy->setObjectName(QString::fromUtf8("sortImageBy"));
+        sortImageBy->setObjectName(QStringLiteral("sortImageBy"));
 
         verticalLayout->addWidget(sortImageBy);
 
         horizontalLayout = new QHBoxLayout();
         horizontalLayout->setSpacing(5);
-        horizontalLayout->setObjectName(QString::fromUtf8("horizontalLayout"));
+        horizontalLayout->setObjectName(QStringLiteral("horizontalLayout"));
         horizontalLayout->setContentsMargins(-1, -1, -1, 5);
         AddImageButton = new QPushButton(verticalLayoutWidget);
-        AddImageButton->setObjectName(QString::fromUtf8("AddImageButton"));
+        AddImageButton->setObjectName(QStringLiteral("AddImageButton"));
 
         horizontalLayout->addWidget(AddImageButton);
 
         selectImage = new QPushButton(verticalLayoutWidget);
-        selectImage->setObjectName(QString::fromUtf8("selectImage"));
+        selectImage->setObjectName(QStringLiteral("selectImage"));
 
         horizontalLayout->addWidget(selectImage);
 
@@ -195,32 +193,30 @@ public:
         verticalLayout->addLayout(horizontalLayout);
 
         ClassLabel = new QLabel(verticalLayoutWidget);
-        ClassLabel->setObjectName(QString::fromUtf8("ClassLabel"));
+        ClassLabel->setObjectName(QStringLiteral("ClassLabel"));
 
         verticalLayout->addWidget(ClassLabel);
 
         ClassWindow = new QListWidget(verticalLayoutWidget);
-        ClassWindow->setObjectName(QString::fromUtf8("ClassWindow"));
+        ClassWindow->setObjectName(QStringLiteral("ClassWindow"));
 
         verticalLayout->addWidget(ClassWindow);
 
         sortClassBy = new QComboBox(verticalLayoutWidget);
-        sortClassBy->addItem(QString());
-        sortClassBy->addItem(QString());
-        sortClassBy->setObjectName(QString::fromUtf8("sortClassBy"));
+        sortClassBy->setObjectName(QStringLiteral("sortClassBy"));
 
         verticalLayout->addWidget(sortClassBy);
 
         newClassLayout = new QHBoxLayout();
-        newClassLayout->setObjectName(QString::fromUtf8("newClassLayout"));
+        newClassLayout->setObjectName(QStringLiteral("newClassLayout"));
         newClass = new QLabel(verticalLayoutWidget);
-        newClass->setObjectName(QString::fromUtf8("newClass"));
+        newClass->setObjectName(QStringLiteral("newClass"));
         newClass->setEnabled(true);
 
         newClassLayout->addWidget(newClass);
 
         newClassLineEdit = new QLineEdit(verticalLayoutWidget);
-        newClassLineEdit->setObjectName(QString::fromUtf8("newClassLineEdit"));
+        newClassLineEdit->setObjectName(QStringLiteral("newClassLineEdit"));
         newClassLineEdit->setEnabled(false);
 
         newClassLayout->addWidget(newClassLineEdit);
@@ -229,14 +225,14 @@ public:
         verticalLayout->addLayout(newClassLayout);
 
         horizontalLayout_2 = new QHBoxLayout();
-        horizontalLayout_2->setObjectName(QString::fromUtf8("horizontalLayout_2"));
+        horizontalLayout_2->setObjectName(QStringLiteral("horizontalLayout_2"));
         addClassButton = new QPushButton(verticalLayoutWidget);
-        addClassButton->setObjectName(QString::fromUtf8("addClassButton"));
+        addClassButton->setObjectName(QStringLiteral("addClassButton"));
 
         horizontalLayout_2->addWidget(addClassButton);
 
         selectClassButton = new QPushButton(verticalLayoutWidget);
-        selectClassButton->setObjectName(QString::fromUtf8("selectClassButton"));
+        selectClassButton->setObjectName(QStringLiteral("selectClassButton"));
 
         horizontalLayout_2->addWidget(selectClassButton);
 
@@ -244,39 +240,39 @@ public:
         verticalLayout->addLayout(horizontalLayout_2);
 
         mouse_position_label = new QLabel(centralwidget);
-        mouse_position_label->setObjectName(QString::fromUtf8("mouse_position_label"));
+        mouse_position_label->setObjectName(QStringLiteral("mouse_position_label"));
         mouse_position_label->setGeometry(QRect(660, 480, 181, 61));
-        mouse_position_label->setStyleSheet(QString::fromUtf8("background-color: rgb(216, 216, 216);"));
+        mouse_position_label->setStyleSheet(QStringLiteral("background-color: rgb(216, 216, 216);"));
         pasteShape = new QPushButton(centralwidget);
-        pasteShape->setObjectName(QString::fromUtf8("pasteShape"));
+        pasteShape->setObjectName(QStringLiteral("pasteShape"));
         pasteShape->setGeometry(QRect(130, 570, 75, 23));
         copyShape = new QPushButton(centralwidget);
-        copyShape->setObjectName(QString::fromUtf8("copyShape"));
+        copyShape->setObjectName(QStringLiteral("copyShape"));
         copyShape->setGeometry(QRect(130, 540, 75, 23));
         deleteShape = new QPushButton(centralwidget);
-        deleteShape->setObjectName(QString::fromUtf8("deleteShape"));
+        deleteShape->setObjectName(QStringLiteral("deleteShape"));
         deleteShape->setGeometry(QRect(130, 600, 75, 23));
         resizeShape = new QPushButton(centralwidget);
-        resizeShape->setObjectName(QString::fromUtf8("resizeShape"));
+        resizeShape->setObjectName(QStringLiteral("resizeShape"));
         resizeShape->setGeometry(QRect(130, 630, 75, 23));
         shapeTypeLabel = new QLabel(centralwidget);
-        shapeTypeLabel->setObjectName(QString::fromUtf8("shapeTypeLabel"));
+        shapeTypeLabel->setObjectName(QStringLiteral("shapeTypeLabel"));
         shapeTypeLabel->setGeometry(QRect(706, 10, 141, 20));
         selectButton = new QPushButton(centralwidget);
-        selectButton->setObjectName(QString::fromUtf8("selectButton"));
+        selectButton->setObjectName(QStringLiteral("selectButton"));
         selectButton->setGeometry(QRect(20, 540, 101, 111));
         selectButton->setCheckable(true);
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
-        menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setObjectName(QStringLiteral("menubar"));
         menubar->setGeometry(QRect(0, 0, 865, 21));
         menuFile = new QMenu(menubar);
-        menuFile->setObjectName(QString::fromUtf8("menuFile"));
+        menuFile->setObjectName(QStringLiteral("menuFile"));
         menuEdit = new QMenu(menubar);
-        menuEdit->setObjectName(QString::fromUtf8("menuEdit"));
+        menuEdit->setObjectName(QStringLiteral("menuEdit"));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
-        statusbar->setObjectName(QString::fromUtf8("statusbar"));
+        statusbar->setObjectName(QStringLiteral("statusbar"));
         MainWindow->setStatusBar(statusbar);
 
         menubar->addAction(menuFile->menuAction());
@@ -294,47 +290,51 @@ public:
 
     void retranslateUi(QMainWindow *MainWindow)
     {
-        MainWindow->setWindowTitle(QCoreApplication::translate("MainWindow", "MainWindow", nullptr));
-        actionOpen->setText(QCoreApplication::translate("MainWindow", "Open", nullptr));
-        actionSave->setText(QCoreApplication::translate("MainWindow", "Save", nullptr));
-        actionCopy->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
-        actionQuit->setText(QCoreApplication::translate("MainWindow", "Quit", nullptr));
-        actionPaste->setText(QCoreApplication::translate("MainWindow", "Paste", nullptr));
-        ZoomInButton->setText(QCoreApplication::translate("MainWindow", "Zoom In", nullptr));
-        ZoomOutButton->setText(QCoreApplication::translate("MainWindow", "Zoom Out", nullptr));
-        DrawTriangleButton->setText(QCoreApplication::translate("MainWindow", "Draw Triangle", nullptr));
-        DrawRectButton->setText(QCoreApplication::translate("MainWindow", "Draw Rectangle", nullptr));
-        DrawTrapButton->setText(QCoreApplication::translate("MainWindow", "Draw Trapezium", nullptr));
-        DrawPolyButton->setText(QCoreApplication::translate("MainWindow", "Draw Polygon", nullptr));
-        label_3->setText(QCoreApplication::translate("MainWindow", "Image Pane", nullptr));
-        RotateLButton->setText(QCoreApplication::translate("MainWindow", "Rotate Left", nullptr));
-        RotateRButton->setText(QCoreApplication::translate("MainWindow", "Rotate Right", nullptr));
-        newClass_3->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
-        ImageSearchButton->setText(QCoreApplication::translate("MainWindow", "Search", nullptr));
-        ImagesLabel->setText(QCoreApplication::translate("MainWindow", "Images", nullptr));
-        sortImageBy->setItemText(0, QCoreApplication::translate("MainWindow", "Name (Asc)", nullptr));
-        sortImageBy->setItemText(1, QCoreApplication::translate("MainWindow", "Name (Desc)", nullptr));
-        sortImageBy->setItemText(2, QCoreApplication::translate("MainWindow", "Date (Asc)", nullptr));
-        sortImageBy->setItemText(3, QCoreApplication::translate("MainWindow", "Date (Desc)", nullptr));
-
-        AddImageButton->setText(QCoreApplication::translate("MainWindow", "Add Image", nullptr));
-        selectImage->setText(QCoreApplication::translate("MainWindow", "Select Image", nullptr));
-        ClassLabel->setText(QCoreApplication::translate("MainWindow", "Classifier Path", nullptr));
-        sortClassBy->setItemText(0, QCoreApplication::translate("MainWindow", "Name (Asc)", nullptr));
-        sortClassBy->setItemText(1, QCoreApplication::translate("MainWindow", "Name (Desc)", nullptr));
-
-        newClass->setText(QCoreApplication::translate("MainWindow", "New Object:", nullptr));
-        addClassButton->setText(QCoreApplication::translate("MainWindow", "Add Object", nullptr));
-        selectClassButton->setText(QCoreApplication::translate("MainWindow", "Select Object", nullptr));
+        MainWindow->setWindowTitle(QApplication::translate("MainWindow", "MainWindow", Q_NULLPTR));
+        actionOpen->setText(QApplication::translate("MainWindow", "Open", Q_NULLPTR));
+        actionSave->setText(QApplication::translate("MainWindow", "Save", Q_NULLPTR));
+        actionCopy->setText(QApplication::translate("MainWindow", "Copy", Q_NULLPTR));
+        actionQuit->setText(QApplication::translate("MainWindow", "Quit", Q_NULLPTR));
+        actionPaste->setText(QApplication::translate("MainWindow", "Paste", Q_NULLPTR));
+        ZoomInButton->setText(QApplication::translate("MainWindow", "Zoom In", Q_NULLPTR));
+        ZoomOutButton->setText(QApplication::translate("MainWindow", "Zoom Out", Q_NULLPTR));
+        DrawTriangleButton->setText(QApplication::translate("MainWindow", "Draw Triangle", Q_NULLPTR));
+        DrawRectButton->setText(QApplication::translate("MainWindow", "Draw Rectangle", Q_NULLPTR));
+        DrawTrapButton->setText(QApplication::translate("MainWindow", "Draw Trapezium", Q_NULLPTR));
+        DrawPolyButton->setText(QApplication::translate("MainWindow", "Draw Polygon", Q_NULLPTR));
+        label_3->setText(QApplication::translate("MainWindow", "Image Pane", Q_NULLPTR));
+        RotateLButton->setText(QApplication::translate("MainWindow", "Rotate Left", Q_NULLPTR));
+        RotateRButton->setText(QApplication::translate("MainWindow", "Rotate Right", Q_NULLPTR));
+        newClass_3->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
+        ImageSearchButton->setText(QApplication::translate("MainWindow", "Search", Q_NULLPTR));
+        ImagesLabel->setText(QApplication::translate("MainWindow", "Images", Q_NULLPTR));
+        sortImageBy->clear();
+        sortImageBy->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Name (Asc)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Name (Desc)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Date (Asc)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Date (Desc)", Q_NULLPTR)
+        );
+        AddImageButton->setText(QApplication::translate("MainWindow", "Add Image", Q_NULLPTR));
+        selectImage->setText(QApplication::translate("MainWindow", "Select Image", Q_NULLPTR));
+        ClassLabel->setText(QApplication::translate("MainWindow", "Classifier Path", Q_NULLPTR));
+        sortClassBy->clear();
+        sortClassBy->insertItems(0, QStringList()
+         << QApplication::translate("MainWindow", "Name (Asc)", Q_NULLPTR)
+         << QApplication::translate("MainWindow", "Name (Desc)", Q_NULLPTR)
+        );
+        newClass->setText(QApplication::translate("MainWindow", "New Object:", Q_NULLPTR));
+        addClassButton->setText(QApplication::translate("MainWindow", "Add Object", Q_NULLPTR));
+        selectClassButton->setText(QApplication::translate("MainWindow", "Select Object", Q_NULLPTR));
         mouse_position_label->setText(QString());
-        pasteShape->setText(QCoreApplication::translate("MainWindow", "Paste", nullptr));
-        copyShape->setText(QCoreApplication::translate("MainWindow", "Copy", nullptr));
-        deleteShape->setText(QCoreApplication::translate("MainWindow", "Delete", nullptr));
-        resizeShape->setText(QCoreApplication::translate("MainWindow", "Resize", nullptr));
-        shapeTypeLabel->setText(QCoreApplication::translate("MainWindow", "Shape Type: None", nullptr));
-        selectButton->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
-        menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
-        menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
+        pasteShape->setText(QApplication::translate("MainWindow", "Paste", Q_NULLPTR));
+        copyShape->setText(QApplication::translate("MainWindow", "Copy", Q_NULLPTR));
+        deleteShape->setText(QApplication::translate("MainWindow", "Delete", Q_NULLPTR));
+        resizeShape->setText(QApplication::translate("MainWindow", "Resize", Q_NULLPTR));
+        shapeTypeLabel->setText(QApplication::translate("MainWindow", "Shape Type: None", Q_NULLPTR));
+        selectButton->setText(QApplication::translate("MainWindow", "Select", Q_NULLPTR));
+        menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
+        menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi
 
 };

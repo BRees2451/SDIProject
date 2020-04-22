@@ -265,6 +265,9 @@ void MainWindow::clickPoint(QPoint& pos){
                     QPen blackPen(Qt::black);
                     if (s->isSelected) blackPen.setWidth(8);
                     else blackPen.setWidth(6);
+                    QPainter painter(this);
+                    painter.setPen(Qt::black);
+                    painter.drawText(0, 20, "Polygon");
                     scene->addPolygon(s->shape,blackPen);
                     s->drawn = true;
                 }
@@ -341,11 +344,11 @@ void MainWindow::open(QString filePath, QString fileName)
        }
     cout << filePath.toUtf8().constData() << endl;
 
-    QString containString = "/Projects/"+fileName;
+    QString containString = "/RESULTS/"+fileName;
 
     QString Destination;
 
-    //Will check whether file is in 'Projects' folder
+    //Will check whether file is in 'RESULTS' folder
     if (filePath.contains(containString))
     {
         cout << "File is in directory" << endl;
@@ -376,8 +379,8 @@ void MainWindow::open(QString filePath, QString fileName)
     absoluteFileName[1] = "";
     annoFileName = absoluteFileName.join(".");
 
-    classFilePath = Destination + "/Projects/" + classFileName;
-    annoFilePath = Destination + "/Projects/" + annoFileName;
+    classFilePath = Destination + "/RESULTS/" + classFileName;
+    annoFilePath = Destination + "/RESULTS/" + annoFileName;
     if (Destination != NULL && classFileName != NULL && annoFileName != NULL)
     {
         QFile classFile(classFilePath);

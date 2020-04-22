@@ -107,7 +107,7 @@ private:
     UserShapeOperation *shape = new UserShapeOperation();
 
     //QListWidget *ImageList;
-    QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/Projects";
+    QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/RESULTS";
 
     QVector<shareClass::fileData> filesInDirectory;
     QVector<shareClass::fileData> classesInFile;
