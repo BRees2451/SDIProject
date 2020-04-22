@@ -88,6 +88,8 @@ private slots:
 
     void mouseReleased(QPoint&);
 
+    void on_RemoveClassButton_clicked();
+
 private:
     void open(QString, QString);
 

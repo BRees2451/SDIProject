@@ -407,6 +407,19 @@
      <bool>true</bool>
     </property>
    </widget>
+   <widget class="QPushButton" name="RemoveClassButton">
+    <property name="geometry">
+     <rect>
+      <x>370</x>
+      <y>500</y>
+      <width>141</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Remove Selected Class</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

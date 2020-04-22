@@ -75,6 +75,7 @@ public:
     QPushButton *resizeShape;
     QLabel *shapeTypeLabel;
     QPushButton *selectButton;
+    QPushButton *RemoveClassButton;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -266,6 +267,9 @@ public:
         selectButton->setObjectName(QString::fromUtf8("selectButton"));
         selectButton->setGeometry(QRect(20, 540, 101, 111));
         selectButton->setCheckable(true);
+        RemoveClassButton = new QPushButton(centralwidget);
+        RemoveClassButton->setObjectName(QString::fromUtf8("RemoveClassButton"));
+        RemoveClassButton->setGeometry(QRect(370, 500, 141, 23));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
@@ -333,6 +337,7 @@ public:
         resizeShape->setText(QCoreApplication::translate("MainWindow", "Resize", nullptr));
         shapeTypeLabel->setText(QCoreApplication::translate("MainWindow", "Shape Type: None", nullptr));
         selectButton->setText(QCoreApplication::translate("MainWindow", "Select", nullptr));
+        RemoveClassButton->setText(QCoreApplication::translate("MainWindow", "Remove Selected Class", nullptr));
         menuFile->setTitle(QCoreApplication::translate("MainWindow", "File", nullptr));
         menuEdit->setTitle(QCoreApplication::translate("MainWindow", "Edit", nullptr));
     } // retranslateUi

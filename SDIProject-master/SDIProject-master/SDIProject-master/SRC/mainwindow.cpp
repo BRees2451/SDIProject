@@ -613,3 +613,11 @@ void MainWindow::mouseReleased(QPoint &)
 {
     qDebug() << "mouseReleased" << endl;
 }
+
+void MainWindow::on_RemoveClassButton_clicked()
+{
+    QList<QListWidgetItem*> items = ui->ClassWindow->selectedItems();
+    foreach(QListWidgetItem * item, items){
+        delete ui->ClassWindow->takeItem(ui->ClassWindow->row(item));
+    }
+}
