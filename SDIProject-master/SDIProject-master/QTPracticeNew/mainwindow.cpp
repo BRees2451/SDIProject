@@ -212,9 +212,11 @@ void MainWindow::showMousePosition(QPoint &pos)
                 }
 
             }
-            qreal dx = pos.x();
-            qreal dy = pos.y();
-            currentShape->shape.translate(dx, dy);
+            //prevPoint = pos-(*currentShape->shapeStartPoint);
+            //QPoint point = pos-(*currentShape->shapeStartPoint);
+            qDebug() << pos-previousPos << endl;
+            if (previousPos.x() != NULL) currentShape->shape.translate(pos-previousPos);
+            previousPos = pos;
         }
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());

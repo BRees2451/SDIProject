@@ -120,7 +120,7 @@ private:
     QString annoFilePath;
     bool imageActive = false;
 
-
+    QPointF previousPos;
 
 public slots:
     void showMousePosition(QPoint& pos);
