@@ -44,3 +44,13 @@ void drawnShape::drawMe()
 
     drawn = false;
 }
+
+bool drawnShape::tryToggleSelect(QPointF mousePosition){
+    QRectF boundingRect = this->shape.boundingRect();
+    if(boundingRect.contains(mousePosition)){
+        this->isSelected = true;
+        this->drawn = false;
+        return true;
+    }
+    else return false;
+}
