@@ -17,7 +17,7 @@ public:
     matDisplay(QWidget *parent = 0);
     ~matDisplay();
 
-    virtual void paintEvent(QPaintEvent *event);
+    //virtual void paintEvent(QPaintEvent *event);
 private:
     bool buttonDown;
 
