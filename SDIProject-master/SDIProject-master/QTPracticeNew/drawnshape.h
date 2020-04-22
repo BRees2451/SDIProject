@@ -8,7 +8,7 @@ class drawnShape
 public:
     bool isBeingDrawn;
     bool drawn;
-    bool isSelected;
+    bool isSelected = false;
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
     QString classType;
@@ -23,6 +23,8 @@ public:
     //virtual ~drawnShape();
 
     void drawMe();
+
+    bool tryToggleSelect(QPointF);
 
 };
 

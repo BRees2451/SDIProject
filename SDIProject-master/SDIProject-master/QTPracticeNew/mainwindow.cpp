@@ -203,7 +203,19 @@ void MainWindow::showMousePosition(QPoint &pos)
     if (shapeType == "Polygon") return;
     bool a = QApplication::mouseButtons();
     if (a) {
+        if (shapeType == "Select"){
+            drawnShape *currentShape;
+            for (drawnShape *s : shape->shapeList){
+                if (s->isSelected) {
+                    currentShape = s;
+                    break;
+                }
 
+            }
+            qreal dx = pos.x();
+            qreal dy = pos.y();
+            currentShape->shape.translate(dx, dy);
+        }
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
@@ -223,7 +235,8 @@ void MainWindow::showMousePosition(QPoint &pos)
             shape->drawShape();
             if (s->drawn == false) {
                 QPen blackPen(Qt::black);
-                blackPen.setWidth(6);
+                if (s->isSelected) blackPen.setWidth(8);
+                else blackPen.setWidth(6);
                 scene->addPolygon(s->shape,blackPen);
                 s->drawn = true;
             }
@@ -248,7 +261,8 @@ void MainWindow::clickPoint(QPoint& pos){
                 currentPoly->addPoint(pos);
                 if (s->drawn == false) {
                     QPen blackPen(Qt::black);
-                    blackPen.setWidth(6);
+                    if (s->isSelected) blackPen.setWidth(8);
+                    else blackPen.setWidth(6);
                     scene->addPolygon(s->shape,blackPen);
                     s->drawn = true;
                 }
@@ -256,6 +270,14 @@ void MainWindow::clickPoint(QPoint& pos){
         }
         polygonShape *newPolygon = new polygonShape(this->shapeType, this->selectedClass);
         shape->shapeList.push_back(newPolygon);
+    }
+    if (shapeType == "Select") {
+        bool found = false;
+        for (drawnShape *s : shape->shapeList){
+            this->isSelected = false;
+            if (!found) found = s->tryToggleSelect(pos);
+
+        }
     }
     //latest = pos;
     //QPoint mouse_pos = mouse_event->pos();
