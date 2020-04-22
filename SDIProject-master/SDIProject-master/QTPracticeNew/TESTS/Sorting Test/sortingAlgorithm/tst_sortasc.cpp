@@ -51,7 +51,7 @@ void sort::test_case1() // Sort Ascending
                 returnList.append(item);
             }
 
-    QStringList list2 = {"cat","dog","mouse"};
+    QStringList list2 = {"sheep","dog","mouse"};
     QVERIFY(true);
     QCOMPARE(returnList,list2);
 }
