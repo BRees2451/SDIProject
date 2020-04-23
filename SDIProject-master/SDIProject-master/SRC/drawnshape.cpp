@@ -41,7 +41,7 @@ void drawnShape::drawMe()
 
 
     }
-    center = new QPointF(shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2, shapeStartPoint->y() + (shapeEndPoint->y() - shapeStartPoint->y())/2);
+    center = new QPointF(shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2 - (this->classType.length()*3), shapeStartPoint->y() + (shapeEndPoint->y() - shapeStartPoint->y())/2);
     drawn = false;
 }
 
@@ -49,7 +49,7 @@ bool drawnShape::tryToggleSelect(QPointF mousePosition){
     QRectF boundingRect = this->shape.boundingRect();
     if(boundingRect.contains(mousePosition)){
         this->isSelected = true;
-        this->drawn = false;
+        //this->drawn = false;
         return true;
     }
     else return false;

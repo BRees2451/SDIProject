@@ -18,7 +18,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     Image.cpp \
     Objects.cpp \
-    SidePane.cpp \
     UserShapeOperations.cpp \
     customview.cpp \
     drawnshape.cpp \

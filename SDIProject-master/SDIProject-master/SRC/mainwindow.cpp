@@ -201,6 +201,8 @@ void MainWindow::Save()
 void MainWindow::showMousePosition(QPoint &pos)
 {
     QPointF latest;
+    QPainterPath painterPath;
+    QFont font;
     if (shapeType == "Polygon") return;
     bool a = QApplication::mouseButtons();
     if (a) {
@@ -236,20 +238,18 @@ void MainWindow::showMousePosition(QPoint &pos)
             }
             else s->isBeingDrawn = false;
             shape->drawShape();
-            if (s->drawn == false) {
-                QPen blackPen(Qt::black);
-                if (s->isSelected) blackPen.setWidth(8);
-                else blackPen.setWidth(6);
-                QPainterPath painterPath;
-                QFont font;
-                painterPath.addPolygon(s->shape);
-                painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
-                scene->addPath(painterPath);
-                //scene->addPolygon(s->shape,blackPen);
-                QPainter *painter = new QPainter(this);
-                painter->setPen(Qt::black);
-                painter->drawText(s->shapeStartPoint->x() + 20, s->shapeStartPoint->y() + 20, s->shapeType);
 
+            if (s->isSelected) font.setBold(1);
+            else font.setBold(0);
+
+            painterPath.addPolygon(s->shape);
+            painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
+
+            if (s->drawn == false) {
+
+                QGraphicsPathItem *shapeDrawing = scene->addPath(painterPath);
+
+                //if (this->isSelected) scene->removeItem(shapeDrawing);
                 s->drawn = true;
             }
 
