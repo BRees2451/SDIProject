@@ -74,15 +74,11 @@ private slots:
 
     void on_DrawRectButton_clicked();
 
-    //void clickPoint(QPoint&);
-
     void on_ImageSearchButton_clicked();
 
     void on_selectClassButton_clicked();
 
     void on_deleteShape_clicked();
-
-    void on_selectButton_clicked(QPoint& pos);
 
     void on_selectButton_clicked();
 
@@ -100,6 +96,7 @@ private:
     QString selectedClass;
 
     drawnShape *isSelected;
+    bool Select = false;
 
     QGraphicsItem *item;
     QGraphicsRectItem *rectangle;
@@ -108,7 +105,6 @@ private:
 
     UserShapeOperation *shape = new UserShapeOperation();
 
-    //QListWidget *ImageList;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/RESULTS";
 
     QVector<shareClass::fileData> filesInDirectory;
@@ -128,7 +124,6 @@ private:
 public slots:
     void showMousePosition(QPoint& pos);
     void clickPoint(QPoint&);
-    //void mousePressEvent(QMouseEvent *mouse_event);
 
 };
 #endif // MAINWINDOW_H
