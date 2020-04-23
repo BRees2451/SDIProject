@@ -12,9 +12,10 @@ public:
 
     void Move();
 
-    void Delete(QString, QString);
+    void Delete(QGraphicsScene *scene);
 
     void DisplayName();
+
 
 
     //Need a list of shapes

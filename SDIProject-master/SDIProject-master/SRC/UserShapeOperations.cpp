@@ -47,21 +47,16 @@ void UserShapeOperation::Move() {
     throw "Not yet implemented";
 }
 
-void UserShapeOperation::Delete(QString sType, QString cType) {
-    /*
-     * remove entire ui
-     * remove shape from list:
-     *
-     * for(drawnShape *s : shapeList){
-        isSelected = s->
-        if(s->isSelected){
-            shapeList.pop_back();
-        }
-     * }
-     *
-     *redraw ui
-     * */
-    throw "Not yet implemented";
+void UserShapeOperation::Delete(QGraphicsScene *scene) {
+    //scene->clear();//clear works
+
+    /*for(drawnShape *s : shapeList){
+       if(s->isSelected){
+           delete s;
+           //set drawn to true
+       }
+     }
+    scene->update();*/
 }
 
 void UserShapeOperation::drawShape()

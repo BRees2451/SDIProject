@@ -102,6 +102,10 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+    //JSON
+    
+    
+    
     QString fileName = QFileDialog:: getSaveFileName(this, "Save Image", QCoreApplication::applicationDirPath(),"BMP Files (*.bmp);;JPEG (*JPEG);;PNG (*png)");
     if (!fileName.isNull()){
         QPixmap pixMap = this->ui->graphicsView->grab();
@@ -133,47 +137,6 @@ void MainWindow::on_DrawPolyButton_clicked()
 {
     this->shapeType = "Polygon";
     this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
-
-    int x[7];
-    int y[7];
-    int finalpoint = 0;
-
-    QMessageBox msg;
-    msg.setText("Please click up to 8 points.");
-    msg.exec();
-
-    for (int i = 0; i < 7; i++)
-    {
-
-       // if(mouse_event->button() == Qt::LeftButton)
-        //{
-          //  QPoint mouse_pos = mouse_event->pos();
-            //x[i] = mouse_pos.x();
-            //y[i] = mouse_pos.y();
-            //i++;
-        //}
-
-        if (i==6)
-        {
-        msg.setText("You have picked the maximum of points, the last one will join back to the first one.");
-        msg.exec();
-        }
-
-        // will add function to identify final point when it is clicked on/near to the original
-    }
-
-    QPolygonF Polygon;
-
-    for(int i = 0; i < finalpoint; i++)
-    {
-        Polygon.append(QPointF(x[i],y[i]));
-    }
-
-    QPen blackPen(Qt::black);
-    blackPen.setWidth(6);
-
-    scene->addPolygon(Polygon,blackPen);
-
 
 }
 
@@ -581,31 +544,9 @@ void MainWindow::on_selectClassButton_clicked()
 
 void MainWindow::on_deleteShape_clicked()
 {
-   /* if (shapeType == "Select"){
-        shape->Delete(shapeType," ");
-    }*/
-}
-
-
-//Function doesnt get called
-void MainWindow::on_selectButton_clicked(QPoint &pos){
-    bool a = QApplication::mouseButtons();
-    if (a) {
-
-        QPoint *x;
-        QPoint *y;
-        qDebug() <<"gets here"<<endl;
-
-        for (drawnShape *s : shape->shapeList){
-           x = s->shapeEndPoint;
-           y = s->shapeStartPoint;
-            if((x->x()> pos.x())&&(x->y()>pos.y())){
-                if((y->x()< pos.x())&&(y->y()<pos.y())){
-                    s->isSelected = true;
-                }
-            }
-        }
-    }
+    if (Select == true){
+         shape->Delete(scene);
+     }
 }
 
 void MainWindow:: on_resizeShape_clicked()
@@ -617,6 +558,7 @@ void MainWindow::on_selectButton_clicked()
 {
     this->shapeType = "Select";
     this->ui->shapeTypeLabel->setText("Shape Type: Select");
+    Select = true;
 }
 
 void MainWindow::mouseReleased(QPoint &)
