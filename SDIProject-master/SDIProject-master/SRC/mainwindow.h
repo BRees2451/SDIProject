@@ -86,6 +86,8 @@ private slots:
 
     void on_RemoveClassButton_clicked();
 
+    void on_replaceImageFileName_clicked();
+
 private:
     void open(QString, QString);
 

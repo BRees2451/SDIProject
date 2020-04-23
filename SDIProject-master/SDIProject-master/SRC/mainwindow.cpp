@@ -678,3 +678,37 @@ void MainWindow::on_RemoveClassButton_clicked()
     classFile.close();
 
 }
+
+void MainWindow::on_replaceImageFileName_clicked()
+{
+    Image image;
+
+    //get the contents of line edit
+    QString searchName = ui->oldImagelineEdit->text();
+    QString replaceName = ui->newImagelineEdit->text();
+
+    // Call search algorithm inside image class
+    int searchIndex = image.searchImageName(filesInDirectory,searchName);
+    // returns the index of the location in the image vector
+
+    if(searchIndex == -1){
+        ui->newImagelineEdit->setText("Image not found");
+    }
+    else{
+        //ui->ImagesWindow->item(searchIndex)->setText(replaceName);
+        cout<<"????????";
+        QDir directory(defaultPath);
+        QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
+        for(int i = 0; i < images.length(); i++) {
+            QFileInfo modified = QFileInfo(directory, images[i]);
+            shareClass::fileData fData;
+            fData.name = images[i];
+            cout<<" before if";
+            if (fData.name == searchName){
+                cout<<" in to if";
+                images[i] = replaceName;
+            }
+        ui->ImagesWindow->item(searchIndex)->setText(images[searchIndex] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
+    }
+    }
+}

@@ -1,7 +1,8 @@
 #define _MSC_EXTENSIONS 
-#define _MSC_VER 1925
-#define _MSC_FULL_VER 192528612
-#define _MSC_BUILD 0
+#define _INTEGRAL_MAX_BITS 64
+#define _MSC_VER 1916
+#define _MSC_FULL_VER 191627026
+#define _MSC_BUILD 1
 #define _WIN32 
 #define _M_IX86 600
 #define _M_IX86_FP 2
