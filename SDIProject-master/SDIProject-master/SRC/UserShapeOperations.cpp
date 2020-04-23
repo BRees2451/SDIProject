@@ -50,13 +50,13 @@ void UserShapeOperation::Move() {
 void UserShapeOperation::Delete(QGraphicsScene *scene) {
     //scene->clear();//clear works
 
-    /*for(drawnShape *s : shapeList){
+    for(drawnShape *s : shapeList){
        if(s->isSelected){
            delete s;
            //set drawn to true
        }
      }
-    scene->update();*/
+    scene->update();
 }
 
 void UserShapeOperation::drawShape()

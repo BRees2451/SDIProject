@@ -631,30 +631,8 @@ void MainWindow::on_selectClassButton_clicked()
 
 void MainWindow::on_deleteShape_clicked()
 {
-   /* if (shapeType == "Select"){
-        shape->Delete(shapeType," ");
-    }*/
-}
-
-
-//Function doesnt get called
-void MainWindow::on_selectButton_clicked(QPoint &pos){
-    bool a = QApplication::mouseButtons();
-    if (a) {
-
-        QPoint *x;
-        QPoint *y;
-        qDebug() <<"gets here"<<endl;
-
-        for (drawnShape *s : shape->shapeList){
-           x = s->shapeEndPoint;
-           y = s->shapeStartPoint;
-            if((x->x()> pos.x())&&(x->y()>pos.y())){
-                if((y->x()< pos.x())&&(y->y()<pos.y())){
-                    s->isSelected = true;
-                }
-            }
-        }
+    if (shapeType == "Select"){
+        shape->Delete(scene);
     }
 }
 
