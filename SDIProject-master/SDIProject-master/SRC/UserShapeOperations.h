@@ -22,10 +22,7 @@ public:
 
     UserShapeOperation(){};
 
-    ~UserShapeOperation()
-    {
-        //For Deleting?
-    }
+    ~UserShapeOperation(){};
 
     void drawShape();
 

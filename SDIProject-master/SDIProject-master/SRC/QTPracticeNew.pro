@@ -19,7 +19,6 @@ SOURCES += \
     Annotations.cpp \
     Image.cpp \
     Objects.cpp \
-    SidePane.cpp \
     UserShapeOperations.cpp \
     customview.cpp \
     drawnshape.cpp \
@@ -34,8 +33,6 @@ HEADERS += \
     Annotations.h \
     Image.h \
     Objects.h \
-    SidePane.h \
-    User.h \
     UserShapeOperations.h \
     customview.h \
     drawnshape.h \
