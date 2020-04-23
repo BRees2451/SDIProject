@@ -16,6 +16,8 @@ public:
 
     QPolygonF shape;
 
+    QVector<QPointF> pointsVector;
+
     QPointF *center;
 
     explicit drawnShape(QString sType, QString cType){

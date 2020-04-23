@@ -1,1 +1,72 @@
-Annotations
+{
+    "Images": [
+        {
+            "ImageName": "apples.jpg",
+            "Shapes": [
+                {
+                    "Points": [
+                        {
+                            "x": 63,
+                            "y": 211
+                        },
+                        {
+                            "x": 119,
+                            "y": 211
+                        },
+                        {
+                            "x": 119,
+                            "y": 272
+                        },
+                        {
+                            "x": 63,
+                            "y": 272
+                        }
+                    ],
+                    "Shape Type": "Rectangle"
+                },
+                {
+                    "Points": [
+                        {
+                            "x": 338,
+                            "y": 164
+                        },
+                        {
+                            "x": 349,
+                            "y": 164
+                        },
+                        {
+                            "x": 354,
+                            "y": 194
+                        },
+                        {
+                            "x": 333,
+                            "y": 194
+                        }
+                    ],
+                    "Shape Type": "Trapezium"
+                }
+            ]
+        },
+        {
+            "ImageName": "Beach.jpg",
+            "Shapes": [
+            ]
+        },
+        {
+            "ImageName": "city.jpg",
+            "Shapes": [
+            ]
+        },
+        {
+            "ImageName": "space.jpg",
+            "Shapes": [
+            ]
+        },
+        {
+            "ImageName": "stormy.png",
+            "Shapes": [
+            ]
+        }
+    ],
+    "Number of Annotations": 2
+}

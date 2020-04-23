@@ -69,7 +69,7 @@ void MainWindow::on_actionOpen_triggered()
 {
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
-    fileName = info.fileName();
+    this->fileName = info.fileName();
     qDebug()<<fileName <<endl;
 
     //ERROR CAUSED HERE
@@ -102,6 +102,56 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+    //JSON
+    int listSize = shape->shapeList.size();
+    QJsonObject Root;
+    Root["Number of Annotations"] = listSize;
+    /*
+    QJsonArray images;
+    for(int i = 0; i < filesInDirectory.size(); i++){
+        QJsonObject individualImage;
+        individualImage["ImageName"] = filesInDirectory[i].name;
+        individualImage["Shapes"] =
+    }*/
+    QJsonArray Images;
+    for (int i = 0; i < filesInDirectory.size(); i++){
+        QJsonArray shapesInImage;
+
+        if (classFileName.split(".")[0] == filesInDirectory[i].name.split(".")[0]){
+            for (int j = 0; j < shape->shapeList.size(); j++){
+                QJsonObject point;
+                QJsonArray pointsArray;
+                for (int k = 0; k < shape->shapeList[j]->pointsVector.size(); k++){
+
+                    point["x"] = shape->shapeList[j]->shape[k].x();
+                    point["y"] = shape->shapeList[j]->shape[k].y();
+                    pointsArray.append(point);
+                }
+                QJsonObject shapeData;
+                shapeData["Shape Type"] = shape->shapeList[j]->shapeType;
+                shapeData["Points"] = pointsArray;
+
+                shapesInImage.append(shapeData);
+
+            }
+        }
+
+        QJsonObject individualImage;
+        individualImage["ImageName"] = filesInDirectory[i].name;
+        individualImage["Shapes"] = shapesInImage;
+
+        Images.append(individualImage);
+    }
+    Root["Images"] = Images;
+    QJsonDocument annotation;
+    annotation.setObject(Root);
+
+    QFile file(annoFilePath);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    file.write(annotation.toJson());
+
+
+
     QString fileName = QFileDialog:: getSaveFileName(this, "Save Image", QCoreApplication::applicationDirPath(),"BMP Files (*.bmp);;JPEG (*JPEG);;PNG (*png)");
     if (!fileName.isNull()){
         QPixmap pixMap = this->ui->graphicsView->grab();

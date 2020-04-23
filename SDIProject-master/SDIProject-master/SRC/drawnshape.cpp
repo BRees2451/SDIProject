@@ -4,6 +4,7 @@
 
 void drawnShape::drawMe()
 {
+    pointsVector.clear();
     //scene = new QGraphicsScene;
     //QPainterPath rectPath;
     if (this->shapeType == "Rectangle"){
@@ -12,9 +13,13 @@ void drawnShape::drawMe()
         //rectPath.addRect(this->shapeStartPoint->x(), this->shapeStartPoint->y(), width, Height);
 
         shape.append(*shapeStartPoint);
+        pointsVector.append(*shapeStartPoint);
         shape.append(QPointF(shapeEndPoint->x(), shapeStartPoint->y()));
+        pointsVector.append(QPointF(shapeEndPoint->x(), shapeStartPoint->y()));
         shape.append(*shapeEndPoint);
+        pointsVector.append(*shapeEndPoint);
         shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+        pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
         QPen blackPen(Qt::black);
         blackPen.setWidth(6);
@@ -23,18 +28,24 @@ void drawnShape::drawMe()
     }
     if (this->shapeType == "Triangle"){
         shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+        pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
         shape.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
+        pointsVector.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
         //QPointF topPoint = new
         //topPoint->x() = (shapeStartPoint->y() - shapeStartPoint->x());
         shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2), shapeStartPoint->y()));
-
+        pointsVector.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2), shapeStartPoint->y()));
 
     }
     if (this->shapeType == "Trapezium"){
         shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
+        pointsVector.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
         shape.append(QPointF((shapeEndPoint->x() - (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
+        pointsVector.append(QPointF((shapeEndPoint->x() - (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
         shape.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
+        pointsVector.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
         shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+        pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
 
     }
     if(this->shapeType == "Select"){
