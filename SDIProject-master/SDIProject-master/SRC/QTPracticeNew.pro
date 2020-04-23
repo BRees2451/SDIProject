@@ -31,7 +31,6 @@ SOURCES += \
 HEADERS += \
     Image.h \
     Objects.h \
-    SidePane.h \
     UserShapeOperations.h \
     customview.h \
     drawnshape.h \
