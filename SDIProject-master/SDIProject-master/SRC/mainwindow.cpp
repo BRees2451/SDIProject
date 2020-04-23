@@ -240,7 +240,12 @@ void MainWindow::showMousePosition(QPoint &pos)
                 QPen blackPen(Qt::black);
                 if (s->isSelected) blackPen.setWidth(8);
                 else blackPen.setWidth(6);
-                scene->addPolygon(s->shape,blackPen);
+                QPainterPath painterPath;
+                QFont font;
+                painterPath.addPolygon(s->shape);
+                painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
+                scene->addPath(painterPath);
+                //scene->addPolygon(s->shape,blackPen);
                 QPainter *painter = new QPainter(this);
                 painter->setPen(Qt::black);
                 painter->drawText(s->shapeStartPoint->x() + 20, s->shapeStartPoint->y() + 20, s->shapeType);
@@ -257,23 +262,29 @@ void MainWindow::showMousePosition(QPoint &pos)
 }
 
 void MainWindow::clickPoint(QPoint& pos){
-
+    QGraphicsItem *polygon;
     drawnShape *currentShape = new drawnShape("","");
     if (shapeType == "Polygon"){
         for (drawnShape *s : shape->shapeList){
             if (s->isBeingDrawn && s->shapeType == "Polygon") {
                 currentShape = s;
                 polygonShape *currentPoly = static_cast<polygonShape*>(currentShape);
-                if (currentPoly->pointsVector->size() == 7) currentPoly->isBeingDrawn = false;
-                currentPoly->addPoint(pos);
+                if (currentPoly->pointsVector->size() != 8) {
+                    //currentPoly->isBeingDrawn = false;
+                    currentPoly->addPoint(pos);
+                }
+                else currentPoly->isBeingDrawn = false;
                 if (s->drawn == false) {
                     QPen blackPen(Qt::black);
                     if (s->isSelected) blackPen.setWidth(8);
                     else blackPen.setWidth(6);
+                    QPainterPath painterPath;
+                    painterPath.addPolygon(s->shape);
                     QPainter painter(this);
                     painter.setPen(Qt::black);
                     painter.drawText(0, 20, "Polygon");
-                    scene->addPolygon(s->shape,blackPen);
+                    polygon = scene->addPath(painterPath);
+                    //scene->addPolygon(s->shape,blackPen);
                     s->drawn = true;
                 }
             }

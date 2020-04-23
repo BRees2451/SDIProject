@@ -16,7 +16,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-    Annotations.cpp \
     Image.cpp \
     Objects.cpp \
     SidePane.cpp \
@@ -31,11 +30,9 @@ SOURCES += \
     shareclass.cpp
 
 HEADERS += \
-    Annotations.h \
     Image.h \
     Objects.h \
     SidePane.h \
-    User.h \
     UserShapeOperations.h \
     customview.h \
     drawnshape.h \

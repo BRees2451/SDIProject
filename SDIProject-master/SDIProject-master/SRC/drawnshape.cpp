@@ -41,7 +41,7 @@ void drawnShape::drawMe()
 
 
     }
-
+    center = new QPointF(shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2, shapeStartPoint->y() + (shapeEndPoint->y() - shapeStartPoint->y())/2);
     drawn = false;
 }
 
