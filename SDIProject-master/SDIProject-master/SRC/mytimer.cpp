@@ -1,6 +1,8 @@
 #include "mytimer.h"
+#include "mainwindow.h"
 #include<QtCore>
 #include <QtDebug>
+
 
 /*!
  * \brief MyTimer::MyTimer
@@ -22,6 +24,7 @@ bool MyTimer::MySlot(){
     qDebug()<<"Timer executed";
     counter ++;
     if(counter == 60){
+
         return true;
 
 

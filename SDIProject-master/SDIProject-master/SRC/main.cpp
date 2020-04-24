@@ -7,7 +7,7 @@ using namespace std;
 
 thread saveThread;
 
-void callSave(MainWindow);
+//void callSave(MainWindow);
 
 int main(int argc, char *argv[])
 {

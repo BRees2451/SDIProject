@@ -89,6 +89,8 @@ private slots:
     void on_replaceImageFileName_clicked();
 
 private:
+
+
     void open(QString, QString);
 
     QString fileName = "";

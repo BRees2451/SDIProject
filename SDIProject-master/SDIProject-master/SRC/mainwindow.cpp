@@ -1,10 +1,9 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "matdisplay.h"
-//#include <vector>
 #include <QPixmap>
-//#include "h5cpp.h"
-//using namespace H5;
+
+
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -102,7 +101,59 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-    //JSON
+    QMessageBox::StandardButton reply;
+    reply = QMessageBox::question(this, "SAVE", "Any changes will override the previous file.\nContinue?", QMessageBox::Yes|QMessageBox::No);
+    if (reply == QMessageBox::No) return;
+    Save();
+
+
+}
+
+void MainWindow::on_DrawRectButton_clicked()
+{
+    this->shapeType = "Rectangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
+
+}
+
+void MainWindow::on_DrawTriangleButton_clicked()//Triangle
+{
+    this->shapeType = "Triangle";
+    this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
+}
+
+void MainWindow::on_DrawTrapButton_clicked()
+{
+    this->shapeType = "Trapezium";
+    this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
+}
+
+void MainWindow::on_DrawPolyButton_clicked()
+
+{
+    this->shapeType = "Polygon";
+    this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
+
+}
+
+void MainWindow::on_RotateLButton_clicked()
+{
+    ui-> graphicsView ->rotate(-1);
+}
+
+void MainWindow::on_RotateRButton_clicked()
+{
+    ui-> graphicsView ->rotate(1);
+}
+
+//USE THREADS AND HDF5 FILE FORMAT
+
+void MainWindow::Save()
+{
+    //We need to pull the relevant data: fileName, Annotations, and Classes File
+    //fileName;
+    //&Image::annotationsVector;
+    //Need to retrieve the classes file
     int listSize = shape->shapeList.size();
     QJsonObject Root;
     Root["Number of Annotations"] = listSize;
@@ -151,61 +202,6 @@ void MainWindow::on_actionSave_triggered()
     QFile file(annoFilePath);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(annotation.toJson());
-
-
-
-    QString fileName = QFileDialog:: getSaveFileName(this, "Save Image", QCoreApplication::applicationDirPath(),"BMP Files (*.bmp);;JPEG (*JPEG);;PNG (*png)");
-    if (!fileName.isNull()){
-        QPixmap pixMap = this->ui->graphicsView->grab();
-        pixMap.save(fileName);
-    }
-}
-
-void MainWindow::on_DrawRectButton_clicked()
-{
-    this->shapeType = "Rectangle";
-    this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
-
-}
-
-void MainWindow::on_DrawTriangleButton_clicked()//Triangle
-{
-    this->shapeType = "Triangle";
-    this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
-}
-
-void MainWindow::on_DrawTrapButton_clicked()
-{
-    this->shapeType = "Trapezium";
-    this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
-}
-
-void MainWindow::on_DrawPolyButton_clicked()
-
-{
-    this->shapeType = "Polygon";
-    this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
-
-}
-
-void MainWindow::on_RotateLButton_clicked()
-{
-    ui-> graphicsView ->rotate(-1);
-}
-
-void MainWindow::on_RotateRButton_clicked()
-{
-    ui-> graphicsView ->rotate(1);
-}
-
-//USE THREADS AND HDF5 FILE FORMAT
-
-void MainWindow::Save()
-{
-    //We need to pull the relevant data: fileName, Annotations, and Classes File
-    //fileName;
-    //&Image::annotationsVector;
-    //Need to retrieve the classes file
 
 }
 
@@ -669,6 +665,7 @@ void MainWindow::on_ImageSearchButton_clicked()
 void MainWindow::on_selectClassButton_clicked()
 {
     QListWidgetItem *selected = ui->ClassWindow->currentItem();
+    if (selected == NULL) return;
     if (selected != NULL){
         selected->setTextColor(Qt::red);
     }

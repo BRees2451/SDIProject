@@ -2,7 +2,7 @@
 #define MYTIMER_H
 
 #include <QtCore>
-
+#include <thread>
 
 
 class MyTimer : public QObject
@@ -11,6 +11,7 @@ class MyTimer : public QObject
 public:
     MyTimer();
     QTimer *timer;
+    std::thread saveThread;
 
 public slots:
     bool MySlot();
