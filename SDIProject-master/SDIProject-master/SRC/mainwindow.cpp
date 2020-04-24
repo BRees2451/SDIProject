@@ -113,7 +113,7 @@ void MainWindow::on_actionSave_triggered()
         individualImage["ImageName"] = filesInDirectory[i].name;
         individualImage["Shapes"] =
     }*/
-    QJsonArray Images;
+    QJsonObject individualImage;
     for (int i = 0; i < filesInDirectory.size(); i++){
         QJsonArray shapesInImage;
 
@@ -129,20 +129,22 @@ void MainWindow::on_actionSave_triggered()
                 }
                 QJsonObject shapeData;
                 shapeData["Shape Type"] = shape->shapeList[j]->shapeType;
+                shapeData["Class Type"] = shape->shapeList[j]->classType;
                 shapeData["Points"] = pointsArray;
 
                 shapesInImage.append(shapeData);
 
             }
+
+            individualImage["ImageName"] = filesInDirectory[i].name;
+            individualImage["Shapes"] = shapesInImage;
+
+
         }
 
-        QJsonObject individualImage;
-        individualImage["ImageName"] = filesInDirectory[i].name;
-        individualImage["Shapes"] = shapesInImage;
 
-        Images.append(individualImage);
     }
-    Root["Images"] = Images;
+    Root["Image"] = individualImage;
     QJsonDocument annotation;
     annotation.setObject(Root);
 
@@ -246,15 +248,14 @@ void MainWindow::showMousePosition(QPoint &pos)
                 shape->drawShape();
             }
             else s->isBeingDrawn = false;
-            shape->drawShape();
 
             if (s->isSelected) font.setBold(1);
             else font.setBold(0);
 
-            painterPath.addPolygon(s->shape);
-            painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
             if (s->drawn == false) {
+                painterPath.addPolygon(s->shape);
+                painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
                 QGraphicsPathItem *shapeDrawing = scene->addPath(painterPath);
 
@@ -401,6 +402,7 @@ void MainWindow::open(QString filePath, QString fileName)
     classFileName = absoluteFileName.join(".");
     absoluteFileName = classFileName.split(".");
     absoluteFileName[1] = "annotations";
+    absoluteFileName[absoluteFileName.size()-1] = ".json";
     annoFileName = absoluteFileName.join(".");
 
     classFilePath = Destination + "/RESULTS/" + classFileName;
@@ -411,13 +413,84 @@ void MainWindow::open(QString filePath, QString fileName)
         QFile annoFile(annoFilePath);
 
         if (QFileInfo::exists(annoFilePath)){
-            //READ HDF5
-            //H5File file( FILE_NAME, H5F_ACC_RDONLY );
-            //DataSet dataset = file.openDataSet( DATASET_NAME );
+            //READ JSON
+
+            annoFile.open(QFile::ReadOnly | QIODevice::Text);
+            QString readFile = annoFile.readAll();
+            annoFile.close();
+
+            QJsonDocument jDoc = QJsonDocument::fromJson(readFile.toUtf8());
+
+
+            QJsonObject root = jDoc.object();
+            //QJsonValue child = root.value(QString("Image"));
+            QJsonObject individualImage = root["Image"].toObject();
+
+
+
+            QJsonArray shapesInImage = individualImage["Shapes"].toArray();
+
+            //For every shape
+            for (int i = 0; i < shapesInImage.size(); i++){
+                QJsonObject shapeData = shapesInImage[i].toObject();
+                QString shapeType = shapeData["Shape Type"].toString();
+
+                QString classType = shapeData["Class Type"].toString();
+
+                drawnShape *newShape = new drawnShape(shapeType, classType);
+                shape->shapeList.push_back(newShape);
+
+                QJsonArray pointsArray = shapeData["Points"].toArray();
+
+                //For every point
+                for (int j = 0; j < pointsArray.size(); j++){
+                    QJsonObject Point = pointsArray[j].toObject();
+                    float x = Point["x"].toDouble();
+                    float y = Point["y"].toDouble();
+                    QPointF *newPoint = new QPointF(x,y);
+
+                    newShape->pointsVector.push_back(*newPoint);
+                    newShape->shape.append(*newPoint);
+
+                }
+                newShape->shape.push_back(newShape->shape[0]);
+
+                newShape->isSelected = false;
+                newShape->isBeingDrawn = false;
+                newShape->drawn = false;
+                if (newShape->shapeType == "Rectangle"){
+                    QPoint shapeStart = newShape->pointsVector[0].toPoint();
+                    newShape->shapeStartPoint = &shapeStart;
+                    QPoint shapeEnd = newShape->pointsVector[2].toPoint();
+                    newShape->shapeEndPoint = &shapeEnd;
+                }
+                else if (newShape->shapeType == "Triangle"){
+                    QPoint *shapeStart = new QPoint(newShape->pointsVector[0].x(), newShape->pointsVector[2].y());
+                    newShape->shapeStartPoint = shapeStart;
+                    QPoint shapeEnd = newShape->pointsVector[1].toPoint();
+                    newShape->shapeEndPoint = &shapeEnd;
+                }
+                else if (newShape->shapeType == "Trapezium"){
+                    QPoint *shapeStart = new QPoint(newShape->pointsVector[3].x(), newShape->pointsVector[0].y());
+                    newShape->shapeStartPoint = shapeStart;
+                    QPoint shapeEnd = newShape->pointsVector[2].toPoint();
+                    newShape->shapeEndPoint = &shapeEnd;
+                }
+                newShape->center = new QPointF(newShape->shapeStartPoint->x() + (newShape->shapeEndPoint->x() - newShape->shapeStartPoint->x())/2 - (newShape->classType.length()*3), newShape->shapeStartPoint->y() + (newShape->shapeEndPoint->y() - newShape->shapeStartPoint->y())/2);
+                QPoint *basePoint = new QPoint(0,0);
+                this->showMousePosition(*basePoint);
+
+                newShape->shape.isClosed();
+
+
+
+            }
+
+            int numberOfAnno = root["Number of Annotations"].toInt();
+            qDebug() << numberOfAnno << endl;
         }
         else{
             annoFile.open(QIODevice::WriteOnly | QIODevice::Text);
-            annoFile.write("Annotations\n");
             annoFile.close();
         }
 
