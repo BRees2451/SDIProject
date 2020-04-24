@@ -7,7 +7,6 @@
 //For the date sorting
 #include <ctime>
 
-
 class Image{
 
     friend class MainWindow;
