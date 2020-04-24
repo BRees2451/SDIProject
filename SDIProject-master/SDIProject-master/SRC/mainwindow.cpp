@@ -236,6 +236,7 @@ void MainWindow::showMousePosition(QPoint &pos)
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
         }
+
         latest = pos;
     }
     if (a == false){
@@ -248,6 +249,7 @@ void MainWindow::showMousePosition(QPoint &pos)
                 shape->drawShape();
             }
             else s->isBeingDrawn = false;
+            shape->drawShape();
 
             if (s->isSelected) font.setBold(1);
             else font.setBold(0);
@@ -255,6 +257,7 @@ void MainWindow::showMousePosition(QPoint &pos)
 
             if (s->drawn == false) {
                 painterPath.addPolygon(s->shape);
+                s->getCenter();
                 painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
                 QGraphicsPathItem *shapeDrawing = scene->addPath(painterPath);
@@ -320,6 +323,7 @@ void MainWindow::clickPoint(QPoint& pos){
 
 void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
 {
+    shape->shapeList.clear();
     for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
         qDebug() << ui->ImagesWindow->item(i)->text() << endl;

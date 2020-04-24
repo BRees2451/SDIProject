@@ -7,7 +7,7 @@ class drawnShape
 {
 public:
     bool isBeingDrawn;
-    bool drawn;
+    bool drawn = false;
     bool isSelected = false;
     QPoint *shapeStartPoint;
     QPoint *shapeEndPoint;
@@ -29,6 +29,8 @@ public:
     void drawMe();
 
     bool tryToggleSelect(QPointF);
+
+    void getCenter();
 
 };
 
