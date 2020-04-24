@@ -226,11 +226,21 @@ void MainWindow::showMousePosition(QPoint &pos)
                 }
 
             }
+
             //prevPoint = pos-(*currentShape->shapeStartPoint);
             //QPoint point = pos-(*currentShape->shapeStartPoint);
             qDebug() << pos-previousPos << endl;
             if (previousPos.x() != NULL) currentShape->shape.translate(pos-previousPos);
             previousPos = pos;
+        }
+        else{
+            for (drawnShape *s : shape->shapeList){
+                if (s->isBeingDrawn){
+                    s->shapeEndPoint = &pos;
+                    s->drawMe();
+                    break;
+                }
+            }
         }
         if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
             QPoint *position = new QPoint(pos.x(), pos.y());
@@ -249,7 +259,7 @@ void MainWindow::showMousePosition(QPoint &pos)
                 shape->drawShape();
             }
             else s->isBeingDrawn = false;
-            shape->drawShape();
+            //shape->drawShape();
 
             if (s->isSelected) font.setBold(1);
             else font.setBold(0);
@@ -260,7 +270,13 @@ void MainWindow::showMousePosition(QPoint &pos)
                 s->getCenter();
                 painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
-                QGraphicsPathItem *shapeDrawing = scene->addPath(painterPath);
+                if (s->isBeingDrawn && shapeDrawing->isActive()) {
+                    scene->removeItem(shapeDrawing);
+                }
+
+                shapeDrawing = scene->addPath(painterPath);
+
+
 
                 //if (this->isSelected) scene->removeItem(shapeDrawing);
                 s->drawn = true;
