@@ -3,8 +3,6 @@
 #include "matdisplay.h"
 #include <QPixmap>
 
-
-
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -101,12 +99,70 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
+<<<<<<< HEAD
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "SAVE", "Any changes will override the previous file.\nContinue?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::No) return;
     Save(0);
+=======
+    //JSON
+    int listSize = shape->shapeList.size();
+    QJsonObject Root;
+    Root["Number of Annotations"] = listSize;
+    /*
+    QJsonArray images;
+    for(int i = 0; i < filesInDirectory.size(); i++){
+        QJsonObject individualImage;
+        individualImage["ImageName"] = filesInDirectory[i].name;
+        individualImage["Shapes"] =
+    }*/
+    QJsonObject individualImage;
+    for (int i = 0; i < filesInDirectory.size(); i++){
+        QJsonArray shapesInImage;
+
+        if (classFileName.split(".")[0] == filesInDirectory[i].name.split(".")[0]){
+            for (int j = 0; j < shape->shapeList.size(); j++){
+                QJsonObject point;
+                QJsonArray pointsArray;
+                for (int k = 0; k < shape->shapeList[j]->pointsVector.size(); k++){
+
+                    point["x"] = shape->shapeList[j]->shape[k].x();
+                    point["y"] = shape->shapeList[j]->shape[k].y();
+                    pointsArray.append(point);
+                }
+                QJsonObject shapeData;
+                shapeData["Shape Type"] = shape->shapeList[j]->shapeType;
+                shapeData["Class Type"] = shape->shapeList[j]->classType;
+                shapeData["Points"] = pointsArray;
+
+                shapesInImage.append(shapeData);
+
+            }
+
+            individualImage["ImageName"] = filesInDirectory[i].name;
+            individualImage["Shapes"] = shapesInImage;
 
 
+        }
+
+
+    }
+    Root["Image"] = individualImage;
+    QJsonDocument annotation;
+    annotation.setObject(Root);
+
+    QFile file(annoFilePath);
+    file.open(QIODevice::WriteOnly | QIODevice::Text);
+    file.write(annotation.toJson());
+>>>>>>> edc83a7269c7cb6abc45fdc3920dbb9c416ffd50
+
+
+
+    QString fileName = QFileDialog:: getSaveFileName(this, "Save Image", QCoreApplication::applicationDirPath(),"BMP Files (*.bmp);;JPEG (*JPEG);;PNG (*png)");
+    if (!fileName.isNull()){
+        QPixmap pixMap = this->ui->graphicsView->grab();
+        pixMap.save(fileName);
+    }
 }
 
 void MainWindow::on_DrawRectButton_clicked()
@@ -154,6 +210,7 @@ void MainWindow::Save(bool autosave)
     //fileName;
     //&Image::annotationsVector;
     //Need to retrieve the classes file
+<<<<<<< HEAD
     int listSize = shape->shapeList.size();
     QJsonObject Root;
     Root["Number of Annotations"] = listSize;
@@ -207,6 +264,8 @@ void MainWindow::Save(bool autosave)
     QFile file(annoFilePath);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(annotation.toJson());
+=======
+>>>>>>> edc83a7269c7cb6abc45fdc3920dbb9c416ffd50
 
 }
 
@@ -670,7 +729,6 @@ void MainWindow::on_ImageSearchButton_clicked()
 void MainWindow::on_selectClassButton_clicked()
 {
     QListWidgetItem *selected = ui->ClassWindow->currentItem();
-    if (selected == NULL) return;
     if (selected != NULL){
         selected->setTextColor(Qt::red);
     }
