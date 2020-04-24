@@ -1,4 +1,3 @@
-#include <QPen>
 #include "drawnshape.h"
 
 
@@ -24,10 +23,6 @@ void drawnShape::drawMe()
             shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
             pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
             shape.append(*shapeStartPoint);
-
-            QPen blackPen(Qt::black);
-            blackPen.setWidth(6);
-
 
         }
         if (this->shapeType == "Triangle"){

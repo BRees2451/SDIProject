@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
     connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
 
+    connect(QWidget::window(), SIGNAL(sendSaveSignal()), SLOT(saveSignal()));
+
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
       * This will fetch the jpg files in the directory and add them to a vector.
@@ -814,4 +816,10 @@ void MainWindow::on_replaceImageFileName_clicked()
         ui->ImagesWindow->item(searchIndex)->setText(images[searchIndex] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
     }
+}
+
+void MainWindow::saveSignal()
+{
+    qDebug() << "SIGNAL RECEIVED" << endl;
+    this->Save(1);
 }

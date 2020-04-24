@@ -88,6 +88,8 @@ private slots:
 
     void on_replaceImageFileName_clicked();
 
+    void saveSignal();
+
 private:
     void open(QString, QString);
 
