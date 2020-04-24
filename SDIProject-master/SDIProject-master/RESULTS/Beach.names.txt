@@ -1,2 +1,4 @@
 Classes
 Trees
+Rocks
+Waves

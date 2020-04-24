@@ -1,0 +1,52 @@
+{
+    "Image": {
+        "ImageName": "apples.jpg",
+        "Shapes": [
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 96,
+                        "y": 206
+                    },
+                    {
+                        "x": 188,
+                        "y": 206
+                    },
+                    {
+                        "x": 188,
+                        "y": 282
+                    },
+                    {
+                        "x": 96,
+                        "y": 282
+                    }
+                ],
+                "Shape Type": "Rectangle"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 350,
+                        "y": 143
+                    },
+                    {
+                        "x": 397,
+                        "y": 143
+                    },
+                    {
+                        "x": 420,
+                        "y": 224
+                    },
+                    {
+                        "x": 327,
+                        "y": 224
+                    }
+                ],
+                "Shape Type": "Trapezium"
+            }
+        ]
+    },
+    "Number of Annotations": 2
+}

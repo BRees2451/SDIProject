@@ -122,6 +122,8 @@ private:
 
     QPointF previousPos;
 
+    QGraphicsPathItem *shapeDrawing;
+
 
 public slots:
     void showMousePosition(QPoint& pos);

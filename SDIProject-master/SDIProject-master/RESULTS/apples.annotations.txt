@@ -6,20 +6,20 @@
                 {
                     "Points": [
                         {
-                            "x": 63,
-                            "y": 211
+                            "x": 61,
+                            "y": 203
                         },
                         {
-                            "x": 119,
-                            "y": 211
+                            "x": 156,
+                            "y": 203
                         },
                         {
-                            "x": 119,
-                            "y": 272
+                            "x": 156,
+                            "y": 287
                         },
                         {
-                            "x": 63,
-                            "y": 272
+                            "x": 61,
+                            "y": 287
                         }
                     ],
                     "Shape Type": "Rectangle"
@@ -27,44 +27,24 @@
                 {
                     "Points": [
                         {
-                            "x": 338,
-                            "y": 164
+                            "x": 336,
+                            "y": 145
                         },
                         {
-                            "x": 349,
-                            "y": 164
+                            "x": 387,
+                            "y": 145
                         },
                         {
-                            "x": 354,
-                            "y": 194
+                            "x": 412,
+                            "y": 271
                         },
                         {
-                            "x": 333,
-                            "y": 194
+                            "x": 311,
+                            "y": 271
                         }
                     ],
                     "Shape Type": "Trapezium"
                 }
-            ]
-        },
-        {
-            "ImageName": "Beach.jpg",
-            "Shapes": [
-            ]
-        },
-        {
-            "ImageName": "city.jpg",
-            "Shapes": [
-            ]
-        },
-        {
-            "ImageName": "space.jpg",
-            "Shapes": [
-            ]
-        },
-        {
-            "ImageName": "stormy.png",
-            "Shapes": [
             ]
         }
     ],
