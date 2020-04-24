@@ -5,6 +5,7 @@
 void drawnShape::drawMe()
 {
     pointsVector.clear();
+    shape.clear();
     //scene = new QGraphicsScene;
     //QPainterPath rectPath;
     if (this->shape.size() != 3 || this->shape.size() != 4 || this->shape.size() != 5){
@@ -22,6 +23,7 @@ void drawnShape::drawMe()
             pointsVector.append(*shapeEndPoint);
             shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
             pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+            shape.append(*shapeStartPoint);
 
             QPen blackPen(Qt::black);
             blackPen.setWidth(6);
@@ -37,7 +39,7 @@ void drawnShape::drawMe()
             //topPoint->x() = (shapeStartPoint->y() - shapeStartPoint->x());
             shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2), shapeStartPoint->y()));
             pointsVector.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/2), shapeStartPoint->y()));
-
+            shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
         }
         if (this->shapeType == "Trapezium"){
             shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
@@ -48,6 +50,7 @@ void drawnShape::drawMe()
             pointsVector.append(QPointF(shapeEndPoint->x(), shapeEndPoint->y()));
             shape.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
             pointsVector.append(QPointF(shapeStartPoint->x(), shapeEndPoint->y()));
+            shape.append(QPointF((shapeStartPoint->x() + (shapeEndPoint->x() - shapeStartPoint->x())/4), shapeStartPoint->y()));
 
         }
         if(this->shapeType == "Select"){

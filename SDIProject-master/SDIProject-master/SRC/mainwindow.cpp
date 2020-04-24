@@ -270,13 +270,8 @@ void MainWindow::showMousePosition(QPoint &pos)
                 s->getCenter();
                 painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
-                if (s->isBeingDrawn && shapeDrawing->isActive()) {
-                    scene->removeItem(shapeDrawing);
-                }
 
                 shapeDrawing = scene->addPath(painterPath);
-
-
 
                 //if (this->isSelected) scene->removeItem(shapeDrawing);
                 s->drawn = true;
