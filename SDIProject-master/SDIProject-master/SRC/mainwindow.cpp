@@ -104,7 +104,7 @@ void MainWindow::on_actionSave_triggered()
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "SAVE", "Any changes will override the previous file.\nContinue?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::No) return;
-    Save();
+    Save(0);
 
 
 }
@@ -148,7 +148,7 @@ void MainWindow::on_RotateRButton_clicked()
 
 //USE THREADS AND HDF5 FILE FORMAT
 
-void MainWindow::Save()
+void MainWindow::Save(bool autosave)
 {
     //We need to pull the relevant data: fileName, Annotations, and Classes File
     //fileName;
@@ -198,6 +198,11 @@ void MainWindow::Save()
     Root["Image"] = individualImage;
     QJsonDocument annotation;
     annotation.setObject(Root);
+
+    if (autosave){
+        linkList->add_node(annotation);
+        return;
+    }
 
     QFile file(annoFilePath);
     file.open(QIODevice::WriteOnly | QIODevice::Text);

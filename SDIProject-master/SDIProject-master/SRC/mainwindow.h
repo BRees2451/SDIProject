@@ -32,7 +32,7 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    void Save();
+    void Save(bool);
 
 
 private slots:
@@ -125,6 +125,8 @@ private:
     QPointF previousPos;
 
     QGraphicsPathItem *shapeDrawing;
+
+    linked_list *linkList;
 
 
 public slots:

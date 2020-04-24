@@ -137,14 +137,3 @@ int Image::searchImageName(QVector<shareClass::fileData> nameVector, QString sea
     return -1;
 
 }
-
-
-/**
- * @brief This will check any new images to potentially overwrite the longestImageNameLength.
- * @param[in] imageName
- */
-void Image:: checkImageNameLength(string imageName)
-{
-    unsigned int nameLength = imageName.length();
-    if (nameLength > longestImageNameLength) longestImageNameLength = nameLength;
-}

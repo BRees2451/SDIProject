@@ -18,7 +18,7 @@ public:
 
 struct node
 {
-    int data;
+    QJsonDocument data;
     node* next;
 };
 
@@ -33,7 +33,7 @@ public:
         tail = NULL;
     }
 
-    void add_node(int n)
+    void add_node(QJsonDocument n)
     {
         node* tmp = new node;
         tmp->data = n;
@@ -64,7 +64,7 @@ public:
         }
         else
         {
-            cout << head->data << endl;
+            //cout << head->data << endl;
             display(head->next);
         }
     }
@@ -92,7 +92,7 @@ public:
      * @return
      * https://www.geeksforgeeks.org/search-an-element-in-a-linked-list-iterative-and-recursive/
      */
-    bool search(node* head, int data)
+    bool search(node* head, QJsonDocument data)
     {
         node* current = head;
         while (current != NULL)

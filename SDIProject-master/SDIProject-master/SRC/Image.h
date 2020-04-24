@@ -31,7 +31,6 @@ public:
 
     int searchImageName(QVector<shareClass::fileData>,QString);
 
-    void checkImageNameLength(string);
 };
 
 #endif
