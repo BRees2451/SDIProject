@@ -10,8 +10,6 @@ class UserShapeOperation {
 public:
     void USize(QString, QString, QPoint*);
 
-    void Move();
-
     void Delete(QGraphicsScene *scene);
 
     void DisplayName();

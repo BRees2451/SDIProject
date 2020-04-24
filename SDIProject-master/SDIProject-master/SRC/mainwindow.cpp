@@ -1,10 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "matdisplay.h"
-//#include <vector>
 #include <QPixmap>
-//#include "h5cpp.h"
-//using namespace H5;
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)

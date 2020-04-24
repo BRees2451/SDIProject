@@ -30,33 +30,14 @@ void UserShapeOperation::USize(QString sType, QString cType, QPoint *thisPos){
     throw "Not yet implemented";
 }
 
-void UserShapeOperation::Move() {
-    // TODO - implement UserShapeOpperations::Move
-    /*
-     * QPoint *dx;
-     * QPoint *dy;
-     *
-     * dx = mouseclick.x() - mouserelease.x();
-     * dy = mouseclick.y() - mouserelease.y();
-     * for (drawnShape *s : shapeList){
-     *      if (s->isSelected) {
-     *          shape.translate(dx,dy)
-     *      }
-     *  }
-        */
-    throw "Not yet implemented";
-}
 
 void UserShapeOperation::Delete(QGraphicsScene *scene) {
-    //scene->clear();//clear works
 
     for(drawnShape *s : shapeList){
        if(s->isSelected){
            delete s;
-           //set drawn to true
        }
      }
-    scene->update();
 }
 
 void UserShapeOperation::drawShape()
@@ -66,7 +47,6 @@ void UserShapeOperation::drawShape()
 
 void UserShapeOperation::handleMouseEvent(QString sType, QString cType, QPoint *thisPos)
 {
-    //qDebug() << shapeList.size() <<endl;
     if (shapeList.size() > 0) {
         for (drawnShape *s : shapeList){
             if (s->isBeingDrawn) {
