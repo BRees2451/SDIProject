@@ -99,12 +99,11 @@ void MainWindow::on_actionQuit_triggered()
 
 void MainWindow::on_actionSave_triggered()
 {
-<<<<<<< HEAD
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "SAVE", "Any changes will override the previous file.\nContinue?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::No) return;
     Save(0);
-=======
+
     //JSON
     int listSize = shape->shapeList.size();
     QJsonObject Root;
@@ -154,7 +153,6 @@ void MainWindow::on_actionSave_triggered()
     QFile file(annoFilePath);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(annotation.toJson());
->>>>>>> edc83a7269c7cb6abc45fdc3920dbb9c416ffd50
 
 
 
@@ -210,7 +208,6 @@ void MainWindow::Save(bool autosave)
     //fileName;
     //&Image::annotationsVector;
     //Need to retrieve the classes file
-<<<<<<< HEAD
     int listSize = shape->shapeList.size();
     QJsonObject Root;
     Root["Number of Annotations"] = listSize;
@@ -264,8 +261,7 @@ void MainWindow::Save(bool autosave)
     QFile file(annoFilePath);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     file.write(annotation.toJson());
-=======
->>>>>>> edc83a7269c7cb6abc45fdc3920dbb9c416ffd50
+
 
 }
 
