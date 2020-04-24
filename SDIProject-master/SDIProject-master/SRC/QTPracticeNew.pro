@@ -26,6 +26,7 @@ SOURCES += \
     matdisplay.cpp \
     mytimer.cpp \
     polygonshape.cpp \
+    savethread.cpp \
     shareclass.cpp
 
 HEADERS += \
@@ -38,6 +39,7 @@ HEADERS += \
     matdisplay.h \
     mytimer.h \
     polygonshape.h \
+    savethread.h \
     shareclass.h
 
 FORMS += \

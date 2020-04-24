@@ -1,11 +1,10 @@
 #include "mainwindow.h"
 #include "mytimer.h"
-
 #include <QApplication>
-#include <thread>
+#include "savethread.h"
+
 using namespace std;
 
-thread saveThread;
 
 void callSave(MainWindow);
 
@@ -19,6 +18,8 @@ int main(int argc, char *argv[])
     //if (mTimer.MySlot() == true) thread saveThread(&MainWindow::Save);
 
     w.show();
+    saveThread newThread;
+    newThread.start();
 
     //saveThread.join();
     return a.exec();
