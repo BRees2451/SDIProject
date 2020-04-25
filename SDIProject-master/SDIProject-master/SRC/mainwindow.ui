@@ -53,8 +53,8 @@
    <widget class="QPushButton" name="DrawTriangleButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>460</y>
+      <x>10</x>
+      <y>480</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -69,8 +69,8 @@
    <widget class="QPushButton" name="DrawRectButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>460</y>
+      <x>120</x>
+      <y>480</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -85,8 +85,8 @@
    <widget class="QPushButton" name="DrawTrapButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>500</y>
+      <x>10</x>
+      <y>520</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -101,8 +101,8 @@
    <widget class="QPushButton" name="DrawPolyButton">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>500</y>
+      <x>120</x>
+      <y>520</y>
       <width>101</width>
       <height>31</height>
      </rect>
@@ -329,8 +329,8 @@
    <widget class="QPushButton" name="pasteShape">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>570</y>
+      <x>120</x>
+      <y>590</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -342,8 +342,8 @@
    <widget class="QPushButton" name="copyShape">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>540</y>
+      <x>120</x>
+      <y>560</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -355,8 +355,8 @@
    <widget class="QPushButton" name="deleteShape">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>600</y>
+      <x>120</x>
+      <y>620</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -368,8 +368,8 @@
    <widget class="QPushButton" name="resizeShape">
     <property name="geometry">
      <rect>
-      <x>130</x>
-      <y>630</y>
+      <x>120</x>
+      <y>650</y>
       <width>75</width>
       <height>23</height>
      </rect>
@@ -394,8 +394,8 @@
    <widget class="QPushButton" name="selectButton">
     <property name="geometry">
      <rect>
-      <x>20</x>
-      <y>540</y>
+      <x>10</x>
+      <y>560</y>
       <width>101</width>
       <height>111</height>
      </rect>
@@ -410,14 +410,14 @@
    <widget class="QPushButton" name="RemoveClassButton">
     <property name="geometry">
      <rect>
-      <x>370</x>
-      <y>500</y>
-      <width>141</width>
-      <height>23</height>
+      <x>10</x>
+      <y>450</y>
+      <width>311</width>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>Remove Selected Class</string>
+     <string>Remove Selected Object</string>
     </property>
    </widget>
   </widget>
