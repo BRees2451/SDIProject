@@ -4,7 +4,7 @@
 #include <iostream>
 using namespace std;
 
-class shareClass
+class shareClass : public QThread
 {
 public:
     shareClass();
@@ -13,6 +13,8 @@ public:
         QString name;
         QDateTime dateModified;
     };
+
+    void run();
 };
 
 
@@ -105,5 +107,20 @@ public:
         }
         return false;
     }
+
+    QVector<QJsonDocument> search()
+    {
+        QVector<QJsonDocument> vect;
+        node* current = gethead();
+        while(current != NULL){
+            if(!current->data.isNull()) vect.push_back(current->data);
+
+            current = current->next;
+        }
+        return vect;
+    }
+
+
+
 };
 #endif // SHARECLASS_H

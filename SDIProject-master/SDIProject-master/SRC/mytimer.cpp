@@ -17,15 +17,18 @@ MyTimer::MyTimer()
 }
 
 bool MyTimer::MySlot(){
-    int counter = 0;
+
     //Use function to save
-    qDebug()<<"Timer executed";
     counter ++;
     if(counter == 60){
+        qDebug()<<"Timer executed";
+
+        counter = 0;//Restart Timer
+        emit sendTimeout();
         return true;
 
 
-        counter = 0;//Restart Timer
+
     }
     else return false;
 

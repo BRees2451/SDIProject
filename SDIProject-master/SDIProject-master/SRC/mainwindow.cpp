@@ -3,6 +3,7 @@
 #include "matdisplay.h"
 #include <QPixmap>
 
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
@@ -11,11 +12,14 @@ MainWindow::MainWindow(QWidget *parent)
     Image currentImage;
 
 
+
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
-    connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
 
-    connect(QWidget::window(), SIGNAL(sendSaveSignal()), SLOT(saveSignal()));
+    connect(mTimer, SIGNAL(sendTimeout()), this, SLOT(saveSignal()));
+    //connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
+
+    //connect(QWidget::window(), SIGNAL(sendSaveSignal()), SLOT(saveSignal()));
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -29,7 +33,6 @@ MainWindow::MainWindow(QWidget *parent)
         shareClass::fileData fData;
         fData.name = images[i];
         fData.dateModified = modified.lastModified();
-        qDebug() << fData.dateModified.toString() << "Hello" << endl;
 
         //Add each image to a vector
         cout<<images[i].toUtf8().constData()<<endl;
@@ -37,6 +40,10 @@ MainWindow::MainWindow(QWidget *parent)
         filesInDirectory.push_back(fData);
         ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
+
+
+
+    //saveThread.start();
 
 }
 
@@ -69,14 +76,16 @@ void MainWindow::on_actionOpen_triggered()
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
     this->fileName = info.fileName();
-    qDebug()<<fileName <<endl;
 
     //ERROR CAUSED HERE
-    /*if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
-    {
-        qDebug() << "Not a compatible image format" << endl;
-        return;
-    }*/
+    if (fileName != NULL){
+        if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
+        {
+            qDebug() << "Not a compatible image format" << endl;
+            return;
+        }
+    }
+
 
 
     open(filePath, fileName);
@@ -256,15 +265,52 @@ void MainWindow::Save(bool autosave)
     annotation.setObject(Root);
 
     if (autosave){
-        linkList->add_node(annotation);
-        return;
+        if (!QDir(defaultPath+"/autosave").exists()) QDir().mkdir(defaultPath+"/autosave");
+        QString autosaveName = defaultPath+"/autosave/autosave" + QString::number(autosaveCounter) + ".json";
+        QFile file(autosaveName);
+        file.open(QIODevice::WriteOnly | QIODevice::Text);
+        file.write(annotation.toJson());
+        autosaveCounter++;
+        file.close();
+    }
+    else
+    {
+        QFile file(annoFilePath);
+        file.open(QIODevice::WriteOnly | QIODevice::Text);
+        file.write(annotation.toJson());
+        file.close();
     }
 
-    QFile file(annoFilePath);
-    file.open(QIODevice::WriteOnly | QIODevice::Text);
-    file.write(annotation.toJson());
 
 
+
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    //QVector<QJsonDocument> vect;
+    //vect = linkList->search();
+    /*
+    for (QJsonDocument doc : *autosaveVect){
+        if (!QDir(defaultPath+"/autosave").exists()) QDir().mkdir(defaultPath+"/autosave");
+        QFile file(defaultPath+"/autosave/" + autosaveCounter);
+        file.open(QIODevice::WriteOnly | QIODevice::Text);
+        file.write(doc.toJson());
+        file.close();
+        autosaveCounter++;
+    }
+    */
+
+
+
+
+        //if (!QDir(defaultPath+this->fileName+"autosave").exists()) QDir().mkdir(defaultPath+this->fileName+"autosave");
+        //QFile file(defaultPath+this->fileName+"autosave" + counter);
+        //file.open(QIODevice::WriteOnly | QIODevice::Text);
+        //file.write(currentDoc.toJson());
+
+
+    qDebug() << "Window Closed" << endl;
 }
 
 void MainWindow::showMousePosition(QPoint &pos)
@@ -287,7 +333,6 @@ void MainWindow::showMousePosition(QPoint &pos)
 
             //prevPoint = pos-(*currentShape->shapeStartPoint);
             //QPoint point = pos-(*currentShape->shapeStartPoint);
-            qDebug() << pos-previousPos << endl;
             if (previousPos.x() != NULL) currentShape->shape.translate(pos-previousPos);
             previousPos = pos;
         }
@@ -395,7 +440,6 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
     shape->shapeList.clear();
     for (int i = 0; i < filesInDirectory.size()-1; i++)
     {
-        qDebug() << ui->ImagesWindow->item(i)->text() << endl;
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
 
     }
@@ -452,7 +496,7 @@ void MainWindow::open(QString filePath, QString fileName)
     {
         cout << "File is in directory" << endl;
         Destination = QFileInfo(QDir::currentPath()).path();
-        qDebug() << Destination << endl;
+
     }
     else
     {
@@ -560,7 +604,7 @@ void MainWindow::open(QString filePath, QString fileName)
             }
 
             int numberOfAnno = root["Number of Annotations"].toInt();
-            qDebug() << numberOfAnno << endl;
+
         }
         else{
             annoFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -752,11 +796,6 @@ void MainWindow::on_selectButton_clicked()
     this->ui->shapeTypeLabel->setText("Shape Type: Select");
 }
 
-void MainWindow::mouseReleased(QPoint &)
-{
-    qDebug() << "mouseReleased" << endl;
-}
-
 void MainWindow::on_RemoveClassButton_clicked()
 {
     QString selectedName;
@@ -821,5 +860,6 @@ void MainWindow::on_replaceImageFileName_clicked()
 void MainWindow::saveSignal()
 {
     qDebug() << "SIGNAL RECEIVED" << endl;
-    this->Save(1);
+    std::thread runThread(&MainWindow::Save, this, 1);
+    runThread.join();
 }

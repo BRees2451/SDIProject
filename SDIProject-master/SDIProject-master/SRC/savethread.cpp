@@ -1,4 +1,5 @@
 #include "savethread.h"
+#include "mainwindow.h"
 #include <QtCore>
 #include <QDebug>
 

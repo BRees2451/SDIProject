@@ -8,9 +8,11 @@
 #include <QMessageBox>
 #include <vector>
 #include <iostream>
+#include <thread>
 #include "shareclass.h"
 #include "Image.h"
 #include "UserShapeOperations.h"
+#include "mytimer.h"
 
 using namespace std;
 
@@ -32,7 +34,29 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
+    MyTimer *mTimer = new MyTimer();
+
     void Save(bool);
+
+    //void saveSignal();
+
+    void doSetup(QThread &sThread){
+        connect(&sThread, SIGNAL(started()), this, SLOT(doWork()));
+    }
+
+protected:
+    void closeEvent(QCloseEvent *event);
+
+    void run();
+
+public slots:
+    void doWork(){
+        while(1){
+            std::thread aThread(&MainWindow::Save, this, 1);
+            aThread.join();
+        }
+        //this->Save(1);
+    };
 
 
 private slots:
@@ -82,13 +106,10 @@ private slots:
 
     void on_selectButton_clicked();
 
-    void mouseReleased(QPoint&);
-
     void on_RemoveClassButton_clicked();
 
     void on_replaceImageFileName_clicked();
 
-    void saveSignal();
 
 private:
     void open(QString, QString);
@@ -127,11 +148,13 @@ private:
     QGraphicsPathItem *shapeDrawing;
 
     linked_list *linkList;
-
+    int autosaveCounter = 1;
+    QVector<QJsonDocument> *autosaveVect;
 
 public slots:
     void showMousePosition(QPoint& pos);
     void clickPoint(QPoint&);
+    void saveSignal();
 
 };
 #endif // MAINWINDOW_H

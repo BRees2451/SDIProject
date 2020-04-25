@@ -4,9 +4,7 @@
 #include <QObject>
 #include <QWidget>
 #include <QLabel>
-
 #include <QGraphicsView>
-
 #include <QMouseEvent>
 
 class matDisplay : public QGraphicsView

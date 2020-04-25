@@ -12,8 +12,13 @@ public:
     MyTimer();
     QTimer *timer;
 
+    int counter = 0;
+
 public slots:
     bool MySlot();
+
+signals:
+    void sendTimeout();
 };
 
 #endif // MYTIMER_H
