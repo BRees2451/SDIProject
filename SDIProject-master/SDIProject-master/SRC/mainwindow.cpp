@@ -66,12 +66,15 @@ void MainWindow::on_actionOpen_triggered() {
     this->fileName = info.fileName();
 
     //ERROR CAUSED HERE
+    /*
     if (fileName != NULL){
-        if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive)) {
+        if(!fileName.endsWith("jpg") || !fileName.endsWith("png") || !fileName.endsWith("png")) {
             qDebug() << "Not a compatible image format" << endl;
             return;
         }
     }
+    */
+
 
     open(filePath, fileName);
 
@@ -351,17 +354,17 @@ void MainWindow::open(QString filePath, QString fileName) {
 
     QString Destination;
 
+    Destination = QFileInfo(QDir::currentPath()).path();
     //Will check whether file is in 'RESULTS' folder
-    if (filePath.contains(containString)) {
-        Destination = QFileInfo(QDir::currentPath()).path();
-    }
-    else {
-        //Will construct a destination
-        Destination = defaultPath + "/" + fileName;
+    if (!filePath.contains(containString)) {
+        QString dest = defaultPath + "/" + fileName;
+        //Destination = defaultPath + "/" + fileName;
 
         //Copy the file to the destination and check
-        QFile(filePath).copy(Destination);
+        QFile(filePath).copy(dest);
     }
+
+    qDebug() << Destination << endl;
 
     //Will minipulate the string to give a .txt file path
     QStringList absoluteFileName = fileName.split(".");
@@ -680,6 +683,9 @@ void MainWindow::on_replaceImageFileName_clicked()
         ui->ImagesWindow->item(searchIndex)->setText(images[searchIndex] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
         }
     }
+
+
+
 }
 
 void MainWindow::saveSignal() {

@@ -107,8 +107,30 @@
                     }
                 ],
                 "Shape Type": "Triangle"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 151,
+                        "y": 101
+                    },
+                    {
+                        "x": 165,
+                        "y": 101
+                    },
+                    {
+                        "x": 172,
+                        "y": 163
+                    },
+                    {
+                        "x": 144,
+                        "y": 163
+                    }
+                ],
+                "Shape Type": "Trapezium"
             }
         ]
     },
-    "Number of Annotations": 5
+    "Number of Annotations": 6
 }
