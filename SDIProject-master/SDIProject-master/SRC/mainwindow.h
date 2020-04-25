@@ -28,36 +28,18 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    QString shapeType;
-    QGraphicsScene *scene = new QGraphicsScene(this);
-
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-    MyTimer *mTimer = new MyTimer();
 
-    void Save(bool);
-
-    //void saveSignal();
-
-    void doSetup(QThread &sThread){
-        connect(&sThread, SIGNAL(started()), this, SLOT(doWork()));
-    }
 
 protected:
     void closeEvent(QCloseEvent *event);
 
-    void run();
-
 public slots:
-    void doWork(){
-        while(1){
-            std::thread aThread(&MainWindow::Save, this, 1);
-            aThread.join();
-        }
-        //this->Save(1);
-    };
-
+    void showMousePosition(QPoint& pos);
+    void clickPoint(QPoint&);
+    void saveSignal();
 
 private slots:
     void on_ZoomInButton_clicked();
@@ -94,8 +76,6 @@ private slots:
 
     void openImage(QString imagePath);
 
-    void on_resizeShape_clicked();
-
     void on_DrawRectButton_clicked();
 
     void on_ImageSearchButton_clicked();
@@ -112,26 +92,19 @@ private slots:
 
 
 private:
+    void Save(bool);
     void open(QString, QString);
 
-    QString fileName = "";
+private:
 
     Ui::MainWindow *ui;
-
-    QString selectedClass;
-
-    drawnShape *isSelected;
-    bool Select = false;
-
-    QGraphicsItem *item;
-    QGraphicsRectItem *rectangle;
-    QGraphicsPolygonItem *polygon;
-    QGraphicsEllipseItem *circle;
-
+    QGraphicsScene *scene = new QGraphicsScene(this);
     UserShapeOperation *shape = new UserShapeOperation();
+    MyTimer *mTimer = new MyTimer();
 
+    QString fileName = "";
+    QGraphicsItem *item;
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/RESULTS";
-
     QVector<shareClass::fileData> filesInDirectory;
     QVector<shareClass::fileData> classesInFile;
 
@@ -143,18 +116,16 @@ private:
     QString annoFilePath;
     bool imageActive = false;
 
+    QString selectedClass;
+
+    QString shapeType;
     QPointF previousPos;
+    drawnShape *isSelected;
+    bool Select = false;
 
     QGraphicsPathItem *shapeDrawing;
 
-    linked_list *linkList;
     int autosaveCounter = 1;
-    QVector<QJsonDocument> *autosaveVect;
-
-public slots:
-    void showMousePosition(QPoint& pos);
-    void clickPoint(QPoint&);
-    void saveSignal();
 
 };
 #endif // MAINWINDOW_H
