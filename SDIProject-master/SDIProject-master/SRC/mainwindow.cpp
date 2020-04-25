@@ -126,6 +126,7 @@ void MainWindow::on_RotateRButton_clicked() {
 
 
 void MainWindow::Save(bool autosave) {
+    if (!imageActive) return;
 
     //Need to retrieve the classes file
     int listSize = shape->shapeList.size();
