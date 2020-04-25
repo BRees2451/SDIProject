@@ -6,6 +6,9 @@
 #include <vector>
 #include <ctime>
 
+/**
+ * @brief The Image class
+ */
 class Image {
 
     friend class MainWindow;
