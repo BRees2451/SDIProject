@@ -5,8 +5,7 @@
 #include <QWidget>
 
 
-class CustomView : public QGraphicsView
-{
+class CustomView : public QGraphicsView {
 public:
     CustomView(QWidget* parent = 0);
 protected:

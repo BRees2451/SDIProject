@@ -6,20 +6,15 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , ui(new Ui::MainWindow)
-{
+    , ui(new Ui::MainWindow) {
+
     ui->setupUi(this);
     Image currentImage;
-
-
 
     connect(ui->graphicsView,SIGNAL(sendMousePosition(QPoint&)),this,SLOT(showMousePosition(QPoint&)));
     connect(ui->graphicsView,SIGNAL(sendMousePress(QPoint&)), SLOT(clickPoint(QPoint&)));
 
     connect(mTimer, SIGNAL(sendTimeout()), this, SLOT(saveSignal()));
-    //connect(ui->graphicsView, SIGNAL(sendMouseRelease(QPoint&)), this, SLOT(mouseReleased(QPoint&)));
-
-    //connect(QWidget::window(), SIGNAL(sendSaveSignal()), SLOT(saveSignal()));
 
     /**
       * https://forum.qt.io/topic/64817/how-to-read-all-files-from-a-selected-directory-and-use-them-one-by-one/3
@@ -34,9 +29,6 @@ MainWindow::MainWindow(QWidget *parent)
         fData.name = images[i];
         fData.dateModified = modified.lastModified();
 
-        //Add each image to a vector
-        cout<<images[i].toUtf8().constData()<<endl;
-
         filesInDirectory.push_back(fData);
         ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
@@ -47,19 +39,16 @@ MainWindow::MainWindow(QWidget *parent)
 
 }
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     delete ui;
 }
 
 
-void MainWindow::on_ZoomInButton_clicked()
-{
+void MainWindow::on_ZoomInButton_clicked() {
     ui->graphicsView->scale(1.2,1.2);
 }
 
-void MainWindow::on_ZoomOutButton_clicked()
-{
+void MainWindow::on_ZoomOutButton_clicked() {
     ui->graphicsView->scale(0.8,0.8);
 }
 
@@ -71,16 +60,14 @@ void MainWindow::on_ZoomOutButton_clicked()
  * an empty classes file. When the directory is saved it will compile
  * the directory into a hdf5 file.
  */
-void MainWindow::on_actionOpen_triggered()
-{
+void MainWindow::on_actionOpen_triggered() {
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
     QFileInfo info(filePath);
     this->fileName = info.fileName();
 
     //ERROR CAUSED HERE
     if (fileName != NULL){
-        if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive))
-        {
+        if(!fileName.endsWith(".jpg",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive) || !fileName.endsWith(".png",Qt::CaseSensitive)) {
             qDebug() << "Not a compatible image format" << endl;
             return;
         }
@@ -90,18 +77,16 @@ void MainWindow::on_actionOpen_triggered()
 
 }
 
-void MainWindow::on_AddImageButton_clicked()
-{
+void MainWindow::on_AddImageButton_clicked() {
     on_actionOpen_triggered();
 }
 
-void MainWindow::on_actionQuit_triggered()
-{
+void MainWindow::on_actionQuit_triggered() {
     QApplication::quit();
 }
 
-void MainWindow::on_actionSave_triggered()
-{
+void MainWindow::on_actionSave_triggered() {
+
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "SAVE", "Any changes will override the previous file.\nContinue?", QMessageBox::Yes|QMessageBox::No);
     if (reply == QMessageBox::No) return;
@@ -109,70 +94,53 @@ void MainWindow::on_actionSave_triggered()
 
 }
 
-void MainWindow::on_DrawRectButton_clicked()
-{
+void MainWindow::on_DrawRectButton_clicked() {
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
 }
 
-void MainWindow::on_DrawTriangleButton_clicked()//Triangle
-{
+void MainWindow::on_DrawTriangleButton_clicked() {
     this->shapeType = "Triangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
 }
 
-void MainWindow::on_DrawTrapButton_clicked()
-{
+void MainWindow::on_DrawTrapButton_clicked() {
     this->shapeType = "Trapezium";
     this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
 }
 
-void MainWindow::on_DrawPolyButton_clicked()
-
-{
+void MainWindow::on_DrawPolyButton_clicked() {
     this->shapeType = "Polygon";
     this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
 
 }
 
-void MainWindow::on_RotateLButton_clicked()
-{
+void MainWindow::on_RotateLButton_clicked() {
     ui-> graphicsView ->rotate(-1);
 }
 
-void MainWindow::on_RotateRButton_clicked()
-{
+void MainWindow::on_RotateRButton_clicked() {
     ui-> graphicsView ->rotate(1);
 }
 
-//USE THREADS AND HDF5 FILE FORMAT
 
-void MainWindow::Save(bool autosave)
-{
-    //We need to pull the relevant data: fileName, Annotations, and Classes File
-    //fileName;
-    //&Image::annotationsVector;
+void MainWindow::Save(bool autosave) {
+
     //Need to retrieve the classes file
     int listSize = shape->shapeList.size();
     QJsonObject Root;
     Root["Number of Annotations"] = listSize;
-    /*
-    QJsonArray images;
-    for(int i = 0; i < filesInDirectory.size(); i++){
-        QJsonObject individualImage;
-        individualImage["ImageName"] = filesInDirectory[i].name;
-        individualImage["Shapes"] =
-    }*/
+
     QJsonObject individualImage;
-    for (int i = 0; i < filesInDirectory.size(); i++){
+    for (int i = 0; i < filesInDirectory.size(); i++) {
         QJsonArray shapesInImage;
 
-        if (classFileName.split(".")[0] == filesInDirectory[i].name.split(".")[0]){
+        if (classFileName.split(".")[0] == filesInDirectory[i].name.split(".")[0]) {
             for (int j = 0; j < shape->shapeList.size(); j++){
                 QJsonObject point;
                 QJsonArray pointsArray;
-                for (int k = 0; k < shape->shapeList[j]->pointsVector.size(); k++){
+                for (int k = 0; k < shape->shapeList[j]->pointsVector.size(); k++) {
 
                     point["x"] = shape->shapeList[j]->shape[k].x();
                     point["y"] = shape->shapeList[j]->shape[k].y();
@@ -193,13 +161,12 @@ void MainWindow::Save(bool autosave)
 
         }
 
-
     }
     Root["Image"] = individualImage;
     QJsonDocument annotation;
     annotation.setObject(Root);
 
-    if (autosave){
+    if (autosave) {
         if (!QDir(defaultPath+"/autosave").exists()) QDir().mkdir(defaultPath+"/autosave");
         QString autosaveName = defaultPath+"/autosave/autosave" + QString::number(autosaveCounter) + ".json";
         QFile file(autosaveName);
@@ -208,8 +175,7 @@ void MainWindow::Save(bool autosave)
         autosaveCounter++;
         file.close();
     }
-    else
-    {
+    else {
         QFile file(annoFilePath);
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         file.write(annotation.toJson());
@@ -223,28 +189,6 @@ void MainWindow::Save(bool autosave)
 
 void MainWindow::closeEvent(QCloseEvent *event)
 {
-    //QVector<QJsonDocument> vect;
-    //vect = linkList->search();
-    /*
-    for (QJsonDocument doc : *autosaveVect){
-        if (!QDir(defaultPath+"/autosave").exists()) QDir().mkdir(defaultPath+"/autosave");
-        QFile file(defaultPath+"/autosave/" + autosaveCounter);
-        file.open(QIODevice::WriteOnly | QIODevice::Text);
-        file.write(doc.toJson());
-        file.close();
-        autosaveCounter++;
-    }
-    */
-
-
-
-
-        //if (!QDir(defaultPath+this->fileName+"autosave").exists()) QDir().mkdir(defaultPath+this->fileName+"autosave");
-        //QFile file(defaultPath+this->fileName+"autosave" + counter);
-        //file.open(QIODevice::WriteOnly | QIODevice::Text);
-        //file.write(currentDoc.toJson());
-
-
     qDebug() << "Window Closed" << endl;
 }
 
@@ -256,23 +200,20 @@ void MainWindow::showMousePosition(QPoint &pos)
     if (shapeType == "Polygon") return;
     bool a = QApplication::mouseButtons();
     if (a) {
-        if (shapeType == "Select"){
+        if (shapeType == "Select") {
             drawnShape *currentShape;
-            for (drawnShape *s : shape->shapeList){
+            for (drawnShape *s : shape->shapeList) {
                 if (s->isSelected) {
                     currentShape = s;
                     break;
                 }
 
             }
-
-            //prevPoint = pos-(*currentShape->shapeStartPoint);
-            //QPoint point = pos-(*currentShape->shapeStartPoint);
             if (previousPos.x() != NULL) currentShape->shape.translate(pos-previousPos);
             previousPos = pos;
         }
-        else{
-            for (drawnShape *s : shape->shapeList){
+        else {
+            for (drawnShape *s : shape->shapeList) {
                 if (s->isBeingDrawn){
                     s->shapeEndPoint = &pos;
                     s->drawMe();
@@ -280,24 +221,22 @@ void MainWindow::showMousePosition(QPoint &pos)
                 }
             }
         }
-        if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")){
+        if(shapeType != NULL && (selectedClass != NULL||selectedClass != "")) {
             QPoint *position = new QPoint(pos.x(), pos.y());
             shape->handleMouseEvent(shapeType, selectedClass, position);
         }
 
         latest = pos;
     }
-    if (a == false){
-        for (drawnShape *s : shape->shapeList){
-            if (s->shapeType == "Polygon"){
-                if (s->shape.size() != 8){
-                    //((polygonShape)s)->addPoint(latest);
+    if (a == false) {
+        for (drawnShape *s : shape->shapeList) {
+            if (s->shapeType == "Polygon") {
+                if (s->shape.size() != 8) {
                 }
                 else s->isBeingDrawn = false;
                 shape->drawShape();
             }
             else s->isBeingDrawn = false;
-            //shape->drawShape();
 
             if (s->isSelected) font.setBold(1);
             else font.setBold(0);
@@ -308,14 +247,10 @@ void MainWindow::showMousePosition(QPoint &pos)
                 s->getCenter();
                 painterPath.addText(s->center->x(), s->center->y(), font, s->classType);
 
-
                 shapeDrawing = scene->addPath(painterPath);
 
-                //if (this->isSelected) scene->removeItem(shapeDrawing);
                 s->drawn = true;
             }
-
-
         }
     }
 
@@ -323,11 +258,11 @@ void MainWindow::showMousePosition(QPoint &pos)
 
 }
 
-void MainWindow::clickPoint(QPoint& pos){
+void MainWindow::clickPoint(QPoint& pos) {
     QGraphicsItem *polygon;
     drawnShape *currentShape = new drawnShape("","");
-    if (shapeType == "Polygon"){
-        for (drawnShape *s : shape->shapeList){
+    if (shapeType == "Polygon") {
+        for (drawnShape *s : shape->shapeList) {
             if (s->isBeingDrawn && s->shapeType == "Polygon") {
                 currentShape = s;
                 polygonShape *currentPoly = static_cast<polygonShape*>(currentShape);
@@ -356,20 +291,17 @@ void MainWindow::clickPoint(QPoint& pos){
     }
     if (shapeType == "Select") {
         bool found = false;
-        for (drawnShape *s : shape->shapeList){
+        for (drawnShape *s : shape->shapeList) {
             this->isSelected = false;
             if (!found) found = s->tryToggleSelect(pos);
-
         }
     }
 }
 
 
-void MainWindow::on_selectImage_clicked() //Displays the image selected on the pane
-{
+void MainWindow::on_selectImage_clicked() {
     shape->shapeList.clear();
-    for (int i = 0; i < filesInDirectory.size()-1; i++)
-    {
+    for (int i = 0; i < filesInDirectory.size()-1; i++) {
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
 
     }
@@ -386,10 +318,9 @@ void MainWindow::on_selectImage_clicked() //Displays the image selected on the p
 
 }
 
-void MainWindow::openImage(QString imagePath) //Opens image onto pane
-{
+void MainWindow::openImage(QString imagePath) {
     scene->clear();
-    if (QString::compare(imagePath,QString())!= 0){
+    if (QString::compare(imagePath,QString())!= 0) {
         QImage image(imagePath);
         item = new QGraphicsPixmapItem(QPixmap::fromImage(image));
         ui->graphicsView->setScene(scene);
@@ -404,8 +335,7 @@ void MainWindow::openImage(QString imagePath) //Opens image onto pane
  * @param filePath
  * @param fileName
  */
-void MainWindow::open(QString filePath, QString fileName)
-{
+void MainWindow::open(QString filePath, QString fileName) {
     scene->clear();
     //Put this back because if someone is looking to open an image then they are planning on editting it
     //We can discuss about this later.
@@ -415,31 +345,21 @@ void MainWindow::open(QString filePath, QString fileName)
            ui->graphicsView->setScene(scene);
            scene->addItem(item);
        }
-    cout << filePath.toUtf8().constData() << endl;
 
     QString containString = "/RESULTS/"+fileName;
 
     QString Destination;
 
     //Will check whether file is in 'RESULTS' folder
-    if (filePath.contains(containString))
-    {
-        cout << "File is in directory" << endl;
+    if (filePath.contains(containString)) {
         Destination = QFileInfo(QDir::currentPath()).path();
-
     }
-    else
-    {
+    else {
         //Will construct a destination
         Destination = defaultPath + "/" + fileName;
-        cout<< "File isn't in directory" << endl;
 
         //Copy the file to the destination and check
-        bool a = QFile(filePath).copy(Destination);
-        if (a){
-            cout << "This works" << endl;
-        }
-        else cout << "This doesnt work" << endl;
+        QFile(filePath).copy(Destination);
     }
 
     //Will minipulate the string to give a .txt file path
@@ -454,12 +374,11 @@ void MainWindow::open(QString filePath, QString fileName)
 
     classFilePath = Destination + "/RESULTS/" + classFileName;
     annoFilePath = Destination + "/RESULTS/" + annoFileName;
-    if (Destination != NULL && classFileName != NULL && annoFileName != NULL)
-    {
+    if (Destination != NULL && classFileName != NULL && annoFileName != NULL) {
         QFile classFile(classFilePath);
         QFile annoFile(annoFilePath);
 
-        if (QFileInfo::exists(annoFilePath)){
+        if (QFileInfo::exists(annoFilePath)) {
             //READ JSON
 
             annoFile.open(QFile::ReadOnly | QIODevice::Text);
@@ -478,7 +397,7 @@ void MainWindow::open(QString filePath, QString fileName)
             QJsonArray shapesInImage = individualImage["Shapes"].toArray();
 
             //For every shape
-            for (int i = 0; i < shapesInImage.size(); i++){
+            for (int i = 0; i < shapesInImage.size(); i++) {
                 QJsonObject shapeData = shapesInImage[i].toObject();
                 QString shapeType = shapeData["Shape Type"].toString();
 
@@ -505,19 +424,19 @@ void MainWindow::open(QString filePath, QString fileName)
                 newShape->isSelected = false;
                 newShape->isBeingDrawn = false;
                 newShape->drawn = false;
-                if (newShape->shapeType == "Rectangle"){
+                if (newShape->shapeType == "Rectangle") {
                     QPoint shapeStart = newShape->pointsVector[0].toPoint();
                     newShape->shapeStartPoint = &shapeStart;
                     QPoint shapeEnd = newShape->pointsVector[2].toPoint();
                     newShape->shapeEndPoint = &shapeEnd;
                 }
-                else if (newShape->shapeType == "Triangle"){
+                else if (newShape->shapeType == "Triangle") {
                     QPoint *shapeStart = new QPoint(newShape->pointsVector[0].x(), newShape->pointsVector[2].y());
                     newShape->shapeStartPoint = shapeStart;
                     QPoint shapeEnd = newShape->pointsVector[1].toPoint();
                     newShape->shapeEndPoint = &shapeEnd;
                 }
-                else if (newShape->shapeType == "Trapezium"){
+                else if (newShape->shapeType == "Trapezium") {
                     QPoint *shapeStart = new QPoint(newShape->pointsVector[3].x(), newShape->pointsVector[0].y());
                     newShape->shapeStartPoint = shapeStart;
                     QPoint shapeEnd = newShape->pointsVector[2].toPoint();
@@ -536,14 +455,13 @@ void MainWindow::open(QString filePath, QString fileName)
             int numberOfAnno = root["Number of Annotations"].toInt();
 
         }
-        else{
+        else {
             annoFile.open(QIODevice::WriteOnly | QIODevice::Text);
             annoFile.close();
         }
 
         //If file exists it will read the data into a list
-        if(QFileInfo::exists(classFilePath))
-        {
+        if(QFileInfo::exists(classFilePath)) {
             cout << "file exists" << endl;
             classFile.open(QIODevice::ReadOnly | QIODevice::Text);
             QStringList dataFromFile;
@@ -556,8 +474,7 @@ void MainWindow::open(QString filePath, QString fileName)
             selectedClass = "";
             ui->ClassWindow->clear();
             classesInFile.clear();
-            for(int i = 1; i < dataFromFile.length();i++)
-            {
+            for(int i = 1; i < dataFromFile.length();i++) {
                 classesInFile.push_back({dataFromFile[i], QDateTime::currentDateTime()});
                 ui->ClassWindow->addItem(dataFromFile[i]);
             }
@@ -565,8 +482,7 @@ void MainWindow::open(QString filePath, QString fileName)
             cout<<"file already created"<<endl;
             classFile.close();
         }
-        else
-        {
+        else {
             //Will create a file at the given path as well as make the new file conform to the display we are using
             cout << "file does not exist" << endl;
             classFile.open(QIODevice::WriteOnly | QIODevice::Text);
@@ -605,8 +521,7 @@ void MainWindow::on_addClassButton_clicked()
  * @brief MainWindow::on_newClassLineEdit_returnPressed This will disable and clear the textbox as well as increment
  * the class vectors and file as well as push this new information to the GUI.
  */
-void MainWindow::on_newClassLineEdit_returnPressed()
-{
+void MainWindow::on_newClassLineEdit_returnPressed() {
     QString text = ui->newClassLineEdit->text();
     ui->newClassLineEdit->setText("");
     ui->selectClassButton->setEnabled(1);
@@ -616,19 +531,17 @@ void MainWindow::on_newClassLineEdit_returnPressed()
     ui->ClassWindow->addItem(text);
 
     QFile file(classFilePath);
-    if(QFileInfo::exists(classFilePath))
-    {
+    if(QFileInfo::exists(classFilePath)) {
         cout << "file exists" << endl;
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         file.write("Classes");
-        for (int i = 0; i < classesInFile.size(); i++)
-        {
+        for (int i = 0; i < classesInFile.size(); i++) {
             file.write(("\n"+classesInFile[i].name).toUtf8().constData());
         }
 
         file.close();
     }
-    qDebug() << text << endl;
+
 }
 
 /**
@@ -636,14 +549,12 @@ void MainWindow::on_newClassLineEdit_returnPressed()
  * the information to the correct methods as well as push the sorted list to the GUI.
  * @param arg1
  */
-void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
-{
+void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1) {
     Image image;
     if (arg1 == "Name (Asc)") classesInFile = image.SortAscendingName(classesInFile);
     else if (arg1 == "Name (Desc)") classesInFile = image.SortDescendingName(classesInFile);
     ui->ClassWindow->clear();
-    for (int i = 0; i < classesInFile.size(); i++)
-    {
+    for (int i = 0; i < classesInFile.size(); i++) {
         ui->ClassWindow->addItem(classesInFile[i].name);
         ui->ClassWindow->item(i)->setTextColor(Qt::black);
     }
@@ -654,8 +565,7 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1)
  * directing the information to the correct methods as well as push the sorted list to the GUI.
  * @param arg1
  */
-void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
-{
+void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1) {
     Image image;
 
     if (arg1 == "Name (Asc)") filesInDirectory = image.SortAscendingName(filesInDirectory);
@@ -663,8 +573,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
     else if (arg1 == "Date (Asc)") filesInDirectory = image.SortAscendingDate(filesInDirectory);
     else if (arg1 == "Date (Desc)") filesInDirectory = image.SortDescendingDate(filesInDirectory);
     ui->ImagesWindow->clear();
-    for (int i = 0; i < filesInDirectory.size(); i++)
-    {
+    for (int i = 0; i < filesInDirectory.size(); i++) {
         QString concatenatedItem = filesInDirectory[i].name + "\t\t" + filesInDirectory[i].dateModified.toString("hh:mm\tdd/MM/yy");
         ui->ImagesWindow->addItem(concatenatedItem);
         ui->ImagesWindow->item(i)->setTextColor(Qt::black);
@@ -674,8 +583,7 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1)
 
 
 
-void MainWindow::on_ImageSearchButton_clicked()
-{
+void MainWindow::on_ImageSearchButton_clicked() {
     Image image;
 
     //get the contents of line edit
@@ -685,7 +593,7 @@ void MainWindow::on_ImageSearchButton_clicked()
     int searchIndex = image.searchImageName(filesInDirectory,searchName);
     // returns the index of the location in the image vector
 
-    if(searchIndex == -1){
+    if(searchIndex == -1) {
         ui->ImageSearchLine->setText("Image not found");
     }
     else{
@@ -698,33 +606,29 @@ void MainWindow::on_ImageSearchButton_clicked()
     }
 }
 
-void MainWindow::on_selectClassButton_clicked()
-{
+void MainWindow::on_selectClassButton_clicked() {
     QListWidgetItem *selected = ui->ClassWindow->currentItem();
-    if (selected != NULL){
+    if (selected != NULL) {
         selected->setTextColor(Qt::red);
     }
     selectedClass = selected->text();
 }
 
-void MainWindow::on_deleteShape_clicked()
-{
-    if (shapeType == "Select"){
+void MainWindow::on_deleteShape_clicked() {
+    if (shapeType == "Select") {
         shape->Delete(scene);
     }
 }
 
-void MainWindow::on_selectButton_clicked()
-{
+void MainWindow::on_selectButton_clicked() {
     this->shapeType = "Select";
     this->ui->shapeTypeLabel->setText("Shape Type: Select");
 }
 
-void MainWindow::on_RemoveClassButton_clicked()
-{
+void MainWindow::on_RemoveClassButton_clicked() {
     QString selectedName;
     QList<QListWidgetItem*> items = ui->ClassWindow->selectedItems();
-    foreach(QListWidgetItem * item, items){
+    foreach(QListWidgetItem * item, items) {
         QListWidgetItem *selected = ui->ClassWindow->takeItem(ui->ClassWindow->row(item));
         selectedName = selected->text();
         delete selected;
@@ -735,7 +639,7 @@ void MainWindow::on_RemoveClassButton_clicked()
     classFile.open(QIODevice::WriteOnly | QIODevice::Text);
     classFile.write("Classes\n");
     int index;
-    for (int i = 0; i < classesInFile.size(); i++){
+    for (int i = 0; i < classesInFile.size(); i++) {
         if (classesInFile[i].name == selectedName) index = i;
         else {
             classFile.write(classesInFile[i].name.toUtf8().constData());
@@ -762,27 +666,23 @@ void MainWindow::on_replaceImageFileName_clicked()
     if(searchIndex == -1){
         ui->newImagelineEdit->setText("Image not found");
     }
-    else{
-        //ui->ImagesWindow->item(searchIndex)->setText(replaceName);
-        cout<<"????????";
+    else {
         QDir directory(defaultPath);
         QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
         for(int i = 0; i < images.length(); i++) {
             QFileInfo modified = QFileInfo(directory, images[i]);
             shareClass::fileData fData;
             fData.name = images[i];
-            cout<<" before if";
-            if (fData.name == searchName){
-                cout<<" in to if";
+            if (fData.name == searchName) {
                 images[i] = replaceName;
             }
         ui->ImagesWindow->item(searchIndex)->setText(images[searchIndex] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
-    }
+        }
     }
 }
 
-void MainWindow::saveSignal()
-{
+void MainWindow::saveSignal() {
+
     qDebug() << "SIGNAL RECEIVED" << endl;
     std::thread runThread(&MainWindow::Save, this, 1);
     runThread.join();

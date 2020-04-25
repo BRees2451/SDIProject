@@ -3,8 +3,7 @@
 #include <QtCore>
 #include <QGraphicsScene>
 
-class drawnShape
-{
+class drawnShape {
 public:
     bool isBeingDrawn;
     bool drawn = false;

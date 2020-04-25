@@ -7,8 +7,7 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 
-class matDisplay : public QGraphicsView
-{
+class matDisplay : public QGraphicsView {
     Q_OBJECT;
 public:
     QGraphicsScene *scene;

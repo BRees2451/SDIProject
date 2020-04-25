@@ -2,8 +2,7 @@
 
 
 
-void polygonShape::addPoint(QPointF point)
-{
+void polygonShape::addPoint(QPointF point) {
     pointsVector->push_back(point);
     //shape.append(point);
     //this->drawn = false;
@@ -11,12 +10,10 @@ void polygonShape::addPoint(QPointF point)
 }
 
 
-void polygonShape::drawMe(){
+void polygonShape::drawMe() {
     shape.clear();
-    for (QPointF a : *pointsVector){
+    for (QPointF a : *pointsVector) {
         shape.append(a);
     }
-    //shape.append(pointsVector[pointsVector->size()-1]);
-    //shape.append(*shapeEndPoint);
     this->drawn = false;
 }

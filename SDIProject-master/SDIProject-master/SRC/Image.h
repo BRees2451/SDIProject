@@ -4,21 +4,15 @@
 #include "Annotations.h"
 #include "shareclass.h"
 #include <vector>
-//For the date sorting
 #include <ctime>
 
-class Image{
+class Image {
 
     friend class MainWindow;
 private:
-    //int image;  <-- what is this for
     std::vector<Annotations> annotationsVector;
-    unsigned int longestImageNameLength;
-
 
 public:
-
-	void CheckCompatible();
 
     QVector<shareClass::fileData> SortAscendingName(QVector<shareClass::fileData>);
 

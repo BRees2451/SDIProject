@@ -8,13 +8,9 @@ using namespace std;
 class UserShapeOperation {
 
 public:
-    void USize(QString, QString, QPoint*);
-
     void Delete(QGraphicsScene *scene);
 
     void DisplayName();
-
-
 
     //Need a list of shapes
     vector<drawnShape*> shapeList;

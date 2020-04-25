@@ -17,7 +17,6 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 SOURCES += \
     Image.cpp \
-    Objects.cpp \
     UserShapeOperations.cpp \
     customview.cpp \
     drawnshape.cpp \
@@ -25,12 +24,10 @@ SOURCES += \
     mainwindow.cpp \
     matdisplay.cpp \
     mytimer.cpp \
-    polygonshape.cpp \
-    shareclass.cpp
+    polygonshape.cpp
 
 HEADERS += \
     Image.h \
-    Objects.h \
     UserShapeOperations.h \
     customview.h \
     drawnshape.h \

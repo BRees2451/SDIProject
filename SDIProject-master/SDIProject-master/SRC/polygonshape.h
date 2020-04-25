@@ -2,8 +2,7 @@
 #define POLYGONSHAPE_H
 #include "drawnshape.h"
 
-class polygonShape : public drawnShape
-{
+class polygonShape : public drawnShape {
     //Q_OBJECT;
 public:
     using drawnShape::drawnShape;

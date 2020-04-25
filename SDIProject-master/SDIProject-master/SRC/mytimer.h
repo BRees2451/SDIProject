@@ -5,8 +5,7 @@
 
 
 
-class MyTimer : public QObject
-{
+class MyTimer : public QObject {
     Q_OBJECT
 public:
     MyTimer();
