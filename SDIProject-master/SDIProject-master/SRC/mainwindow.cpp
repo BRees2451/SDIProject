@@ -355,13 +355,13 @@ void MainWindow::open(QString filePath, QString fileName) {
     QString Destination;
 
     Destination = QFileInfo(QDir::currentPath()).path();
+
+    imageFilePath = defaultPath + "/" + fileName;
+
     //Will check whether file is in 'RESULTS' folder
     if (!filePath.contains(containString)) {
-        QString dest = defaultPath + "/" + fileName;
-        //Destination = defaultPath + "/" + fileName;
-
         //Copy the file to the destination and check
-        QFile(filePath).copy(dest);
+        QFile(filePath).copy(imageFilePath);
     }
 
     qDebug() << Destination << endl;
@@ -652,39 +652,6 @@ void MainWindow::on_RemoveClassButton_clicked() {
     }
     classesInFile.remove(index);
     classFile.close();
-
-}
-
-void MainWindow::on_replaceImageFileName_clicked()
-{
-    Image image;
-
-    //get the contents of line edit
-    QString searchName = ui->oldImagelineEdit->text();
-    QString replaceName = ui->newImagelineEdit->text();
-
-    // Call search algorithm inside image class
-    int searchIndex = image.searchImageName(filesInDirectory,searchName);
-    // returns the index of the location in the image vector
-
-    if(searchIndex == -1){
-        ui->newImagelineEdit->setText("Image not found");
-    }
-    else {
-        QDir directory(defaultPath);
-        QStringList images = directory.entryList(QStringList() << "*.jpg" << "*.JPG" << "*.png" << "*.PNG",QDir::Files);
-        for(int i = 0; i < images.length(); i++) {
-            QFileInfo modified = QFileInfo(directory, images[i]);
-            shareClass::fileData fData;
-            fData.name = images[i];
-            if (fData.name == searchName) {
-                images[i] = replaceName;
-            }
-        ui->ImagesWindow->item(searchIndex)->setText(images[searchIndex] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
-        }
-    }
-
-
 
 }
 

@@ -420,45 +420,6 @@
      <string>Remove Selected Class</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="replaceImageFileName">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>560</y>
-      <width>75</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Replace</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="oldImagelineEdit">
-    <property name="geometry">
-     <rect>
-      <x>352</x>
-      <y>550</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>Type image name to replace</string>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="newImagelineEdit">
-    <property name="geometry">
-     <rect>
-      <x>352</x>
-      <y>580</y>
-      <width>151</width>
-      <height>20</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>New image name</string>
-    </property>
-   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">

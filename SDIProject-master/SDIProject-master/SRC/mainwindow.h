@@ -87,8 +87,6 @@ private slots:
 
     void on_RemoveClassButton_clicked();
 
-    void on_replaceImageFileName_clicked();
-
 
 private:
     void Save(bool);
@@ -106,6 +104,8 @@ private:
     QString defaultPath = QFileInfo(QDir::currentPath()).path() + "/RESULTS";
     QVector<shareClass::fileData> filesInDirectory;
     QVector<shareClass::fileData> classesInFile;
+
+    QString imageFilePath;
 
     QDate currentDate = QDate::currentDate();
     QString classFilePath;
