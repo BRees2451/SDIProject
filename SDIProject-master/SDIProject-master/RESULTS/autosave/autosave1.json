@@ -1,8 +1,136 @@
 {
     "Image": {
-        "ImageName": "Beach.jpg",
+        "ImageName": "apples.jpg",
         "Shapes": [
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 96,
+                        "y": 206
+                    },
+                    {
+                        "x": 188,
+                        "y": 206
+                    },
+                    {
+                        "x": 188,
+                        "y": 282
+                    },
+                    {
+                        "x": 96,
+                        "y": 282
+                    }
+                ],
+                "Shape Type": "Rectangle"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 350,
+                        "y": 143
+                    },
+                    {
+                        "x": 397,
+                        "y": 143
+                    },
+                    {
+                        "x": 420,
+                        "y": 224
+                    },
+                    {
+                        "x": 327,
+                        "y": 224
+                    }
+                ],
+                "Shape Type": "Trapezium"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 179,
+                        "y": 125
+                    },
+                    {
+                        "x": 283,
+                        "y": 125
+                    },
+                    {
+                        "x": 283,
+                        "y": 225
+                    },
+                    {
+                        "x": 179,
+                        "y": 225
+                    }
+                ],
+                "Shape Type": "Rectangle"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 296,
+                        "y": 276
+                    },
+                    {
+                        "x": 348,
+                        "y": 276
+                    },
+                    {
+                        "x": 373,
+                        "y": 332
+                    },
+                    {
+                        "x": 271,
+                        "y": 332
+                    }
+                ],
+                "Shape Type": "Trapezium"
+            },
+            {
+                "Class Type": "Body",
+                "Points": [
+                    {
+                        "x": 51,
+                        "y": 149
+                    },
+                    {
+                        "x": 113,
+                        "y": 149
+                    },
+                    {
+                        "x": 82,
+                        "y": 77
+                    }
+                ],
+                "Shape Type": "Triangle"
+            },
+            {
+                "Class Type": "Stem",
+                "Points": [
+                    {
+                        "x": 151,
+                        "y": 101
+                    },
+                    {
+                        "x": 165,
+                        "y": 101
+                    },
+                    {
+                        "x": 172,
+                        "y": 163
+                    },
+                    {
+                        "x": 144,
+                        "y": 163
+                    }
+                ],
+                "Shape Type": "Trapezium"
+            }
         ]
     },
-    "Number of Annotations": 0
+    "Number of Annotations": 6
 }

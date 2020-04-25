@@ -78,9 +78,6 @@ public:
     QLabel *shapeTypeLabel;
     QPushButton *selectButton;
     QPushButton *RemoveClassButton;
-    QPushButton *replaceImageFileName;
-    QLineEdit *oldImagelineEdit;
-    QLineEdit *newImagelineEdit;
     QMenuBar *menubar;
     QMenu *menuFile;
     QMenu *menuEdit;
@@ -269,15 +266,6 @@ public:
         RemoveClassButton = new QPushButton(centralwidget);
         RemoveClassButton->setObjectName(QStringLiteral("RemoveClassButton"));
         RemoveClassButton->setGeometry(QRect(370, 500, 141, 23));
-        replaceImageFileName = new QPushButton(centralwidget);
-        replaceImageFileName->setObjectName(QStringLiteral("replaceImageFileName"));
-        replaceImageFileName->setGeometry(QRect(530, 560, 75, 23));
-        oldImagelineEdit = new QLineEdit(centralwidget);
-        oldImagelineEdit->setObjectName(QStringLiteral("oldImagelineEdit"));
-        oldImagelineEdit->setGeometry(QRect(352, 550, 151, 20));
-        newImagelineEdit = new QLineEdit(centralwidget);
-        newImagelineEdit->setObjectName(QStringLiteral("newImagelineEdit"));
-        newImagelineEdit->setGeometry(QRect(352, 580, 151, 20));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QStringLiteral("menubar"));
@@ -350,9 +338,6 @@ public:
         shapeTypeLabel->setText(QApplication::translate("MainWindow", "Shape Type: None", Q_NULLPTR));
         selectButton->setText(QApplication::translate("MainWindow", "Select", Q_NULLPTR));
         RemoveClassButton->setText(QApplication::translate("MainWindow", "Remove Selected Class", Q_NULLPTR));
-        replaceImageFileName->setText(QApplication::translate("MainWindow", "Replace", Q_NULLPTR));
-        oldImagelineEdit->setText(QApplication::translate("MainWindow", "Type image name to replace", Q_NULLPTR));
-        newImagelineEdit->setText(QApplication::translate("MainWindow", "New image name", Q_NULLPTR));
         menuFile->setTitle(QApplication::translate("MainWindow", "File", Q_NULLPTR));
         menuEdit->setTitle(QApplication::translate("MainWindow", "Edit", Q_NULLPTR));
     } // retranslateUi

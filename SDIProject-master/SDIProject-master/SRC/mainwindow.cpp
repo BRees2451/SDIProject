@@ -176,6 +176,7 @@ void MainWindow::Save(bool autosave) {
         QFile file(autosaveName);
         file.open(QIODevice::WriteOnly | QIODevice::Text);
         file.write(annotation.toJson());
+        if (autosaveCounter == 20) autosaveCounter = 0;
         autosaveCounter++;
         file.close();
     }
