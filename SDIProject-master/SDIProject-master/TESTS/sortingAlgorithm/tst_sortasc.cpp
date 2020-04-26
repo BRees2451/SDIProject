@@ -29,7 +29,7 @@ sort::~sort()
 void sort::test_case1() // Sort Ascending
 {
     bool swapped = false;
-    std::vector<std::string> names = {"dog","mouse","cat"};
+    std::vector<std::string> names = {"lion","tiger","cheetah"};
         for (unsigned int i = 0; i < names.size() - 1; ++i) {
             for (unsigned int j = 0; j < names.size() - 1 - i; ++j) {
 
@@ -45,21 +45,21 @@ void sort::test_case1() // Sort Ascending
             }
             swapped = false;
         }
-        QStringList returnList;
+        QStringList sortedList;
             for(unsigned i=0; i < names.size(); i++) {
                 QString item = QString::fromStdString(names[i]);
-                returnList.append(item);
+                sortedList.append(item);
             }
 
-    QStringList list2 = {"sheep","dog","mouse"};
+    QStringList list2 = {"cheetah","lion","tiger"};
     QVERIFY(true);
-    QCOMPARE(returnList,list2);
+    QCOMPARE(sortedList,list2);
 }
 
 void sort::test_case2() // Sort Descending
 {
     bool swapped = false;
-    std::vector<std::string> names = {"dog","mouse","cat"};
+    std::vector<std::string> names = {"lion","tiger","cheetah"};
         for (unsigned int i = 0; i < names.size() - 1; ++i) {
             for (unsigned int j = 0; j < names.size() - 1 - i; ++j) {
 
@@ -75,15 +75,14 @@ void sort::test_case2() // Sort Descending
             }
             swapped = false;
         }
-        QStringList returnList;
+        QStringList sortedList;
             for(unsigned i=0; i < names.size(); i++) {
                 QString item = QString::fromStdString(names[i]);
-                returnList.append(item);
+                sortedList.append(item);
             }
-
-    QStringList list2 = {"mouse","dog","cat"};
+    QStringList list2 = {"tiger","lion","cheetah"};
     QVERIFY(true);
-    QCOMPARE(returnList,list2);
+    QCOMPARE(sortedList,list2);
 }
 
 QTEST_APPLESS_MAIN(sort)
