@@ -3,7 +3,9 @@
 
 #include <QtCore>
 
-
+/**
+ * @brief The MyTimer class handles all of the processes related to the timer.
+ */
 
 class MyTimer : public QObject {
     Q_OBJECT

@@ -2,7 +2,7 @@
 #include<QtCore>
 #include <QtDebug>
 
-/*!
+/**
  * \brief MyTimer::MyTimer
  * This function will start a timer and call the MyTimer::MySlot() function to incrament a counter.
  * This counter will be checked if it makes a minute, reset and save (SAVE NOT IMPLEMENTED)

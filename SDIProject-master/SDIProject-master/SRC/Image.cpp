@@ -68,8 +68,8 @@ QVector<shareClass::fileData> Image::SortDescendingName(QVector<shareClass::file
  * @brief Image::SortAscendingDate will take a vector and reorder it
  * such that it's in ascending order. It will do this by
  *
- * @param dateVector
- * @return
+ * @param dateVector is the vector that will need to be sorted.
+ * @return dateVector which is the same list however now sorted.
  */
 QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileData> dateVector) {
 
@@ -97,8 +97,9 @@ QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileD
 
 /**
  * @brief Image::SortDescendingDate
- * @param dateVector
- * @return
+ *
+ * @param dateVector is the vector that will need to be sorted.
+ * @return dateVector which is the same list however now sorted.
  */
 QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::fileData> dateVector) {
     bool swapped = false;
