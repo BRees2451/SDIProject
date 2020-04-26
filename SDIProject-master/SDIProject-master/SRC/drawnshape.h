@@ -3,52 +3,86 @@
 #include <QtCore>
 #include <QGraphicsScene>
 
-/**
- * @brief The drawnShape class is the class that contains all the relating data and proccesses of the shapes.
- *
- */
-
 class drawnShape {
 public:
+    /**
+     * @brief isBeingDrawn
+     * Determines whether a shape is being drawn or not.
+     */
     bool isBeingDrawn;
-    bool drawn = false;
-    bool isSelected = false;
-    QPoint *shapeStartPoint;
-    QPoint *shapeEndPoint;
-    QString classType;
-    QString shapeType;
-
-    QPolygonF shape;
-
-    QVector<QPointF> pointsVector;
-
-    QPointF *center;
 
     /**
-     * @brief drawnShape is a constructor of a shape.
-     * @param sType is the shape type of the shape.
-     * @param cType is the class type of the shape.
+     * @brief drawn
+     * Determines whether a shape is drawn or not.
      */
+    bool drawn = false;
+
+    /**
+     * @brief isSelected
+     * Determines whether a shape is selected or not.
+     */
+    bool isSelected = false;
+
+    /**
+     * @brief shapeStartPoint
+     * Coordinates for the top left corner of the shape
+     */
+    QPoint *shapeStartPoint;
+
+    /**
+     * @brief shapeEndPoint
+     * Coordinates for the bottom right corner of the shape.
+     */
+    QPoint *shapeEndPoint;
+
+    /**
+     * @brief classType
+     * Type of class
+     */
+    QString classType;
+
+    /**
+     * @brief shapeType
+     * Type of shape
+     */
+    QString shapeType;
+
+    /**
+     * @brief shape
+     * The current shape
+     */
+    QPolygonF shape;
+
+    /**
+     * @brief pointsVector
+     * Vector of sets of points for a shape.
+     */
+    QVector<QPointF> pointsVector;
+
+    /**
+     * @brief center
+     * Centre of the shape.
+     */
+    QPointF *center;
+
     explicit drawnShape(QString sType, QString cType){
         this->shapeType = sType;
         this->classType = cType;
     };
     //virtual ~drawnShape();
 
-    /**
-     * @brief drawMe is the method that draws all the shapes to the GUI.
-     */
     void drawMe();
 
     /**
-     * @brief tryToggleSelect is a method called to test if a shape has been selected.
-     * It returns true or false if the shape has or has not been selected.
-     * @param QPointF is the mouse position to check if the mouse is over the shape.
+     * @brief tryToggleSelect
+     * Attempts to select a shape.
+     * @return whether the shape is selected or not.
      */
     bool tryToggleSelect(QPointF);
 
     /**
-     * @brief getCenter is a method that finds the center of a shape.
+     * @brief getCenter
+     * Gets centre point of the shape.
      */
     void getCenter();
 

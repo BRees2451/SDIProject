@@ -3,10 +3,9 @@
 
 /**
  * @brief main
- * @param argc
- * @param argv
- * @return
+ * The main function to run the program.
  */
+
 int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);

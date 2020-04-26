@@ -2,7 +2,7 @@
 
 /**
  * @brief UserShapeOperation::Delete is repsonsible for removing shapes from the canvas.
- * It will look through the shape list and see if there is one selected to then, once found
+ * It will look through the shape list and see if there is one selected to then once found
  * delete the shape.
  *
  * @param scene will represent the scene which will be edited when deleting the shape from

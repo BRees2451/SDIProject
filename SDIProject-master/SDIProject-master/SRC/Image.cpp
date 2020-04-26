@@ -66,10 +66,13 @@ QVector<shareClass::fileData> Image::SortDescendingName(QVector<shareClass::file
 
 /**
  * @brief Image::SortAscendingDate will take a vector and reorder it
- * such that it's in ascending order. It will do this by
+ * such that it's in ascending order. It does this by using a bubble sort. It
+ * will loop through and check whether the adjacent elements need swapping.
+ * If they do then it will swap until there are no swaps in a full
+ * iteration.
  *
  * @param dateVector is the vector that will need to be sorted.
- * @return dateVector which is the same list however now sorted.
+ * @return the same list however now its sorted.
  */
 QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileData> dateVector) {
 
@@ -97,9 +100,13 @@ QVector<shareClass::fileData> Image::SortAscendingDate(QVector<shareClass::fileD
 
 /**
  * @brief Image::SortDescendingDate
- *
- * @param dateVector is the vector that will need to be sorted.
- * @return dateVector which is the same list however now sorted.
+ * Sorts the elements of the input vector to descending order.
+ * It does this by using a bubble sort. It will loop through
+ * and check whether the adjacent elements need swapping.
+ * If they do then it will swap until there are no swaps in
+ * a full iteration.
+ * @param dateVector
+ * @return
  */
 QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::fileData> dateVector) {
     bool swapped = false;
@@ -126,6 +133,7 @@ QVector<shareClass::fileData> Image::SortDescendingDate(QVector<shareClass::file
 
 /**
  * @brief Image::searchImageName
+ * Searches by name for a specified image.
  * @param nameVector
  * @param searchName
  * @return

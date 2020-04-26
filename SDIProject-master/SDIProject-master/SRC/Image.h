@@ -7,52 +7,51 @@
 #include <ctime>
 
 /**
- * @brief The Image class handles all the processes related to sorting the image list.
- * As welll as searching the list.
+ * @brief The Image class
  */
 class Image {
 
     friend class MainWindow;
 private:
     /**
-     * @brief annotationsVector is a list of all the
+     * @brief annotationsVector
+     * A vector of annotations for an image.
      */
     std::vector<Annotations> annotationsVector;
 
 public:
-
     /**
-     * @brief SortAscendingName is called to sort through the image list, by name, in to ascending order.
-     *
-     * @return nameVector as the sorted list of names.
+     * @brief SortAscendingName
+     * Sorts files by name into ascending order.
+     * @return Vector of the files in order.
      */
     QVector<shareClass::fileData> SortAscendingName(QVector<shareClass::fileData>);
 
     /**
-     * @brief SortDescendingName is called to sort through the image list, by name, in to descending order.
-     *
-     * @return nameVector as the sorted list of names.
+     * @brief SortDescendingName
+     * Sorts files by name into descending order.
+     * @return Vector of the files in order.
      */
     QVector<shareClass::fileData> SortDescendingName(QVector<shareClass::fileData>);
 
     /**
-     * @brief SortAscendingDate is called to sort through the image list, by date, in to ascending order.
-     *
-     * @return dateVector as the sorted list of dates.
+     * @brief SortAscendingDate
+     * Sorts files by date into ascending order.
+     * @return Vector of the files in order.
      */
     QVector<shareClass::fileData> SortAscendingDate(QVector<shareClass::fileData>);
 
     /**
-     * @brief SortDescendingDate is called to sort through the image list, by date, in to descending order.
-     *
-     * @return dateVector as the sorted list of dates.
+     * @brief SortDescendingDate
+     * Sorts files by date into descending order.
+     * @return Vector of the files in order.
      */
     QVector<shareClass::fileData> SortDescendingDate(QVector<shareClass::fileData>);
 
     /**
-     * @brief searchImageName is the method called to search throught the nameVector list for a specific image.
-     *
-     * @return
+     * @brief searchImageName
+     * Searches for an image with the specified name.
+     * @return if the image has been found.
      */
     int searchImageName(QVector<shareClass::fileData>,QString);
 

@@ -3,7 +3,11 @@
 #include "matdisplay.h"
 #include <QPixmap>
 
-
+/**
+ * @brief MainWindow::MainWindow
+ * Constructor of the main window
+ *
+ */
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow) {
@@ -33,32 +37,40 @@ MainWindow::MainWindow(QWidget *parent)
         ui->ImagesWindow->addItem(images[i] + "\t\t" + fData.dateModified.toString("hh:mm\tdd/MM/yy"));
     }
 
-
-
     //saveThread.start();
 
 }
-
+/**
+ * @brief MainWindow::~MainWindow
+ * Deconstructor of the main window
+ */
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-
+/**
+ * @brief MainWindow::on_ZoomInButton_clicked
+ * When the button is clicked, the image is zoomed in on by 20%.
+ */
 void MainWindow::on_ZoomInButton_clicked() {
     ui->graphicsView->scale(1.2,1.2);
 }
 
+/**
+ * @brief MainWindow::on_ZoomInButton_clicked
+ * When the button is clicked, the image is zoomed out to 80%
+ * of the original image.
+ */
 void MainWindow::on_ZoomOutButton_clicked() {
     ui->graphicsView->scale(0.8,0.8);
 }
 
-
 /**
  * @brief MainWindow::on_actionOpen_triggered
- * When a file is opened, if the file is a jpg or png then it will
- * make a new directory and copy the image into there, while creating
- * an empty classes file. When the directory is saved it will compile
- * the directory into a hdf5 file.
+ * When a file is opened a directory is created which the image is
+ * copied into (as long as it is a .jpg or .png) An empty class file
+ * is also created for the image. When the directory is saved it is
+ * compiled into a hdf5 file.
  */
 void MainWindow::on_actionOpen_triggered() {
     QString filePath = QFileDialog::getOpenFileName(this, "Open A File",defaultPath);
@@ -75,19 +87,33 @@ void MainWindow::on_actionOpen_triggered() {
     }
     */
 
-
     open(filePath, fileName);
 
 }
 
+/**
+ * @brief MainWindow::on_AddImageButton_clicked
+ * When the 'Add Image' button is pressed it selects
+ * an image in the same way the 'Open' function does.
+ */
 void MainWindow::on_AddImageButton_clicked() {
     on_actionOpen_triggered();
 }
 
+/**
+ * @brief MainWindow::on_actionQuit_triggered
+ * Closes the program
+ */
 void MainWindow::on_actionQuit_triggered() {
     QApplication::quit();
 }
 
+/**
+ * @brief MainWindow::on_actionSave_triggered
+ * Prompts the user with a message box asking them if they are
+ * sure they would like to overrwrite the previous file.
+ * If 'Yes' is selected the save function is launched.
+ */
 void MainWindow::on_actionSave_triggered() {
 
     QMessageBox::StandardButton reply;
@@ -97,37 +123,70 @@ void MainWindow::on_actionSave_triggered() {
 
 }
 
+/**
+ * @brief MainWindow::on_DrawRectButton_clicked
+ * Sets the shape to be drawn as a rectangle.
+ * Sets the shape type label to rectangle.
+ */
 void MainWindow::on_DrawRectButton_clicked() {
     this->shapeType = "Rectangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Rectangle");
 
 }
 
+/**
+ * @brief MainWindow::on_DrawTriangleButton_clicked
+ * Sets the shape to be drawn as a triangle.
+ * Sets the shape type label to triangle.
+ */
 void MainWindow::on_DrawTriangleButton_clicked() {
     this->shapeType = "Triangle";
     this->ui->shapeTypeLabel->setText("Shape Type: Triangle");
 }
 
+/**
+ * @brief MainWindow::on_DrawTrapButton_clicked
+ * Sets the shape to be drawn as a trapezium.
+ * Sets the shape type label to trapezium.
+ */
 void MainWindow::on_DrawTrapButton_clicked() {
     this->shapeType = "Trapezium";
     this->ui->shapeTypeLabel->setText("Shape Type: Trapezium");
 }
 
+/**
+ * @brief MainWindow::on_DrawPolyButton_clicked
+ * Sets the shape to be drawn as a polygon.
+ * Sets the shape type label to polygon.
+ */
 void MainWindow::on_DrawPolyButton_clicked() {
     this->shapeType = "Polygon";
     this->ui->shapeTypeLabel->setText("Shape Type: Polygon");
-
 }
 
+/**
+ * @brief MainWindow::on_RotateLButton_clicked
+ * When the button is clicked the image is
+ * rotated slightly to the left.
+ */
 void MainWindow::on_RotateLButton_clicked() {
     ui-> graphicsView ->rotate(-1);
 }
 
+/**
+ * @brief MainWindow::on_RotateRButton_clicked
+ * When the button is clicked the image is
+ * rotated slightly to the right.
+ */
 void MainWindow::on_RotateRButton_clicked() {
     ui-> graphicsView ->rotate(1);
 }
 
-
+/**
+ * @brief MainWindow::Save
+ * TO-DO
+ * @param autosave represents whether the image is being autosaved or not.
+ */
 void MainWindow::Save(bool autosave) {
     if (!imageActive) return;
 
@@ -192,11 +251,21 @@ void MainWindow::Save(bool autosave) {
 
 }
 
+/**
+ * @brief MainWindow::closeEvent
+ * Deals with closing the window
+ * @param event represents the current event
+ */
 void MainWindow::closeEvent(QCloseEvent *event)
 {
     qDebug() << "Window Closed" << endl;
 }
 
+/**
+ * @brief MainWindow::showMousePosition
+ * Gets the current mouse position and displays it.
+ * @param pos represents the current position of the mouse.
+ */
 void MainWindow::showMousePosition(QPoint &pos)
 {
     QPointF latest;
@@ -263,6 +332,12 @@ void MainWindow::showMousePosition(QPoint &pos)
 
 }
 
+/**
+ * @brief MainWindow::clickPoint
+ * Identifies the position as where the mouse is clicked in order to
+ * draw a polygon. Adds the corresponding point to the polygon drawing.
+ * @param pos represents the current mouse position
+ */
 void MainWindow::clickPoint(QPoint& pos) {
     QGraphicsItem *polygon;
     drawnShape *currentShape = new drawnShape("","");
@@ -303,7 +378,10 @@ void MainWindow::clickPoint(QPoint& pos) {
     }
 }
 
-
+/**
+ * @brief MainWindow::on_selectImage_clicked
+ * Places the image onto the canvas once the image is selected.
+ */
 void MainWindow::on_selectImage_clicked() {
     shape->shapeList.clear();
     for (int i = 0; i < filesInDirectory.size()-1; i++) {
@@ -323,6 +401,11 @@ void MainWindow::on_selectImage_clicked() {
 
 }
 
+/**
+ * @brief MainWindow::openImage
+ * Opens the chosen image to put onto the canvas.
+ * @param imagePath represents the path of where the chosen image is located
+ */
 void MainWindow::openImage(QString imagePath) {
     scene->clear();
     if (QString::compare(imagePath,QString())!= 0) {
@@ -334,11 +417,12 @@ void MainWindow::openImage(QString imagePath) {
 }
 
 /**
- * @brief MainWindow::open uses will pull the selected image to the scene if the image exists as well as check
- * for whether it is a jpg or png. This method will also validate whether there's a txt file to match the image.
- * If not one will be created.
- * @param filePath
- * @param fileName
+ * @brief MainWindow::open
+ * Checks if the selected image exists and checks it is the correct type.
+ * Checks if there is a .txt file for the image and creates one if not.
+ * Pulls the image if it exists.
+ * @param filePath represents the path of the file.
+ * @param fileName represents the name of the file.
  */
 void MainWindow::open(QString filePath, QString fileName) {
     scene->clear();
@@ -507,7 +591,8 @@ void MainWindow::open(QString filePath, QString fileName) {
 }
 
 /**
- * @brief MainWindow::on_addClassButton_clicked This will enable the textbox.
+ * @brief MainWindow::on_addClassButton_clicked
+ * Enables the textbox.
  */
 void MainWindow::on_addClassButton_clicked()
 {
@@ -523,8 +608,9 @@ void MainWindow::on_addClassButton_clicked()
 }
 
 /**
- * @brief MainWindow::on_newClassLineEdit_returnPressed This will disable and clear the textbox as well as increment
- * the class vectors and file as well as push this new information to the GUI.
+ * @brief MainWindow::on_newClassLineEdit_returnPressed
+ * Disables and clears the textbox aswell as incrementing the
+ * class vectors and file. Pushes this to the GUI.
  */
 void MainWindow::on_newClassLineEdit_returnPressed() {
     QString text = ui->newClassLineEdit->text();
@@ -550,8 +636,10 @@ void MainWindow::on_newClassLineEdit_returnPressed() {
 }
 
 /**
- * @brief MainWindow::on_sortClassBy_currentIndexChanged This will react to when the index is changed by directing
- * the information to the correct methods as well as push the sorted list to the GUI.
+ * @brief MainWindow::on_sortClassBy_currentIndexChanged
+ * Reacts to when the index is changed by directing
+ * the information to the correct methods as well as
+ * push the sorted list to the GUI.
  * @param arg1
  */
 void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1) {
@@ -566,8 +654,9 @@ void MainWindow::on_sortClassBy_currentIndexChanged(const QString &arg1) {
 }
 
 /**
- * @brief MainWindow::on_sortImageBy_currentIndexChanged This also will react to when the index is changed by
- * directing the information to the correct methods as well as push the sorted list to the GUI.
+ * @brief MainWindow::on_sortImageBy_currentIndexChanged
+ * Reacts to when the index is changed by directing the information
+ * to the correct methods as well as push the sorted list to the GUI.
  * @param arg1
  */
 void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1) {
@@ -587,7 +676,11 @@ void MainWindow::on_sortImageBy_currentIndexChanged(const QString &arg1) {
 
 
 
-
+/**
+ * @brief MainWindow::on_ImageSearchButton_clicked
+ * Searches the images imported into the pane for a certain
+ * specified image.
+ */
 void MainWindow::on_ImageSearchButton_clicked() {
     Image image;
 
@@ -610,7 +703,10 @@ void MainWindow::on_ImageSearchButton_clicked() {
         // using searchIndex
     }
 }
-
+/**
+ * @brief MainWindow::on_selectClassButton_clicked
+ * Chooses the selected class from the list.
+ */
 void MainWindow::on_selectClassButton_clicked() {
     QListWidgetItem *selected = ui->ClassWindow->currentItem();
     if (selected != NULL) {
@@ -619,17 +715,29 @@ void MainWindow::on_selectClassButton_clicked() {
     selectedClass = selected->text();
 }
 
+/**
+ * @brief MainWindow::on_deleteShape_clicked
+ * Deletes a shape.
+ */
 void MainWindow::on_deleteShape_clicked() {
     if (shapeType == "Select") {
         shape->Delete(scene);
     }
 }
 
+/**
+ * @brief MainWindow::on_selectButton_clicked
+ * Selects a shape.
+ */
 void MainWindow::on_selectButton_clicked() {
     this->shapeType = "Select";
     this->ui->shapeTypeLabel->setText("Shape Type: Select");
 }
 
+/**
+ * @brief MainWindow::on_RemoveClassButton_clicked
+ * Removes a class.
+ */
 void MainWindow::on_RemoveClassButton_clicked() {
     QString selectedName;
     QList<QListWidgetItem*> items = ui->ClassWindow->selectedItems();
@@ -656,6 +764,10 @@ void MainWindow::on_RemoveClassButton_clicked() {
 
 }
 
+/**
+ * @brief MainWindow::saveSignal
+ * Picks up the signal for the image to be saved.
+ */
 void MainWindow::saveSignal() {
 
     qDebug() << "SIGNAL RECEIVED" << endl;

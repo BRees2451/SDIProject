@@ -3,19 +3,32 @@
 
 #include <QtCore>
 
-/**
- * @brief The MyTimer class handles all of the processes related to the timer.
- */
+
 
 class MyTimer : public QObject {
     Q_OBJECT
 public:
+    /**
+     * @brief MyTimer
+     * Starts a timer and call the function to increment a counter.
+     */
     MyTimer();
-    QTimer *timer;
 
+    /**
+     * @brief timer
+     */
+    QTimer *timer;
+    /**
+     * @brief counter
+     * Counts the amount of time that has passed.
+     */
     int counter = 0;
 
 public slots:
+    /**
+     * @brief Increments a timer
+     * @return whether the timer is up or not
+     */
     bool MySlot();
 
 signals:
