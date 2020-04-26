@@ -2,6 +2,11 @@
 #define POLYGONSHAPE_H
 #include "drawnshape.h"
 
+
+/**
+ * @brief The polygonShape class is an extension of
+ * drawnShape however is made to.
+ */
 class polygonShape : public drawnShape {
     //Q_OBJECT;
 public:

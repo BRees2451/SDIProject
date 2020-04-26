@@ -4,7 +4,10 @@
 #include <QtCore>
 
 
-
+/**
+ * @brief The MyTimer class is used to count down the
+ * timer as well as then call a signal when it times out.
+ */
 class MyTimer : public QObject {
     Q_OBJECT
 public:

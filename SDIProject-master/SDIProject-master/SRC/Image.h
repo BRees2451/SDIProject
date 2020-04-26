@@ -1,23 +1,19 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 #include "mainwindow.h"
-#include "Annotations.h"
 #include "shareclass.h"
 #include <vector>
 #include <ctime>
 
 /**
- * @brief The Image class
+ * @brief The Image class is responsible for sorting all
+ * of the images and classes into their respective sorted
+ * lists. It is also responsible for the search function
+ * we use in this project.
  */
 class Image {
 
     friend class MainWindow;
-private:
-    /**
-     * @brief annotationsVector
-     * A vector of annotations for an image.
-     */
-    std::vector<Annotations> annotationsVector;
 
 public:
     /**

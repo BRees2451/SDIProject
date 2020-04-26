@@ -7,6 +7,10 @@
 #include <QGraphicsView>
 #include <QMouseEvent>
 
+/**
+ * @brief The matDisplay class is used mainly to send
+ * signals back to the main window class.
+ */
 class matDisplay : public QGraphicsView {
     Q_OBJECT;
 public:

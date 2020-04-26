@@ -22,15 +22,19 @@ QT_END_NAMESPACE
 
 
 
-
+/**
+ * @brief The MainWindow class is the bulk of the
+ * code. It represents the body of what is going on
+ * during the programming process.
+ */
 class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
     /**
      * @brief MainWindow
-     * Constructor
-     * @param parent
+     * This is the Constructor to the Main Window class
+     * @param parent denotes the parent of which the widget is in.
      */
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();

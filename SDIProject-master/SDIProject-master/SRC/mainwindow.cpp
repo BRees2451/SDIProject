@@ -77,16 +77,6 @@ void MainWindow::on_actionOpen_triggered() {
     QFileInfo info(filePath);
     this->fileName = info.fileName();
 
-    //ERROR CAUSED HERE
-    /*
-    if (fileName != NULL){
-        if(!fileName.endsWith("jpg") || !fileName.endsWith("png") || !fileName.endsWith("png")) {
-            qDebug() << "Not a compatible image format" << endl;
-            return;
-        }
-    }
-    */
-
     open(filePath, fileName);
 
 }

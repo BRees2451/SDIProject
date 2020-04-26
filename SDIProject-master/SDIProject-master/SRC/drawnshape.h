@@ -3,6 +3,10 @@
 #include <QtCore>
 #include <QGraphicsScene>
 
+/**
+ * @brief The drawnShape class represents the shapes that
+ * are drawn onto the canvas.
+ */
 class drawnShape {
 public:
     /**
